@@ -1,93 +1,73 @@
 #!/usr/bin/env python3
 """
-Web Security Audit Automation Script (v5)
+Web Security Audit Automation Script (v6)
 For educational purposes only.
 Only use on systems you own or have explicit written permission to test.
 
-Changes in v5:
-  * ffuf version detection: uses -rate when supported (>=1.3), falls back
-    to -p/-t for older versions (1.1.0 etc.). Previously the script passed
-    -rate unconditionally, which silently failed on ffuf 1.1.0.
-  * sensitive_files now captures Content-Length. A 200 with 0 bytes is
-    reported as INFO ("executed PHP, no output") instead of HIGH.
-  * Shared HTML analyzer (_analyze_html) used by both root-page and
-    multi-page checks. Now audits POST forms for CSRF tokens.
-  * New check: page_analysis fetches /login.php, /register.php,
-    /thread.php?id=N, /admin/, /admin/index.php and parses each.
+What it does
+------------
+Discovers reachable HTTP/HTTPS services, then runs a set of targeted,
+low-noise checks: HTTP security headers, cookie flags, CORS, HTTP methods,
+TLS configuration, sensitive file exposure, HTML content analysis across
+discovered pages, and optional external tools (whatweb, nikto, nmap, ffuf,
+dirb, testssl). Output is JSON + text + HTML, written to a per-run folder.
 
-Changes in v4:
-  * Body content analysis: parses titles, forms, inputs, scripts, links,
-    emails, comments, and detects potential unescaped XSS in the HTML.
-  * Broader Nikto parsing: keeps every '+ ' finding line.
-  * Expanded SENSITIVE_PATHS (PHP configs, db configs, backups, uploads).
-  * ffuf and sensitive_files handle HTTP 500 as an interesting signal.
-  * Correct dirb wordlist path (/usr/share/dirb/wordlists/common.txt).
+Design principles
+-----------------
+* Reachability-gated: no web finding is reported unless a real HTTP response
+  was received during service discovery.
+* Evidence-based: every finding carries a URL, confidence, and evidence.
+* Content-length aware: a 200 with 0 bytes is not treated as an exposure.
+* Tool-agnostic: each external tool is optional; missing tools are skipped.
 
-Changes in v3:
-  * Every run writes into its own subfolder:
-        <output_dir>/run_<timestamp>_<target>/
-  * Pass --flat to disable this and write straight into <output_dir>.
-
-Key change in v2: all web checks are gated behind a service-discovery phase.
-If no HTTP/HTTPS service responds, web-specific findings are NOT reported.
-
-Usage:
+Usage
+-----
     python3 audit_deepseek.py https://example.com
+    python3 audit_deepseek.py example.com --ports 80,443,8080
     python3 audit_deepseek.py https://example.com -o results --skip nikto directory_discovery
-    python3 audit_deepseek.py https://example.com --only ssl_testssl security_headers
-    python3 audit_deepseek.py https://example.com --config audit_config.json
-    python3 audit_deepseek.py 130.208.246.173 --ports 80,443,8080
+    python3 audit_deepseek.py https://example.com --only security_headers cookies
     python3 audit_deepseek.py https://example.com --flat
 """
 
-import subprocess
-import sys
-import os
 import argparse
+import html
 import json
+import os
 import re
 import shutil
 import socket
+import subprocess
+import sys
 import tempfile
-import html
 from datetime import datetime, timezone
-from urllib.parse import urlparse, urljoin
+from urllib.parse import urlparse
 
 
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
 
-# Severity classification rules. Checked in order; first match wins.
-# Pattern is case-insensitive substring match against the finding title.
+# Fallback classifier for ad-hoc finding titles (e.g. lines parsed out of
+# external tool output). Structured findings pass severity explicitly.
 SEVERITY_RULES = [
-    # HIGH
     ('Heartbleed', 'HIGH'),
     ('VULNERABLE', 'HIGH'),
     ('Dangerous HTTP method', 'HIGH'),
-    ('Potentially exposed', 'HIGH'),
     ('Deprecated SSL', 'HIGH'),
     ('Weak ciphers', 'HIGH'),
     ('does not redirect to HTTPS', 'HIGH'),
-    ('CORS wildcard', 'HIGH'),
-    ('CORS reflects arbitrary', 'HIGH'),
     ('expired', 'HIGH'),
     ('XSS payload', 'HIGH'),
-    ('stored/reflected XSS', 'HIGH'),
-    # MEDIUM
-    ('Admin login page', 'MEDIUM'),
-    ('Admin login section', 'MEDIUM'),
-    ('PHP Config file', 'MEDIUM'),
+    ('admin login', 'MEDIUM'),
     ('config.php', 'MEDIUM'),
+    ('config file', 'MEDIUM'),
     ('Server error on path', 'MEDIUM'),
-    ('created without the httponly flag', 'MEDIUM'),
+    ('without the httponly', 'MEDIUM'),
     ('POST form without CSRF', 'MEDIUM'),
     ('missing Secure flag', 'MEDIUM'),
     ('missing HttpOnly flag', 'MEDIUM'),
     ('missing SameSite', 'MEDIUM'),
-    ('expires in', 'MEDIUM'),
-    # LOW
-    ('DEBUG HTTP', 'LOW'),
+    ('DEBUG', 'LOW'),
     ('anti-clickjacking', 'LOW'),
     ('discloses version', 'LOW'),
     ('not implemented', 'LOW'),
@@ -95,7 +75,8 @@ SEVERITY_RULES = [
     ('protection missing', 'LOW'),
 ]
 
-# Security headers we check for and a description of the risk if missing.
+# Security headers to check, mapped to the risk description if missing.
+# HSTS is only checked over HTTPS (see run_security_headers_check).
 SECURITY_HEADERS = {
     'Strict-Transport-Security': 'HSTS not implemented',
     'Content-Security-Policy':   'CSP not implemented',
@@ -105,78 +86,84 @@ SECURITY_HEADERS = {
     'Permissions-Policy':        'Permissions policy not set',
 }
 
-# Informational headers (not counted as strongly).
+# Additional headers reported at INFO level if absent.
 INFORMATIONAL_HEADERS = {
     'Cross-Origin-Opener-Policy':   'COOP not set',
     'Cross-Origin-Resource-Policy': 'CORP not set',
 }
 
-# Files/paths we test for accidental exposure.
+# Paths probed for accidental exposure or misconfiguration. Generic set.
 SENSITIVE_PATHS = [
-    # Environment / VCS
+    # Environment and version control
     '/.env', '/.env.bak', '/.env.local', '/.env.production',
     '/.git/config', '/.git/HEAD', '/.gitignore', '/.svn/entries',
-    # PHP configs (common names)
+    # PHP configs
     '/config.php', '/config.inc.php', '/config.php.bak', '/config.php~',
     '/config.old', '/config.sample.php', '/configuration.php',
     '/includes/config.php', '/includes/db.php', '/includes/database.php',
     '/includes/config.inc.php', '/db.php', '/database.php',
     '/wp-config.php', '/wp-config.php.bak', '/settings.php',
-    # Backups / dumps
+    # Backups
     '/backup.zip', '/backup.tar.gz', '/backup.sql', '/dump.sql',
     '/db.sql', '/database.sql',
-    # Apache / server
+    # Server and platform
     '/.htaccess', '/.htpasswd', '/server-status', '/server-info',
     '/phpinfo.php', '/info.php', '/test.php', '/.DS_Store',
-    # Other configs
-    '/web.config', '/composer.json', '/composer.lock', '/package.json',
-    '/package-lock.json', '/robots.txt', '/sitemap.xml',
-    '/.well-known/security.txt', '/swagger.json', '/openapi.json',
-    '/api-docs', '/.editorconfig',
-    # Upload / staging dirs (500/403 here is often interesting)
+    '/web.config', '/composer.json', '/composer.lock',
+    '/package.json', '/package-lock.json', '/.editorconfig',
+    # Metadata
+    '/robots.txt', '/sitemap.xml', '/.well-known/security.txt',
+    '/swagger.json', '/openapi.json', '/api-docs',
+    # Directories whose presence is informative
     '/uploads/', '/upload/', '/files/', '/tmp/',
 ]
 
-# Candidate wordlist locations for directory brute-forcing.
-# Order matters: first existing path wins.
+# Common wordlist locations for directory discovery. First existing wins.
 WORDLIST_CANDIDATES = [
     "/usr/share/seclists/Discovery/Web-Content/common.txt",
     "/snap/seclists/current/Discovery/Web-Content/common.txt",
     "/usr/share/seclists/Discovery/Web-Content/raft-small-words.txt",
     "/usr/share/wordlists/dirb/common.txt",
-    "/usr/share/dirb/wordlists/common.txt",          # actual path on Ubuntu
+    "/usr/share/dirb/wordlists/common.txt",
     "/usr/share/dirbuster/wordlists/directory-list-2.3-small.txt",
     "/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt",
-    "/usr/share/wordlists/dirbuster/directory-list-2.3-small.txt",
 ]
 
-# Ports we quickly probe if the original target URL doesn't respond.
+# Ports probed when the target URL itself doesn't respond.
 COMMON_WEB_PORTS = [80, 443, 8080, 8443, 8000, 8888, 3000, 5000, 9000]
 
-# Timeout (seconds) used for a single curl probe.
-PROBE_TIMEOUT = 10
+# Fallback paths for multi-page analysis when no links are discovered.
+FALLBACK_PAGE_PATHS = [
+    '/login', '/login.php', '/signin',
+    '/register', '/register.php', '/signup',
+    '/admin', '/admin/', '/dashboard', '/account',
+]
 
-# How many bytes of the response body to keep for analysis / report.
+# How many bytes of a response body to keep for analysis.
 BODY_SNIPPET_SIZE = 16384
+
+# Default per-probe timeout (seconds).
+PROBE_TIMEOUT = 10
 
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
-def _sanitize_folder_component(text):
-    """
-    Make a string safe to use as a single path component on any OS.
-    Strips scheme, path, query; keeps only [A-Za-z0-9._-].
-    """
+def _sanitize_path_component(text):
+    """Make a string safe to use as a single path component."""
     if not text:
         return 'unknown'
     if '://' in text:
         text = text.split('://', 1)[1]
     text = text.split('/', 1)[0]
     text = re.sub(r'[^A-Za-z0-9._-]+', '_', text)
-    text = text.strip('._-') or 'unknown'
-    return text[:80]
+    return (text.strip('._-') or 'unknown')[:80]
+
+
+def _service_tag(url):
+    """Short filesystem-safe tag for a service URL."""
+    return (url.replace('://', '_').replace(':', '_').replace('/', '_'))[:120]
 
 
 # ---------------------------------------------------------------------------
@@ -185,149 +172,133 @@ def _sanitize_folder_component(text):
 
 class WebSecurityAuditor:
 
-    # Paths worth fetching and parsing beyond the root page. Chosen because
-    # they cover common auth/forum/admin entry points. Adjust per target.
-    PAGE_ANALYSIS_PATHS = [
-        '/login.php',
-        '/register.php',
-        '/thread.php?id=1',
-        '/thread.php?id=2',
-        '/admin/',
-        '/admin/index.php',
-    ]
-
     def __init__(self, target_url, output_dir="audit_results",
                  config=None, skip_checks=None, only_checks=None,
                  quiet=False, verbose=False, rate=50, ports=None,
                  flat_output=False):
+        # Target
         self.target_url = target_url.rstrip('/')
-        self.parsed_url = urlparse(self.target_url)
-        self.domain     = self.parsed_url.netloc
-        self.hostname   = self.parsed_url.hostname
-        self.quiet      = quiet
-        self.verbose    = verbose
-        self.rate       = rate
-        self.skip_checks = set(skip_checks or [])
-        self.only_checks = set(only_checks or [])
+        parsed = urlparse(self.target_url)
+        self.hostname = parsed.hostname
+        self.domain = parsed.netloc
         self.explicit_ports = [int(p) for p in ports] if ports else None
 
-        # Populated by run_service_discovery()
-        self.services = []
+        # Populated during the run
+        self.services = []              # confirmed HTTP/HTTPS services
         self.primary_url = self.target_url
+        self.results = {}               # check name -> result dict
 
-        # Populated by run_full_audit(); every check writes into it.
-        self.results = {}
-
-        # Timestamp used for report filenames.
-        self.timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-
-        # -------- Per-run output folder ----------------------------------
-        self.base_output_dir = os.path.abspath(output_dir)
-        if flat_output:
-            self.output_dir = self.base_output_dir
-        else:
-            run_label = f"run_{self.timestamp}_{_sanitize_folder_component(self.domain)}"
-            self.output_dir = os.path.join(self.base_output_dir, run_label)
-        os.makedirs(self.output_dir, exist_ok=True)
-        # -----------------------------------------------------------------
-
-        # Merge config over defaults.
+        # Config
         cfg = config or {}
-        self.timeout_default  = cfg.get('timeout', 300)
-        self.whatweb_aggr     = cfg.get('whatweb_aggression', 3)
-        self.ffuf_wordlist    = cfg.get('ffuf_wordlist')
-        self.timeout_ssltest  = cfg.get('timeout_ssl', 600)
-        self.timeout_nikto    = cfg.get('timeout_nikto', 600)
-        self.timeout_dirscan  = cfg.get('timeout_dirscan', 600)
-        self.probe_timeout    = cfg.get('probe_timeout', PROBE_TIMEOUT)
-        self.extra_ports      = cfg.get('extra_ports', [])
+        self.timeout_default = cfg.get('timeout', 300)
+        self.timeout_ssl = cfg.get('timeout_ssl', 600)
+        self.timeout_nikto = cfg.get('timeout_nikto', 600)
+        self.timeout_dirscan = cfg.get('timeout_dirscan', 600)
+        self.probe_timeout = cfg.get('probe_timeout', PROBE_TIMEOUT)
+        self.ffuf_wordlist = cfg.get('ffuf_wordlist')
+        self.extra_ports = cfg.get('extra_ports', [])
 
-        # Cache for ffuf rate flags; computed lazily.
-        self._ffuf_rate_cached = None
+        self.quiet = quiet
+        self.verbose = verbose
+        self.rate = rate
+        self.skip_checks = set(skip_checks or [])
+        self.only_checks = set(only_checks or [])
 
+        # Timestamp and per-run output folder
+        self.timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        base = os.path.abspath(output_dir)
+        if flat_output:
+            self.output_dir = base
+        else:
+            run_label = f"run_{self.timestamp}_{_sanitize_path_component(self.domain)}"
+            self.output_dir = os.path.join(base, run_label)
+        os.makedirs(self.output_dir, exist_ok=True)
+
+        # Tool availability
         self.available_tools = self._check_tools()
 
-    # ------------------------------------------------------------------ utils
+    # ------------------------------------------------------------- logging
 
     def _log(self, msg, always=False):
-        if not self.quiet or always:
+        if always or not self.quiet:
             print(msg)
 
     def _vlog(self, msg):
         if self.verbose:
             print(msg)
 
+    # --------------------------------------------------------------- tools
+
     def _check_tools(self):
         self._log("[*] Checking for required tools...")
-        tools = {
-            'whatweb': 'whatweb',
-            'nmap':    'nmap',
-            'nikto':   'nikto',
-            'dirb':    'dirb',
-            'ffuf':    'ffuf',
-            'openssl': 'openssl',
-            'curl':    'curl',
-        }
-        testssl_path = shutil.which('testssl.sh') or shutil.which('testssl')
-
+        tools = ['whatweb', 'nmap', 'nikto', 'dirb', 'ffuf', 'openssl', 'curl']
         available = {}
-        for name, cmd in tools.items():
-            ok = shutil.which(cmd) is not None
-            available[name] = ok
-            self._log(f"    {'[+]' if ok else '[-]'} {name}"
-                      + ('' if ok else ' (not installed)'))
+        for tool in tools:
+            available[tool] = shutil.which(tool) is not None
+            mark = '[+]' if available[tool] else '[-]'
+            note = '' if available[tool] else ' (not installed)'
+            self._log(f"    {mark} {tool}{note}")
 
+        testssl_path = shutil.which('testssl.sh') or shutil.which('testssl')
         available['testssl'] = testssl_path is not None
         available['testssl_path'] = testssl_path
-        self._log(f"    {'[+]' if testssl_path else '[-]'} testssl.sh"
-                  + (f' ({testssl_path})' if testssl_path else ' (not installed)'))
+        mark = '[+]' if testssl_path else '[-]'
+        note = f' ({testssl_path})' if testssl_path else ' (not installed)'
+        self._log(f"    {mark} testssl.sh{note}")
         return available
 
+    def _preflight(self, check_name, required_tool=None):
+        """Return an error result dict if preconditions fail, else None."""
+        if not self.services:
+            return {'error': (
+                f"No reachable web service confirmed; '{check_name}' skipped "
+                f"(this prevents false-positive findings)"
+            )}
+        if required_tool and not self.available_tools.get(required_tool):
+            return {'error': f'{required_tool} not installed'}
+        return None
+
+    # ---------------------------------------------------------- execution
+
     def _run_command(self, args, timeout=None, input_data=None):
+        """Run a command without a shell; never raises."""
         if timeout is None:
             timeout = self.timeout_default
         self._vlog(f"    $ {' '.join(args)}")
         try:
-            result = subprocess.run(
-                args,
-                capture_output=True,
-                text=True,
-                timeout=timeout,
-                input=input_data
-            )
-            return {
-                'success':    result.returncode == 0,
-                'stdout':     result.stdout or '',
-                'stderr':     result.stderr or '',
-                'returncode': result.returncode,
-            }
+            p = subprocess.run(args, capture_output=True, text=True,
+                               timeout=timeout, input=input_data)
+            return {'success': p.returncode == 0, 'stdout': p.stdout or '',
+                    'stderr': p.stderr or '', 'returncode': p.returncode}
         except subprocess.TimeoutExpired:
-            return {'success': False, 'stdout': '', 'stderr':
-                    f'Command timed out after {timeout}s', 'returncode': -1}
+            return {'success': False, 'stdout': '', 'returncode': -1,
+                    'stderr': f'Command timed out after {timeout}s'}
         except FileNotFoundError as e:
-            return {'success': False, 'stdout': '', 'stderr':
-                    f'Command not found: {e}', 'returncode': -1}
+            return {'success': False, 'stdout': '', 'returncode': -1,
+                    'stderr': f'Command not found: {e}'}
         except Exception as e:
-            return {'success': False, 'stdout': '', 'stderr':
-                    str(e), 'returncode': -1}
+            return {'success': False, 'stdout': '', 'returncode': -1,
+                    'stderr': str(e)}
 
     def _write(self, name, content):
-        path = os.path.join(self.output_dir, f"{name}_{self.timestamp}.txt")
+        """Write a text file into the current run folder, return its path."""
+        path = os.path.join(self.output_dir, f"{name}.txt")
         with open(path, 'w', encoding='utf-8', errors='replace') as f:
             f.write(content)
         return path
 
+    # ---------------------------------------------------------- findings
+
     def _classify(self, text):
+        """Best-effort severity for an ad-hoc title."""
         low = (text or '').lower()
         for pattern, level in SEVERITY_RULES:
             if pattern.lower() in low:
                 return level
         return 'INFO'
 
-    def _finding(self, title, evidence=None, url=None,
-                 confidence='confirmed', check=None, severity=None):
-        """Build a structured finding. If severity is given, it overrides
-        the classifier (used when we want explicit tiers)."""
+    def _finding(self, title, severity=None, evidence=None, url=None,
+                 confidence='confirmed', check=None):
         return {
             'title':      title,
             'severity':   severity or self._classify(title),
@@ -339,6 +310,7 @@ class WebSecurityAuditor:
 
     @staticmethod
     def _parse_headers(raw):
+        """Return {lowercase_name: [values]} from a raw header block."""
         headers = {}
         for block in re.split(r'\r?\n\r?\n', raw or ''):
             for line in block.splitlines():
@@ -347,8 +319,11 @@ class WebSecurityAuditor:
                     headers.setdefault(k.strip().lower(), []).append(v.strip())
         return headers
 
+    # ------------------------------------------------------------- HTTP
+
     @staticmethod
     def _fast_port_check(host, port, timeout=1.5):
+        """Cheap TCP connect() check to filter obviously closed ports."""
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 s.settimeout(timeout)
@@ -356,65 +331,26 @@ class WebSecurityAuditor:
         except Exception:
             return False
 
-    def _require_services(self, check_name):
-        if not self.services:
-            return {
-                'error': (
-                    f"No reachable web service confirmed; '{check_name}' "
-                    f"skipped (this prevents false-positive findings)"
-                )
-            }
-        return None
-
-    def _pick_wordlist(self):
-        """Return the first existing wordlist path, or None."""
-        for p in WORDLIST_CANDIDATES:
-            if os.path.exists(p):
-                return p
-        return None
-
-    def _ffuf_rate_args(self):
-        """Return ffuf flags to approximate self.rate.
-
-        ffuf < 1.3 uses -p (per-request delay) + -t (threads); >= 1.3 uses
-        -rate. Detected once and cached on the instance.
-        """
-        if self._ffuf_rate_cached is not None:
-            return self._ffuf_rate_cached
-        rc, out, err = self._run_command(['ffuf', '-h'], timeout=5)
-        haystack = (out + err).lower()
-        if '-rate' in haystack:
-            self._ffuf_rate_cached = ['-rate', str(self.rate)]
-        else:
-            # ffuf < 1.3: emulate rate with per-request delay and modest
-            # thread count (threads multiply effective throughput).
-            delay = 1.0 / max(self.rate, 1)
-            self._ffuf_rate_cached = ['-p', f'{delay:.3f}', '-t', '10']
-        return self._ffuf_rate_cached
-
-    # ------------------------------------------------------------- discovery
-
     def _probe_http(self, url, timeout=None):
+        """Probe url with curl; return a dict on any HTTP response, else None."""
         if timeout is None:
             timeout = self.probe_timeout
 
         body_f = tempfile.NamedTemporaryFile(delete=False).name
-        hdr_f  = tempfile.NamedTemporaryFile(delete=False).name
+        hdr_f = tempfile.NamedTemporaryFile(delete=False).name
         fmt = ('%{http_code}|%{url_effective}|%{num_redirects}|'
                '%{time_total}|%{size_download}|%{content_type}')
 
         args = [
             'curl', '-sS', '-k', '-L',
-            '-o', body_f, '-D', hdr_f,
-            '-w', fmt,
+            '-o', body_f, '-D', hdr_f, '-w', fmt,
             '--max-time', str(timeout),
-            '-A', 'Mozilla/5.0 (compatible; WebAudit/2.0)',
+            '-A', 'Mozilla/5.0 (compatible; WebAudit/6.0)',
             url,
         ]
         try:
             result = self._run_command(args, timeout=timeout + 5)
-            headers_raw = ''
-            body = ''
+            headers_raw, body = '', ''
             try:
                 if os.path.exists(hdr_f):
                     with open(hdr_f, 'r', errors='replace') as f:
@@ -427,7 +363,6 @@ class WebSecurityAuditor:
 
             if not result['stdout']:
                 return None
-
             parts = result['stdout'].strip().split('|')
             if len(parts) < 6:
                 return None
@@ -461,18 +396,20 @@ class WebSecurityAuditor:
                 except OSError:
                     pass
 
+    # --------------------------------------------------------- discovery
+
     def _candidate_urls(self):
+        """Ordered URLs to try during service discovery."""
         urls = [self.target_url]
         seen = {self.target_url}
-
         host = self.hostname
-        tport = self.parsed_url.port or (
-            443 if self.parsed_url.scheme == 'https' else 80)
-        alt_scheme = 'http' if self.parsed_url.scheme == 'https' else 'https'
+        tport = urlparse(self.target_url).port or (
+            443 if self.target_url.startswith('https://') else 80)
+        alt_scheme = 'http' if self.target_url.startswith('https://') else 'https'
 
-        u = f"{alt_scheme}://{host}:{tport}"
-        if u not in seen:
-            urls.append(u); seen.add(u)
+        alt = f"{alt_scheme}://{host}:{tport}"
+        if alt not in seen:
+            urls.append(alt); seen.add(alt)
 
         ports = set(COMMON_WEB_PORTS)
         if self.explicit_ports:
@@ -490,549 +427,343 @@ class WebSecurityAuditor:
         return urls
 
     def run_service_discovery(self):
-        self._log("\n[*] Service Discovery - Probing for reachable web services")
-        services = []
+        """Confirm which HTTP/HTTPS services are reachable.
+
+        Sets self.services and self.primary_url. Must run before every other
+        check; downstream checks are gated on self.services being non-empty.
+        """
+        self._log("\n[*] Service Discovery")
         candidates = self._candidate_urls()
         self._vlog(f"    candidates: {candidates}")
 
+        seen_keys = set()
         for url in candidates:
             resp = self._probe_http(url)
-            if resp:
-                key = (resp['scheme'], resp['port'])
-                if not any((s['scheme'], s['port']) == key for s in services):
-                    services.append(resp)
-                    self._log(f"    [+] {url} -> HTTP {resp['status']} "
-                              f"({resp['content_type'] or 'no content-type'})")
+            if not resp:
+                continue
+            key = (resp['scheme'], resp['port'])
+            if key in seen_keys:
+                continue
+            seen_keys.add(key)
+            self.services.append(resp)
+            self._log(f"    [+] {url} -> HTTP {resp['status']} "
+                      f"({resp['content_type'] or 'no content-type'})")
 
-        self.services = services
-        if services:
-            self.primary_url = services[0]['url']
+        if self.services:
+            self.primary_url = self.services[0]['url']
 
         findings = []
-        if not services:
+        if not self.services:
             findings.append(self._finding(
                 "No reachable web service found",
-                evidence=f"Probed {len(candidates)} candidate URL(s) with no HTTP response",
+                severity='INFO',
+                evidence=f"Probed {len(candidates)} candidate URL(s)",
                 confidence='confirmed',
-                check='service_discovery',
-            ))
-        else:
-            if not any(s['url'] == self.target_url for s in services):
-                findings.append(self._finding(
-                    "Original target URL did not respond; audit redirected "
-                    "to a discovered service",
-                    evidence=f"Using {self.primary_url}",
-                    url=self.primary_url,
-                    confidence='confirmed',
-                    check='service_discovery',
-                ))
+                check='service_discovery'))
+        elif not any(s['url'] == self.target_url for s in self.services):
+            findings.append(self._finding(
+                "Original target URL did not respond; audit redirected to a "
+                "discovered service",
+                severity='INFO',
+                evidence=f"Using {self.primary_url}",
+                url=self.primary_url,
+                confidence='confirmed',
+                check='service_discovery'))
 
         return {
-            'candidates_probed':  len(candidates),
+            'candidates_probed': len(candidates),
             'confirmed_services': [
-                {
-                    'url':          s['url'],
-                    'scheme':       s['scheme'],
-                    'port':         s['port'],
-                    'status':       s['status'],
-                    'server':       (s['headers'].get('server') or [''])[0],
-                    'content_type': s['content_type'],
-                }
-                for s in services
+                {'url': s['url'], 'scheme': s['scheme'], 'port': s['port'],
+                 'status': s['status'],
+                 'server': (s['headers'].get('server') or [''])[0],
+                 'content_type': s['content_type']}
+                for s in self.services
             ],
             'findings': findings,
-            'summary': (f"{len(services)} reachable web service(s) confirmed"
-                        if services else
-                        "No reachable web service confirmed"),
+            'summary': (f"{len(self.services)} reachable web service(s) confirmed"
+                        if self.services else "No reachable web service confirmed"),
         }
 
-    # -------------------------------------------------------- html parsing
+    # -------------------------------------------------------- HTML analysis
 
     def _analyze_html(self, url, body, check_name):
-        """Parse one page's HTML and return a list of structured findings.
-
-        Used by both run_body_analysis_check (root page) and
-        run_page_analysis_check (linked pages).
-        """
+        """Parse one page's HTML and return a list of structured findings."""
         findings = []
         if not body:
             return findings
 
-        # ---- <title> ----
-        for m in re.finditer(r'<title[^>]*>(.*?)</title>',
-                             body, re.IGNORECASE | re.DOTALL):
+        # <title>
+        for m in re.finditer(r'<title[^>]*>(.*?)</title>', body,
+                             re.IGNORECASE | re.DOTALL):
             title = re.sub(r'\s+', ' ', m.group(1)).strip()[:200]
             if title:
                 findings.append(self._finding(
-                    f"Page title: {title}",
-                    evidence=url, url=url,
-                    confidence='confirmed', check=check_name))
+                    f"Page title: {title}", severity='INFO',
+                    evidence=url, url=url, check=check_name))
 
-        # ---- Forms + CSRF audit ----
-        for form_match in re.finditer(
-                r'<form\b([^>]*)>(.*?)</form>',
-                body, re.IGNORECASE | re.DOTALL):
-            attrs = form_match.group(1)
-            inner = form_match.group(2)
-            action_m = re.search(
-                r'action\s*=\s*["\']([^"\']*)["\']', attrs, re.IGNORECASE)
-            method_m = re.search(
-                r'method\s*=\s*["\']([^"\']*)["\']', attrs, re.IGNORECASE)
-            action_val = action_m.group(1) if action_m else '(same page)'
-            method_val = (method_m.group(1) if method_m else 'GET').upper()
+        # Forms, with a CSRF audit for POST forms
+        for fm in re.finditer(r'<form\b([^>]*)>(.*?)</form>', body,
+                              re.IGNORECASE | re.DOTALL):
+            attrs, inner = fm.group(1), fm.group(2)
+            action_m = re.search(r'action\s*=\s*["\']([^"\']*)["\']',
+                                 attrs, re.IGNORECASE)
+            method_m = re.search(r'method\s*=\s*["\']([^"\']*)["\']',
+                                 attrs, re.IGNORECASE)
+            action = action_m.group(1) if action_m else '(same page)'
+            method = (method_m.group(1) if method_m else 'GET').upper()
 
             findings.append(self._finding(
-                f"Form: action={action_val} method={method_val}",
-                evidence=url, url=url,
-                confidence='confirmed', check=check_name))
+                f"Form: action={action} method={method}", severity='INFO',
+                evidence=url, url=url, check=check_name))
 
-            if method_val == 'POST':
+            if method == 'POST':
                 has_csrf = bool(re.search(
                     r'<input[^>]*\bname\s*=\s*["\'][^"\']*csrf[^"\']*["\']',
                     inner, re.IGNORECASE))
                 if not has_csrf:
                     findings.append(self._finding(
-                        f"POST form without CSRF token (action={action_val})",
-                        evidence=f"No csrf hidden input found in form on {url}",
+                        f"POST form without CSRF token (action={action})",
+                        severity='MEDIUM',
+                        evidence=f"No csrf hidden input in form on {url}",
                         url=url, confidence='tentative',
-                        check=check_name, severity='MEDIUM'))
+                        check=check_name))
 
-        # ---- Input fields ----
-        input_names = sorted(set(
-            m.group(1) for m in re.finditer(
-                r'<input\b[^>]*\bname\s*=\s*["\']([^"\']+)["\']',
-                body, re.IGNORECASE)))
-        if input_names:
+        # Input fields (informational, grouped)
+        inputs = sorted({m.group(1) for m in re.finditer(
+            r'<input\b[^>]*\bname\s*=\s*["\']([^"\']+)["\']',
+            body, re.IGNORECASE)})
+        if inputs:
             findings.append(self._finding(
-                f"Input fields: {', '.join(input_names)}",
-                evidence=url, url=url,
-                confidence='confirmed', check=check_name))
+                f"Input fields: {', '.join(inputs)}", severity='INFO',
+                evidence=url, url=url, check=check_name))
 
-        # ---- Scripts ----
-        for m in re.finditer(
-                r'<script\b[^>]*\bsrc\s*=\s*["\']([^"\']+)["\']',
-                body, re.IGNORECASE):
+        # <script src>
+        for m in re.finditer(r'<script\b[^>]*\bsrc\s*=\s*["\']([^"\']+)["\']',
+                             body, re.IGNORECASE):
             findings.append(self._finding(
-                f"Script loaded: {m.group(1)}",
-                evidence=url, url=url,
-                confidence='confirmed', check=check_name))
+                f"Script loaded: {m.group(1)}", severity='INFO',
+                evidence=url, url=url, check=check_name))
 
-        # ---- Interesting links ----
-        hrefs = set(m.group(1) for m in re.finditer(
-            r'<a\b[^>]*\bhref\s*=\s*["\']([^"\']+)["\']',
-            body, re.IGNORECASE))
+        # Interesting <a href> links
+        hrefs = {m.group(1) for m in re.finditer(
+            r'<a\b[^>]*\bhref\s*=\s*["\']([^"\']+)["\']', body, re.IGNORECASE)}
         interesting = sorted(
             h for h in hrefs
             if re.search(r'\.(php|asp|aspx|jsp|cgi|pl)\b', h, re.IGNORECASE)
             or '?' in h or '=' in h)
         if interesting:
             preview = ', '.join(interesting[:10])
-            suffix = ('' if len(interesting) <= 10
-                      else f' (+{len(interesting) - 10} more)')
+            more = '' if len(interesting) <= 10 else f' (+{len(interesting)-10} more)'
             findings.append(self._finding(
-                f"Interesting links ({len(interesting)}): {preview}{suffix}",
-                evidence=url, url=url,
-                confidence='confirmed', check=check_name))
+                f"Interesting links ({len(interesting)}): {preview}{more}",
+                severity='INFO', evidence=url, url=url, check=check_name))
 
-        # ---- Emails ----
-        emails = sorted(set(re.findall(
-            r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}', body)))
-        emails = [e for e in emails
-                  if not e.lower().endswith(('.png', '.jpg', '.gif', '.css', '.js'))]
+        # Emails
+        emails = sorted({e for e in re.findall(
+            r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}', body)
+            if not e.lower().endswith(('.png', '.jpg', '.gif', '.css', '.js'))})
         if emails:
             findings.append(self._finding(
                 f"Email addresses found: {', '.join(emails[:5])}",
-                evidence=url, url=url,
+                severity='INFO', evidence=url, url=url,
                 confidence='tentative', check=check_name))
 
-        # ---- HTML comments ----
-        comments = [
-            re.sub(r'\s+', ' ', c).strip()
-            for c in re.findall(r'<!--(.*?)-->', body, re.DOTALL)
-        ]
+        # HTML comments (may contain stale debug info)
+        comments = [re.sub(r'\s+', ' ', c).strip()
+                    for c in re.findall(r'<!--(.*?)-->', body, re.DOTALL)]
         comments = [c for c in comments if len(c) >= 10]
         if comments:
             findings.append(self._finding(
-                f"HTML comments present ({len(comments)})",
+                f"HTML comments present ({len(comments)})", severity='INFO',
                 evidence=' | '.join(comments[:3])[:400],
-                url=url, confidence='confirmed', check=check_name))
+                url=url, check=check_name))
 
-        # ---- Unescaped script heuristic ----
-        # Fires only on raw <script>alert(...)/document.cookie in the body.
-        # Properly escaped payloads appear as &lt;script&gt; and do not match.
+        # Unescaped <script> with alert()/document.cookie -> potential XSS.
+        # Properly escaped payloads appear as &lt;script&gt; and won't match.
         if (re.search(r'<script[^>]*>\s*(?:alert|confirm|prompt)\s*\(',
                       body, re.IGNORECASE)
                 or re.search(r'<script[^>]*>\s*[^<]*document\.cookie',
                              body, re.IGNORECASE)):
             findings.append(self._finding(
                 "Potential stored/reflected XSS payload in HTML body",
-                evidence="Unescaped <script> tag with alert()/document.cookie",
-                url=url, confidence='tentative',
-                check=check_name, severity='HIGH'))
+                severity='HIGH',
+                evidence="Unescaped <script> with alert()/document.cookie",
+                url=url, confidence='tentative', check=check_name))
 
         return findings
 
-    # ----------------------------------------------------------------- checks
+    def _discover_pages(self, svc, cap=15):
+        """Same-origin URLs worth analyzing, derived from svc's root page."""
+        root = svc['url'].rstrip('/')
+        body = svc.get('body_snippet') or ''
+        hrefs = re.findall(r'<a\b[^>]*\bhref\s*=\s*["\']([^"\']+)["\']',
+                           body, re.IGNORECASE)
+
+        asset_re = re.compile(
+            r'\.(css|js|png|jpe?g|gif|svg|ico|woff2?|ttf|eot|pdf|zip|tar|gz|mp4|webm)'
+            r'(\?|$)', re.IGNORECASE)
+
+        urls, seen = [], {root, root + '/'}
+        for h in hrefs:
+            if h.startswith(('mailto:', 'javascript:', 'tel:', '#')):
+                continue
+            if h.startswith(('http://', 'https://')):
+                if not h.startswith(root):
+                    continue
+                full = h
+            elif h.startswith('/'):
+                full = root + h
+            else:
+                full = root + '/' + h
+            full = full.split('#', 1)[0]
+            if asset_re.search(full) or full in seen:
+                continue
+            seen.add(full)
+            urls.append(full)
+
+        # Prioritize auth/admin paths first.
+        priority = ('login', 'signin', 'register', 'signup', 'admin',
+                    'dashboard', 'account', 'profile')
+        urls.sort(key=lambda u: 0 if any(k in u.lower() for k in priority) else 1)
+
+        # If nothing discovered, fall back to a small generic list.
+        if not urls:
+            urls = [root + p for p in FALLBACK_PAGE_PATHS]
+
+        return urls[:cap]
+
+    # ------------------------------------------------------------- checks
 
     def run_body_analysis_check(self):
-        """Parse the HTML body of each confirmed service's root page."""
+        """Parse the HTML of each confirmed service's root page."""
         self._log("\n[*] Body Content Analysis")
-        err = self._require_services('body_analysis')
+        err = self._preflight('body_analysis')
         if err: return err
 
-        findings = []
-        first_file = None
+        findings, first_file = [], None
         for svc in self.services:
             body = svc.get('body_snippet') or ''
             if not body:
                 continue
-            safe = (svc['url']
-                    .replace('://', '_').replace(':', '_').replace('/', '_'))
             if first_file is None:
-                first_file = self._write(f'body_{safe}', body)
-            findings.extend(
-                self._analyze_html(svc['url'], body, 'body_analysis'))
-
+                first_file = self._write(f'body_{_service_tag(svc["url"])}', body)
+            findings.extend(self._analyze_html(svc['url'], body, 'body_analysis'))
         return {'output_file': first_file, 'findings': findings}
 
     def run_page_analysis_check(self):
-        """Fetch each interesting path and parse its HTML body.
+        """Fetch discovered sub-pages and run the HTML analyzer on each.
 
-        Catches things root-only analysis misses: unescaped payloads on
-        thread views, login/register form fields, POST forms without CSRF
-        tokens, and the admin redirect behavior.
+        Paths come from links on the root page (same-origin, non-asset),
+        with auth/admin paths prioritized. Falls back to a short generic
+        list if the root page contains no usable links.
         """
         self._log("\n[*] Multi-Page Content Analysis")
-        err = self._require_services('page_analysis')
+        err = self._preflight('page_analysis')
         if err: return err
 
-        findings = []
-        first_file = None
-        pages_analyzed = 0
+        findings, first_file = [], None
         pages_fetched = []
 
         for svc in self.services:
-            base = svc['url'].rstrip('/')
-            for path in self.PAGE_ANALYSIS_PATHS:
-                url = base + path
+            for url in self._discover_pages(svc):
                 resp = self._probe_http(url)
                 if not resp:
                     continue
-                pages_analyzed += 1
-                pages_fetched.append({
-                    'url': url,
-                    'status': resp['status'],
-                })
+                pages_fetched.append({'url': url, 'status': resp['status']})
                 body = resp.get('body_snippet') or ''
-                safe = (url
-                        .replace('://', '_').replace(':', '_').replace('/', '_'))
                 if first_file is None:
-                    first_file = self._write(f'page_{safe}', body)
-                findings.extend(
-                    self._analyze_html(url, body, 'page_analysis'))
+                    first_file = self._write(f'page_{_service_tag(url)}', body)
+                findings.extend(self._analyze_html(url, body, 'page_analysis'))
 
         return {
             'output_file': first_file,
-            'pages_analyzed': pages_analyzed,
             'pages_fetched': pages_fetched,
             'findings': findings,
         }
 
-    def run_whatweb(self):
-        self._log("\n[*] WhatWeb - Technology Identification")
-        err = self._require_services('whatweb')
-        if err: return err
-        if not self.available_tools['whatweb']:
-            return {'error': 'whatweb not installed'}
-
-        findings = []
-        output_files = []
-        for svc in self.services:
-            args = ['whatweb', '--color=never',
-                    f'-a{self.whatweb_aggr}', svc['url']]
-            result = self._run_command(args, timeout=60)
-            out = result['stdout'] or result['stderr']
-            safe = svc['url'].replace('://', '_').replace(':', '_').replace('/', '_')
-            output_files.append(self._write(f'whatweb_{safe}', out))
-
-        return {
-            'output_file': output_files[0] if output_files else None,
-            'output_files': output_files,
-            'summary': 'See output files',
-            'findings': findings,
-        }
-
-    def run_nmap_ssl(self):
-        self._log("\n[*] Nmap - SSL/TLS Cipher Enumeration")
-        err = self._require_services('ssl_nmap')
-        if err: return err
-        if not self.available_tools['nmap']:
-            return {'error': 'nmap not installed'}
-
-        https_services = [s for s in self.services if s['scheme'] == 'https']
-        if not https_services:
-            return {'error': 'No HTTPS service confirmed; skipping SSL enumeration'}
-
-        findings = []
-        all_stdout = []
-        first_file = None
-        for svc in https_services:
-            args = ['nmap', '-sV', '--script', 'ssl-enum-ciphers',
-                    '-p', str(svc['port']), svc['host']]
-            result = self._run_command(args, timeout=300)
-            stdout = result['stdout']
-            all_stdout.append(stdout)
-            if first_file is None:
-                first_file = self._write('nmap_ssl', stdout)
-
-            if re.search(r'SSLv2|SSLv3', stdout):
-                findings.append(self._finding(
-                    "Deprecated SSL versions detected",
-                    evidence=f"nmap ssl-enum-ciphers output for {svc['url']}",
-                    url=svc['url'],
-                ))
-            if 'WEAK' in stdout or 'broken' in stdout.lower():
-                findings.append(self._finding(
-                    "Weak ciphers detected",
-                    evidence=f"nmap ssl-enum-ciphers output for {svc['url']}",
-                    url=svc['url'],
-                ))
-
-        return {
-            'output_file': first_file,
-            'findings': findings,
-            'summary': (all_stdout[0][:800] if all_stdout else ''),
-        }
-
-    def run_testssl(self):
-        self._log("\n[*] testssl.sh - Comprehensive SSL/TLS Scan")
-        err = self._require_services('ssl_testssl')
-        if err: return err
-        if not self.available_tools['testssl']:
-            return {'error': 'testssl.sh not installed'}
-
-        https_services = [s for s in self.services if s['scheme'] == 'https']
-        if not https_services:
-            return {'error': 'No HTTPS service confirmed; skipping testssl'}
-
-        tool = self.available_tools['testssl_path']
-        findings = []
-        first_file = None
-        first_stdout = ''
-        for svc in https_services:
-            args = [tool, '--quiet', '--color', '0',
-                    '--ip', 'one', f"{svc['host']}:{svc['port']}"]
-            result = self._run_command(args, timeout=self.timeout_ssltest)
-            content = result['stdout']
-            if first_file is None:
-                first_file = self._write('testssl', content)
-                first_stdout = content
-
-            if 'VULNERABLE' in content:
-                findings.append(self._finding(
-                    "TLS vulnerabilities reported by testssl",
-                    evidence=f"See testssl report for {svc['url']}",
-                    url=svc['url'],
-                    confidence='confirmed',
-                ))
-            if 'Heartbleed' in content and 'not vulnerable' not in content.lower():
-                findings.append(self._finding(
-                    "Potential Heartbleed vulnerability",
-                    evidence=f"testssl Heartbleed section for {svc['url']}",
-                    url=svc['url'],
-                    confidence='tentative',
-                ))
-
-        return {
-            'output_file': first_file,
-            'findings': findings,
-            'summary': first_stdout[:800],
-        }
-
-    def run_openssl_check(self):
-        self._log("\n[*] OpenSSL - Certificate Inspection")
-        err = self._require_services('ssl_certificate')
-        if err: return err
-        if not self.available_tools['openssl']:
-            return {'error': 'openssl not installed'}
-
-        https_services = [s for s in self.services if s['scheme'] == 'https']
-        if not https_services:
-            return {'error': 'No HTTPS service confirmed'}
-
-        findings = []
-        cert_infos = {}
-        first_file = None
-        for svc in https_services:
-            connect_args = ['openssl', 's_client', '-connect',
-                            f"{svc['host']}:{svc['port']}",
-                            '-servername', svc['host'], '-showcerts']
-            s_client = self._run_command(connect_args, timeout=15,
-                                         input_data='')
-            x509 = self._run_command(['openssl', 'x509', '-noout', '-text'],
-                                     input_data=s_client['stdout'], timeout=15)
-            text = x509['stdout']
-            if first_file is None:
-                first_file = self._write('ssl_cert', text)
-
-            cert_info = {}
-            if text:
-                issuer     = re.search(r'Issuer:\s*(.+)', text)
-                subject    = re.search(r'Subject:\s*(.+)', text)
-                not_before = re.search(r'Not Before:\s*(.+)', text)
-                not_after  = re.search(r'Not After\s*:\s*(.+)', text)
-
-                if issuer:     cert_info['issuer']      = issuer.group(1).strip()
-                if subject:    cert_info['subject']     = subject.group(1).strip()
-                if not_before: cert_info['valid_from']  = not_before.group(1).strip()
-                if not_after:  cert_info['valid_until'] = not_after.group(1).strip()
-
-                if (issuer and subject
-                        and issuer.group(1).strip() == subject.group(1).strip()):
-                    cert_info['warning'] = 'Self-signed certificate detected'
-                    findings.append(self._finding(
-                        'Self-signed certificate detected',
-                        evidence=f"issuer == subject: {subject.group(1).strip()}",
-                        url=svc['url'],
-                    ))
-
-                if not_after:
-                    try:
-                        from email.utils import parsedate_to_datetime
-                        exp = parsedate_to_datetime(not_after.group(1).strip())
-                        days = (exp - datetime.now(timezone.utc)).days
-                        cert_info['days_to_expiry'] = days
-                        if days < 0:
-                            findings.append(self._finding(
-                                f"TLS certificate expired {-days} days ago",
-                                evidence=f"Not After: {not_after.group(1).strip()}",
-                                url=svc['url'],
-                            ))
-                        elif days < 30:
-                            findings.append(self._finding(
-                                f"TLS certificate expires in {days} days",
-                                evidence=f"Not After: {not_after.group(1).strip()}",
-                                url=svc['url'],
-                            ))
-                    except Exception:
-                        pass
-
-            cert_infos[svc['url']] = cert_info
-
-        primary_info = cert_infos.get(self.primary_url) or (
-            next(iter(cert_infos.values())) if cert_infos else {})
-
-        return {
-            'output_file':   first_file,
-            'cert_info':     primary_info,
-            'cert_info_by_service': cert_infos,
-            'findings':      findings,
-        }
-
     def run_security_headers_check(self):
         self._log("\n[*] HTTP Security Headers")
-        err = self._require_services('security_headers')
+        err = self._preflight('security_headers')
         if err: return err
 
-        findings = []
-        present_all, missing_all = [], []
-        first_file = None
-        raw_headers = ''
+        findings, present_all, missing_all = [], [], []
+        first_file, raw_headers = None, ''
 
         for svc in self.services:
             if first_file is None:
                 first_file = self._write('headers', svc['headers_raw'])
                 raw_headers = svc['headers_raw']
 
-            hdrs_lower = {k.lower(): v for k, v in svc['headers'].items()}
+            hdrs = {k.lower(): v for k, v in svc['headers'].items()}
             is_https = svc['scheme'] == 'https'
 
             for header, message in SECURITY_HEADERS.items():
                 if header == 'Strict-Transport-Security' and not is_https:
                     continue
-                if header.lower() in hdrs_lower:
+                if header.lower() in hdrs:
                     present_all.append({'header': header, 'url': svc['url']})
                 else:
                     missing_all.append({'header': header, 'issue': message,
                                         'url': svc['url']})
                     findings.append(self._finding(
-                        message,
+                        message, severity='LOW',
                         evidence=f"{header} absent on {svc['url']}",
-                        url=svc['url'],
-                        confidence='confirmed',
-                        check='security_headers',
-                    ))
+                        url=svc['url'], check='security_headers'))
 
             for header, message in INFORMATIONAL_HEADERS.items():
-                if header.lower() not in hdrs_lower:
+                if header.lower() not in hdrs:
                     findings.append(self._finding(
-                        message,
+                        message, severity='LOW',
                         evidence=f"{header} absent on {svc['url']}",
-                        url=svc['url'],
-                        confidence='confirmed',
-                        check='security_headers',
-                    ))
+                        url=svc['url'], check='security_headers'))
 
         return {
-            'output_file':     first_file,
+            'output_file': first_file,
             'present_headers': [p['header'] for p in present_all],
             'missing_headers': missing_all,
-            'findings':        findings,
-            'raw_headers':     raw_headers,
+            'findings': findings,
+            'raw_headers': raw_headers,
         }
 
     def run_cookie_check(self):
         self._log("\n[*] Cookie Security Flags")
-        err = self._require_services('cookies')
+        err = self._preflight('cookies')
         if err: return err
 
-        findings = []
-        total_cookies = 0
-        first_file = None
-
+        findings, first_file, total = [], None, 0
         for svc in self.services:
             if first_file is None:
                 first_file = self._write('cookies', svc['headers_raw'])
-
             cookies = svc['headers'].get('set-cookie', [])
-            total_cookies += len(cookies)
+            total += len(cookies)
             for cookie in cookies:
                 name = cookie.split('=', 1)[0].strip()
                 lower = cookie.lower()
                 missing = []
-                if 'secure' not in lower:
-                    missing.append('Secure')
-                if 'httponly' not in lower:
-                    missing.append('HttpOnly')
-                if 'samesite' not in lower:
-                    missing.append('SameSite')
+                if 'secure' not in lower:   missing.append('Secure')
+                if 'httponly' not in lower: missing.append('HttpOnly')
+                if 'samesite' not in lower: missing.append('SameSite')
                 for flag in missing:
                     findings.append(self._finding(
                         f"Cookie '{name}' missing {flag} flag",
-                        evidence=cookie[:200],
-                        url=svc['url'],
-                        confidence='confirmed',
-                        check='cookies',
-                    ))
+                        severity='MEDIUM', evidence=cookie[:200],
+                        url=svc['url'], check='cookies'))
 
         return {
-            'output_file':  first_file,
-            'findings':     findings,
-            'cookies_found': total_cookies,
+            'output_file': first_file,
+            'cookies_found': total,
+            'findings': findings,
         }
 
     def run_http_methods_check(self):
         self._log("\n[*] Allowed HTTP Methods")
-        err = self._require_services('http_methods')
+        err = self._preflight('http_methods', required_tool='curl')
         if err: return err
-        if not self.available_tools['curl']:
-            return {'error': 'curl not installed'}
 
-        findings, allowed = [], []
-        first_file = None
+        findings, allowed, first_file = [], [], None
         for svc in self.services:
             args = ['curl', '-sI', '-X', 'OPTIONS', '--max-time', '10',
-                    '-A', 'Mozilla/5.0 (compatible; WebAudit/2.0)', svc['url']]
+                    '-A', 'Mozilla/5.0 (compatible; WebAudit/6.0)', svc['url']]
             result = self._run_command(args, timeout=15)
             if first_file is None:
                 first_file = self._write('methods', result['stdout'])
@@ -1047,38 +778,30 @@ class WebSecurityAuditor:
                     if dangerous in svc_allowed:
                         findings.append(self._finding(
                             f"Dangerous HTTP method enabled: {dangerous}",
+                            severity='MEDIUM',
                             evidence=f"Allow: {match.group(1).strip()}",
-                            url=svc['url'],
-                            confidence='confirmed',
-                            check='http_methods',
-                        ))
+                            url=svc['url'], check='http_methods'))
 
         return {
-            'output_file':    first_file,
-            'findings':       findings,
+            'output_file': first_file,
             'allowed_methods': sorted(set(allowed)),
+            'findings': findings,
         }
 
     def run_https_redirect_check(self):
         self._log("\n[*] HTTP to HTTPS Redirect")
-        err = self._require_services('https_redirect')
+        err = self._preflight('https_redirect')
         if err: return err
-        if not self.available_tools['curl']:
-            return {'error': 'curl not installed'}
 
         http_svc = next((s for s in self.services if s['scheme'] == 'http'), None)
         https_svc = next((s for s in self.services if s['scheme'] == 'https'), None)
-
         if not https_svc:
             return {'error': 'No HTTPS service confirmed; cannot evaluate redirect'}
         if not http_svc:
             return {'error': 'No HTTP service confirmed; cannot evaluate redirect',
                     'status': 'not_applicable'}
 
-        findings = []
-        status = 'unknown'
-        out = http_svc['headers_raw']
-
+        findings, status = [], 'unknown'
         if http_svc['status'] in (301, 302, 307, 308):
             loc = (http_svc['headers'].get('location') or [''])[0]
             if loc.lower().startswith('https://'):
@@ -1086,32 +809,28 @@ class WebSecurityAuditor:
             else:
                 status = 'redirects_elsewhere'
                 findings.append(self._finding(
-                    "HTTP redirects but not to HTTPS",
-                    evidence=f"Location: {loc}",
-                    url=http_svc['url'],
-                    confidence='confirmed',
-                    check='https_redirect',
-                ))
+                    "HTTP redirects but not to HTTPS", severity='MEDIUM',
+                    evidence=f"Location: {loc}", url=http_svc['url'],
+                    check='https_redirect'))
         else:
             status = 'no_redirect'
             findings.append(self._finding(
-                "HTTP does not redirect to HTTPS",
+                "HTTP does not redirect to HTTPS", severity='MEDIUM',
                 evidence=f"HTTP returned {http_svc['status']} with no redirect",
-                url=http_svc['url'],
-                confidence='confirmed',
-                check='https_redirect',
-            ))
+                url=http_svc['url'], check='https_redirect'))
 
-        output_file = self._write('redirect', out)
-        return {'output_file': output_file, 'findings': findings, 'status': status}
+        return {
+            'output_file': self._write('redirect', http_svc['headers_raw']),
+            'status': status,
+            'findings': findings,
+        }
 
     def run_info_disclosure_check(self):
         self._log("\n[*] Information Disclosure Headers")
-        err = self._require_services('info_disclosure')
+        err = self._preflight('info_disclosure')
         if err: return err
 
-        findings = []
-        first_file = None
+        findings, first_file = [], None
         for svc in self.services:
             if first_file is None:
                 first_file = self._write('disclosure', svc['headers_raw'])
@@ -1122,28 +841,21 @@ class WebSecurityAuditor:
                     if re.search(r'\d', value):
                         findings.append(self._finding(
                             f"{header.title()} discloses version: {value}",
-                            evidence=f"{header}: {value}",
-                            url=svc['url'],
-                            confidence='confirmed',
-                            check='info_disclosure',
-                        ))
+                            severity='LOW', evidence=f"{header}: {value}",
+                            url=svc['url'], check='info_disclosure'))
         return {'output_file': first_file, 'findings': findings}
 
     def run_cors_check(self):
         self._log("\n[*] CORS Configuration")
-        err = self._require_services('cors')
+        err = self._preflight('cors')
         if err: return err
 
-        findings = []
-        first_file = None
-        evil_origin = 'https://evil.example'
-
+        findings, first_file = [], None
+        evil = 'https://evil.example'
         for svc in self.services:
-            args = ['curl', '-sS', '-k', '-i',
-                    '-H', f'Origin: {evil_origin}',
+            args = ['curl', '-sS', '-k', '-i', '-H', f'Origin: {evil}',
                     '--max-time', '10',
-                    '-A', 'Mozilla/5.0 (compatible; WebAudit/2.0)',
-                    svc['url']]
+                    '-A', 'Mozilla/5.0 (compatible; WebAudit/6.0)', svc['url']]
             result = self._run_command(args, timeout=15)
             if first_file is None:
                 first_file = self._write('cors', result['stdout'])
@@ -1155,127 +867,254 @@ class WebSecurityAuditor:
             if acao == '*' and acac == 'true':
                 findings.append(self._finding(
                     "CORS wildcard origin with credentials allowed",
-                    evidence=f"ACAO: {acao}, ACAC: {acac}",
-                    url=svc['url'],
-                    confidence='confirmed',
-                    check='cors',
-                ))
-            elif acao == evil_origin:
+                    severity='HIGH', evidence=f"ACAO: {acao}, ACAC: {acac}",
+                    url=svc['url'], check='cors'))
+            elif acao == evil:
                 findings.append(self._finding(
                     "CORS reflects arbitrary Origin header",
-                    evidence=f"ACAO reflected: {acao}",
-                    url=svc['url'],
-                    confidence='confirmed',
-                    check='cors',
-                ))
+                    severity='HIGH', evidence=f"ACAO reflected: {acao}",
+                    url=svc['url'], check='cors'))
         return {'output_file': first_file, 'findings': findings}
 
     def run_sensitive_files_check(self):
-        """Probe common sensitive paths. Codes of interest:
-           200 with body   -> confirmed exposure (HIGH)
-           200 with 0 bytes -> executed PHP, no output (INFO)
-           301/302/307/308  -> redirect / path exists (INFO)
-           500              -> server error, path was processed (MEDIUM)
+        """Probe a fixed list of commonly-exposed paths.
+
+        Classification by response:
+          200 with body   -> HIGH (confirmed exposure)
+          200 with 0 bytes-> INFO (executed PHP / empty handler)
+          301/302/307/308 -> INFO (path exists, redirects)
+          500             -> MEDIUM (server processed the path and failed)
         """
         self._log("\n[*] Sensitive File Exposure")
-        err = self._require_services('sensitive_files')
+        err = self._preflight('sensitive_files', required_tool='curl')
         if err: return err
-        if not self.available_tools['curl']:
-            return {'error': 'curl not installed'}
 
         findings = []
-        output_file = os.path.join(self.output_dir,
-                                   f"sensitive_files_{self.timestamp}.txt")
+        output_file = os.path.join(self.output_dir, 'sensitive_files.txt')
         with open(output_file, 'w') as f:
             for svc in self.services:
                 base = svc['url'].rstrip('/')
                 for path in SENSITIVE_PATHS:
-                    url = f"{base}{path}"
+                    url = base + path
                     args = ['curl', '-s', '-o', os.devnull,
                             '-w', '%{http_code}|%{size_download}',
                             '--max-time', '8',
-                            '-A', 'Mozilla/5.0 (compatible; WebAudit/2.0)',
+                            '-A', 'Mozilla/5.0 (compatible; WebAudit/6.0)',
                             url]
                     res = self._run_command(args, timeout=12)
                     raw = res['stdout'].strip()
-                    if '|' in raw:
-                        code, size_s = raw.split('|', 1)
-                        try:
-                            size = int(size_s)
-                        except ValueError:
-                            size = 0
-                    else:
-                        code, size = raw, 0
+                    code, size = (raw.split('|', 1) + ['0'])[:2] \
+                        if '|' in raw else (raw, '0')
+                    try:
+                        size = int(size)
+                    except ValueError:
+                        size = 0
                     f.write(f"{code}\t{size}\t{url}\n")
 
                     if code == '200' and size > 0:
                         findings.append(self._finding(
                             f"Potentially exposed: {path} (HTTP 200, {size} bytes)",
-                            evidence=f"{url} returned {size} bytes",
-                            url=url,
-                            confidence='confirmed',
-                            check='sensitive_files',
                             severity='HIGH',
-                        ))
+                            evidence=f"{url} returned {size} bytes",
+                            url=url, check='sensitive_files'))
                     elif code == '200' and size == 0:
                         findings.append(self._finding(
                             f"Path exists but empty: {path} (HTTP 200, 0 bytes)",
-                            evidence=f"{url} — likely an executed PHP file with no output",
-                            url=url,
-                            confidence='confirmed',
-                            check='sensitive_files',
                             severity='INFO',
-                        ))
+                            evidence=f"{url} — likely an executed PHP file",
+                            url=url, check='sensitive_files'))
                     elif code in ('301', '302', '307', '308'):
                         findings.append(self._finding(
                             f"Interesting path: {path} (HTTP {code})",
-                            evidence=f"{url} redirected",
-                            url=url,
-                            confidence='confirmed',
-                            check='sensitive_files',
-                            severity='INFO',
-                        ))
+                            severity='INFO', evidence=f"{url} redirected",
+                            url=url, check='sensitive_files'))
                     elif code == '500':
                         findings.append(self._finding(
                             f"Server error on path: {path} (HTTP 500)",
-                            evidence=f"{url} returned HTTP 500 — path was processed",
-                            url=url,
-                            confidence='tentative',
-                            check='sensitive_files',
                             severity='MEDIUM',
-                        ))
+                            evidence=f"{url} returned HTTP 500 — path was processed",
+                            url=url, confidence='tentative',
+                            check='sensitive_files'))
+
         return {'output_file': output_file, 'findings': findings}
 
-    def run_nikto(self):
-        """Run Nikto and keep every meaningful '+ ' finding line.
+    # ---------------------------------------------------- external tools
 
-        Only metadata lines (Target IP/Hostname/Port, Start/End Time,
-        Server:) and the "No CGI Directories" boilerplate are filtered out.
-        Severity is inferred from keywords via SEVERITY_RULES.
-        """
-        self._log("\n[*] Nikto - Web Server Scanner")
-        err = self._require_services('nikto')
+    def run_nmap_ssl(self):
+        self._log("\n[*] Nmap - SSL/TLS Cipher Enumeration")
+        err = self._preflight('ssl_nmap', required_tool='nmap')
         if err: return err
-        if not self.available_tools['nikto']:
-            return {'error': 'nikto not installed'}
 
-        findings = []
+        https_services = [s for s in self.services if s['scheme'] == 'https']
+        if not https_services:
+            return {'error': 'No HTTPS service confirmed; skipping SSL enumeration'}
+
+        findings, first_file, first_stdout = [], None, ''
+        for svc in https_services:
+            args = ['nmap', '-sV', '--script', 'ssl-enum-ciphers',
+                    '-p', str(svc['port']), svc['host']]
+            result = self._run_command(args, timeout=300)
+            stdout = result['stdout']
+            if first_file is None:
+                first_file = self._write('nmap_ssl', stdout)
+                first_stdout = stdout
+
+            if re.search(r'SSLv2|SSLv3', stdout):
+                findings.append(self._finding(
+                    "Deprecated SSL versions detected", severity='HIGH',
+                    evidence=f"nmap ssl-enum-ciphers for {svc['url']}",
+                    url=svc['url'], check='ssl_nmap'))
+            if 'WEAK' in stdout or 'broken' in stdout.lower():
+                findings.append(self._finding(
+                    "Weak ciphers detected", severity='HIGH',
+                    evidence=f"nmap ssl-enum-ciphers for {svc['url']}",
+                    url=svc['url'], check='ssl_nmap'))
+
+        return {'output_file': first_file, 'summary': first_stdout[:800],
+                'findings': findings}
+
+    def run_testssl(self):
+        self._log("\n[*] testssl.sh - Comprehensive SSL/TLS Scan")
+        err = self._preflight('ssl_testssl', required_tool='testssl')
+        if err: return err
+
+        https_services = [s for s in self.services if s['scheme'] == 'https']
+        if not https_services:
+            return {'error': 'No HTTPS service confirmed; skipping testssl'}
+
+        tool = self.available_tools['testssl_path']
+        findings, first_file, first_stdout = [], None, ''
+        for svc in https_services:
+            args = [tool, '--quiet', '--color', '0', '--ip', 'one',
+                    f"{svc['host']}:{svc['port']}"]
+            result = self._run_command(args, timeout=self.timeout_ssl)
+            content = result['stdout']
+            if first_file is None:
+                first_file = self._write('testssl', content)
+                first_stdout = content
+
+            if 'VULNERABLE' in content:
+                findings.append(self._finding(
+                    "TLS vulnerabilities reported by testssl",
+                    severity='HIGH',
+                    evidence=f"See testssl report for {svc['url']}",
+                    url=svc['url'], check='ssl_testssl'))
+            if 'Heartbleed' in content and 'not vulnerable' not in content.lower():
+                findings.append(self._finding(
+                    "Potential Heartbleed vulnerability", severity='HIGH',
+                    evidence=f"testssl Heartbleed section for {svc['url']}",
+                    url=svc['url'], confidence='tentative',
+                    check='ssl_testssl'))
+
+        return {'output_file': first_file, 'summary': first_stdout[:800],
+                'findings': findings}
+
+    def run_openssl_check(self):
+        self._log("\n[*] OpenSSL - Certificate Inspection")
+        err = self._preflight('ssl_certificate', required_tool='openssl')
+        if err: return err
+
+        https_services = [s for s in self.services if s['scheme'] == 'https']
+        if not https_services:
+            return {'error': 'No HTTPS service confirmed'}
+
+        findings, cert_infos, first_file = [], {}, None
+        for svc in https_services:
+            s_client = self._run_command(
+                ['openssl', 's_client', '-connect',
+                 f"{svc['host']}:{svc['port']}",
+                 '-servername', svc['host'], '-showcerts'],
+                timeout=15, input_data='')
+            x509 = self._run_command(
+                ['openssl', 'x509', '-noout', '-text'],
+                input_data=s_client['stdout'], timeout=15)
+            text = x509['stdout']
+            if first_file is None:
+                first_file = self._write('ssl_cert', text)
+
+            info = {}
+            if text:
+                issuer = re.search(r'Issuer:\s*(.+)', text)
+                subject = re.search(r'Subject:\s*(.+)', text)
+                not_before = re.search(r'Not Before:\s*(.+)', text)
+                not_after = re.search(r'Not After\s*:\s*(.+)', text)
+
+                if issuer:     info['issuer'] = issuer.group(1).strip()
+                if subject:    info['subject'] = subject.group(1).strip()
+                if not_before: info['valid_from'] = not_before.group(1).strip()
+                if not_after:  info['valid_until'] = not_after.group(1).strip()
+
+                if issuer and subject and \
+                   issuer.group(1).strip() == subject.group(1).strip():
+                    info['warning'] = 'Self-signed certificate detected'
+                    findings.append(self._finding(
+                        'Self-signed certificate detected', severity='MEDIUM',
+                        evidence=f"issuer == subject: {subject.group(1).strip()}",
+                        url=svc['url'], check='ssl_certificate'))
+
+                if not_after:
+                    try:
+                        from email.utils import parsedate_to_datetime
+                        exp = parsedate_to_datetime(not_after.group(1).strip())
+                        days = (exp - datetime.now(timezone.utc)).days
+                        info['days_to_expiry'] = days
+                        if days < 0:
+                            findings.append(self._finding(
+                                f"TLS certificate expired {-days} days ago",
+                                severity='HIGH',
+                                evidence=f"Not After: {not_after.group(1).strip()}",
+                                url=svc['url'], check='ssl_certificate'))
+                        elif days < 30:
+                            findings.append(self._finding(
+                                f"TLS certificate expires in {days} days",
+                                severity='MEDIUM',
+                                evidence=f"Not After: {not_after.group(1).strip()}",
+                                url=svc['url'], check='ssl_certificate'))
+                    except Exception:
+                        pass
+
+            cert_infos[svc['url']] = info
+
+        primary_info = cert_infos.get(self.primary_url) or \
+            (next(iter(cert_infos.values())) if cert_infos else {})
+        return {
+            'output_file': first_file,
+            'cert_info': primary_info,
+            'cert_info_by_service': cert_infos,
+            'findings': findings,
+        }
+
+    def run_whatweb(self):
+        self._log("\n[*] WhatWeb - Technology Identification")
+        err = self._preflight('whatweb', required_tool='whatweb')
+        if err: return err
+
         first_file = None
-        first_stdout = ''
+        for svc in self.services:
+            result = self._run_command(
+                ['whatweb', '--color=never', '-a3', svc['url']], timeout=60)
+            out = result['stdout'] or result['stderr']
+            if first_file is None:
+                first_file = self._write('whatweb', out)
+        return {'output_file': first_file, 'findings': []}
 
-        skip_pattern = re.compile(
-            r'^(target\s+(ip|hostname|port)|start\s*time|end\s*time|server\s*:)',
-            re.IGNORECASE,
-        )
+    def run_nikto(self):
+        """Run Nikto and keep every meaningful '+ ' finding line."""
+        self._log("\n[*] Nikto - Web Server Scanner")
+        err = self._preflight('nikto', required_tool='nikto')
+        if err: return err
 
+        # Metadata lines we don't want as findings.
+        skip = re.compile(
+            r'^(target\s+(ip|hostname|port)|start\s*time|end\s*time|'
+            r'server\s*:|no cgi directories)', re.IGNORECASE)
+
+        findings, first_file, first_stdout = [], None, ''
         for svc in self.services:
             output_file = os.path.join(
-                self.output_dir,
-                f"nikto_{self.timestamp}_"
-                f"{svc['url'].replace('://','_').replace(':','_').replace('/','_')}.txt")
-            args = ['nikto', '-h', svc['url'],
-                    '-o', output_file, '-Format', 'txt',
-                    '-nointeractive']
+                self.output_dir, f"nikto_{_service_tag(svc['url'])}.txt")
+            args = ['nikto', '-h', svc['url'], '-o', output_file,
+                    '-Format', 'txt', '-nointeractive']
             result = self._run_command(args, timeout=self.timeout_nikto)
             if first_file is None:
                 first_file = output_file
@@ -1289,145 +1128,123 @@ class WebSecurityAuditor:
                     if not stripped.startswith('+ '):
                         continue
                     text = stripped[2:].strip()
-                    low = text.lower()
-                    if skip_pattern.match(low):
-                        continue
-                    if low.startswith('no cgi directories'):
+                    if skip.match(text.lower()):
                         continue
                     findings.append(self._finding(
                         f"Nikto: {text}",
                         evidence=f"nikto report for {svc['url']}",
-                        url=svc['url'],
-                        confidence='confirmed',
-                        check='nikto',
-                    ))
+                        url=svc['url'], check='nikto'))
 
-        return {
-            'output_file': first_file,
-            'findings':    findings,
-            'summary':     first_stdout[:800] or 'See output file',
-        }
+        return {'output_file': first_file,
+                'summary': first_stdout[:800] or 'See output file',
+                'findings': findings}
+
+    def _pick_wordlist(self):
+        for p in WORDLIST_CANDIDATES:
+            if os.path.exists(p):
+                return p
+        return None
+
+    def _ffuf_rate_args(self):
+        """Return ffuf flags for rate control, adapted to version.
+
+        ffuf >= 1.3 supports -rate; older versions use -p (delay) + -t.
+        """
+        rc, out, err = self._run_command(['ffuf', '-h'], timeout=5)
+        if '-rate' in (out + err).lower():
+            return ['-rate', str(self.rate)]
+        delay = 1.0 / max(self.rate, 1)
+        return ['-p', f'{delay:.3f}', '-t', '10']
 
     def run_directory_scan(self):
-        """Discover hidden directories/files using ffuf and/or dirb.
-
-        ffuf invocation adapts to the installed version: -rate on >= 1.3,
-        -p/-t on older. Includes 500 in the match codes because a 500 on a
-        plausible path often indicates a directory that exists but is
-        misconfigured.
-        """
         self._log("\n[*] Directory Discovery")
-        err = self._require_services('directory_discovery')
+        err = self._preflight('directory_discovery')
         if err: return err
 
         results = {}
 
-        # ---- ffuf (preferred) ----
+        # ffuf (preferred)
         if self.available_tools['ffuf']:
-            self._log("    using ffuf")
             wordlist = self.ffuf_wordlist
             if not wordlist or not os.path.exists(wordlist):
                 wordlist = self._pick_wordlist()
-            if wordlist:
-                self._log(f"    wordlist: {wordlist}")
 
             if wordlist:
+                self._log(f"    ffuf wordlist: {wordlist}")
                 rate_args = self._ffuf_rate_args()
-                self._vlog(f"    ffuf rate args: {rate_args}")
-
-                ffuf_findings = []
-                output_files = []
+                ffuf_findings, output_files = [], []
                 for svc in self.services:
-                    safe = svc['url'].replace('://','_').replace(':','_').replace('/','_')
-                    output_file = os.path.join(
-                        self.output_dir, f"ffuf_{self.timestamp}_{safe}.json")
-                    output_files.append(output_file)
-                    args = ['ffuf',
-                            '-u', f"{svc['url'].rstrip('/')}/FUZZ",
-                            '-w', wordlist,
-                            '-o', output_file,
-                            '-of', 'json',
+                    tag = _service_tag(svc['url'])
+                    out_path = os.path.join(self.output_dir, f"ffuf_{tag}.json")
+                    output_files.append(out_path)
+                    args = ['ffuf', '-u', f"{svc['url'].rstrip('/')}/FUZZ",
+                            '-w', wordlist, '-o', out_path, '-of', 'json',
                             '-mc', '200,204,301,302,307,401,403,500',
-                            *rate_args,
-                            '-s']
+                            *rate_args, '-s']
                     result = self._run_command(args, timeout=self.timeout_dirscan)
                     if not result['success'] and result['stderr']:
                         self._log(f"    ffuf failed: {result['stderr'][:200]}")
 
-                    if os.path.exists(output_file):
-                        try:
-                            with open(output_file) as f:
-                                data = json.load(f)
-                            for hit in data.get('results', []):
-                                status = hit.get('status')
-                                url    = hit.get('url', '')
-                                length = hit.get('length')
-                                if status in (200, 204, 301, 302, 307, 401, 403):
-                                    ffuf_findings.append(self._finding(
-                                        f"Discovered: {url} (HTTP {status})",
-                                        evidence=f"{length} bytes",
-                                        url=url,
-                                        confidence='confirmed',
-                                        check='directory_discovery',
-                                        severity='INFO',
-                                    ))
-                                elif status == 500:
-                                    ffuf_findings.append(self._finding(
-                                        f"Server error on path: {url} (HTTP 500)",
-                                        evidence=f"{length} bytes — path was processed",
-                                        url=url,
-                                        confidence='tentative',
-                                        check='directory_discovery',
-                                        severity='MEDIUM',
-                                    ))
-                        except Exception as e:
-                            self._log(f"    ffuf json parse error: {e}")
-                    else:
-                        self._log(
-                            f"    ffuf produced no output file (exit "
-                            f"{result.get('returncode')}): "
-                            f"{(result.get('stderr') or '')[:200]}")
+                    if not os.path.exists(out_path):
+                        self._log(f"    ffuf produced no output (exit "
+                                  f"{result.get('returncode')})")
+                        continue
+                    try:
+                        with open(out_path) as f:
+                            data = json.load(f)
+                        for hit in data.get('results', []):
+                            status = hit.get('status')
+                            url = hit.get('url', '')
+                            length = hit.get('length')
+                            if status in (200, 204, 301, 302, 307, 401, 403):
+                                ffuf_findings.append(self._finding(
+                                    f"Discovered: {url} (HTTP {status})",
+                                    severity='INFO',
+                                    evidence=f"{length} bytes",
+                                    url=url, check='directory_discovery'))
+                            elif status == 500:
+                                ffuf_findings.append(self._finding(
+                                    f"Server error on path: {url} (HTTP 500)",
+                                    severity='MEDIUM',
+                                    evidence=f"{length} bytes — path was processed",
+                                    url=url, confidence='tentative',
+                                    check='directory_discovery'))
+                    except Exception as e:
+                        self._log(f"    ffuf json parse error: {e}")
 
                 results['ffuf'] = {
                     'output_file': output_files[0] if output_files else None,
                     'output_files': output_files,
-                    'success': True,
                     'wordlist': wordlist,
-                    'rate_args': rate_args,
                     'findings': ffuf_findings,
                 }
             else:
                 results['ffuf'] = {'error': 'No wordlist found'}
 
-        # ---- dirb (fallback / additional) ----
+        # dirb (fallback)
         if self.available_tools['dirb']:
-            self._log("    using dirb")
+            self._log("    dirb")
             first_file = None
             for svc in self.services:
-                safe = svc['url'].replace('://','_').replace(':','_').replace('/','_')
-                output_file = os.path.join(
-                    self.output_dir, f"dirb_{self.timestamp}_{safe}.txt")
+                out_path = os.path.join(
+                    self.output_dir, f"dirb_{_service_tag(svc['url'])}.txt")
                 if first_file is None:
-                    first_file = output_file
-                args = ['dirb', svc['url'], '-o', output_file, '-S']
-                self._run_command(args, timeout=self.timeout_dirscan)
-            results['dirb'] = {
-                'output_file': first_file,
-                'success': True,
-                'findings': [],
-            }
+                    first_file = out_path
+                self._run_command(['dirb', svc['url'], '-o', out_path, '-S'],
+                                  timeout=self.timeout_dirscan)
+            results['dirb'] = {'output_file': first_file, 'findings': []}
 
         if not results:
             return {'error': 'Neither ffuf nor dirb is installed'}
 
         merged = []
-        for tool, r in results.items():
+        for r in results.values():
             if isinstance(r, dict):
                 merged.extend(r.get('findings', []))
         results['findings'] = merged
         return results
 
-    # ----------------------------------------------------------------- report
+    # ---------------------------------------------------------- reporting
 
     def generate_report(self):
         report = {
@@ -1446,12 +1263,12 @@ class WebSecurityAuditor:
             'summary': {
                 'total_checks': len(self.results),
                 'web_service_reachable': bool(self.services),
-                'findings_by_severity': {
-                    'HIGH': [], 'MEDIUM': [], 'LOW': [], 'INFO': []
-                },
+                'findings_by_severity': {k: [] for k in
+                                         ('HIGH', 'MEDIUM', 'LOW', 'INFO')},
             },
         }
 
+        # Aggregate findings into severity buckets.
         for check, result in self.results.items():
             if not isinstance(result, dict):
                 continue
@@ -1459,51 +1276,39 @@ class WebSecurityAuditor:
                 if isinstance(f, dict):
                     level = f.get('severity') or self._classify(f.get('title', ''))
                     entry = {
-                        'title':      f.get('title', ''),
-                        'check':      f.get('check') or check,
-                        'url':        f.get('url'),
-                        'evidence':   f.get('evidence'),
+                        'title': f.get('title', ''),
+                        'check': f.get('check') or check,
+                        'url': f.get('url'),
+                        'evidence': f.get('evidence'),
                         'confidence': f.get('confidence', 'confirmed'),
                     }
                 else:
                     level = self._classify(str(f))
-                    entry = {'title': str(f), 'check': check,
-                             'url': None, 'evidence': None,
-                             'confidence': 'confirmed'}
+                    entry = {'title': str(f), 'check': check, 'url': None,
+                             'evidence': None, 'confidence': 'confirmed'}
                 report['summary']['findings_by_severity'].setdefault(
                     level, []).append(entry)
 
             cert = result.get('cert_info', {})
             if isinstance(cert, dict) and 'warning' in cert:
-                level = self._classify(cert['warning'])
                 report['summary']['findings_by_severity'].setdefault(
-                    level, []).append({
-                        'title': cert['warning'],
-                        'check': 'ssl_certificate',
-                        'url': self.primary_url,
-                        'evidence': None,
-                        'confidence': 'confirmed',
-                    })
+                    self._classify(cert['warning']), []).append({
+                        'title': cert['warning'], 'check': 'ssl_certificate',
+                        'url': self.primary_url, 'evidence': None,
+                        'confidence': 'confirmed'})
 
-        json_file = os.path.join(self.output_dir,
-                                 f"security_audit_report_{self.timestamp}.json")
+        json_file = os.path.join(self.output_dir, 'security_audit_report.json')
         with open(json_file, 'w') as f:
             json.dump(report, f, indent=2, default=str)
 
-        txt_file = os.path.join(self.output_dir,
-                                f"security_audit_summary_{self.timestamp}.txt")
+        txt_file = os.path.join(self.output_dir, 'security_audit_summary.txt')
         self._write_text_report(report, txt_file)
 
-        html_file = os.path.join(self.output_dir,
-                                 f"audit_report_{self.timestamp}.html")
+        html_file = os.path.join(self.output_dir, 'audit_report.html')
         self._write_html_report(report, html_file)
 
-        return {
-            'json_report':    json_file,
-            'summary_report': txt_file,
-            'html_report':    html_file,
-            'report_data':    report,
-        }
+        return {'json_report': json_file, 'summary_report': txt_file,
+                'html_report': html_file, 'report_data': report}
 
     def _write_text_report(self, report, path):
         sev = report['summary']['findings_by_severity']
@@ -1515,32 +1320,28 @@ class WebSecurityAuditor:
             f.write(f"Run:    {report.get('run_directory', '')}\n")
             f.write("=" * 70 + "\n\n")
 
-            f.write("EXECUTIVE SUMMARY\n")
-            f.write("-" * 70 + "\n")
-            f.write(f"Checks performed       : {report['summary']['total_checks']}\n")
-            f.write(f"Web service reachable  : "
+            f.write("EXECUTIVE SUMMARY\n" + "-" * 70 + "\n")
+            f.write(f"Checks performed      : {report['summary']['total_checks']}\n")
+            f.write(f"Web service reachable : "
                     f"{'yes' if report['summary']['web_service_reachable'] else 'no'}\n")
             for level in ('HIGH', 'MEDIUM', 'LOW', 'INFO'):
-                f.write(f"{level:<23}: {len(sev[level])}\n")
+                f.write(f"{level:<22}: {len(sev[level])}\n")
             f.write("\n")
 
             for level in ('HIGH', 'MEDIUM', 'LOW', 'INFO'):
                 if not sev[level]:
                     continue
-                f.write(f"{level} FINDINGS\n")
-                f.write("-" * 70 + "\n")
+                f.write(f"{level} FINDINGS\n" + "-" * 70 + "\n")
                 for item in sev[level]:
-                    title = item.get('title', str(item))
-                    url   = item.get('url') or ''
-                    conf  = item.get('confidence', '')
-                    f.write(f"  [{conf}] {title}")
+                    conf = item.get('confidence', '')
+                    url = item.get('url') or ''
+                    line = f"  [{conf}] {item.get('title', str(item))}"
                     if url:
-                        f.write(f"  ({url})")
-                    f.write("\n")
+                        line += f"  ({url})"
+                    f.write(line + "\n")
                 f.write("\n")
 
-            f.write("\nDETAILED RESULTS\n")
-            f.write("-" * 70 + "\n")
+            f.write("\nDETAILED RESULTS\n" + "-" * 70 + "\n")
             for check, result in self.results.items():
                 f.write(f"\n[{check.upper()}]\n")
                 if not isinstance(result, dict):
@@ -1548,17 +1349,16 @@ class WebSecurityAuditor:
                     continue
                 if 'error' in result:
                     f.write(f"  Error: {result['error']}\n")
-                if 'output_file' in result and result['output_file']:
-                    f.write(f"  Output file: {result['output_file']}\n")
-                if 'summary' in result and result['summary']:
-                    summary = str(result['summary']).replace('\n', ' ')
-                    f.write(f"  Summary: {summary[:250]}...\n")
+                if result.get('output_file'):
+                    f.write(f"  Output: {result['output_file']}\n")
+                if result.get('summary'):
+                    s = str(result['summary']).replace('\n', ' ')
+                    f.write(f"  Summary: {s[:250]}...\n")
 
     def _write_html_report(self, report, path):
         sev = report['summary']['findings_by_severity']
         colors = {'HIGH': '#d32f2f', 'MEDIUM': '#f57c00',
                   'LOW': '#fbc02d', 'INFO': '#0288d1'}
-
         e = html.escape
 
         parts = [
@@ -1581,7 +1381,7 @@ class WebSecurityAuditor:
             ".conf{color:#888;font-size:.85em;margin-left:6px;}",
             ".ev{color:#555;font-size:.9em;display:block;margin-left:16px;}",
             "</style></head><body>",
-            f"<h1>Security Audit Report</h1>",
+            "<h1>Security Audit Report</h1>",
             f"<p class='meta'><b>Target:</b> {e(report['target'])}<br>",
             f"<b>Web service reachable:</b> "
             f"{'yes' if report['summary']['web_service_reachable'] else 'no'}<br>",
@@ -1604,17 +1404,14 @@ class WebSecurityAuditor:
                 continue
             parts.append("<ul>")
             for item in sev[level]:
-                title = e(item.get('title', str(item)))
-                url   = item.get('url') or ''
-                ev    = item.get('evidence') or ''
-                conf  = item.get('confidence', '')
-                parts.append(f"<li>{title}")
+                parts.append("<li>" + e(item.get('title', str(item))))
+                conf = item.get('confidence', '')
                 if conf:
                     parts.append(f"<span class='conf'>[{e(conf)}]</span>")
-                if ev:
-                    parts.append(f"<span class='ev'>{e(str(ev))}</span>")
-                if url:
-                    parts.append(f"<span class='ev'><code>{e(url)}</code></span>")
+                if item.get('evidence'):
+                    parts.append(f"<span class='ev'>{e(str(item['evidence']))}</span>")
+                if item.get('url'):
+                    parts.append(f"<span class='ev'><code>{e(item['url'])}</code></span>")
                 parts.append("</li>")
             parts.append("</ul>")
 
@@ -1634,11 +1431,11 @@ class WebSecurityAuditor:
             if not isinstance(result, dict):
                 parts.append(f"{e(str(result))}</div>")
                 continue
-            if 'error' in result:
+            if result.get('error'):
                 parts.append(f"<i>Error:</i> {e(str(result['error']))}<br>")
-            if 'output_file' in result and result['output_file']:
+            if result.get('output_file'):
                 parts.append(f"<i>Output:</i> <code>{e(str(result['output_file']))}</code><br>")
-            if 'summary' in result and result['summary']:
+            if result.get('summary'):
                 s = str(result['summary'])[:300].replace('\n', ' ')
                 parts.append(f"<i>Summary:</i> {e(s)}...")
             parts.append("</div>")
@@ -1648,7 +1445,32 @@ class WebSecurityAuditor:
         with open(path, 'w', encoding='utf-8') as f:
             f.write("\n".join(parts))
 
-    # ------------------------------------------------------------------ driver
+    # ------------------------------------------------------------ driver
+
+    ALL_CHECKS = [
+        ('body_analysis',       'run_body_analysis_check'),
+        ('page_analysis',       'run_page_analysis_check'),
+        ('whatweb',             'run_whatweb'),
+        ('ssl_nmap',            'run_nmap_ssl'),
+        ('ssl_testssl',         'run_testssl'),
+        ('ssl_certificate',     'run_openssl_check'),
+        ('security_headers',    'run_security_headers_check'),
+        ('cookies',             'run_cookie_check'),
+        ('http_methods',        'run_http_methods_check'),
+        ('https_redirect',      'run_https_redirect_check'),
+        ('info_disclosure',     'run_info_disclosure_check'),
+        ('cors',                'run_cors_check'),
+        ('sensitive_files',     'run_sensitive_files_check'),
+        ('nikto',               'run_nikto'),
+        ('directory_discovery', 'run_directory_scan'),
+    ]
+
+    def _selected_checks(self):
+        if self.only_checks:
+            return [(n, getattr(self, m)) for n, m in self.ALL_CHECKS
+                    if n in self.only_checks]
+        return [(n, getattr(self, m)) for n, m in self.ALL_CHECKS
+                if n not in self.skip_checks]
 
     def run_full_audit(self):
         self._log("=" * 70, always=True)
@@ -1657,36 +1479,14 @@ class WebSecurityAuditor:
         self._log(f"Output folder: {self.output_dir}", always=True)
         self._log("=" * 70, always=True)
 
+        # Service discovery always runs first and gates the rest.
         try:
             self.results['service_discovery'] = self.run_service_discovery()
         except Exception as e:
-            self.results['service_discovery'] = {'error': f'Unhandled exception: {e}'}
+            self.results['service_discovery'] = {'error': f'Unhandled: {e}'}
             self._log(f"[-] Error in service_discovery: {e}", always=True)
 
-        all_checks = [
-            ('body_analysis',       self.run_body_analysis_check),
-            ('page_analysis',       self.run_page_analysis_check),
-            ('whatweb',             self.run_whatweb),
-            ('ssl_nmap',            self.run_nmap_ssl),
-            ('ssl_testssl',         self.run_testssl),
-            ('ssl_certificate',     self.run_openssl_check),
-            ('security_headers',    self.run_security_headers_check),
-            ('cookies',             self.run_cookie_check),
-            ('http_methods',        self.run_http_methods_check),
-            ('https_redirect',      self.run_https_redirect_check),
-            ('info_disclosure',     self.run_info_disclosure_check),
-            ('cors',                self.run_cors_check),
-            ('sensitive_files',     self.run_sensitive_files_check),
-            ('nikto',               self.run_nikto),
-            ('directory_discovery', self.run_directory_scan),
-        ]
-
-        if self.only_checks:
-            checks = [(n, fn) for n, fn in all_checks if n in self.only_checks]
-        else:
-            checks = [(n, fn) for n, fn in all_checks
-                      if n not in self.skip_checks]
-
+        checks = self._selected_checks()
         self._log(f"\nChecks to run: {', '.join(n for n, _ in checks)}", always=True)
 
         for name, fn in checks:
@@ -1734,13 +1534,11 @@ def load_config(path):
 def parse_args():
     parser = argparse.ArgumentParser(
         description='Web Security Audit Automation Tool (educational).',
-        epilog='Example: python3 audit_deepseek.py https://example.com -o results'
-    )
-    parser.add_argument('target',
-                        help='Target URL or host (e.g., https://example.com)')
+        epilog='Example: python3 audit_deepseek.py https://example.com -o results')
+    parser.add_argument('target', help='Target URL or host')
     parser.add_argument('-o', '--output', default='audit_results',
-                        help='Base output directory; a per-run subfolder is '
-                             'created inside it (default: audit_results)')
+                        help='Base output dir; a per-run subfolder is created '
+                             'inside it (default: audit_results)')
     parser.add_argument('-c', '--config', default=None,
                         help='Path to JSON config file')
     parser.add_argument('--skip', nargs='*', default=[],
@@ -1748,23 +1546,22 @@ def parse_args():
     parser.add_argument('--only', nargs='*', default=[],
                         help='Run only these checks')
     parser.add_argument('--ports', default=None,
-                        help='Comma-separated extra ports to probe during '
-                             'discovery (e.g., 80,443,8080)')
+                        help='Extra ports to probe during discovery '
+                             '(e.g. 80,443,8080)')
     parser.add_argument('--flat', action='store_true',
-                        help='Disable per-run subfolders; write directly '
-                             'into the output directory (old behavior)')
+                        help='Disable per-run subfolders; write directly into '
+                             'the output directory')
     parser.add_argument('-q', '--quiet', action='store_true',
-                        help='Only print final summary')
+                        help='Only print the final summary')
     parser.add_argument('-v', '--verbose', action='store_true',
-                        help='Print each command being run')
+                        help='Print each external command being run')
     parser.add_argument('--rate', type=int, default=50,
-                        help='ffuf request rate (requests/sec, default 50)')
+                        help='ffuf request rate (default 50)')
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
-
     if not args.target.startswith(('http://', 'https://')):
         args.target = 'https://' + args.target
 
@@ -1776,9 +1573,7 @@ def main():
     print("is illegal and unethical.")
     print("!" * 70 + "\n")
 
-    ports = None
-    if args.ports:
-        ports = [p.strip() for p in args.ports.split(',') if p.strip()]
+    ports = [p.strip() for p in args.ports.split(',')] if args.ports else None
 
     auditor = WebSecurityAuditor(
         target_url=args.target,
@@ -1796,8 +1591,7 @@ def main():
     try:
         auditor.run_full_audit()
     except KeyboardInterrupt:
-        print("\n[!] Interrupted by user. Partial results saved in",
-              auditor.output_dir)
+        print("\n[!] Interrupted. Partial results saved in", auditor.output_dir)
         sys.exit(130)
 
 
