@@ -1,0 +1,11 @@
+COMMAND: nmap -sV -p- --reason 130.208.246.171:8080
+
+STDOUT:
+Starting Nmap 7.991 ( https://nmap.org ) at 2026-09-18 15:35 +0000
+Nmap done: 0 IP addresses (0 hosts up) scanned in 0.61 seconds
+
+STDERR:
+Error resolving 130.208.246.171:8080: nodename nor servname provided, or not known
+Failed to resolve "130.208.246.171:8080".
+WARNING: No targets were specified, so 0 hosts scanned.
+

@@ -22,9 +22,9 @@ import os
 # TARGET CONFIGURATION — edit this, do not parameterize via argv
 # ============================================================
 TARGET_CONFIG = {
-    "host": "192.168.56.101",   # <-- set to your lab VM's IP or hostname
-    "url": "http://192.168.56.101",  # <-- full URL incl. scheme
-    "is_lab_environment": True,  # must stay True to run
+    "host": "130.208.246.171",
+    "url": "http://130.208.246.171",
+    "is_lab_environment": True,
 }
 
 OUTPUT_DIR = "audit_results"

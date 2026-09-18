@@ -1,0 +1,11 @@
+COMMAND: whois 130.208.246.171:8080
+
+STDOUT:
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+%
+% Error: Invalid query 130.208.246.171:8080
+
+
+STDERR:
+

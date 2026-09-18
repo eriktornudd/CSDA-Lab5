@@ -1,0 +1,19 @@
+COMMAND: whois 192.168.56.101
+
+STDOUT:
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+inetnum:      192.168.0.0 - 192.168.255.255
+organisation: IANA
+status:       assigned
+
+remarks:      http://www.iana.org/go/rfc1918
+
+changed:      1994-03
+source:       IANA
+
+
+STDERR:
+

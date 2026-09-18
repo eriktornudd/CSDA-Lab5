@@ -1,0 +1,14 @@
+Audit run: 20260918_153108
+Target: 192.168.56.101 / http://130.208.246.171:8080
+
+Tools run:
+  - whois: Domain/IP ownership info
+  - dig: DNS records
+  - nmap: Port scan + service versions
+  - nikto: Known misconfig / vuln scan
+  - gobuster: Directory brute force (requires wordlist)
+
+Tools missing (not run):
+  - whatweb: Tech fingerprinting
+  - testssl.sh: TLS/SSL config check
+  - sslyze: TLS/SSL config check (alt)
