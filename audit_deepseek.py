@@ -1,13 +1,22 @@
 #!/usr/bin/env python3
 """
-Web Security Audit Automation Script (v3)
+Web Security Audit Automation Script (v4)
 For educational purposes only.
 Only use on systems you own or have explicit written permission to test.
 
+Changes in v4:
+  * Body content analysis: parses titles, forms, inputs, scripts, links,
+    emails, comments, and detects potential unescaped XSS in the HTML.
+  * Broader Nikto parsing: keeps every '+ ' finding line, filters only
+    pure metadata; adds severity rules for admin/config/debug findings.
+  * Expanded SENSITIVE_PATHS (PHP configs, db configs, backups, uploads).
+  * ffuf and sensitive_files now handle HTTP 500 as an interesting signal.
+  * Correct dirb wordlist path (/usr/share/dirb/wordlists/common.txt) so
+    ffuf actually runs on Ubuntu/Debian.
+
 Changes in v3:
-  * Every run now writes into its own subfolder:
+  * Every run writes into its own subfolder:
         <output_dir>/run_<timestamp>_<target>/
-    so results are easy to find and runs never mix.
   * Pass --flat to disable this and write straight into <output_dir>.
 
 Key change in v2: all web checks are gated behind a service-discovery phase.
@@ -43,6 +52,7 @@ from urllib.parse import urlparse, urljoin
 # Severity classification rules. Checked in order; first match wins.
 # Pattern is case-insensitive substring match against the finding title.
 SEVERITY_RULES = [
+    # HIGH
     ('Heartbleed', 'HIGH'),
     ('VULNERABLE', 'HIGH'),
     ('Dangerous HTTP method', 'HIGH'),
@@ -53,10 +63,22 @@ SEVERITY_RULES = [
     ('CORS wildcard', 'HIGH'),
     ('CORS reflects arbitrary', 'HIGH'),
     ('expired', 'HIGH'),
+    ('XSS payload', 'HIGH'),
+    ('stored/reflected XSS', 'HIGH'),
+    # MEDIUM
+    ('Admin login page', 'MEDIUM'),
+    ('Admin login section', 'MEDIUM'),
+    ('PHP Config file', 'MEDIUM'),
+    ('config.php', 'MEDIUM'),
+    ('Server error on path', 'MEDIUM'),
+    ('created without the httponly flag', 'MEDIUM'),
     ('missing Secure flag', 'MEDIUM'),
     ('missing HttpOnly flag', 'MEDIUM'),
     ('missing SameSite', 'MEDIUM'),
     ('expires in', 'MEDIUM'),
+    # LOW
+    ('DEBUG HTTP', 'LOW'),
+    ('anti-clickjacking', 'LOW'),
     ('discloses version', 'LOW'),
     ('not implemented', 'LOW'),
     ('not set', 'LOW'),
@@ -81,20 +103,41 @@ INFORMATIONAL_HEADERS = {
 
 # Files/paths we test for accidental exposure.
 SENSITIVE_PATHS = [
-    '/.env', '/.env.bak', '/.git/config', '/.git/HEAD', '/.svn/entries',
-    '/wp-config.php.bak', '/config.php.bak', '/backup.zip',
-    '/.htaccess', '/.htpasswd', '/phpinfo.php', '/server-status',
-    '/server-info', '/.DS_Store', '/web.config', '/composer.json',
-    '/package.json', '/robots.txt', '/sitemap.xml',
+    # Environment / VCS
+    '/.env', '/.env.bak', '/.env.local', '/.env.production',
+    '/.git/config', '/.git/HEAD', '/.gitignore', '/.svn/entries',
+    # PHP configs (common names)
+    '/config.php', '/config.inc.php', '/config.php.bak', '/config.php~',
+    '/config.old', '/config.sample.php', '/configuration.php',
+    '/includes/config.php', '/includes/db.php', '/includes/database.php',
+    '/includes/config.inc.php', '/db.php', '/database.php',
+    '/wp-config.php', '/wp-config.php.bak', '/settings.php',
+    # Backups / dumps
+    '/backup.zip', '/backup.tar.gz', '/backup.sql', '/dump.sql',
+    '/db.sql', '/database.sql',
+    # Apache / server
+    '/.htaccess', '/.htpasswd', '/server-status', '/server-info',
+    '/phpinfo.php', '/info.php', '/test.php', '/.DS_Store',
+    # Other configs
+    '/web.config', '/composer.json', '/composer.lock', '/package.json',
+    '/package-lock.json', '/robots.txt', '/sitemap.xml',
     '/.well-known/security.txt', '/swagger.json', '/openapi.json',
+    '/api-docs', '/.editorconfig',
+    # Upload / staging dirs (500/403 here is often interesting)
+    '/uploads/', '/upload/', '/files/', '/tmp/',
 ]
 
 # Candidate wordlist locations for directory brute-forcing.
+# Order matters: first existing path wins.
 WORDLIST_CANDIDATES = [
-    "/snap/seclists/current/Discovery/Web-Content/common.txt",
     "/usr/share/seclists/Discovery/Web-Content/common.txt",
-    "/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt",
+    "/snap/seclists/current/Discovery/Web-Content/common.txt",
+    "/usr/share/seclists/Discovery/Web-Content/raft-small-words.txt",
     "/usr/share/wordlists/dirb/common.txt",
+    "/usr/share/dirb/wordlists/common.txt",          # actual path on Ubuntu
+    "/usr/share/dirbuster/wordlists/directory-list-2.3-small.txt",
+    "/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt",
+    "/usr/share/wordlists/dirbuster/directory-list-2.3-small.txt",
 ]
 
 # Ports we quickly probe if the original target URL doesn't respond.
@@ -102,6 +145,9 @@ COMMON_WEB_PORTS = [80, 443, 8080, 8443, 8000, 8888, 3000, 5000, 9000]
 
 # Timeout (seconds) used for a single curl probe.
 PROBE_TIMEOUT = 10
+
+# How many bytes of the response body to keep for analysis / report.
+BODY_SNIPPET_SIZE = 16384
 
 
 # ---------------------------------------------------------------------------
@@ -115,15 +161,12 @@ def _sanitize_folder_component(text):
     """
     if not text:
         return 'unknown'
-    # Strip scheme if present
     if '://' in text:
         text = text.split('://', 1)[1]
-    # Cut at first slash (drop path/query)
     text = text.split('/', 1)[0]
-    # Replace anything not alnum/dot/dash/underscore with underscore
     text = re.sub(r'[^A-Za-z0-9._-]+', '_', text)
     text = text.strip('._-') or 'unknown'
-    return text[:80]  # keep folder names sane
+    return text[:80]
 
 
 # ---------------------------------------------------------------------------
@@ -138,8 +181,8 @@ class WebSecurityAuditor:
                  flat_output=False):
         self.target_url = target_url.rstrip('/')
         self.parsed_url = urlparse(self.target_url)
-        self.domain     = self.parsed_url.netloc          # includes port if present
-        self.hostname   = self.parsed_url.hostname        # no port
+        self.domain     = self.parsed_url.netloc
+        self.hostname   = self.parsed_url.hostname
         self.quiet      = quiet
         self.verbose    = verbose
         self.rate       = rate
@@ -150,6 +193,9 @@ class WebSecurityAuditor:
         # Populated by run_service_discovery()
         self.services = []
         self.primary_url = self.target_url
+
+        # Populated by run_full_audit(); every check writes into it.
+        self.results = {}
 
         # Timestamp used for report filenames.
         self.timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -180,17 +226,14 @@ class WebSecurityAuditor:
     # ------------------------------------------------------------------ utils
 
     def _log(self, msg, always=False):
-        """Print only if not quiet (or if always=True)."""
         if not self.quiet or always:
             print(msg)
 
     def _vlog(self, msg):
-        """Verbose-only logging."""
         if self.verbose:
             print(msg)
 
     def _check_tools(self):
-        """Check which external tools are available on the system."""
         self._log("[*] Checking for required tools...")
         tools = {
             'whatweb': 'whatweb',
@@ -217,10 +260,6 @@ class WebSecurityAuditor:
         return available
 
     def _run_command(self, args, timeout=None, input_data=None):
-        """
-        Execute a command with argument list (no shell).
-        Returns a dict: {success, stdout, stderr, returncode}
-        """
         if timeout is None:
             timeout = self.timeout_default
         self._vlog(f"    $ {' '.join(args)}")
@@ -249,14 +288,12 @@ class WebSecurityAuditor:
                     str(e), 'returncode': -1}
 
     def _write(self, name, content):
-        """Write a raw output file into the current run folder."""
         path = os.path.join(self.output_dir, f"{name}_{self.timestamp}.txt")
         with open(path, 'w', encoding='utf-8', errors='replace') as f:
             f.write(content)
         return path
 
     def _classify(self, text):
-        """Return severity level for a finding title."""
         low = (text or '').lower()
         for pattern, level in SEVERITY_RULES:
             if pattern.lower() in low:
@@ -264,12 +301,13 @@ class WebSecurityAuditor:
         return 'INFO'
 
     def _finding(self, title, evidence=None, url=None,
-                 confidence='confirmed', check=None):
-        """Build a structured finding."""
+                 confidence='confirmed', check=None, severity=None):
+        """Build a structured finding. If severity is given, it overrides
+        the classifier (used when we want explicit tiers)."""
         return {
             'title':      title,
-            'severity':   self._classify(title),
-            'confidence': confidence,   # confirmed | tentative | heuristic
+            'severity':   severity or self._classify(title),
+            'confidence': confidence,
             'evidence':   evidence,
             'url':        url,
             'check':      check,
@@ -277,7 +315,6 @@ class WebSecurityAuditor:
 
     @staticmethod
     def _parse_headers(raw):
-        """Parse a raw header block; return dict of lowercase -> list of values."""
         headers = {}
         for block in re.split(r'\r?\n\r?\n', raw or ''):
             for line in block.splitlines():
@@ -288,7 +325,6 @@ class WebSecurityAuditor:
 
     @staticmethod
     def _fast_port_check(host, port, timeout=1.5):
-        """Cheap TCP connect() check to filter out closed ports quickly."""
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 s.settimeout(timeout)
@@ -297,7 +333,6 @@ class WebSecurityAuditor:
             return False
 
     def _require_services(self, check_name):
-        """Return an error dict if no web service was confirmed."""
         if not self.services:
             return {
                 'error': (
@@ -307,14 +342,16 @@ class WebSecurityAuditor:
             }
         return None
 
+    def _pick_wordlist(self):
+        """Return the first existing wordlist path, or None."""
+        for p in WORDLIST_CANDIDATES:
+            if os.path.exists(p):
+                return p
+        return None
+
     # ------------------------------------------------------------- discovery
 
     def _probe_http(self, url, timeout=None):
-        """
-        Probe a URL with curl. Returns a dict if an HTTP response was
-        received, else None. Captures headers, body snippet, status,
-        redirect count.
-        """
         if timeout is None:
             timeout = self.probe_timeout
 
@@ -368,7 +405,7 @@ class WebSecurityAuditor:
                 'content_type': parts[5],
                 'headers_raw':  headers_raw,
                 'headers':      self._parse_headers(headers_raw),
-                'body_snippet': body[:4096],
+                'body_snippet': body[:BODY_SNIPPET_SIZE],
                 'scheme':       urlparse(url).scheme,
                 'port':         urlparse(url).port or (
                     443 if urlparse(url).scheme == 'https' else 80),
@@ -382,7 +419,6 @@ class WebSecurityAuditor:
                     pass
 
     def _candidate_urls(self):
-        """Build an ordered list of URLs to try during discovery."""
         urls = [self.target_url]
         seen = {self.target_url}
 
@@ -411,10 +447,6 @@ class WebSecurityAuditor:
         return urls
 
     def run_service_discovery(self):
-        """
-        Confirm which HTTP/HTTPS services are actually reachable.
-        Populates self.services and self.primary_url.
-        """
         self._log("\n[*] Service Discovery - Probing for reachable web services")
         services = []
         candidates = self._candidate_urls()
@@ -473,8 +505,164 @@ class WebSecurityAuditor:
 
     # ----------------------------------------------------------------- checks
 
+    def run_body_analysis_check(self):
+        """Parse the HTML body of each confirmed service for useful leads.
+
+        Runs entirely on data already collected by service discovery, so it
+        does not make any additional requests. Extracts: page titles, forms
+        (action + method), input field names, script srcs, interesting
+        links (PHP/etc. or with query parameters), emails, HTML comments,
+        and a heuristic for unescaped script tags (potential XSS).
+        """
+        self._log("\n[*] Body Content Analysis")
+        err = self._require_services('body_analysis')
+        if err: return err
+
+        findings = []
+        first_file = None
+        seen_titles = set()
+
+        for svc in self.services:
+            body = svc.get('body_snippet') or ''
+            if not body:
+                continue
+
+            safe = svc['url'].replace('://','_').replace(':','_').replace('/','_')
+            if first_file is None:
+                first_file = self._write(f'body_{safe}', body)
+
+            # ---- <title> ----
+            for m in re.finditer(r'<title[^>]*>(.*?)</title>',
+                                 body, re.IGNORECASE | re.DOTALL):
+                title = re.sub(r'\s+', ' ', m.group(1)).strip()[:200]
+                if title and title not in seen_titles:
+                    seen_titles.add(title)
+                    findings.append(self._finding(
+                        f"Page title: {title}",
+                        evidence=svc['url'],
+                        url=svc['url'],
+                        confidence='confirmed',
+                        check='body_analysis',
+                    ))
+
+            # ---- Forms ----
+            for m in re.finditer(r'<form\b([^>]*)>', body, re.IGNORECASE):
+                attrs = m.group(1)
+                action = re.search(r'action\s*=\s*["\']([^"\']*)["\']',
+                                   attrs, re.IGNORECASE)
+                method = re.search(r'method\s*=\s*["\']([^"\']*)["\']',
+                                   attrs, re.IGNORECASE)
+                action_val = action.group(1) if action else '(same page)'
+                method_val = (method.group(1) if method else 'GET').upper()
+                findings.append(self._finding(
+                    f"Form found: action={action_val} method={method_val}",
+                    evidence=svc['url'],
+                    url=svc['url'],
+                    confidence='confirmed',
+                    check='body_analysis',
+                ))
+
+            # ---- Input fields (grouped) ----
+            input_names = sorted(set(
+                m.group(1) for m in re.finditer(
+                    r'<input\b[^>]*\bname\s*=\s*["\']([^"\']+)["\']',
+                    body, re.IGNORECASE)
+            ))
+            if input_names:
+                findings.append(self._finding(
+                    f"Input fields on {svc['url']}: {', '.join(input_names)}",
+                    evidence=svc['url'],
+                    url=svc['url'],
+                    confidence='confirmed',
+                    check='body_analysis',
+                ))
+
+            # ---- Scripts ----
+            scripts = sorted(set(
+                m.group(1) for m in re.finditer(
+                    r'<script\b[^>]*\bsrc\s*=\s*["\']([^"\']+)["\']',
+                    body, re.IGNORECASE)
+            ))
+            for src in scripts:
+                findings.append(self._finding(
+                    f"Script loaded: {src}",
+                    evidence=svc['url'],
+                    url=svc['url'],
+                    confidence='confirmed',
+                    check='body_analysis',
+                ))
+
+            # ---- Interesting links ----
+            hrefs = set(
+                m.group(1) for m in re.finditer(
+                    r'<a\b[^>]*\bhref\s*=\s*["\']([^"\']+)["\']',
+                    body, re.IGNORECASE)
+            )
+            interesting = sorted(
+                h for h in hrefs
+                if re.search(r'\.(php|asp|aspx|jsp|cgi|pl)\b', h, re.IGNORECASE)
+                or '?' in h or '=' in h
+            )
+            if interesting:
+                preview = ', '.join(interesting[:10])
+                suffix = '' if len(interesting) <= 10 else f' … (+{len(interesting)-10} more)'
+                findings.append(self._finding(
+                    f"Interesting links ({len(interesting)}): {preview}{suffix}",
+                    evidence=svc['url'],
+                    url=svc['url'],
+                    confidence='confirmed',
+                    check='body_analysis',
+                ))
+
+            # ---- Emails ----
+            emails = sorted(set(re.findall(
+                r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}', body)))
+            emails = [e for e in emails if not e.endswith(('.png','.jpg','.gif'))]
+            if emails:
+                findings.append(self._finding(
+                    f"Email addresses found: {', '.join(emails[:5])}",
+                    evidence=svc['url'],
+                    url=svc['url'],
+                    confidence='tentative',
+                    check='body_analysis',
+                ))
+
+            # ---- HTML comments ----
+            comments = [
+                re.sub(r'\s+', ' ', c).strip()
+                for c in re.findall(r'<!--(.*?)-->', body, re.DOTALL)
+            ]
+            comments = [c for c in comments if len(c) >= 10]
+            if comments:
+                findings.append(self._finding(
+                    f"HTML comments present ({len(comments)})",
+                    evidence=' | '.join(comments[:3])[:400],
+                    url=svc['url'],
+                    confidence='confirmed',
+                    check='body_analysis',
+                ))
+
+            # ---- Unescaped script heuristic ----
+            # Look for <script>alert(...)</script> or document.cookie inside
+            # a script tag that appears in the body without HTML escaping.
+            # A properly escaped payload renders as &lt;script&gt; and will
+            # NOT match this pattern.
+            if re.search(
+                r'<script[^>]*>\s*(?:alert|confirm|prompt)\s*\(', body, re.IGNORECASE
+            ) or re.search(
+                r'<script[^>]*>\s*[^<]*document\.cookie', body, re.IGNORECASE
+            ):
+                findings.append(self._finding(
+                    "Potential stored/reflected XSS payload in HTML body",
+                    evidence="Unescaped <script> tag with alert()/document.cookie",
+                    url=svc['url'],
+                    confidence='tentative',
+                    check='body_analysis',
+                ))
+
+        return {'output_file': first_file, 'findings': findings}
+
     def run_whatweb(self):
-        """Identify web technologies in use."""
         self._log("\n[*] WhatWeb - Technology Identification")
         err = self._require_services('whatweb')
         if err: return err
@@ -499,7 +687,6 @@ class WebSecurityAuditor:
         }
 
     def run_nmap_ssl(self):
-        """Enumerate supported SSL/TLS cipher suites and versions."""
         self._log("\n[*] Nmap - SSL/TLS Cipher Enumeration")
         err = self._require_services('ssl_nmap')
         if err: return err
@@ -542,7 +729,6 @@ class WebSecurityAuditor:
         }
 
     def run_testssl(self):
-        """Run comprehensive SSL/TLS vulnerability tests."""
         self._log("\n[*] testssl.sh - Comprehensive SSL/TLS Scan")
         err = self._require_services('ssl_testssl')
         if err: return err
@@ -588,7 +774,6 @@ class WebSecurityAuditor:
         }
 
     def run_openssl_check(self):
-        """Inspect the SSL certificate chain and details."""
         self._log("\n[*] OpenSSL - Certificate Inspection")
         err = self._require_services('ssl_certificate')
         if err: return err
@@ -669,7 +854,6 @@ class WebSecurityAuditor:
         }
 
     def run_security_headers_check(self):
-        """Check for presence of common HTTP security headers."""
         self._log("\n[*] HTTP Security Headers")
         err = self._require_services('security_headers')
         if err: return err
@@ -722,7 +906,6 @@ class WebSecurityAuditor:
         }
 
     def run_cookie_check(self):
-        """Check Set-Cookie headers for missing security attributes."""
         self._log("\n[*] Cookie Security Flags")
         err = self._require_services('cookies')
         if err: return err
@@ -763,7 +946,6 @@ class WebSecurityAuditor:
         }
 
     def run_http_methods_check(self):
-        """Check which HTTP methods the server advertises via OPTIONS."""
         self._log("\n[*] Allowed HTTP Methods")
         err = self._require_services('http_methods')
         if err: return err
@@ -802,7 +984,6 @@ class WebSecurityAuditor:
         }
 
     def run_https_redirect_check(self):
-        """Verify HTTP traffic redirects to HTTPS."""
         self._log("\n[*] HTTP to HTTPS Redirect")
         err = self._require_services('https_redirect')
         if err: return err
@@ -849,7 +1030,6 @@ class WebSecurityAuditor:
         return {'output_file': output_file, 'findings': findings, 'status': status}
 
     def run_info_disclosure_check(self):
-        """Flag version disclosure in server headers."""
         self._log("\n[*] Information Disclosure Headers")
         err = self._require_services('info_disclosure')
         if err: return err
@@ -874,7 +1054,6 @@ class WebSecurityAuditor:
         return {'output_file': first_file, 'findings': findings}
 
     def run_cors_check(self):
-        """Probe for permissive CORS configuration."""
         self._log("\n[*] CORS Configuration")
         err = self._require_services('cors')
         if err: return err
@@ -916,7 +1095,11 @@ class WebSecurityAuditor:
         return {'output_file': first_file, 'findings': findings}
 
     def run_sensitive_files_check(self):
-        """Probe a small list of commonly exposed sensitive paths."""
+        """Probe common sensitive paths. Codes of interest:
+           200       -> confirmed exposure (HIGH)
+           301/302/307/308 -> redirect / path exists (INFO)
+           500       -> server error, path was processed (MEDIUM)
+        """
         self._log("\n[*] Sensitive File Exposure")
         err = self._require_services('sensitive_files')
         if err: return err
@@ -938,18 +1121,43 @@ class WebSecurityAuditor:
                     res = self._run_command(args, timeout=12)
                     code = res['stdout'].strip()
                     f.write(f"{code}\t{url}\n")
-                    if code in ('200', '301', '302', '307'):
+
+                    if code == '200':
                         findings.append(self._finding(
-                            f"Potentially exposed: {path} (HTTP {code})",
-                            evidence=f"{url} returned HTTP {code}",
+                            f"Potentially exposed: {path} (HTTP 200)",
+                            evidence=f"{url} returned HTTP 200",
                             url=url,
-                            confidence='confirmed' if code == '200' else 'tentative',
+                            confidence='confirmed',
                             check='sensitive_files',
+                            severity='HIGH',
+                        ))
+                    elif code in ('301', '302', '307', '308'):
+                        findings.append(self._finding(
+                            f"Interesting path: {path} (HTTP {code})",
+                            evidence=f"{url} redirected",
+                            url=url,
+                            confidence='confirmed',
+                            check='sensitive_files',
+                            severity='INFO',
+                        ))
+                    elif code == '500':
+                        findings.append(self._finding(
+                            f"Server error on path: {path} (HTTP 500)",
+                            evidence=f"{url} returned HTTP 500 — path was processed",
+                            url=url,
+                            confidence='tentative',
+                            check='sensitive_files',
+                            severity='MEDIUM',
                         ))
         return {'output_file': output_file, 'findings': findings}
 
     def run_nikto(self):
-        """Run Nikto web server vulnerability scanner."""
+        """Run Nikto and keep every meaningful '+ ' finding line.
+
+        Only metadata lines (Target IP/Hostname/Port, Start/End Time,
+        Server:) and the "No CGI Directories" boilerplate are filtered out.
+        Severity is inferred from keywords via SEVERITY_RULES.
+        """
         self._log("\n[*] Nikto - Web Server Scanner")
         err = self._require_services('nikto')
         if err: return err
@@ -959,6 +1167,12 @@ class WebSecurityAuditor:
         findings = []
         first_file = None
         first_stdout = ''
+
+        skip_pattern = re.compile(
+            r'^(target\s+(ip|hostname|port)|start\s*time|end\s*time|server\s*:)',
+            re.IGNORECASE,
+        )
+
         for svc in self.services:
             output_file = os.path.join(
                 self.output_dir,
@@ -976,17 +1190,22 @@ class WebSecurityAuditor:
                 with open(output_file, 'r', errors='replace') as f:
                     content = f.read()
                 for line in content.splitlines():
-                    if not line.strip().startswith('+ '):
+                    stripped = line.strip()
+                    if not stripped.startswith('+ '):
                         continue
-                    low = line.lower()
-                    if 'osvdb' in low or 'server leaks' in low or 'server may leak' in low:
-                        findings.append(self._finding(
-                            f"Nikto: {line.strip()[2:]}",
-                            evidence=f"nikto report for {svc['url']}",
-                            url=svc['url'],
-                            confidence='confirmed',
-                            check='nikto',
-                        ))
+                    text = stripped[2:].strip()
+                    low = text.lower()
+                    if skip_pattern.match(low):
+                        continue
+                    if low.startswith('no cgi directories'):
+                        continue
+                    findings.append(self._finding(
+                        f"Nikto: {text}",
+                        evidence=f"nikto report for {svc['url']}",
+                        url=svc['url'],
+                        confidence='confirmed',
+                        check='nikto',
+                    ))
 
         return {
             'output_file': first_file,
@@ -995,7 +1214,12 @@ class WebSecurityAuditor:
         }
 
     def run_directory_scan(self):
-        """Discover hidden directories/files using ffuf and/or dirb."""
+        """Discover hidden directories/files using ffuf and/or dirb.
+
+        ffuf now includes 500 in the match codes: a 500 on a plausible path
+        (e.g. /uploads) often indicates a directory that exists but is
+        misconfigured. Those are reported with lower confidence.
+        """
         self._log("\n[*] Directory Discovery")
         err = self._require_services('directory_discovery')
         if err: return err
@@ -1007,8 +1231,9 @@ class WebSecurityAuditor:
             self._log("    using ffuf")
             wordlist = self.ffuf_wordlist
             if not wordlist or not os.path.exists(wordlist):
-                wordlist = next((p for p in WORDLIST_CANDIDATES
-                                 if os.path.exists(p)), None)
+                wordlist = self._pick_wordlist()
+            if wordlist:
+                self._log(f"    wordlist: {wordlist}")
 
             if wordlist:
                 ffuf_findings = []
@@ -1023,7 +1248,7 @@ class WebSecurityAuditor:
                             '-w', wordlist,
                             '-o', output_file,
                             '-of', 'json',
-                            '-mc', '200,204,301,302,307,401,403',
+                            '-mc', '200,204,301,302,307,401,403,500',
                             '-rate', str(self.rate),
                             '-s']
                     self._run_command(args, timeout=self.timeout_dirscan)
@@ -1035,13 +1260,24 @@ class WebSecurityAuditor:
                             for hit in data.get('results', []):
                                 status = hit.get('status')
                                 url    = hit.get('url', '')
-                                if status in (200, 301, 302, 401, 403):
+                                length = hit.get('length')
+                                if status in (200, 204, 301, 302, 307, 401, 403):
                                     ffuf_findings.append(self._finding(
                                         f"Discovered: {url} (HTTP {status})",
-                                        evidence=f"{hit.get('length')} bytes",
+                                        evidence=f"{length} bytes",
                                         url=url,
                                         confidence='confirmed',
                                         check='directory_discovery',
+                                        severity='INFO',
+                                    ))
+                                elif status == 500:
+                                    ffuf_findings.append(self._finding(
+                                        f"Server error on path: {url} (HTTP 500)",
+                                        evidence=f"{length} bytes — path was processed",
+                                        url=url,
+                                        confidence='tentative',
+                                        check='directory_discovery',
+                                        severity='MEDIUM',
                                     ))
                         except Exception:
                             pass
@@ -1050,6 +1286,7 @@ class WebSecurityAuditor:
                     'output_file': output_files[0] if output_files else None,
                     'output_files': output_files,
                     'success': True,
+                    'wordlist': wordlist,
                     'findings': ffuf_findings,
                 }
             else:
@@ -1086,7 +1323,6 @@ class WebSecurityAuditor:
     # ----------------------------------------------------------------- report
 
     def generate_report(self):
-        """Build JSON, text, and HTML reports."""
         report = {
             'target': self.target_url,
             'timestamp': self.timestamp,
@@ -1321,6 +1557,7 @@ class WebSecurityAuditor:
             self._log(f"[-] Error in service_discovery: {e}", always=True)
 
         all_checks = [
+            ('body_analysis',       self.run_body_analysis_check),
             ('whatweb',             self.run_whatweb),
             ('ssl_nmap',            self.run_nmap_ssl),
             ('ssl_testssl',         self.run_testssl),
