@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Web Security Audit Automation Script (v6)
+Web Security Audit Automation Script (v7)
 For educational purposes only.
 Only use on systems you own or have explicit written permission to test.
 
@@ -19,6 +19,17 @@ Design principles
 * Evidence-based: every finding carries a URL, confidence, and evidence.
 * Content-length aware: a 200 with 0 bytes is not treated as an exposure.
 * Tool-agnostic: each external tool is optional; missing tools are skipped.
+* Safe on unknown targets: paths, checks, and page discovery are generic.
+
+Changes in v7 (over v6)
+-----------------------
+* Fix crash in _ffuf_rate_args: _run_command returns a dict, not a tuple.
+  The previous code tried `rc, out, err = result`, which raised
+  "too many values to unpack (expected 3)" and killed directory_discovery.
+* URL normalization in _discover_pages uses urljoin, so `./login.php` and
+  `login.php` resolve to the same URL and are fetched once.
+* Filter same-origin only, and drop the root page itself from page_analysis
+  (it is already analyzed by body_analysis).
 
 Usage
 -----
@@ -40,7 +51,7 @@ import subprocess
 import sys
 import tempfile
 from datetime import datetime, timezone
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 
 # ---------------------------------------------------------------------------
@@ -86,7 +97,7 @@ SECURITY_HEADERS = {
     'Permissions-Policy':        'Permissions policy not set',
 }
 
-# Additional headers reported at INFO level if absent.
+# Additional headers reported at LOW if absent.
 INFORMATIONAL_HEADERS = {
     'Cross-Origin-Opener-Policy':   'COOP not set',
     'Cross-Origin-Resource-Policy': 'CORP not set',
@@ -184,9 +195,9 @@ class WebSecurityAuditor:
         self.explicit_ports = [int(p) for p in ports] if ports else None
 
         # Populated during the run
-        self.services = []              # confirmed HTTP/HTTPS services
+        self.services = []
         self.primary_url = self.target_url
-        self.results = {}               # check name -> result dict
+        self.results = {}
 
         # Config
         cfg = config or {}
@@ -261,7 +272,7 @@ class WebSecurityAuditor:
     # ---------------------------------------------------------- execution
 
     def _run_command(self, args, timeout=None, input_data=None):
-        """Run a command without a shell; never raises."""
+        """Run a command without a shell; never raises. Returns a dict."""
         if timeout is None:
             timeout = self.timeout_default
         self._vlog(f"    $ {' '.join(args)}")
@@ -345,7 +356,7 @@ class WebSecurityAuditor:
             'curl', '-sS', '-k', '-L',
             '-o', body_f, '-D', hdr_f, '-w', fmt,
             '--max-time', str(timeout),
-            '-A', 'Mozilla/5.0 (compatible; WebAudit/6.0)',
+            '-A', 'Mozilla/5.0 (compatible; WebAudit/7.0)',
             url,
         ]
         try:
@@ -455,19 +466,15 @@ class WebSecurityAuditor:
         findings = []
         if not self.services:
             findings.append(self._finding(
-                "No reachable web service found",
-                severity='INFO',
+                "No reachable web service found", severity='INFO',
                 evidence=f"Probed {len(candidates)} candidate URL(s)",
-                confidence='confirmed',
-                check='service_discovery'))
+                confidence='confirmed', check='service_discovery'))
         elif not any(s['url'] == self.target_url for s in self.services):
             findings.append(self._finding(
                 "Original target URL did not respond; audit redirected to a "
-                "discovered service",
-                severity='INFO',
+                "discovered service", severity='INFO',
                 evidence=f"Using {self.primary_url}",
-                url=self.primary_url,
-                confidence='confirmed',
+                url=self.primary_url, confidence='confirmed',
                 check='service_discovery'))
 
         return {
@@ -528,7 +535,7 @@ class WebSecurityAuditor:
                         url=url, confidence='tentative',
                         check=check_name))
 
-        # Input fields (informational, grouped)
+        # Input fields (grouped)
         inputs = sorted({m.group(1) for m in re.finditer(
             r'<input\b[^>]*\bname\s*=\s*["\']([^"\']+)["\']',
             body, re.IGNORECASE)})
@@ -593,8 +600,14 @@ class WebSecurityAuditor:
         return findings
 
     def _discover_pages(self, svc, cap=15):
-        """Same-origin URLs worth analyzing, derived from svc's root page."""
+        """Same-origin URLs worth analyzing, derived from svc's root page.
+
+        Uses urljoin so relative forms (./login.php, ../admin, login.php)
+        normalize correctly. Non-HTTP schemes, assets, fragments, and the
+        root page itself are filtered out.
+        """
         root = svc['url'].rstrip('/')
+        parsed_root = urlparse(root)
         body = svc.get('body_snippet') or ''
         hrefs = re.findall(r'<a\b[^>]*\bhref\s*=\s*["\']([^"\']+)["\']',
                            body, re.IGNORECASE)
@@ -605,17 +618,12 @@ class WebSecurityAuditor:
 
         urls, seen = [], {root, root + '/'}
         for h in hrefs:
-            if h.startswith(('mailto:', 'javascript:', 'tel:', '#')):
+            if h.startswith(('mailto:', 'javascript:', 'tel:', 'data:', '#')):
                 continue
-            if h.startswith(('http://', 'https://')):
-                if not h.startswith(root):
-                    continue
-                full = h
-            elif h.startswith('/'):
-                full = root + h
-            else:
-                full = root + '/' + h
-            full = full.split('#', 1)[0]
+            full = urljoin(root + '/', h).split('#', 1)[0]
+            # Same origin only.
+            if urlparse(full).netloc != parsed_root.netloc:
+                continue
             if asset_re.search(full) or full in seen:
                 continue
             seen.add(full)
@@ -654,8 +662,8 @@ class WebSecurityAuditor:
         """Fetch discovered sub-pages and run the HTML analyzer on each.
 
         Paths come from links on the root page (same-origin, non-asset),
-        with auth/admin paths prioritized. Falls back to a short generic
-        list if the root page contains no usable links.
+        normalized via urljoin, with auth/admin paths prioritized. Falls
+        back to a short generic list if the root page has no usable links.
         """
         self._log("\n[*] Multi-Page Content Analysis")
         err = self._preflight('page_analysis')
@@ -763,7 +771,7 @@ class WebSecurityAuditor:
         findings, allowed, first_file = [], [], None
         for svc in self.services:
             args = ['curl', '-sI', '-X', 'OPTIONS', '--max-time', '10',
-                    '-A', 'Mozilla/5.0 (compatible; WebAudit/6.0)', svc['url']]
+                    '-A', 'Mozilla/5.0 (compatible; WebAudit/7.0)', svc['url']]
             result = self._run_command(args, timeout=15)
             if first_file is None:
                 first_file = self._write('methods', result['stdout'])
@@ -855,7 +863,7 @@ class WebSecurityAuditor:
         for svc in self.services:
             args = ['curl', '-sS', '-k', '-i', '-H', f'Origin: {evil}',
                     '--max-time', '10',
-                    '-A', 'Mozilla/5.0 (compatible; WebAudit/6.0)', svc['url']]
+                    '-A', 'Mozilla/5.0 (compatible; WebAudit/7.0)', svc['url']]
             result = self._run_command(args, timeout=15)
             if first_file is None:
                 first_file = self._write('cors', result['stdout'])
@@ -899,12 +907,11 @@ class WebSecurityAuditor:
                     args = ['curl', '-s', '-o', os.devnull,
                             '-w', '%{http_code}|%{size_download}',
                             '--max-time', '8',
-                            '-A', 'Mozilla/5.0 (compatible; WebAudit/6.0)',
+                            '-A', 'Mozilla/5.0 (compatible; WebAudit/7.0)',
                             url]
                     res = self._run_command(args, timeout=12)
                     raw = res['stdout'].strip()
-                    code, size = (raw.split('|', 1) + ['0'])[:2] \
-                        if '|' in raw else (raw, '0')
+                    code, size = raw.split('|', 1) if '|' in raw else (raw, '0')
                     try:
                         size = int(size)
                     except ValueError:
@@ -1150,8 +1157,9 @@ class WebSecurityAuditor:
 
         ffuf >= 1.3 supports -rate; older versions use -p (delay) + -t.
         """
-        rc, out, err = self._run_command(['ffuf', '-h'], timeout=5)
-        if '-rate' in (out + err).lower():
+        result = self._run_command(['ffuf', '-h'], timeout=5)
+        haystack = (result['stdout'] + result['stderr']).lower()
+        if '-rate' in haystack:
             return ['-rate', str(self.rate)]
         delay = 1.0 / max(self.rate, 1)
         return ['-p', f'{delay:.3f}', '-t', '10']
