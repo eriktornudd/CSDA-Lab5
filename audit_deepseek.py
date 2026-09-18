@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 """
-Web Security Audit Automation Script (v2)
+Web Security Audit Automation Script (v3)
 For educational purposes only.
 Only use on systems you own or have explicit written permission to test.
 
+Changes in v3:
+  * Every run now writes into its own subfolder:
+        <output_dir>/run_<timestamp>_<target>/
+    so results are easy to find and runs never mix.
+  * Pass --flat to disable this and write straight into <output_dir>.
+
 Key change in v2: all web checks are gated behind a service-discovery phase.
-If no HTTP/HTTPS service responds, web-specific findings are NOT reported
-(previously, missing-header findings were emitted even when 443 was filtered).
+If no HTTP/HTTPS service responds, web-specific findings are NOT reported.
 
 Usage:
     python3 audit_deepseek.py https://example.com
@@ -14,6 +19,7 @@ Usage:
     python3 audit_deepseek.py https://example.com --only ssl_testssl security_headers
     python3 audit_deepseek.py https://example.com --config audit_config.json
     python3 audit_deepseek.py 130.208.246.173 --ports 80,443,8080
+    python3 audit_deepseek.py https://example.com --flat
 """
 
 import subprocess
@@ -99,6 +105,28 @@ PROBE_TIMEOUT = 10
 
 
 # ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+def _sanitize_folder_component(text):
+    """
+    Make a string safe to use as a single path component on any OS.
+    Strips scheme, path, query; keeps only [A-Za-z0-9._-].
+    """
+    if not text:
+        return 'unknown'
+    # Strip scheme if present
+    if '://' in text:
+        text = text.split('://', 1)[1]
+    # Cut at first slash (drop path/query)
+    text = text.split('/', 1)[0]
+    # Replace anything not alnum/dot/dash/underscore with underscore
+    text = re.sub(r'[^A-Za-z0-9._-]+', '_', text)
+    text = text.strip('._-') or 'unknown'
+    return text[:80]  # keep folder names sane
+
+
+# ---------------------------------------------------------------------------
 # Auditor
 # ---------------------------------------------------------------------------
 
@@ -106,14 +134,12 @@ class WebSecurityAuditor:
 
     def __init__(self, target_url, output_dir="audit_results",
                  config=None, skip_checks=None, only_checks=None,
-                 quiet=False, verbose=False, rate=50, ports=None):
+                 quiet=False, verbose=False, rate=50, ports=None,
+                 flat_output=False):
         self.target_url = target_url.rstrip('/')
         self.parsed_url = urlparse(self.target_url)
         self.domain     = self.parsed_url.netloc          # includes port if present
         self.hostname   = self.parsed_url.hostname        # no port
-        self.output_dir = output_dir
-        self.results    = {}
-        self.timestamp  = datetime.now().strftime("%Y%m%d_%H%M%S")
         self.quiet      = quiet
         self.verbose    = verbose
         self.rate       = rate
@@ -125,6 +151,19 @@ class WebSecurityAuditor:
         self.services = []
         self.primary_url = self.target_url
 
+        # Timestamp used for report filenames.
+        self.timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+        # -------- Per-run output folder ----------------------------------
+        self.base_output_dir = os.path.abspath(output_dir)
+        if flat_output:
+            self.output_dir = self.base_output_dir
+        else:
+            run_label = f"run_{self.timestamp}_{_sanitize_folder_component(self.domain)}"
+            self.output_dir = os.path.join(self.base_output_dir, run_label)
+        os.makedirs(self.output_dir, exist_ok=True)
+        # -----------------------------------------------------------------
+
         # Merge config over defaults.
         cfg = config or {}
         self.timeout_default  = cfg.get('timeout', 300)
@@ -134,9 +173,8 @@ class WebSecurityAuditor:
         self.timeout_nikto    = cfg.get('timeout_nikto', 600)
         self.timeout_dirscan  = cfg.get('timeout_dirscan', 600)
         self.probe_timeout    = cfg.get('probe_timeout', PROBE_TIMEOUT)
-        self.extra_ports      = cfg.get('extra_ports', [])  # list of ints
+        self.extra_ports      = cfg.get('extra_ports', [])
 
-        os.makedirs(self.output_dir, exist_ok=True)
         self.available_tools = self._check_tools()
 
     # ------------------------------------------------------------------ utils
@@ -211,7 +249,7 @@ class WebSecurityAuditor:
                     str(e), 'returncode': -1}
 
     def _write(self, name, content):
-        """Write a raw output file and return its path."""
+        """Write a raw output file into the current run folder."""
         path = os.path.join(self.output_dir, f"{name}_{self.timestamp}.txt")
         with open(path, 'w', encoding='utf-8', errors='replace') as f:
             f.write(content)
@@ -318,7 +356,6 @@ class WebSecurityAuditor:
             except ValueError:
                 return None
             if code == 0:
-                # No HTTP response was actually received.
                 return None
 
             return {
@@ -354,7 +391,6 @@ class WebSecurityAuditor:
             443 if self.parsed_url.scheme == 'https' else 80)
         alt_scheme = 'http' if self.parsed_url.scheme == 'https' else 'https'
 
-        # Alternate scheme on the same port.
         u = f"{alt_scheme}://{host}:{tport}"
         if u not in seen:
             urls.append(u); seen.add(u)
@@ -378,7 +414,6 @@ class WebSecurityAuditor:
         """
         Confirm which HTTP/HTTPS services are actually reachable.
         Populates self.services and self.primary_url.
-        This runs before every other check.
         """
         self._log("\n[*] Service Discovery - Probing for reachable web services")
         services = []
@@ -407,7 +442,6 @@ class WebSecurityAuditor:
                 check='service_discovery',
             ))
         else:
-            # Note if the original target URL itself did not respond.
             if not any(s['url'] == self.target_url for s in services):
                 findings.append(self._finding(
                     "Original target URL did not respond; audit redirected "
@@ -624,7 +658,6 @@ class WebSecurityAuditor:
 
             cert_infos[svc['url']] = cert_info
 
-        # Keep compatibility with old report shape: a single cert_info dict.
         primary_info = cert_infos.get(self.primary_url) or (
             next(iter(cert_infos.values())) if cert_infos else {})
 
@@ -1058,6 +1091,7 @@ class WebSecurityAuditor:
             'target': self.target_url,
             'timestamp': self.timestamp,
             'domain': self.domain,
+            'run_directory': self.output_dir,
             'available_tools': {k: v for k, v in self.available_tools.items()
                                 if k != 'testssl_path'},
             'services': [
@@ -1075,7 +1109,6 @@ class WebSecurityAuditor:
             },
         }
 
-        # Aggregate findings (now dicts) and classify.
         for check, result in self.results.items():
             if not isinstance(result, dict):
                 continue
@@ -1136,6 +1169,7 @@ class WebSecurityAuditor:
             f.write("WEB SECURITY AUDIT REPORT\n")
             f.write(f"Target: {report['target']}\n")
             f.write(f"Date:   {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(f"Run:    {report.get('run_directory', '')}\n")
             f.write("=" * 70 + "\n\n")
 
             f.write("EXECUTIVE SUMMARY\n")
@@ -1208,6 +1242,7 @@ class WebSecurityAuditor:
             f"<p class='meta'><b>Target:</b> {e(report['target'])}<br>",
             f"<b>Web service reachable:</b> "
             f"{'yes' if report['summary']['web_service_reachable'] else 'no'}<br>",
+            f"<b>Run folder:</b> <code>{e(report.get('run_directory', ''))}</code><br>",
             f"<b>Generated:</b> {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>",
         ]
 
@@ -1273,11 +1308,10 @@ class WebSecurityAuditor:
     # ------------------------------------------------------------------ driver
 
     def run_full_audit(self):
-        # Discovery is ALWAYS run first, and is not skippable, because every
-        # subsequent web check depends on it.
         self._log("=" * 70, always=True)
         self._log(f"STARTING SECURITY AUDIT FOR: {self.target_url}", always=True)
         self._log(f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", always=True)
+        self._log(f"Output folder: {self.output_dir}", always=True)
         self._log("=" * 70, always=True)
 
         try:
@@ -1325,6 +1359,7 @@ class WebSecurityAuditor:
         self._log("\n" + "=" * 70, always=True)
         self._log("AUDIT COMPLETE", always=True)
         self._log("=" * 70, always=True)
+        self._log(f"Run folder  : {self.output_dir}", always=True)
         self._log(f"JSON report : {report['json_report']}", always=True)
         self._log(f"Text report : {report['summary_report']}", always=True)
         self._log(f"HTML report : {report['html_report']}", always=True)
@@ -1359,7 +1394,8 @@ def parse_args():
     parser.add_argument('target',
                         help='Target URL or host (e.g., https://example.com)')
     parser.add_argument('-o', '--output', default='audit_results',
-                        help='Output directory (default: audit_results)')
+                        help='Base output directory; a per-run subfolder is '
+                             'created inside it (default: audit_results)')
     parser.add_argument('-c', '--config', default=None,
                         help='Path to JSON config file')
     parser.add_argument('--skip', nargs='*', default=[],
@@ -1369,6 +1405,9 @@ def parse_args():
     parser.add_argument('--ports', default=None,
                         help='Comma-separated extra ports to probe during '
                              'discovery (e.g., 80,443,8080)')
+    parser.add_argument('--flat', action='store_true',
+                        help='Disable per-run subfolders; write directly '
+                             'into the output directory (old behavior)')
     parser.add_argument('-q', '--quiet', action='store_true',
                         help='Only print final summary')
     parser.add_argument('-v', '--verbose', action='store_true',
@@ -1406,13 +1445,14 @@ def main():
         verbose=args.verbose,
         rate=args.rate,
         ports=ports,
+        flat_output=args.flat,
     )
 
     try:
         auditor.run_full_audit()
     except KeyboardInterrupt:
         print("\n[!] Interrupted by user. Partial results saved in",
-              args.output)
+              auditor.output_dir)
         sys.exit(130)
 
 
