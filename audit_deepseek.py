@@ -1,18 +1,27 @@
 #!/usr/bin/env python3
 """
-Web Security Audit Automation Script (v4)
+Web Security Audit Automation Script (v5)
 For educational purposes only.
 Only use on systems you own or have explicit written permission to test.
+
+Changes in v5:
+  * ffuf version detection: uses -rate when supported (>=1.3), falls back
+    to -p/-t for older versions (1.1.0 etc.). Previously the script passed
+    -rate unconditionally, which silently failed on ffuf 1.1.0.
+  * sensitive_files now captures Content-Length. A 200 with 0 bytes is
+    reported as INFO ("executed PHP, no output") instead of HIGH.
+  * Shared HTML analyzer (_analyze_html) used by both root-page and
+    multi-page checks. Now audits POST forms for CSRF tokens.
+  * New check: page_analysis fetches /login.php, /register.php,
+    /thread.php?id=N, /admin/, /admin/index.php and parses each.
 
 Changes in v4:
   * Body content analysis: parses titles, forms, inputs, scripts, links,
     emails, comments, and detects potential unescaped XSS in the HTML.
-  * Broader Nikto parsing: keeps every '+ ' finding line, filters only
-    pure metadata; adds severity rules for admin/config/debug findings.
+  * Broader Nikto parsing: keeps every '+ ' finding line.
   * Expanded SENSITIVE_PATHS (PHP configs, db configs, backups, uploads).
-  * ffuf and sensitive_files now handle HTTP 500 as an interesting signal.
-  * Correct dirb wordlist path (/usr/share/dirb/wordlists/common.txt) so
-    ffuf actually runs on Ubuntu/Debian.
+  * ffuf and sensitive_files handle HTTP 500 as an interesting signal.
+  * Correct dirb wordlist path (/usr/share/dirb/wordlists/common.txt).
 
 Changes in v3:
   * Every run writes into its own subfolder:
@@ -72,6 +81,7 @@ SEVERITY_RULES = [
     ('config.php', 'MEDIUM'),
     ('Server error on path', 'MEDIUM'),
     ('created without the httponly flag', 'MEDIUM'),
+    ('POST form without CSRF', 'MEDIUM'),
     ('missing Secure flag', 'MEDIUM'),
     ('missing HttpOnly flag', 'MEDIUM'),
     ('missing SameSite', 'MEDIUM'),
@@ -175,6 +185,17 @@ def _sanitize_folder_component(text):
 
 class WebSecurityAuditor:
 
+    # Paths worth fetching and parsing beyond the root page. Chosen because
+    # they cover common auth/forum/admin entry points. Adjust per target.
+    PAGE_ANALYSIS_PATHS = [
+        '/login.php',
+        '/register.php',
+        '/thread.php?id=1',
+        '/thread.php?id=2',
+        '/admin/',
+        '/admin/index.php',
+    ]
+
     def __init__(self, target_url, output_dir="audit_results",
                  config=None, skip_checks=None, only_checks=None,
                  quiet=False, verbose=False, rate=50, ports=None,
@@ -220,6 +241,9 @@ class WebSecurityAuditor:
         self.timeout_dirscan  = cfg.get('timeout_dirscan', 600)
         self.probe_timeout    = cfg.get('probe_timeout', PROBE_TIMEOUT)
         self.extra_ports      = cfg.get('extra_ports', [])
+
+        # Cache for ffuf rate flags; computed lazily.
+        self._ffuf_rate_cached = None
 
         self.available_tools = self._check_tools()
 
@@ -348,6 +372,25 @@ class WebSecurityAuditor:
             if os.path.exists(p):
                 return p
         return None
+
+    def _ffuf_rate_args(self):
+        """Return ffuf flags to approximate self.rate.
+
+        ffuf < 1.3 uses -p (per-request delay) + -t (threads); >= 1.3 uses
+        -rate. Detected once and cached on the instance.
+        """
+        if self._ffuf_rate_cached is not None:
+            return self._ffuf_rate_cached
+        rc, out, err = self._run_command(['ffuf', '-h'], timeout=5)
+        haystack = (out + err).lower()
+        if '-rate' in haystack:
+            self._ffuf_rate_cached = ['-rate', str(self.rate)]
+        else:
+            # ffuf < 1.3: emulate rate with per-request delay and modest
+            # thread count (threads multiply effective throughput).
+            delay = 1.0 / max(self.rate, 1)
+            self._ffuf_rate_cached = ['-p', f'{delay:.3f}', '-t', '10']
+        return self._ffuf_rate_cached
 
     # ------------------------------------------------------------- discovery
 
@@ -503,164 +546,197 @@ class WebSecurityAuditor:
                         "No reachable web service confirmed"),
         }
 
+    # -------------------------------------------------------- html parsing
+
+    def _analyze_html(self, url, body, check_name):
+        """Parse one page's HTML and return a list of structured findings.
+
+        Used by both run_body_analysis_check (root page) and
+        run_page_analysis_check (linked pages).
+        """
+        findings = []
+        if not body:
+            return findings
+
+        # ---- <title> ----
+        for m in re.finditer(r'<title[^>]*>(.*?)</title>',
+                             body, re.IGNORECASE | re.DOTALL):
+            title = re.sub(r'\s+', ' ', m.group(1)).strip()[:200]
+            if title:
+                findings.append(self._finding(
+                    f"Page title: {title}",
+                    evidence=url, url=url,
+                    confidence='confirmed', check=check_name))
+
+        # ---- Forms + CSRF audit ----
+        for form_match in re.finditer(
+                r'<form\b([^>]*)>(.*?)</form>',
+                body, re.IGNORECASE | re.DOTALL):
+            attrs = form_match.group(1)
+            inner = form_match.group(2)
+            action_m = re.search(
+                r'action\s*=\s*["\']([^"\']*)["\']', attrs, re.IGNORECASE)
+            method_m = re.search(
+                r'method\s*=\s*["\']([^"\']*)["\']', attrs, re.IGNORECASE)
+            action_val = action_m.group(1) if action_m else '(same page)'
+            method_val = (method_m.group(1) if method_m else 'GET').upper()
+
+            findings.append(self._finding(
+                f"Form: action={action_val} method={method_val}",
+                evidence=url, url=url,
+                confidence='confirmed', check=check_name))
+
+            if method_val == 'POST':
+                has_csrf = bool(re.search(
+                    r'<input[^>]*\bname\s*=\s*["\'][^"\']*csrf[^"\']*["\']',
+                    inner, re.IGNORECASE))
+                if not has_csrf:
+                    findings.append(self._finding(
+                        f"POST form without CSRF token (action={action_val})",
+                        evidence=f"No csrf hidden input found in form on {url}",
+                        url=url, confidence='tentative',
+                        check=check_name, severity='MEDIUM'))
+
+        # ---- Input fields ----
+        input_names = sorted(set(
+            m.group(1) for m in re.finditer(
+                r'<input\b[^>]*\bname\s*=\s*["\']([^"\']+)["\']',
+                body, re.IGNORECASE)))
+        if input_names:
+            findings.append(self._finding(
+                f"Input fields: {', '.join(input_names)}",
+                evidence=url, url=url,
+                confidence='confirmed', check=check_name))
+
+        # ---- Scripts ----
+        for m in re.finditer(
+                r'<script\b[^>]*\bsrc\s*=\s*["\']([^"\']+)["\']',
+                body, re.IGNORECASE):
+            findings.append(self._finding(
+                f"Script loaded: {m.group(1)}",
+                evidence=url, url=url,
+                confidence='confirmed', check=check_name))
+
+        # ---- Interesting links ----
+        hrefs = set(m.group(1) for m in re.finditer(
+            r'<a\b[^>]*\bhref\s*=\s*["\']([^"\']+)["\']',
+            body, re.IGNORECASE))
+        interesting = sorted(
+            h for h in hrefs
+            if re.search(r'\.(php|asp|aspx|jsp|cgi|pl)\b', h, re.IGNORECASE)
+            or '?' in h or '=' in h)
+        if interesting:
+            preview = ', '.join(interesting[:10])
+            suffix = ('' if len(interesting) <= 10
+                      else f' (+{len(interesting) - 10} more)')
+            findings.append(self._finding(
+                f"Interesting links ({len(interesting)}): {preview}{suffix}",
+                evidence=url, url=url,
+                confidence='confirmed', check=check_name))
+
+        # ---- Emails ----
+        emails = sorted(set(re.findall(
+            r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}', body)))
+        emails = [e for e in emails
+                  if not e.lower().endswith(('.png', '.jpg', '.gif', '.css', '.js'))]
+        if emails:
+            findings.append(self._finding(
+                f"Email addresses found: {', '.join(emails[:5])}",
+                evidence=url, url=url,
+                confidence='tentative', check=check_name))
+
+        # ---- HTML comments ----
+        comments = [
+            re.sub(r'\s+', ' ', c).strip()
+            for c in re.findall(r'<!--(.*?)-->', body, re.DOTALL)
+        ]
+        comments = [c for c in comments if len(c) >= 10]
+        if comments:
+            findings.append(self._finding(
+                f"HTML comments present ({len(comments)})",
+                evidence=' | '.join(comments[:3])[:400],
+                url=url, confidence='confirmed', check=check_name))
+
+        # ---- Unescaped script heuristic ----
+        # Fires only on raw <script>alert(...)/document.cookie in the body.
+        # Properly escaped payloads appear as &lt;script&gt; and do not match.
+        if (re.search(r'<script[^>]*>\s*(?:alert|confirm|prompt)\s*\(',
+                      body, re.IGNORECASE)
+                or re.search(r'<script[^>]*>\s*[^<]*document\.cookie',
+                             body, re.IGNORECASE)):
+            findings.append(self._finding(
+                "Potential stored/reflected XSS payload in HTML body",
+                evidence="Unescaped <script> tag with alert()/document.cookie",
+                url=url, confidence='tentative',
+                check=check_name, severity='HIGH'))
+
+        return findings
+
     # ----------------------------------------------------------------- checks
 
     def run_body_analysis_check(self):
-        """Parse the HTML body of each confirmed service for useful leads.
-
-        Runs entirely on data already collected by service discovery, so it
-        does not make any additional requests. Extracts: page titles, forms
-        (action + method), input field names, script srcs, interesting
-        links (PHP/etc. or with query parameters), emails, HTML comments,
-        and a heuristic for unescaped script tags (potential XSS).
-        """
+        """Parse the HTML body of each confirmed service's root page."""
         self._log("\n[*] Body Content Analysis")
         err = self._require_services('body_analysis')
         if err: return err
 
         findings = []
         first_file = None
-        seen_titles = set()
-
         for svc in self.services:
             body = svc.get('body_snippet') or ''
             if not body:
                 continue
-
-            safe = svc['url'].replace('://','_').replace(':','_').replace('/','_')
+            safe = (svc['url']
+                    .replace('://', '_').replace(':', '_').replace('/', '_'))
             if first_file is None:
                 first_file = self._write(f'body_{safe}', body)
-
-            # ---- <title> ----
-            for m in re.finditer(r'<title[^>]*>(.*?)</title>',
-                                 body, re.IGNORECASE | re.DOTALL):
-                title = re.sub(r'\s+', ' ', m.group(1)).strip()[:200]
-                if title and title not in seen_titles:
-                    seen_titles.add(title)
-                    findings.append(self._finding(
-                        f"Page title: {title}",
-                        evidence=svc['url'],
-                        url=svc['url'],
-                        confidence='confirmed',
-                        check='body_analysis',
-                    ))
-
-            # ---- Forms ----
-            for m in re.finditer(r'<form\b([^>]*)>', body, re.IGNORECASE):
-                attrs = m.group(1)
-                action = re.search(r'action\s*=\s*["\']([^"\']*)["\']',
-                                   attrs, re.IGNORECASE)
-                method = re.search(r'method\s*=\s*["\']([^"\']*)["\']',
-                                   attrs, re.IGNORECASE)
-                action_val = action.group(1) if action else '(same page)'
-                method_val = (method.group(1) if method else 'GET').upper()
-                findings.append(self._finding(
-                    f"Form found: action={action_val} method={method_val}",
-                    evidence=svc['url'],
-                    url=svc['url'],
-                    confidence='confirmed',
-                    check='body_analysis',
-                ))
-
-            # ---- Input fields (grouped) ----
-            input_names = sorted(set(
-                m.group(1) for m in re.finditer(
-                    r'<input\b[^>]*\bname\s*=\s*["\']([^"\']+)["\']',
-                    body, re.IGNORECASE)
-            ))
-            if input_names:
-                findings.append(self._finding(
-                    f"Input fields on {svc['url']}: {', '.join(input_names)}",
-                    evidence=svc['url'],
-                    url=svc['url'],
-                    confidence='confirmed',
-                    check='body_analysis',
-                ))
-
-            # ---- Scripts ----
-            scripts = sorted(set(
-                m.group(1) for m in re.finditer(
-                    r'<script\b[^>]*\bsrc\s*=\s*["\']([^"\']+)["\']',
-                    body, re.IGNORECASE)
-            ))
-            for src in scripts:
-                findings.append(self._finding(
-                    f"Script loaded: {src}",
-                    evidence=svc['url'],
-                    url=svc['url'],
-                    confidence='confirmed',
-                    check='body_analysis',
-                ))
-
-            # ---- Interesting links ----
-            hrefs = set(
-                m.group(1) for m in re.finditer(
-                    r'<a\b[^>]*\bhref\s*=\s*["\']([^"\']+)["\']',
-                    body, re.IGNORECASE)
-            )
-            interesting = sorted(
-                h for h in hrefs
-                if re.search(r'\.(php|asp|aspx|jsp|cgi|pl)\b', h, re.IGNORECASE)
-                or '?' in h or '=' in h
-            )
-            if interesting:
-                preview = ', '.join(interesting[:10])
-                suffix = '' if len(interesting) <= 10 else f' … (+{len(interesting)-10} more)'
-                findings.append(self._finding(
-                    f"Interesting links ({len(interesting)}): {preview}{suffix}",
-                    evidence=svc['url'],
-                    url=svc['url'],
-                    confidence='confirmed',
-                    check='body_analysis',
-                ))
-
-            # ---- Emails ----
-            emails = sorted(set(re.findall(
-                r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}', body)))
-            emails = [e for e in emails if not e.endswith(('.png','.jpg','.gif'))]
-            if emails:
-                findings.append(self._finding(
-                    f"Email addresses found: {', '.join(emails[:5])}",
-                    evidence=svc['url'],
-                    url=svc['url'],
-                    confidence='tentative',
-                    check='body_analysis',
-                ))
-
-            # ---- HTML comments ----
-            comments = [
-                re.sub(r'\s+', ' ', c).strip()
-                for c in re.findall(r'<!--(.*?)-->', body, re.DOTALL)
-            ]
-            comments = [c for c in comments if len(c) >= 10]
-            if comments:
-                findings.append(self._finding(
-                    f"HTML comments present ({len(comments)})",
-                    evidence=' | '.join(comments[:3])[:400],
-                    url=svc['url'],
-                    confidence='confirmed',
-                    check='body_analysis',
-                ))
-
-            # ---- Unescaped script heuristic ----
-            # Look for <script>alert(...)</script> or document.cookie inside
-            # a script tag that appears in the body without HTML escaping.
-            # A properly escaped payload renders as &lt;script&gt; and will
-            # NOT match this pattern.
-            if re.search(
-                r'<script[^>]*>\s*(?:alert|confirm|prompt)\s*\(', body, re.IGNORECASE
-            ) or re.search(
-                r'<script[^>]*>\s*[^<]*document\.cookie', body, re.IGNORECASE
-            ):
-                findings.append(self._finding(
-                    "Potential stored/reflected XSS payload in HTML body",
-                    evidence="Unescaped <script> tag with alert()/document.cookie",
-                    url=svc['url'],
-                    confidence='tentative',
-                    check='body_analysis',
-                ))
+            findings.extend(
+                self._analyze_html(svc['url'], body, 'body_analysis'))
 
         return {'output_file': first_file, 'findings': findings}
+
+    def run_page_analysis_check(self):
+        """Fetch each interesting path and parse its HTML body.
+
+        Catches things root-only analysis misses: unescaped payloads on
+        thread views, login/register form fields, POST forms without CSRF
+        tokens, and the admin redirect behavior.
+        """
+        self._log("\n[*] Multi-Page Content Analysis")
+        err = self._require_services('page_analysis')
+        if err: return err
+
+        findings = []
+        first_file = None
+        pages_analyzed = 0
+        pages_fetched = []
+
+        for svc in self.services:
+            base = svc['url'].rstrip('/')
+            for path in self.PAGE_ANALYSIS_PATHS:
+                url = base + path
+                resp = self._probe_http(url)
+                if not resp:
+                    continue
+                pages_analyzed += 1
+                pages_fetched.append({
+                    'url': url,
+                    'status': resp['status'],
+                })
+                body = resp.get('body_snippet') or ''
+                safe = (url
+                        .replace('://', '_').replace(':', '_').replace('/', '_'))
+                if first_file is None:
+                    first_file = self._write(f'page_{safe}', body)
+                findings.extend(
+                    self._analyze_html(url, body, 'page_analysis'))
+
+        return {
+            'output_file': first_file,
+            'pages_analyzed': pages_analyzed,
+            'pages_fetched': pages_fetched,
+            'findings': findings,
+        }
 
     def run_whatweb(self):
         self._log("\n[*] WhatWeb - Technology Identification")
@@ -1096,9 +1172,10 @@ class WebSecurityAuditor:
 
     def run_sensitive_files_check(self):
         """Probe common sensitive paths. Codes of interest:
-           200       -> confirmed exposure (HIGH)
-           301/302/307/308 -> redirect / path exists (INFO)
-           500       -> server error, path was processed (MEDIUM)
+           200 with body   -> confirmed exposure (HIGH)
+           200 with 0 bytes -> executed PHP, no output (INFO)
+           301/302/307/308  -> redirect / path exists (INFO)
+           500              -> server error, path was processed (MEDIUM)
         """
         self._log("\n[*] Sensitive File Exposure")
         err = self._require_services('sensitive_files')
@@ -1115,21 +1192,39 @@ class WebSecurityAuditor:
                 for path in SENSITIVE_PATHS:
                     url = f"{base}{path}"
                     args = ['curl', '-s', '-o', os.devnull,
-                            '-w', '%{http_code}', '--max-time', '8',
+                            '-w', '%{http_code}|%{size_download}',
+                            '--max-time', '8',
                             '-A', 'Mozilla/5.0 (compatible; WebAudit/2.0)',
                             url]
                     res = self._run_command(args, timeout=12)
-                    code = res['stdout'].strip()
-                    f.write(f"{code}\t{url}\n")
+                    raw = res['stdout'].strip()
+                    if '|' in raw:
+                        code, size_s = raw.split('|', 1)
+                        try:
+                            size = int(size_s)
+                        except ValueError:
+                            size = 0
+                    else:
+                        code, size = raw, 0
+                    f.write(f"{code}\t{size}\t{url}\n")
 
-                    if code == '200':
+                    if code == '200' and size > 0:
                         findings.append(self._finding(
-                            f"Potentially exposed: {path} (HTTP 200)",
-                            evidence=f"{url} returned HTTP 200",
+                            f"Potentially exposed: {path} (HTTP 200, {size} bytes)",
+                            evidence=f"{url} returned {size} bytes",
                             url=url,
                             confidence='confirmed',
                             check='sensitive_files',
                             severity='HIGH',
+                        ))
+                    elif code == '200' and size == 0:
+                        findings.append(self._finding(
+                            f"Path exists but empty: {path} (HTTP 200, 0 bytes)",
+                            evidence=f"{url} — likely an executed PHP file with no output",
+                            url=url,
+                            confidence='confirmed',
+                            check='sensitive_files',
+                            severity='INFO',
                         ))
                     elif code in ('301', '302', '307', '308'):
                         findings.append(self._finding(
@@ -1216,9 +1311,10 @@ class WebSecurityAuditor:
     def run_directory_scan(self):
         """Discover hidden directories/files using ffuf and/or dirb.
 
-        ffuf now includes 500 in the match codes: a 500 on a plausible path
-        (e.g. /uploads) often indicates a directory that exists but is
-        misconfigured. Those are reported with lower confidence.
+        ffuf invocation adapts to the installed version: -rate on >= 1.3,
+        -p/-t on older. Includes 500 in the match codes because a 500 on a
+        plausible path often indicates a directory that exists but is
+        misconfigured.
         """
         self._log("\n[*] Directory Discovery")
         err = self._require_services('directory_discovery')
@@ -1236,6 +1332,9 @@ class WebSecurityAuditor:
                 self._log(f"    wordlist: {wordlist}")
 
             if wordlist:
+                rate_args = self._ffuf_rate_args()
+                self._vlog(f"    ffuf rate args: {rate_args}")
+
                 ffuf_findings = []
                 output_files = []
                 for svc in self.services:
@@ -1249,9 +1348,11 @@ class WebSecurityAuditor:
                             '-o', output_file,
                             '-of', 'json',
                             '-mc', '200,204,301,302,307,401,403,500',
-                            '-rate', str(self.rate),
+                            *rate_args,
                             '-s']
-                    self._run_command(args, timeout=self.timeout_dirscan)
+                    result = self._run_command(args, timeout=self.timeout_dirscan)
+                    if not result['success'] and result['stderr']:
+                        self._log(f"    ffuf failed: {result['stderr'][:200]}")
 
                     if os.path.exists(output_file):
                         try:
@@ -1279,14 +1380,20 @@ class WebSecurityAuditor:
                                         check='directory_discovery',
                                         severity='MEDIUM',
                                     ))
-                        except Exception:
-                            pass
+                        except Exception as e:
+                            self._log(f"    ffuf json parse error: {e}")
+                    else:
+                        self._log(
+                            f"    ffuf produced no output file (exit "
+                            f"{result.get('returncode')}): "
+                            f"{(result.get('stderr') or '')[:200]}")
 
                 results['ffuf'] = {
                     'output_file': output_files[0] if output_files else None,
                     'output_files': output_files,
                     'success': True,
                     'wordlist': wordlist,
+                    'rate_args': rate_args,
                     'findings': ffuf_findings,
                 }
             else:
@@ -1558,6 +1665,7 @@ class WebSecurityAuditor:
 
         all_checks = [
             ('body_analysis',       self.run_body_analysis_check),
+            ('page_analysis',       self.run_page_analysis_check),
             ('whatweb',             self.run_whatweb),
             ('ssl_nmap',            self.run_nmap_ssl),
             ('ssl_testssl',         self.run_testssl),
