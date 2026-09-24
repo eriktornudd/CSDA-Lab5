@@ -1,0 +1,18 @@
+HTTP/1.1 200 OK
+Date: Thu, 24 Sep 2026 16:03:48 GMT
+Server: Apache/2.4.58 (Ubuntu)
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+Set-Cookie: trollsid=2hcqjtvdegr9jpojp7ijocgrak; path=/; HttpOnly; SameSite=Lax
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'
+Vary: Accept-Encoding
+Content-Length: 1380
+Content-Type: text/html; charset=UTF-8
+

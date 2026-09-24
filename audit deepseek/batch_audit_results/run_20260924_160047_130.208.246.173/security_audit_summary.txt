@@ -1,0 +1,184 @@
+======================================================================
+WEB SECURITY AUDIT REPORT
+Target:        http://130.208.246.173
+Date:          2026-09-24 16:03:47
+Scan duration: 2m 59s (179.0s)
+Run:           /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173
+======================================================================
+
+EXECUTIVE SUMMARY
+----------------------------------------------------------------------
+Checks performed      : 19
+Web service reachable : yes
+Open ports            : 2
+HIGH                  : 0
+MEDIUM                : 8
+LOW                   : 11
+INFO                  : 42
+
+CONFIRMED WEB SERVICES
+----------------------------------------------------------------------
+  http://130.208.246.173  HTTP 200  Apache/2.4.58 (Ubuntu)
+
+OPEN PORTS
+----------------------------------------------------------------------
+  [22, 80]
+
+NON-HTTP SERVICES
+----------------------------------------------------------------------
+  port 22: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.19
+Invalid SSH identification string.
+
+MEDIUM FINDINGS
+----------------------------------------------------------------------
+  [confirmed] Cookie 'PHPSESSID' missing Secure flag  (http://130.208.246.173)
+  [confirmed] Cookie 'PHPSESSID' missing HttpOnly flag  (http://130.208.246.173)
+  [confirmed] Cookie 'PHPSESSID' missing SameSite flag  (http://130.208.246.173)
+  [tentative] Server error on path: /uploads/ (HTTP 500)  (http://130.208.246.173/uploads/)
+  [confirmed] Nikto: GET /: Cookie PHPSESSID created without the httponly flag  (http://130.208.246.173)
+  [confirmed] Nikto: GET /config.php: /config.php: PHP Config file may contain database IDs and passwords.  (http://130.208.246.173)
+  [confirmed] Nikto: GET /login.php: /login.php: Admin login page/section found.  (http://130.208.246.173)
+  [tentative] Server error on path: http://130.208.246.173/uploads (HTTP 500)  (http://130.208.246.173/uploads)
+
+LOW FINDINGS
+----------------------------------------------------------------------
+  [confirmed] CSP not implemented  (http://130.208.246.173)
+  [confirmed] Clickjacking protection missing  (http://130.208.246.173)
+  [confirmed] MIME sniffing protection missing  (http://130.208.246.173)
+  [confirmed] Referrer policy not set  (http://130.208.246.173)
+  [confirmed] Permissions policy not set  (http://130.208.246.173)
+  [confirmed] COOP not set  (http://130.208.246.173)
+  [confirmed] CORP not set  (http://130.208.246.173)
+  [confirmed] Server discloses version: Apache/2.4.58 (Ubuntu)  (http://130.208.246.173)
+  [confirmed] Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.  (http://130.208.246.173)
+  [confirmed] Nikto: GET /: Server leaks inodes via ETags, header found with file /, fields: 0x29af 0x65bc388512682  (http://130.208.246.173)
+  [confirmed] Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.  (http://130.208.246.173)
+
+INFO FINDINGS
+----------------------------------------------------------------------
+  [confirmed] Non-HTTP service on port 22: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.19
+Invalid SSH identification string.
+  [confirmed] Page title: Rare Minecraft Worlds — Forum  (http://130.208.246.173)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.173)
+  [confirmed] Interesting links (8): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php, thread.php?id=1, thread.php?id=2  (http://130.208.246.173)
+  [confirmed] Page title: Login — Rare Minecraft Worlds  (http://130.208.246.173/login.php)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.173/login.php)
+  [confirmed] Form: action=(same page) method=POST  (http://130.208.246.173/login.php)
+  [confirmed] Input fields: csrf_token, password, username  (http://130.208.246.173/login.php)
+  [confirmed] Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, register.php  (http://130.208.246.173/login.php)
+  [confirmed] Page title: Register — Rare Minecraft Worlds  (http://130.208.246.173/register.php)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.173/register.php)
+  [confirmed] Form: action=(same page) method=POST  (http://130.208.246.173/register.php)
+  [confirmed] Input fields: confirm, csrf_token, password, username  (http://130.208.246.173/register.php)
+  [confirmed] Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php  (http://130.208.246.173/register.php)
+  [confirmed] Page title: Screenshot Gallery — Rare Minecraft Worlds  (http://130.208.246.173/gallery.php)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.173/gallery.php)
+  [confirmed] Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php  (http://130.208.246.173/gallery.php)
+  [confirmed] Page title: World Downloads — Rare Minecraft Worlds  (http://130.208.246.173/worlds.php)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.173/worlds.php)
+  [confirmed] Interesting links (8): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, download_world.php?id=1, download_world.php?id=2, login.php  (http://130.208.246.173/worlds.php)
+  [confirmed] Page title: I AM GOD — Rare Minecraft Worlds  (http://130.208.246.173/thread.php?id=2)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.173/thread.php?id=2)
+  [confirmed] Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php  (http://130.208.246.173/thread.php?id=2)
+  [confirmed] Page title: &lt;script&gt;alert(document.cookie)&lt;/script&gt; — Rare Minecraft Worlds  (http://130.208.246.173/thread.php?id=1)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.173/thread.php?id=1)
+  [confirmed] Interesting links (5): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php  (http://130.208.246.173/thread.php?id=1)
+  [confirmed] WhatWeb http://130.208.246.173 [200 OK]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.173], Title[Rare Minecraft Worlds — Forum]  (http://130.208.246.173)
+  [confirmed] Path exists but empty: /config.php (HTTP 200, 0 bytes)  (http://130.208.246.173/config.php)
+  [confirmed] Protected path exists: /config.sample.php (HTTP 403)  (http://130.208.246.173/config.sample.php)
+  [confirmed] Path exists but empty: /includes/db.php (HTTP 200, 0 bytes)  (http://130.208.246.173/includes/db.php)
+  [confirmed] Protected path exists: /.htaccess (HTTP 403)  (http://130.208.246.173/.htaccess)
+  [confirmed] Protected path exists: /.htpasswd (HTTP 403)  (http://130.208.246.173/.htpasswd)
+  [confirmed] Protected path exists: /server-status (HTTP 403)  (http://130.208.246.173/server-status)
+  [confirmed] Discovered: http://130.208.246.173/.hta (HTTP 403)  (http://130.208.246.173/.hta)
+  [confirmed] Discovered: http://130.208.246.173/.htaccess (HTTP 403)  (http://130.208.246.173/.htaccess)
+  [confirmed] Discovered: http://130.208.246.173/.htpasswd (HTTP 403)  (http://130.208.246.173/.htpasswd)
+  [confirmed] Discovered: http://130.208.246.173/admin (HTTP 301)  (http://130.208.246.173/admin)
+  [confirmed] Discovered: http://130.208.246.173/css (HTTP 301)  (http://130.208.246.173/css)
+  [confirmed] Discovered: http://130.208.246.173/includes (HTTP 301)  (http://130.208.246.173/includes)
+  [confirmed] Discovered: http://130.208.246.173/index.php (HTTP 200)  (http://130.208.246.173/index.php)
+  [confirmed] Discovered: http://130.208.246.173/js (HTTP 301)  (http://130.208.246.173/js)
+  [confirmed] Discovered: http://130.208.246.173/server-status (HTTP 403)  (http://130.208.246.173/server-status)
+
+
+CHECK TIMINGS
+----------------------------------------------------------------------
+  directory_discovery    2m 5s
+  nikto                  45.87s
+  whatweb                4.12s
+  service_discovery      1.66s
+  sensitive_files        1.25s
+  page_analysis          196ms
+  dns_info               49ms
+  http_methods           39ms
+  cors                   37ms
+  body_analysis          15ms
+  cache_control          12ms
+  security_headers       11ms
+  info_disclosure        11ms
+  cookies                10ms
+  ssl_nmap               0ms
+  ssl_testssl            0ms
+  ssl_certificate        0ms
+  csp_analysis           0ms
+  https_redirect         0ms
+
+
+DETAILED RESULTS
+----------------------------------------------------------------------
+
+[SERVICE_DISCOVERY] (1.66s)
+  Summary: 1 HTTP/HTTPS service(s) confirmed, 1 other open port(s)...
+
+[DNS_INFO] (49ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/dns_info.txt
+
+[BODY_ANALYSIS] (15ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/body_http_130.208.246.173.txt
+
+[PAGE_ANALYSIS] (196ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/page_http_130.208.246.173_login.php.txt
+
+[WHATWEB] (4.12s)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/whatweb.txt
+
+[SSL_NMAP] (0ms)
+  Error: No HTTPS service confirmed; skipping SSL enumeration
+
+[SSL_TESTSSL] (0ms)
+  Error: No HTTPS service confirmed; skipping testssl
+
+[SSL_CERTIFICATE] (0ms)
+  Error: No HTTPS service confirmed
+
+[SECURITY_HEADERS] (11ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/headers.txt
+
+[CSP_ANALYSIS] (0ms)
+
+[CACHE_CONTROL] (12ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/cache_control.txt
+
+[COOKIES] (10ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/cookies.txt
+
+[HTTP_METHODS] (39ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/methods.txt
+
+[HTTPS_REDIRECT] (0ms)
+  Error: No HTTPS service confirmed; cannot evaluate redirect
+
+[INFO_DISCLOSURE] (11ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/disclosure.txt
+
+[CORS] (37ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/cors.txt
+
+[SENSITIVE_FILES] (1.25s)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/sensitive_files.txt
+
+[NIKTO] (45.87s)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/nikto_http_130.208.246.173.txt
+  Summary: - Nikto v2.1.5 --------------------------------------------------------------------------- + Target IP:          130.208.246.173 + Target Hostname:    130.208.246.173 + Target Port:        80 + Start Time:         2026-09-24 16:00:55 (GMT0) ---------...
+
+[DIRECTORY_DISCOVERY] (2m 5s)

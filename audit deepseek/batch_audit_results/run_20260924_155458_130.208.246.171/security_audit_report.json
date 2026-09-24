@@ -1,0 +1,2304 @@
+{
+  "target": "http://130.208.246.171",
+  "timestamp": "20260924_155458",
+  "domain": "130.208.246.171",
+  "run_directory": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171",
+  "scan_duration_seconds": 348.9412250518799,
+  "scan_duration_human": "5m 48s",
+  "available_tools": {
+    "whatweb": true,
+    "nmap": true,
+    "nikto": true,
+    "dirb": true,
+    "ffuf": true,
+    "openssl": true,
+    "curl": true,
+    "dig": true,
+    "testssl": true
+  },
+  "services": [
+    {
+      "url": "http://130.208.246.171",
+      "scheme": "http",
+      "port": 80,
+      "status": 200,
+      "server": "Apache/2.4.58 (Ubuntu)",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "http://130.208.246.171:8080",
+      "scheme": "http",
+      "port": 8080,
+      "status": 200,
+      "server": "Apache/2.4.58 (Ubuntu)",
+      "content_type": "text/html; charset=UTF-8"
+    }
+  ],
+  "open_ports": [
+    80,
+    8080
+  ],
+  "non_http_services": [],
+  "results": {
+    "service_discovery": {
+      "candidates_probed": 4,
+      "ports_scanned": 96,
+      "port_scan_seconds": 1.128067970275879,
+      "open_ports": [
+        80,
+        8080
+      ],
+      "non_http_services": [],
+      "confirmed_services": [
+        {
+          "url": "http://130.208.246.171",
+          "scheme": "http",
+          "port": 80,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "http://130.208.246.171:8080",
+          "scheme": "http",
+          "port": 8080,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "findings": [],
+      "summary": "2 HTTP/HTTPS service(s) confirmed, 0 other open port(s)",
+      "_duration_seconds": 1.4208974838256836
+    },
+    "dns_info": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/dns_info.txt",
+      "dns_info": {
+        "input": "130.208.246.171",
+        "is_ip_literal": true,
+        "resolved_ips": [
+          "130.208.246.171"
+        ],
+        "reverse_dns": null
+      },
+      "findings": [],
+      "_duration_seconds": 0.05063819885253906
+    },
+    "body_analysis": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/body_http_130.208.246.171.txt",
+      "findings": [
+        {
+          "title": "Page title: The Malazan Archive",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Page title: Home - Tunnblr",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Interesting links (10): create_post.php, index.php, login.php, register.php, view_post.php?id=1, view_post.php?id=2, view_post.php?id=3, view_post.php?id=4, view_post.php?id=5, view_post.php?id=6",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "body_analysis"
+        }
+      ],
+      "_duration_seconds": 0.019482135772705078
+    },
+    "page_analysis": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/page_http_130.208.246.171_login.txt",
+      "pages_fetched": [
+        {
+          "url": "http://130.208.246.171/login",
+          "status": 200,
+          "size": 1132,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.171/register",
+          "status": 200,
+          "size": 1255,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.171/forum",
+          "status": 200,
+          "size": 1392,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.171/gallery",
+          "status": 200,
+          "size": 828,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.171/wiki",
+          "status": 200,
+          "size": 1446,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.171/characters",
+          "status": 200,
+          "size": 884,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.171:8080/login.php",
+          "status": 200,
+          "size": 1773,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.171:8080/register.php",
+          "status": 200,
+          "size": 1897,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.171:8080/index.php",
+          "status": 200,
+          "size": 3434,
+          "duplicate": true
+        },
+        {
+          "url": "http://130.208.246.171:8080/create_post.php",
+          "status": 200,
+          "size": 1773,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.171:8080/view_post.php?id=6",
+          "status": 200,
+          "size": 1856,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.171:8080/view_post.php?id=5",
+          "status": 200,
+          "size": 1658,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.171:8080/view_post.php?id=4",
+          "status": 200,
+          "size": 1665,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.171:8080/view_post.php?id=3",
+          "status": 200,
+          "size": 1755,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.171:8080/view_post.php?id=2",
+          "status": 200,
+          "size": 1652,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.171:8080/view_post.php?id=1",
+          "status": 200,
+          "size": 1818,
+          "duplicate": false
+        }
+      ],
+      "findings": [
+        {
+          "title": "Page title: The Malazan Archive",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/login",
+          "url": "http://130.208.246.171/login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/login",
+          "url": "http://130.208.246.171/login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=/login method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/login",
+          "url": "http://130.208.246.171/login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: csrf, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/login",
+          "url": "http://130.208.246.171/login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: The Malazan Archive",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/register",
+          "url": "http://130.208.246.171/register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/register",
+          "url": "http://130.208.246.171/register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=/register method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/register",
+          "url": "http://130.208.246.171/register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: confirm_password, csrf, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/register",
+          "url": "http://130.208.246.171/register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: The Malazan Archive",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/forum",
+          "url": "http://130.208.246.171/forum",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/forum",
+          "url": "http://130.208.246.171/forum",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: The Malazan Archive",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/gallery",
+          "url": "http://130.208.246.171/gallery",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/gallery",
+          "url": "http://130.208.246.171/gallery",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: The Malazan Archive",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/wiki",
+          "url": "http://130.208.246.171/wiki",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/wiki",
+          "url": "http://130.208.246.171/wiki",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: The Malazan Archive",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/characters",
+          "url": "http://130.208.246.171/characters",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/characters",
+          "url": "http://130.208.246.171/characters",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Log In - Tunnblr",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/login.php",
+          "url": "http://130.208.246.171:8080/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/login.php",
+          "url": "http://130.208.246.171:8080/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=login.php method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/login.php",
+          "url": "http://130.208.246.171:8080/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: csrf_token, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/login.php",
+          "url": "http://130.208.246.171:8080/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/login.php",
+          "url": "http://130.208.246.171:8080/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Sign Up - Tunnblr",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/register.php",
+          "url": "http://130.208.246.171:8080/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/register.php",
+          "url": "http://130.208.246.171:8080/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=register.php method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/register.php",
+          "url": "http://130.208.246.171:8080/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: csrf_token, password, password2, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/register.php",
+          "url": "http://130.208.246.171:8080/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/register.php",
+          "url": "http://130.208.246.171:8080/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Log In - Tunnblr",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/create_post.php",
+          "url": "http://130.208.246.171:8080/create_post.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/create_post.php",
+          "url": "http://130.208.246.171:8080/create_post.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=login.php method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/create_post.php",
+          "url": "http://130.208.246.171:8080/create_post.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: csrf_token, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/create_post.php",
+          "url": "http://130.208.246.171:8080/create_post.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/create_post.php",
+          "url": "http://130.208.246.171:8080/create_post.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: &lt;script&gt;alert(1)&lt;/script&gt; - Tunnblr",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=6",
+          "url": "http://130.208.246.171:8080/view_post.php?id=6",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=6",
+          "url": "http://130.208.246.171:8080/view_post.php?id=6",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=6",
+          "url": "http://130.208.246.171:8080/view_post.php?id=6",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: test - Tunnblr",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=5",
+          "url": "http://130.208.246.171:8080/view_post.php?id=5",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=5",
+          "url": "http://130.208.246.171:8080/view_post.php?id=5",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=5",
+          "url": "http://130.208.246.171:8080/view_post.php?id=5",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: yoooo - Tunnblr",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=4",
+          "url": "http://130.208.246.171:8080/view_post.php?id=4",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=4",
+          "url": "http://130.208.246.171:8080/view_post.php?id=4",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=4",
+          "url": "http://130.208.246.171:8080/view_post.php?id=4",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Me when someone tries to hack my website - Tunnblr",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=3",
+          "url": "http://130.208.246.171:8080/view_post.php?id=3",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=3",
+          "url": "http://130.208.246.171:8080/view_post.php?id=3",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=3",
+          "url": "http://130.208.246.171:8080/view_post.php?id=3",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: wsg - Tunnblr",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=2",
+          "url": "http://130.208.246.171:8080/view_post.php?id=2",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=2",
+          "url": "http://130.208.246.171:8080/view_post.php?id=2",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=2",
+          "url": "http://130.208.246.171:8080/view_post.php?id=2",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Wowza! Very first Tunnblr post! - Tunnblr",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=1",
+          "url": "http://130.208.246.171:8080/view_post.php?id=1",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=1",
+          "url": "http://130.208.246.171:8080/view_post.php?id=1",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=1",
+          "url": "http://130.208.246.171:8080/view_post.php?id=1",
+          "check": "page_analysis"
+        }
+      ],
+      "_duration_seconds": 1.5419836044311523
+    },
+    "whatweb": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/whatweb.txt",
+      "findings": [
+        {
+          "title": "WhatWeb http://130.208.246.171 [200 OK]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[PHPSESSID], IP[130.208.246.171], Title[The Malazan Archive]",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "whatweb"
+        },
+        {
+          "title": "WhatWeb http://130.208.246.171:8080 [200 OK]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.171], Title[Home - Tunnblr]",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "whatweb"
+        }
+      ],
+      "_duration_seconds": 8.438948154449463
+    },
+    "ssl_nmap": {
+      "error": "No HTTPS service confirmed; skipping SSL enumeration",
+      "_duration_seconds": 2.5033950805664062e-05
+    },
+    "ssl_testssl": {
+      "error": "No HTTPS service confirmed; skipping testssl",
+      "_duration_seconds": 9.5367431640625e-06
+    },
+    "ssl_certificate": {
+      "error": "No HTTPS service confirmed",
+      "_duration_seconds": 1.0013580322265625e-05
+    },
+    "security_headers": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/headers.txt",
+      "present_headers": [],
+      "missing_headers": [
+        {
+          "header": "Content-Security-Policy",
+          "issue": "CSP not implemented",
+          "url": "http://130.208.246.171"
+        },
+        {
+          "header": "X-Frame-Options",
+          "issue": "Clickjacking protection missing",
+          "url": "http://130.208.246.171"
+        },
+        {
+          "header": "X-Content-Type-Options",
+          "issue": "MIME sniffing protection missing",
+          "url": "http://130.208.246.171"
+        },
+        {
+          "header": "Referrer-Policy",
+          "issue": "Referrer policy not set",
+          "url": "http://130.208.246.171"
+        },
+        {
+          "header": "Permissions-Policy",
+          "issue": "Permissions policy not set",
+          "url": "http://130.208.246.171"
+        },
+        {
+          "header": "Content-Security-Policy",
+          "issue": "CSP not implemented",
+          "url": "http://130.208.246.171:8080"
+        },
+        {
+          "header": "X-Frame-Options",
+          "issue": "Clickjacking protection missing",
+          "url": "http://130.208.246.171:8080"
+        },
+        {
+          "header": "X-Content-Type-Options",
+          "issue": "MIME sniffing protection missing",
+          "url": "http://130.208.246.171:8080"
+        },
+        {
+          "header": "Referrer-Policy",
+          "issue": "Referrer policy not set",
+          "url": "http://130.208.246.171:8080"
+        },
+        {
+          "header": "Permissions-Policy",
+          "issue": "Permissions policy not set",
+          "url": "http://130.208.246.171:8080"
+        }
+      ],
+      "findings": [
+        {
+          "title": "CSP not implemented",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Content-Security-Policy absent on http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "security_headers"
+        },
+        {
+          "title": "Clickjacking protection missing",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "X-Frame-Options absent on http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "security_headers"
+        },
+        {
+          "title": "MIME sniffing protection missing",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "X-Content-Type-Options absent on http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "security_headers"
+        },
+        {
+          "title": "Referrer policy not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Referrer-Policy absent on http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "security_headers"
+        },
+        {
+          "title": "Permissions policy not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Permissions-Policy absent on http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "security_headers"
+        },
+        {
+          "title": "COOP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "security_headers"
+        },
+        {
+          "title": "CORP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "security_headers"
+        },
+        {
+          "title": "CSP not implemented",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Content-Security-Policy absent on http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "security_headers"
+        },
+        {
+          "title": "Clickjacking protection missing",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "X-Frame-Options absent on http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "security_headers"
+        },
+        {
+          "title": "MIME sniffing protection missing",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "X-Content-Type-Options absent on http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "security_headers"
+        },
+        {
+          "title": "Referrer policy not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Referrer-Policy absent on http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "security_headers"
+        },
+        {
+          "title": "Permissions policy not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Permissions-Policy absent on http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "security_headers"
+        },
+        {
+          "title": "COOP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "security_headers"
+        },
+        {
+          "title": "CORP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "security_headers"
+        }
+      ],
+      "raw_headers": "HTTP/1.1 200 OK\nDate: Thu, 24 Sep 2026 15:54:59 GMT\nServer: Apache/2.4.58 (Ubuntu)\nSet-Cookie: PHPSESSID=r38omghcdcgabrku53p0bon30d; path=/; HttpOnly; SameSite=Lax\nExpires: Thu, 19 Nov 1981 08:52:00 GMT\nCache-Control: no-store, no-cache, must-revalidate\nPragma: no-cache\nVary: Accept-Encoding\nContent-Length: 1171\nContent-Type: text/html; charset=UTF-8\n\n",
+      "_duration_seconds": 0.010176897048950195
+    },
+    "csp_analysis": {
+      "output_file": null,
+      "findings": [],
+      "_duration_seconds": 0.0001475811004638672
+    },
+    "cache_control": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/cache_control.txt",
+      "findings": [],
+      "_duration_seconds": 0.012084484100341797
+    },
+    "cookies": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/cookies.txt",
+      "cookies_found": 2,
+      "findings": [
+        {
+          "title": "Cookie 'PHPSESSID' missing Secure flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "PHPSESSID=r38omghcdcgabrku53p0bon30d; path=/; HttpOnly; SameSite=Lax",
+          "url": "http://130.208.246.171",
+          "check": "cookies"
+        },
+        {
+          "title": "Cookie 'PHPSESSID' missing Secure flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "PHPSESSID=gk2o8an52j51fv7s967ettspd7; path=/",
+          "url": "http://130.208.246.171:8080",
+          "check": "cookies"
+        },
+        {
+          "title": "Cookie 'PHPSESSID' missing HttpOnly flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "PHPSESSID=gk2o8an52j51fv7s967ettspd7; path=/",
+          "url": "http://130.208.246.171:8080",
+          "check": "cookies"
+        },
+        {
+          "title": "Cookie 'PHPSESSID' missing SameSite flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "PHPSESSID=gk2o8an52j51fv7s967ettspd7; path=/",
+          "url": "http://130.208.246.171:8080",
+          "check": "cookies"
+        }
+      ],
+      "_duration_seconds": 0.03512978553771973
+    },
+    "http_methods": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/methods.txt",
+      "allowed_methods": [],
+      "findings": [],
+      "_duration_seconds": 0.1079092025756836
+    },
+    "https_redirect": {
+      "error": "No HTTPS service confirmed; cannot evaluate redirect",
+      "_duration_seconds": 5.0067901611328125e-05
+    },
+    "info_disclosure": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/disclosure.txt",
+      "findings": [
+        {
+          "title": "Server discloses version: Apache/2.4.58 (Ubuntu)",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "server: Apache/2.4.58 (Ubuntu)",
+          "url": "http://130.208.246.171",
+          "check": "info_disclosure"
+        },
+        {
+          "title": "Server discloses version: Apache/2.4.58 (Ubuntu)",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "server: Apache/2.4.58 (Ubuntu)",
+          "url": "http://130.208.246.171:8080",
+          "check": "info_disclosure"
+        }
+      ],
+      "_duration_seconds": 0.01878213882446289
+    },
+    "cors": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/cors.txt",
+      "findings": [],
+      "_duration_seconds": 0.0956730842590332
+    },
+    "sensitive_files": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/sensitive_files.txt",
+      "findings": [
+        {
+          "title": "Protected path exists: /.htaccess (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/.htaccess returned HTTP 403",
+          "url": "http://130.208.246.171/.htaccess",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.htpasswd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/.htpasswd returned HTTP 403",
+          "url": "http://130.208.246.171/.htpasswd",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /server-status (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/server-status returned HTTP 403",
+          "url": "http://130.208.246.171/server-status",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /uploads/ (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171/uploads/ returned HTTP 403",
+          "url": "http://130.208.246.171/uploads/",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Path exists but empty: /config.php (HTTP 200, 0 bytes)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/config.php \u2014 likely an executed PHP file",
+          "url": "http://130.208.246.171:8080/config.php",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.htaccess (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/.htaccess returned HTTP 403",
+          "url": "http://130.208.246.171:8080/.htaccess",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.htpasswd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/.htpasswd returned HTTP 403",
+          "url": "http://130.208.246.171:8080/.htpasswd",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /server-status (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/server-status returned HTTP 403",
+          "url": "http://130.208.246.171:8080/server-status",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /uploads/ (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.171:8080/uploads/ returned HTTP 403",
+          "url": "http://130.208.246.171:8080/uploads/",
+          "check": "sensitive_files"
+        }
+      ],
+      "_duration_seconds": 4.080102920532227
+    },
+    "nikto": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/nikto_http_130.208.246.171.txt",
+      "summary": "- Nikto v2.1.5\n---------------------------------------------------------------------------\n+ Target IP:          130.208.246.171\n+ Target Hostname:    130.208.246.171\n+ Target Port:        80\n+ Start Time:         2026-09-24 15:55:15 (GMT0)\n---------------------------------------------------------------------------\n+ Server: Apache/2.4.58 (Ubuntu)\n+ The anti-clickjacking X-Frame-Options header is not present.\n+ Cookie PHPSESSID created without the httponly flag\n+ No CGI Directories found (use '-C all' to force check all possible dirs)\n+ ///etc/hosts: The server install allows reading of any system file by adding an extra '/' to the URL.\n+ OSVDB-3092: /forum/: This might be interesting...\n+ OSVDB-3092: /login/: This might be interesting...\n+ OSVDB-3092: /register/: This might be interesting",
+      "findings": [
+        {
+          "title": "Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Cookie PHPSESSID created without the httponly flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET ///etc/hosts: ///etc/hosts: The server install allows reading of any system file by adding an extra '/' to the URL.",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: -3092: GET /forum/: /forum/: This might be interesting...",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: -3092: GET /login/: /login/: This might be interesting...",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: -3092: GET /register/: /register/: This might be interesting...",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.171",
+          "url": "http://130.208.246.171",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Cookie PHPSESSID created without the httponly flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /config.php: /config.php: PHP Config file may contain database IDs and passwords.",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /login.php: /login.php: Admin login page/section found.",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.171:8080",
+          "url": "http://130.208.246.171:8080",
+          "check": "nikto"
+        }
+      ],
+      "_duration_seconds": 97.8559091091156
+    },
+    "directory_discovery": {
+      "ffuf": {
+        "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/ffuf_http_130.208.246.171.json",
+        "output_files": [
+          "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/ffuf_http_130.208.246.171.json",
+          "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/ffuf_http_130.208.246.171_8080.json"
+        ],
+        "wordlist": "/snap/seclists/current/Discovery/Web-Content/common.txt",
+        "findings": [
+          {
+            "title": "Discovered: http://130.208.246.171/.hta (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.171/.hta",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171/.htaccess (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.171/.htaccess",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171/.htpasswd (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.171/.htpasswd",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171/assets (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "319 bytes",
+            "url": "http://130.208.246.171/assets",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171/forum (HTTP 200)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "1392 bytes",
+            "url": "http://130.208.246.171/forum",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171/gallery (HTTP 200)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "828 bytes",
+            "url": "http://130.208.246.171/gallery",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171/login (HTTP 200)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "1132 bytes",
+            "url": "http://130.208.246.171/login",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171/profile (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "840 bytes",
+            "url": "http://130.208.246.171/profile",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171/register (HTTP 200)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "1255 bytes",
+            "url": "http://130.208.246.171/register",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171/server-status (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.171/server-status",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171/uploads (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "320 bytes",
+            "url": "http://130.208.246.171/uploads",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171/wiki (HTTP 200)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "1444 bytes",
+            "url": "http://130.208.246.171/wiki",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171:8080/.hta (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.171:8080/.hta",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171:8080/.htaccess (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.171:8080/.htaccess",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171:8080/.htpasswd (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.171:8080/.htpasswd",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171:8080/admin (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "242 bytes",
+            "url": "http://130.208.246.171:8080/admin",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171:8080/css (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "240 bytes",
+            "url": "http://130.208.246.171:8080/css",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171:8080/includes (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "245 bytes",
+            "url": "http://130.208.246.171:8080/includes",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171:8080/index.php (HTTP 200)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "3426 bytes",
+            "url": "http://130.208.246.171:8080/index.php",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171:8080/server-status (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.171:8080/server-status",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.171:8080/uploads (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "244 bytes",
+            "url": "http://130.208.246.171:8080/uploads",
+            "check": "directory_discovery"
+          }
+        ]
+      },
+      "dirb": {
+        "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/dirb_http_130.208.246.171.txt",
+        "findings": []
+      },
+      "findings": [
+        {
+          "title": "Discovered: http://130.208.246.171/.hta (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.171/.hta",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/.htaccess (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.171/.htaccess",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/.htpasswd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.171/.htpasswd",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/assets (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "319 bytes",
+          "url": "http://130.208.246.171/assets",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/forum (HTTP 200)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "1392 bytes",
+          "url": "http://130.208.246.171/forum",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/gallery (HTTP 200)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "828 bytes",
+          "url": "http://130.208.246.171/gallery",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/login (HTTP 200)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "1132 bytes",
+          "url": "http://130.208.246.171/login",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/profile (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "840 bytes",
+          "url": "http://130.208.246.171/profile",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/register (HTTP 200)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "1255 bytes",
+          "url": "http://130.208.246.171/register",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/server-status (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.171/server-status",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/uploads (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "320 bytes",
+          "url": "http://130.208.246.171/uploads",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/wiki (HTTP 200)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "1444 bytes",
+          "url": "http://130.208.246.171/wiki",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/.hta (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.171:8080/.hta",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/.htaccess (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.171:8080/.htaccess",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/.htpasswd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.171:8080/.htpasswd",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/admin (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "242 bytes",
+          "url": "http://130.208.246.171:8080/admin",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/css (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "240 bytes",
+          "url": "http://130.208.246.171:8080/css",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/includes (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "245 bytes",
+          "url": "http://130.208.246.171:8080/includes",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/index.php (HTTP 200)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "3426 bytes",
+          "url": "http://130.208.246.171:8080/index.php",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/server-status (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.171:8080/server-status",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/uploads (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "244 bytes",
+          "url": "http://130.208.246.171:8080/uploads",
+          "check": "directory_discovery"
+        }
+      ],
+      "_duration_seconds": 235.24961948394775
+    }
+  },
+  "check_durations": {
+    "service_discovery": 1.421,
+    "dns_info": 0.051,
+    "body_analysis": 0.019,
+    "page_analysis": 1.542,
+    "whatweb": 8.439,
+    "ssl_nmap": 0.0,
+    "ssl_testssl": 0.0,
+    "ssl_certificate": 0.0,
+    "security_headers": 0.01,
+    "csp_analysis": 0.0,
+    "cache_control": 0.012,
+    "cookies": 0.035,
+    "http_methods": 0.108,
+    "https_redirect": 0.0,
+    "info_disclosure": 0.019,
+    "cors": 0.096,
+    "sensitive_files": 4.08,
+    "nikto": 97.856,
+    "directory_discovery": 235.25
+  },
+  "summary": {
+    "total_checks": 19,
+    "web_service_reachable": true,
+    "open_port_count": 2,
+    "findings_by_severity": {
+      "HIGH": [],
+      "MEDIUM": [
+        {
+          "title": "Cookie 'PHPSESSID' missing Secure flag",
+          "check": "cookies",
+          "url": "http://130.208.246.171",
+          "evidence": "PHPSESSID=r38omghcdcgabrku53p0bon30d; path=/; HttpOnly; SameSite=Lax",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Cookie 'PHPSESSID' missing Secure flag",
+          "check": "cookies",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "PHPSESSID=gk2o8an52j51fv7s967ettspd7; path=/",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Cookie 'PHPSESSID' missing HttpOnly flag",
+          "check": "cookies",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "PHPSESSID=gk2o8an52j51fv7s967ettspd7; path=/",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Cookie 'PHPSESSID' missing SameSite flag",
+          "check": "cookies",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "PHPSESSID=gk2o8an52j51fv7s967ettspd7; path=/",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Cookie PHPSESSID created without the httponly flag",
+          "check": "nikto",
+          "url": "http://130.208.246.171",
+          "evidence": "nikto report for http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Cookie PHPSESSID created without the httponly flag",
+          "check": "nikto",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "nikto report for http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /config.php: /config.php: PHP Config file may contain database IDs and passwords.",
+          "check": "nikto",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "nikto report for http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /login.php: /login.php: Admin login page/section found.",
+          "check": "nikto",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "nikto report for http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        }
+      ],
+      "LOW": [
+        {
+          "title": "CSP not implemented",
+          "check": "security_headers",
+          "url": "http://130.208.246.171",
+          "evidence": "Content-Security-Policy absent on http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Clickjacking protection missing",
+          "check": "security_headers",
+          "url": "http://130.208.246.171",
+          "evidence": "X-Frame-Options absent on http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "MIME sniffing protection missing",
+          "check": "security_headers",
+          "url": "http://130.208.246.171",
+          "evidence": "X-Content-Type-Options absent on http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Referrer policy not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.171",
+          "evidence": "Referrer-Policy absent on http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Permissions policy not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.171",
+          "evidence": "Permissions-Policy absent on http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "COOP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.171",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "CORP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.171",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "CSP not implemented",
+          "check": "security_headers",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "Content-Security-Policy absent on http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Clickjacking protection missing",
+          "check": "security_headers",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "X-Frame-Options absent on http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "MIME sniffing protection missing",
+          "check": "security_headers",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "X-Content-Type-Options absent on http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Referrer policy not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "Referrer-Policy absent on http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Permissions policy not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "Permissions-Policy absent on http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "COOP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "CORP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Server discloses version: Apache/2.4.58 (Ubuntu)",
+          "check": "info_disclosure",
+          "url": "http://130.208.246.171",
+          "evidence": "server: Apache/2.4.58 (Ubuntu)",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Server discloses version: Apache/2.4.58 (Ubuntu)",
+          "check": "info_disclosure",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "server: Apache/2.4.58 (Ubuntu)",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.",
+          "check": "nikto",
+          "url": "http://130.208.246.171",
+          "evidence": "nikto report for http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.",
+          "check": "nikto",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "nikto report for http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.",
+          "check": "nikto",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "nikto report for http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        }
+      ],
+      "INFO": [
+        {
+          "title": "Page title: The Malazan Archive",
+          "check": "body_analysis",
+          "url": "http://130.208.246.171",
+          "evidence": "http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "body_analysis",
+          "url": "http://130.208.246.171",
+          "evidence": "http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Home - Tunnblr",
+          "check": "body_analysis",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "check": "body_analysis",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (10): create_post.php, index.php, login.php, register.php, view_post.php?id=1, view_post.php?id=2, view_post.php?id=3, view_post.php?id=4, view_post.php?id=5, view_post.php?id=6",
+          "check": "body_analysis",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: The Malazan Archive",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/login",
+          "evidence": "http://130.208.246.171/login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/login",
+          "evidence": "http://130.208.246.171/login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=/login method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/login",
+          "evidence": "http://130.208.246.171/login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: csrf, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/login",
+          "evidence": "http://130.208.246.171/login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: The Malazan Archive",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/register",
+          "evidence": "http://130.208.246.171/register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/register",
+          "evidence": "http://130.208.246.171/register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=/register method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/register",
+          "evidence": "http://130.208.246.171/register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: confirm_password, csrf, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/register",
+          "evidence": "http://130.208.246.171/register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: The Malazan Archive",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/forum",
+          "evidence": "http://130.208.246.171/forum",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/forum",
+          "evidence": "http://130.208.246.171/forum",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: The Malazan Archive",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/gallery",
+          "evidence": "http://130.208.246.171/gallery",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/gallery",
+          "evidence": "http://130.208.246.171/gallery",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: The Malazan Archive",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/wiki",
+          "evidence": "http://130.208.246.171/wiki",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/wiki",
+          "evidence": "http://130.208.246.171/wiki",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: The Malazan Archive",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/characters",
+          "evidence": "http://130.208.246.171/characters",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171/characters",
+          "evidence": "http://130.208.246.171/characters",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Log In - Tunnblr",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/login.php",
+          "evidence": "http://130.208.246.171:8080/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/login.php",
+          "evidence": "http://130.208.246.171:8080/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=login.php method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/login.php",
+          "evidence": "http://130.208.246.171:8080/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: csrf_token, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/login.php",
+          "evidence": "http://130.208.246.171:8080/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/login.php",
+          "evidence": "http://130.208.246.171:8080/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Sign Up - Tunnblr",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/register.php",
+          "evidence": "http://130.208.246.171:8080/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/register.php",
+          "evidence": "http://130.208.246.171:8080/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=register.php method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/register.php",
+          "evidence": "http://130.208.246.171:8080/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: csrf_token, password, password2, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/register.php",
+          "evidence": "http://130.208.246.171:8080/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/register.php",
+          "evidence": "http://130.208.246.171:8080/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Log In - Tunnblr",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/create_post.php",
+          "evidence": "http://130.208.246.171:8080/create_post.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/create_post.php",
+          "evidence": "http://130.208.246.171:8080/create_post.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=login.php method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/create_post.php",
+          "evidence": "http://130.208.246.171:8080/create_post.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: csrf_token, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/create_post.php",
+          "evidence": "http://130.208.246.171:8080/create_post.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/create_post.php",
+          "evidence": "http://130.208.246.171:8080/create_post.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: &lt;script&gt;alert(1)&lt;/script&gt; - Tunnblr",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=6",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=6",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=6",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=6",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=6",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=6",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: test - Tunnblr",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=5",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=5",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=5",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=5",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=5",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=5",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: yoooo - Tunnblr",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=4",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=4",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=4",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=4",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=4",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=4",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Me when someone tries to hack my website - Tunnblr",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=3",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=3",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=3",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=3",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=3",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=3",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: wsg - Tunnblr",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=2",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=2",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=2",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=2",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=2",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=2",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Wowza! Very first Tunnblr post! - Tunnblr",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=1",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=1",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1.0",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=1",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=1",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (4): create_post.php, index.php, login.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.171:8080/view_post.php?id=1",
+          "evidence": "http://130.208.246.171:8080/view_post.php?id=1",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "WhatWeb http://130.208.246.171 [200 OK]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[PHPSESSID], IP[130.208.246.171], Title[The Malazan Archive]",
+          "check": "whatweb",
+          "url": "http://130.208.246.171",
+          "evidence": "http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "WhatWeb http://130.208.246.171:8080 [200 OK]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.171], Title[Home - Tunnblr]",
+          "check": "whatweb",
+          "url": "http://130.208.246.171:8080",
+          "evidence": "http://130.208.246.171:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.htaccess (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.171/.htaccess",
+          "evidence": "http://130.208.246.171/.htaccess returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.htpasswd (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.171/.htpasswd",
+          "evidence": "http://130.208.246.171/.htpasswd returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /server-status (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.171/server-status",
+          "evidence": "http://130.208.246.171/server-status returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /uploads/ (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.171/uploads/",
+          "evidence": "http://130.208.246.171/uploads/ returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Path exists but empty: /config.php (HTTP 200, 0 bytes)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.171:8080/config.php",
+          "evidence": "http://130.208.246.171:8080/config.php \u2014 likely an executed PHP file",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.htaccess (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.171:8080/.htaccess",
+          "evidence": "http://130.208.246.171:8080/.htaccess returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.htpasswd (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.171:8080/.htpasswd",
+          "evidence": "http://130.208.246.171:8080/.htpasswd returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /server-status (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.171:8080/server-status",
+          "evidence": "http://130.208.246.171:8080/server-status returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /uploads/ (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.171:8080/uploads/",
+          "evidence": "http://130.208.246.171:8080/uploads/ returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET ///etc/hosts: ///etc/hosts: The server install allows reading of any system file by adding an extra '/' to the URL.",
+          "check": "nikto",
+          "url": "http://130.208.246.171",
+          "evidence": "nikto report for http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: -3092: GET /forum/: /forum/: This might be interesting...",
+          "check": "nikto",
+          "url": "http://130.208.246.171",
+          "evidence": "nikto report for http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: -3092: GET /login/: /login/: This might be interesting...",
+          "check": "nikto",
+          "url": "http://130.208.246.171",
+          "evidence": "nikto report for http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: -3092: GET /register/: /register/: This might be interesting...",
+          "check": "nikto",
+          "url": "http://130.208.246.171",
+          "evidence": "nikto report for http://130.208.246.171",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/.hta (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171/.hta",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/.htaccess (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171/.htaccess",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/.htpasswd (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171/.htpasswd",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/assets (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171/assets",
+          "evidence": "319 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/forum (HTTP 200)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171/forum",
+          "evidence": "1392 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/gallery (HTTP 200)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171/gallery",
+          "evidence": "828 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/login (HTTP 200)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171/login",
+          "evidence": "1132 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/profile (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171/profile",
+          "evidence": "840 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/register (HTTP 200)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171/register",
+          "evidence": "1255 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/server-status (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171/server-status",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/uploads (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171/uploads",
+          "evidence": "320 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171/wiki (HTTP 200)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171/wiki",
+          "evidence": "1444 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/.hta (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171:8080/.hta",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/.htaccess (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171:8080/.htaccess",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/.htpasswd (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171:8080/.htpasswd",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/admin (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171:8080/admin",
+          "evidence": "242 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/css (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171:8080/css",
+          "evidence": "240 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/includes (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171:8080/includes",
+          "evidence": "245 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/index.php (HTTP 200)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171:8080/index.php",
+          "evidence": "3426 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/server-status (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171:8080/server-status",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.171:8080/uploads (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.171:8080/uploads",
+          "evidence": "244 bytes",
+          "confidence": "confirmed"
+        }
+      ]
+    }
+  }
+}

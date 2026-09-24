@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Main index :: Packet Fossils</title>
+  <link rel="stylesheet" href="/static/forum.css">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+</head>
+
+<body id="top">
+  <a class="skip" href="#content">Skip to the message board</a>
+  <div class="site-shell">
+    <div class="topline"><span><span class="led">●</span> CARRIER DETECTED &nbsp; / &nbsp; EST. SEPTEMBER
+        1993</span><span>September 12077th, 1993</span></div>
+    <header>
+      <div class="brand">
+        <div class="terminal" aria-hidden="true"><span>C:\&gt;_<br> ▄ ▄ ▄</span></div>
+        <div><a class="wordmark" href="/">Packet Fossils<span
+              class="tm">™</span></a>
+          <div class="tagline">The Society for the Preservation of Obsolete Networking Technology</div>
+          <div class="motto">“It worked in 1993. It still works. Stop touching it.”</div>
+        </div>
+      </div>
+      <div class="browser-badge"><b>NETSCAPE</b><span>NOW!<sup> 3.0</sup></span><small>Best viewed at 800 ×
+          600</small></div>
+    </header>
+    <nav aria-label="Main navigation"><a href="/">⌂ Main index</a> <span>|</span> <a
+        href="/gallery">▧ Hardware gallery</a> <span>|</span> <a href="/search">⌕ Search
+        archives</a> <span>|</span> <a href="/netiquette">? Netiquette</a>
+      <div class="nav-account"><a href="/login">[ Log in ]</a> &nbsp; <a href="/register">[
+          Register ]</a></div>
+    </nav>
+    <div class="ticker"><b>*** SYSOP BULLETIN ***</b><span>Welcome to the last working corner of the information superhighway. Please leave your modern sensibilities at the login prompt.</span><b class="new-tag">NEW!</b></div>
+    
+    <main id="content">
+<div class="breadcrumb">You are here: <b>Packet Fossils</b> &gt; Main index</div>
+<div class="home-grid">
+  <div>
+    <section class="welcome panel">
+      <h1>Welcome to the network that time forgot.</h1>
+      <p>A serious society for collectors of obsolete networking hardware, lost protocols, and exceptionally strong
+        opinions.</p>
+      <p>If you have ever terminated a coax cable, defended X.25 at a dinner party, or kept a router “for the
+        documentation,” you are among friends.</p>
+      <div class="welcome-bottom"><b>TCP/IP was a compromise. Discuss.</b><a class="button"
+          href="/register">Join the society &gt;&gt;</a></div>
+    </section>
+    <div class="section-heading">
+      <h2>▣ The discussion boards</h2><span>All times are permanently September.</span>
+    </div>
+    
+    <div class="table-wrap">
+      <table class="forum-table">
+        <caption>01 / THE PROTOCOL WARS</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="icon-column"><span class="sr-only">Icon</span></th>
+            <th scope="col">Forum / Description</th>
+            <th scope="col" class="number-column">Threads</th>
+            <th scope="col" class="number-column">Posts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="board-icon" aria-hidden="true">⇄</td>
+            <td><a class="board-title" href="/board/1">X.25 Appreciation Society</a>
+              <p>Packet switching peaked in 1976. Virtual circuits. Actual devotion.</p>
+            </td>
+            <td class="count">3</td>
+            <td class="count">10</td>
+          </tr><tr>
+            <td class="board-icon" aria-hidden="true">▤</td>
+            <td><a class="board-title" href="/board/2">Frame Relay Collectors</a>
+              <p>DLCIs, mystery Nortel cards, and a committed information rate of nostalgia.</p>
+            </td>
+            <td class="count">3</td>
+            <td class="count">10</td>
+          </tr><tr>
+            <td class="board-icon" aria-hidden="true">◎</td>
+            <td><a class="board-title" href="/board/3">Token Ring Supremacy</a>
+              <p>A civilized network waits its turn. Where is the token? Who has the token?</p>
+            </td>
+            <td class="count">4</td>
+            <td class="count">11</td>
+          </tr><tr>
+            <td class="board-icon" aria-hidden="true">⊣</td>
+            <td><a class="board-title" href="/board/4">10BASE2 &amp; Coax Enthusiasts</a>
+              <p>BNC tees, 50-ohm terminators, and one loose connector ruining everybody’s day.</p>
+            </td>
+            <td class="count">3</td>
+            <td class="count">10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table class="forum-table">
+        <caption>02 / THE HARDWARE VAULT</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="icon-column"><span class="sr-only">Icon</span></th>
+            <th scope="col">Forum / Description</th>
+            <th scope="col" class="number-column">Threads</th>
+            <th scope="col" class="number-column">Posts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="board-icon" aria-hidden="true">☎</td>
+            <td><a class="board-title" href="/board/5">Dial-Up &amp; Acoustic Couplers</a>
+              <p>The handshake is the music. The connection is merely a bonus.</p>
+            </td>
+            <td class="count">3</td>
+            <td class="count">11</td>
+          </tr><tr>
+            <td class="board-icon" aria-hidden="true">▣</td>
+            <td><a class="board-title" href="/board/6">Serial Terminal Sanctuary</a>
+              <p>Green phosphor, amber screens, and the eternal DTE versus DCE question.</p>
+            </td>
+            <td class="count">3</td>
+            <td class="count">10</td>
+          </tr><tr>
+            <td class="board-icon" aria-hidden="true">▥</td>
+            <td><a class="board-title" href="/board/7">Ancient Routers &amp; NICs</a>
+              <p>ISA cards, beige boxes, and equipment with more uptime than resale value.</p>
+            </td>
+            <td class="count">3</td>
+            <td class="count">10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table class="forum-table">
+        <caption>03 / ARCHIVES &amp; CLASSIFIEDS</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="icon-column"><span class="sr-only">Icon</span></th>
+            <th scope="col">Forum / Description</th>
+            <th scope="col" class="number-column">Threads</th>
+            <th scope="col" class="number-column">Posts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="board-icon" aria-hidden="true">▧</td>
+            <td><a class="board-title" href="/board/8">RFCs &amp; Usenet Archaeology</a>
+              <p>Cite your sources. Trim your quotes. This argument started before you were born.</p>
+            </td>
+            <td class="count">3</td>
+            <td class="count">11</td>
+          </tr><tr>
+            <td class="board-icon" aria-hidden="true">⌘</td>
+            <td><a class="board-title" href="/board/9">The Browser War Bunker</a>
+              <p>Netscape versus IE. This matter has absolutely not been settled.</p>
+            </td>
+            <td class="count">3</td>
+            <td class="count">11</td>
+          </tr><tr>
+            <td class="board-icon" aria-hidden="true">◇</td>
+            <td><a class="board-title" href="/board/10">The Swap Meet</a>
+              <p>For sale, wanted, and “free to a good rack.” No lowballers. We know what we have.</p>
+            </td>
+            <td class="count">3</td>
+            <td class="count">10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend"><span>▣ A place for civilized disagreement.</span><span>▧ Photos welcome. Gigabit evangelism
+        tolerated.</span></div>
+    <section class="panel recent">
+      <h2 class="bar">⌁ Recent transmissions</h2>
+      <table class="simple-table">
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Replies</th>
+            <th>Last activity</th>
+          </tr>
+        </thead>
+        <tbody><tr>
+            <td><a href="/thread/31">I love Token Rings, death to TCP</a><small>Token Ring Supremacy · alfa</small></td>
+            <td>0</td>
+            <td>September 12072nd, 1993</td>
+          </tr><tr>
+            <td><a href="/thread/30">FREE TO GOOD RACK: SynOptics 2813 hub</a><small>The Swap Meet · BayStacker</small></td>
+            <td>3</td>
+            <td>September 1017th, 1993</td>
+          </tr><tr>
+            <td><a href="/thread/29">WANTED: IBM Type 1 cable, sensible quantity</a><small>The Swap Meet · Token_Passer</small></td>
+            <td>2</td>
+            <td>September 1004th, 1993</td>
+          </tr><tr>
+            <td><a href="/thread/28">FOR SALE: 14.4k modem. No lowballers.</a><small>The Swap Meet · V42bis</small></td>
+            <td>2</td>
+            <td>September 991st, 1993</td>
+          </tr><tr>
+            <td><a href="/thread/27">Animated GIF moratorium proposal</a><small>The Browser War Bunker · GopherHole</small></td>
+            <td>3</td>
+            <td>September 978th, 1993</td>
+          </tr><tr>
+            <td><a href="/thread/26">Internet Explorer 3 has better tables</a><small>The Browser War Bunker · MosaicFan</small></td>
+            <td>2</td>
+            <td>September 965th, 1993</td>
+          </tr></tbody>
+      </table>
+    </section><div class="members-note"><b>The archives are open.</b> Read discussions and browse
+      photographs freely. <a href="/login">Log in</a> or <a
+        href="/register">register a handle</a> when you want to transmit.</div>
+  </div>
+  <aside>
+    <section class="panel status">
+      <h2 class="bar">● Connection status</h2>
+      <div class="panel-inner">
+        <pre>ATZ
+OK
+ATDT 1-993-PACKET
+CONNECT 14400</pre>
+        <hr>
+        <dl>
+          <dt>Users on file</dt>
+          <dd>20</dd>
+          <dt>Threads preserved</dt>
+          <dd>31</dd>
+          <dt>Packets posted</dt>
+          <dd>104</dd>
+          <dt>Hardware photos</dt>
+          <dd>1</dd>
+        </dl>
+        <div class="status-line">All systems: <b>OBSOLETE</b></div>
+      </div>
+    </section>
+    <section class="panel dispatch">
+      <h2 class="bar">The eternal flamewar</h2>
+      <div class="panel-inner"><span class="eyebrow">FROM THE SOCIETY'S MANIFESTO</span>
+        <blockquote>“Packet switching peaked in 1976. Change my mind.”</blockquote>
+        <p>Bring documentation.<br>Preferably dot-matrix.</p><a
+          href="/search?q=Packet+switching">Enter the discussion &gt;&gt;</a>
+      </div>
+    </section>
+    <section class="construction"><span aria-hidden="true">🚧</span><b>UNDER<br>CONSTRUCTION</b><small>Since September
+        1096th, 1993.<br>Any day now.</small></section>
+    <section class="panel">
+      <h2 class="bar">A note from the sysop</h2>
+      <div class="panel-inner">
+        <p class="no-top">Please do not upload your entire 1994 driver CD. Hardware photographs only.</p>
+        <p>Trim your quotes. Respect the collectors. Never remove the terminator.</p><a
+          href="/netiquette">Read the netiquette »</a>
+        <div class="signature">— the management<br>&nbsp; <code>+++ ATH0</code></div>
+      </div>
+    </section>
+    <section class="counter-panel"><b>You are visitor number</b>
+      <div class="hit-counter" aria-label="0000683 homepage views"><span>0</span><span>0</span><span>0</span><span>0</span><span>6</span><span>8</span><span>3</span></div><small>Homepage views, including return visits.<br>Yes, we count. No, we won't upgrade.</small>
+    </section>
+  </aside>
+</div>
+</main>
+    <footer>
+      <div class="webring">[ <a href="/netiquette#webring">&lt;&lt; Previous</a> ] &nbsp; <b>THE
+          OBSOLETE WEB RING</b> &nbsp; [ <a href="/netiquette#webring">Next &gt;&gt;</a>
+        ]<small>This site is a proud dead end on the information superhighway.</small></div>
+      <div class="badges"><span class="mini-badge netscape">N<span>NETSCAPE<br>ENHANCED</span></span><span
+          class="mini-badge html">HTML<span>HAND<br>CRAFTED</span></span><span class="mini-badge no-ie">NO<span>ACTIVE
+            X<br>REQUIRED</span></span><span class="mini-badge tcp">TCP/IP<span>PACKETS<br>INSIDE</span></span></div>
+      <p>Best viewed with Netscape Navigator at 800×600. Best argued about over a 14.4k connection.<br>© September
+        1993–September 1993 Packet Fossils. All packets reserved.</p>
+      <p class="footer-small">No cookies were harmed. One is required to log in. &nbsp; · &nbsp; <a href="#top">Back to
+          top ↑</a> &nbsp; · &nbsp; <a href="/netiquette#privacy">Privacy
+          &amp; site notes</a></p>
+    </footer>
+  </div>
+</body>
+
+</html>

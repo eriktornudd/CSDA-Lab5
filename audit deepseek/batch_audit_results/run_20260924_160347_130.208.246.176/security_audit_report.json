@@ -1,0 +1,1053 @@
+{
+  "target": "http://130.208.246.176",
+  "timestamp": "20260924_160347",
+  "domain": "130.208.246.176",
+  "run_directory": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176",
+  "scan_duration_seconds": 84.16580653190613,
+  "scan_duration_human": "1m 24s",
+  "available_tools": {
+    "whatweb": true,
+    "nmap": true,
+    "nikto": true,
+    "dirb": true,
+    "ffuf": true,
+    "openssl": true,
+    "curl": true,
+    "dig": true,
+    "testssl": true
+  },
+  "services": [
+    {
+      "url": "http://130.208.246.176",
+      "scheme": "http",
+      "port": 80,
+      "status": 200,
+      "server": "Apache/2.4.58 (Ubuntu)",
+      "content_type": "text/html; charset=UTF-8"
+    }
+  ],
+  "open_ports": [
+    80
+  ],
+  "non_http_services": [],
+  "results": {
+    "service_discovery": {
+      "candidates_probed": 2,
+      "ports_scanned": 96,
+      "port_scan_seconds": 1.065002202987671,
+      "open_ports": [
+        80
+      ],
+      "non_http_services": [],
+      "confirmed_services": [
+        {
+          "url": "http://130.208.246.176",
+          "scheme": "http",
+          "port": 80,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "findings": [],
+      "summary": "1 HTTP/HTTPS service(s) confirmed, 0 other open port(s)",
+      "_duration_seconds": 1.1375055313110352
+    },
+    "dns_info": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/dns_info.txt",
+      "dns_info": {
+        "input": "130.208.246.176",
+        "is_ip_literal": true,
+        "resolved_ips": [
+          "130.208.246.176"
+        ],
+        "reverse_dns": null
+      },
+      "findings": [],
+      "_duration_seconds": 0.054009437561035156
+    },
+    "body_analysis": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/body_http_130.208.246.176.txt",
+      "findings": [
+        {
+          "title": "Page title: Board \u2014 Tr\u00f6llasteinar",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Meta robots: noindex",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Interesting links (3): index.php, login.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "body_analysis"
+        }
+      ],
+      "_duration_seconds": 0.02055072784423828
+    },
+    "page_analysis": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/page_http_130.208.246.176_login.php.txt",
+      "pages_fetched": [
+        {
+          "url": "http://130.208.246.176/login.php",
+          "status": 200,
+          "size": 1506,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.176/register.php",
+          "status": 200,
+          "size": 1765,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.176/index.php",
+          "status": 200,
+          "size": 1380,
+          "duplicate": true
+        }
+      ],
+      "findings": [
+        {
+          "title": "Page title: Log in \u2014 Tr\u00f6llasteinar",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/login.php",
+          "url": "http://130.208.246.176/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/login.php",
+          "url": "http://130.208.246.176/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta robots: noindex",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/login.php",
+          "url": "http://130.208.246.176/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=login.php method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/login.php",
+          "url": "http://130.208.246.176/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: csrf, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/login.php",
+          "url": "http://130.208.246.176/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (3): index.php, login.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/login.php",
+          "url": "http://130.208.246.176/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Create an account \u2014 Tr\u00f6llasteinar",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/register.php",
+          "url": "http://130.208.246.176/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/register.php",
+          "url": "http://130.208.246.176/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta robots: noindex",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/register.php",
+          "url": "http://130.208.246.176/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=register.php method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/register.php",
+          "url": "http://130.208.246.176/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: confirm, csrf, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/register.php",
+          "url": "http://130.208.246.176/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (3): index.php, login.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/register.php",
+          "url": "http://130.208.246.176/register.php",
+          "check": "page_analysis"
+        }
+      ],
+      "_duration_seconds": 0.29045557975769043
+    },
+    "whatweb": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/whatweb.txt",
+      "findings": [
+        {
+          "title": "WhatWeb http://130.208.246.176 [200 OK]: Apache[2.4.58], Cookies[trollsid], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[trollsid], IP[130.208.246.176], Title[Board \u2014 Tr\u00f6llasteinar], UncommonHeaders",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "whatweb"
+        }
+      ],
+      "_duration_seconds": 1.2475872039794922
+    },
+    "ssl_nmap": {
+      "error": "No HTTPS service confirmed; skipping SSL enumeration",
+      "_duration_seconds": 2.1457672119140625e-05
+    },
+    "ssl_testssl": {
+      "error": "No HTTPS service confirmed; skipping testssl",
+      "_duration_seconds": 4.553794860839844e-05
+    },
+    "ssl_certificate": {
+      "error": "No HTTPS service confirmed",
+      "_duration_seconds": 7.367134094238281e-05
+    },
+    "security_headers": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/headers.txt",
+      "present_headers": [
+        {
+          "header": "Content-Security-Policy",
+          "url": "http://130.208.246.176",
+          "value": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'"
+        },
+        {
+          "header": "X-Frame-Options",
+          "url": "http://130.208.246.176",
+          "value": "DENY; DENY"
+        },
+        {
+          "header": "X-Content-Type-Options",
+          "url": "http://130.208.246.176",
+          "value": "nosniff; nosniff"
+        },
+        {
+          "header": "Referrer-Policy",
+          "url": "http://130.208.246.176",
+          "value": "no-referrer; no-referrer"
+        }
+      ],
+      "missing_headers": [
+        {
+          "header": "Permissions-Policy",
+          "issue": "Permissions policy not set",
+          "url": "http://130.208.246.176"
+        }
+      ],
+      "findings": [
+        {
+          "title": "Permissions policy not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Permissions-Policy absent on http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "security_headers"
+        },
+        {
+          "title": "COOP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "security_headers"
+        },
+        {
+          "title": "CORP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "security_headers"
+        }
+      ],
+      "raw_headers": "HTTP/1.1 200 OK\nDate: Thu, 24 Sep 2026 16:03:47 GMT\nServer: Apache/2.4.58 (Ubuntu)\nX-Content-Type-Options: nosniff\nX-Frame-Options: DENY\nReferrer-Policy: no-referrer\nSet-Cookie: trollsid=erp2l0vsuogdvaboluln8b5uv4; path=/; HttpOnly; SameSite=Lax\nExpires: Thu, 19 Nov 1981 08:52:00 GMT\nCache-Control: no-store, no-cache, must-revalidate\nPragma: no-cache\nX-Content-Type-Options: nosniff\nX-Frame-Options: DENY\nReferrer-Policy: no-referrer\nContent-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'\nVary: Accept-Encoding\nContent-Length: 1380\nContent-Type: text/html; charset=UTF-8\n\n",
+      "_duration_seconds": 0.0071849822998046875
+    },
+    "csp_analysis": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/csp.txt",
+      "findings": [
+        {
+          "title": "CSP allows 'unsafe-inline'",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'",
+          "url": "http://130.208.246.176",
+          "check": "csp_analysis"
+        },
+        {
+          "title": "CSP missing object-src directive",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'",
+          "url": "http://130.208.246.176",
+          "check": "csp_analysis"
+        }
+      ],
+      "_duration_seconds": 0.008063316345214844
+    },
+    "cache_control": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/cache_control.txt",
+      "findings": [],
+      "_duration_seconds": 0.006266593933105469
+    },
+    "cookies": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/cookies.txt",
+      "cookies_found": 1,
+      "findings": [
+        {
+          "title": "Cookie 'trollsid' missing Secure flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "trollsid=erp2l0vsuogdvaboluln8b5uv4; path=/; HttpOnly; SameSite=Lax",
+          "url": "http://130.208.246.176",
+          "check": "cookies"
+        }
+      ],
+      "_duration_seconds": 0.005786418914794922
+    },
+    "http_methods": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/methods.txt",
+      "allowed_methods": [],
+      "findings": [],
+      "_duration_seconds": 0.02949810028076172
+    },
+    "https_redirect": {
+      "error": "No HTTPS service confirmed; cannot evaluate redirect",
+      "_duration_seconds": 2.1696090698242188e-05
+    },
+    "info_disclosure": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/disclosure.txt",
+      "findings": [
+        {
+          "title": "Server discloses version: Apache/2.4.58 (Ubuntu)",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "server: Apache/2.4.58 (Ubuntu)",
+          "url": "http://130.208.246.176",
+          "check": "info_disclosure"
+        }
+      ],
+      "_duration_seconds": 0.00744938850402832
+    },
+    "cors": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/cors.txt",
+      "findings": [],
+      "_duration_seconds": 0.04422163963317871
+    },
+    "sensitive_files": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/sensitive_files.txt",
+      "findings": [
+        {
+          "title": "Path exists but empty: /config.php (HTTP 200, 0 bytes)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/config.php \u2014 likely an executed PHP file",
+          "url": "http://130.208.246.176/config.php",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Path exists but empty: /db.php (HTTP 200, 0 bytes)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/db.php \u2014 likely an executed PHP file",
+          "url": "http://130.208.246.176/db.php",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.htaccess (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/.htaccess returned HTTP 403",
+          "url": "http://130.208.246.176/.htaccess",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.htpasswd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/.htpasswd returned HTTP 403",
+          "url": "http://130.208.246.176/.htpasswd",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /server-status (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.176/server-status returned HTTP 403",
+          "url": "http://130.208.246.176/server-status",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Server error on path: /uploads/ (HTTP 500)",
+          "severity": "MEDIUM",
+          "confidence": "tentative",
+          "evidence": "http://130.208.246.176/uploads/ returned HTTP 500 \u2014 path was processed",
+          "url": "http://130.208.246.176/uploads/",
+          "check": "sensitive_files"
+        }
+      ],
+      "_duration_seconds": 1.383775234222412
+    },
+    "nikto": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/nikto_http_130.208.246.176.txt",
+      "summary": "- Nikto v2.1.5\n---------------------------------------------------------------------------\n+ Target IP:          130.208.246.176\n+ Target Hostname:    130.208.246.176\n+ Target Port:        80\n+ Start Time:         2026-09-24 16:03:51 (GMT0)\n---------------------------------------------------------------------------\n+ Server: Apache/2.4.58 (Ubuntu)\n+ Uncommon header 'x-frame-options' found, with contents: DENY\n+ Uncommon header 'content-security-policy' found, with contents: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'\n+ Uncommon header 'x-content-type-options' found, with contents: nosniff\n+ Uncommon header 'referrer-policy' found, with contents: no-referrer\n+ Cookie trollsid created without the httponly flag\n+ No CGI Directories found (use '-C all' to force c",
+      "findings": [
+        {
+          "title": "Nikto: GET /: Uncommon header 'x-frame-options' found, with contents: DENY",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'content-security-policy' found, with contents: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'referrer-policy' found, with contents: no-referrer",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Cookie trollsid created without the httponly flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /config.php: /config.php: PHP Config file may contain database IDs and passwords.",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: -3093: GET /db.php: /db.php: This might be interesting... has been seen in web logs from an unknown scanner.",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /login.php: /login.php: Admin login page/section found.",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.176",
+          "url": "http://130.208.246.176",
+          "check": "nikto"
+        }
+      ],
+      "_duration_seconds": 43.39540076255798
+    },
+    "directory_discovery": {
+      "ffuf": {
+        "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/ffuf_http_130.208.246.176.json",
+        "output_files": [
+          "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/ffuf_http_130.208.246.176.json"
+        ],
+        "wordlist": "/snap/seclists/current/Discovery/Web-Content/common.txt",
+        "findings": [
+          {
+            "title": "Discovered: http://130.208.246.176/.hta (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.176/.hta",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.176/.htpasswd (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.176/.htpasswd",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.176/.htaccess (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.176/.htaccess",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.176/Thumbs.db (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.176/Thumbs.db",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.176/admin.php (HTTP 302)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "0 bytes",
+            "url": "http://130.208.246.176/admin.php",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.176/index.php (HTTP 200)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "1373 bytes",
+            "url": "http://130.208.246.176/index.php",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.176/server-status (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.176/server-status",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.176/thumbs.db (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.176/thumbs.db",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Server error on path: http://130.208.246.176/uploads (HTTP 500)",
+            "severity": "MEDIUM",
+            "confidence": "tentative",
+            "evidence": "612 bytes \u2014 path was processed",
+            "url": "http://130.208.246.176/uploads",
+            "check": "directory_discovery"
+          }
+        ]
+      },
+      "dirb": {
+        "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/dirb_http_130.208.246.176.txt",
+        "findings": []
+      },
+      "findings": [
+        {
+          "title": "Discovered: http://130.208.246.176/.hta (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.176/.hta",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/.htpasswd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.176/.htpasswd",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/.htaccess (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.176/.htaccess",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/Thumbs.db (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.176/Thumbs.db",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/admin.php (HTTP 302)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "0 bytes",
+          "url": "http://130.208.246.176/admin.php",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/index.php (HTTP 200)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "1373 bytes",
+          "url": "http://130.208.246.176/index.php",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/server-status (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.176/server-status",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/thumbs.db (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.176/thumbs.db",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Server error on path: http://130.208.246.176/uploads (HTTP 500)",
+          "severity": "MEDIUM",
+          "confidence": "tentative",
+          "evidence": "612 bytes \u2014 path was processed",
+          "url": "http://130.208.246.176/uploads",
+          "check": "directory_discovery"
+        }
+      ],
+      "_duration_seconds": 36.525593280792236
+    }
+  },
+  "check_durations": {
+    "service_discovery": 1.138,
+    "dns_info": 0.054,
+    "body_analysis": 0.021,
+    "page_analysis": 0.29,
+    "whatweb": 1.248,
+    "ssl_nmap": 0.0,
+    "ssl_testssl": 0.0,
+    "ssl_certificate": 0.0,
+    "security_headers": 0.007,
+    "csp_analysis": 0.008,
+    "cache_control": 0.006,
+    "cookies": 0.006,
+    "http_methods": 0.029,
+    "https_redirect": 0.0,
+    "info_disclosure": 0.007,
+    "cors": 0.044,
+    "sensitive_files": 1.384,
+    "nikto": 43.395,
+    "directory_discovery": 36.526
+  },
+  "summary": {
+    "total_checks": 19,
+    "web_service_reachable": true,
+    "open_port_count": 1,
+    "findings_by_severity": {
+      "HIGH": [],
+      "MEDIUM": [
+        {
+          "title": "CSP allows 'unsafe-inline'",
+          "check": "csp_analysis",
+          "url": "http://130.208.246.176",
+          "evidence": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Cookie 'trollsid' missing Secure flag",
+          "check": "cookies",
+          "url": "http://130.208.246.176",
+          "evidence": "trollsid=erp2l0vsuogdvaboluln8b5uv4; path=/; HttpOnly; SameSite=Lax",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Server error on path: /uploads/ (HTTP 500)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.176/uploads/",
+          "evidence": "http://130.208.246.176/uploads/ returned HTTP 500 \u2014 path was processed",
+          "confidence": "tentative"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'content-security-policy' found, with contents: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'",
+          "check": "nikto",
+          "url": "http://130.208.246.176",
+          "evidence": "nikto report for http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Cookie trollsid created without the httponly flag",
+          "check": "nikto",
+          "url": "http://130.208.246.176",
+          "evidence": "nikto report for http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /config.php: /config.php: PHP Config file may contain database IDs and passwords.",
+          "check": "nikto",
+          "url": "http://130.208.246.176",
+          "evidence": "nikto report for http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /login.php: /login.php: Admin login page/section found.",
+          "check": "nikto",
+          "url": "http://130.208.246.176",
+          "evidence": "nikto report for http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Server error on path: http://130.208.246.176/uploads (HTTP 500)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.176/uploads",
+          "evidence": "612 bytes \u2014 path was processed",
+          "confidence": "tentative"
+        }
+      ],
+      "LOW": [
+        {
+          "title": "Permissions policy not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.176",
+          "evidence": "Permissions-Policy absent on http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "COOP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.176",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "CORP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.176",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "CSP missing object-src directive",
+          "check": "csp_analysis",
+          "url": "http://130.208.246.176",
+          "evidence": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Server discloses version: Apache/2.4.58 (Ubuntu)",
+          "check": "info_disclosure",
+          "url": "http://130.208.246.176",
+          "evidence": "server: Apache/2.4.58 (Ubuntu)",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.",
+          "check": "nikto",
+          "url": "http://130.208.246.176",
+          "evidence": "nikto report for http://130.208.246.176",
+          "confidence": "confirmed"
+        }
+      ],
+      "INFO": [
+        {
+          "title": "Page title: Board \u2014 Tr\u00f6llasteinar",
+          "check": "body_analysis",
+          "url": "http://130.208.246.176",
+          "evidence": "http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "body_analysis",
+          "url": "http://130.208.246.176",
+          "evidence": "http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta robots: noindex",
+          "check": "body_analysis",
+          "url": "http://130.208.246.176",
+          "evidence": "http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (3): index.php, login.php, register.php",
+          "check": "body_analysis",
+          "url": "http://130.208.246.176",
+          "evidence": "http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Log in \u2014 Tr\u00f6llasteinar",
+          "check": "page_analysis",
+          "url": "http://130.208.246.176/login.php",
+          "evidence": "http://130.208.246.176/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.176/login.php",
+          "evidence": "http://130.208.246.176/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta robots: noindex",
+          "check": "page_analysis",
+          "url": "http://130.208.246.176/login.php",
+          "evidence": "http://130.208.246.176/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=login.php method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.176/login.php",
+          "evidence": "http://130.208.246.176/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: csrf, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.176/login.php",
+          "evidence": "http://130.208.246.176/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (3): index.php, login.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.176/login.php",
+          "evidence": "http://130.208.246.176/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Create an account \u2014 Tr\u00f6llasteinar",
+          "check": "page_analysis",
+          "url": "http://130.208.246.176/register.php",
+          "evidence": "http://130.208.246.176/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.176/register.php",
+          "evidence": "http://130.208.246.176/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta robots: noindex",
+          "check": "page_analysis",
+          "url": "http://130.208.246.176/register.php",
+          "evidence": "http://130.208.246.176/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=register.php method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.176/register.php",
+          "evidence": "http://130.208.246.176/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: confirm, csrf, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.176/register.php",
+          "evidence": "http://130.208.246.176/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (3): index.php, login.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.176/register.php",
+          "evidence": "http://130.208.246.176/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "WhatWeb http://130.208.246.176 [200 OK]: Apache[2.4.58], Cookies[trollsid], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[trollsid], IP[130.208.246.176], Title[Board \u2014 Tr\u00f6llasteinar], UncommonHeaders",
+          "check": "whatweb",
+          "url": "http://130.208.246.176",
+          "evidence": "http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Path exists but empty: /config.php (HTTP 200, 0 bytes)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.176/config.php",
+          "evidence": "http://130.208.246.176/config.php \u2014 likely an executed PHP file",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Path exists but empty: /db.php (HTTP 200, 0 bytes)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.176/db.php",
+          "evidence": "http://130.208.246.176/db.php \u2014 likely an executed PHP file",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.htaccess (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.176/.htaccess",
+          "evidence": "http://130.208.246.176/.htaccess returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.htpasswd (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.176/.htpasswd",
+          "evidence": "http://130.208.246.176/.htpasswd returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /server-status (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.176/server-status",
+          "evidence": "http://130.208.246.176/server-status returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'x-frame-options' found, with contents: DENY",
+          "check": "nikto",
+          "url": "http://130.208.246.176",
+          "evidence": "nikto report for http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff",
+          "check": "nikto",
+          "url": "http://130.208.246.176",
+          "evidence": "nikto report for http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'referrer-policy' found, with contents: no-referrer",
+          "check": "nikto",
+          "url": "http://130.208.246.176",
+          "evidence": "nikto report for http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: -3093: GET /db.php: /db.php: This might be interesting... has been seen in web logs from an unknown scanner.",
+          "check": "nikto",
+          "url": "http://130.208.246.176",
+          "evidence": "nikto report for http://130.208.246.176",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/.hta (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.176/.hta",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/.htpasswd (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.176/.htpasswd",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/.htaccess (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.176/.htaccess",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/Thumbs.db (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.176/Thumbs.db",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/admin.php (HTTP 302)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.176/admin.php",
+          "evidence": "0 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/index.php (HTTP 200)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.176/index.php",
+          "evidence": "1373 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/server-status (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.176/server-status",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.176/thumbs.db (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.176/thumbs.db",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        }
+      ]
+    }
+  }
+}

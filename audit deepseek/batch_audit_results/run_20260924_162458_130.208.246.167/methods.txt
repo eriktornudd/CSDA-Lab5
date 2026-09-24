@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Date: Thu, 24 Sep 2026 16:25:05 GMT
+Server: Apache/2.4.58 (Ubuntu)
+Set-Cookie: pokepoop_session=fgt80gtf7m9cj85nmudhs59hek; path=/; HttpOnly; SameSite=Lax
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store
+Pragma: no-cache
+Content-Security-Policy: default-src 'self'; img-src 'self' blob:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: camera=(), microphone=(), geolocation=()
+Vary: Accept-Encoding
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+

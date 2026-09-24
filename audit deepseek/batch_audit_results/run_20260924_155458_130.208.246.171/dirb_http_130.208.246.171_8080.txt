@@ -1,0 +1,42 @@
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+OUTPUT_FILE: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/dirb_http_130.208.246.171_8080.txt
+START_TIME: Thu Sep 24 15:58:48 2026
+URL_BASE: http://130.208.246.171:8080/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+OPTION: Silent Mode
+
+-----------------
+
+GENERATED WORDS: 4612
+
+---- Scanning URL: http://130.208.246.171:8080/ ----
+==> DIRECTORY: http://130.208.246.171:8080/admin/
+==> DIRECTORY: http://130.208.246.171:8080/css/
+==> DIRECTORY: http://130.208.246.171:8080/includes/
++ http://130.208.246.171:8080/index.php (CODE:200|SIZE:3434)
++ http://130.208.246.171:8080/server-status (CODE:403|SIZE:199)
+==> DIRECTORY: http://130.208.246.171:8080/uploads/
+
+---- Entering directory: http://130.208.246.171:8080/admin/ ----
++ http://130.208.246.171:8080/admin/index.php (CODE:403|SIZE:35)
+
+---- Entering directory: http://130.208.246.171:8080/css/ ----
+
+---- Entering directory: http://130.208.246.171:8080/includes/ ----
+
+---- Entering directory: http://130.208.246.171:8080/uploads/ ----
++ http://130.208.246.171:8080/uploads/admin.php (CODE:403|SIZE:199)
++ http://130.208.246.171:8080/uploads/index.php (CODE:403|SIZE:199)
++ http://130.208.246.171:8080/uploads/info.php (CODE:403|SIZE:199)
++ http://130.208.246.171:8080/uploads/phpinfo.php (CODE:403|SIZE:199)
++ http://130.208.246.171:8080/uploads/xmlrpc.php (CODE:403|SIZE:199)
++ http://130.208.246.171:8080/uploads/xmlrpc_server.php (CODE:403|SIZE:199)
+
+-----------------
+END_TIME: Thu Sep 24 16:00:47 2026
+DOWNLOADED: 23060 - FOUND: 9

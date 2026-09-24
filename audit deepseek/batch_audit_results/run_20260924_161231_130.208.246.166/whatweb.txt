@@ -1,0 +1,2 @@
+http://130.208.246.166 [301 Moved Permanently] Apache[2.4.58], Country[ICELAND][IS], HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.166], RedirectLocation[https://130.208.246.166/], Title[301 Moved Permanently]
+https://130.208.246.166/ [200 OK] Apache[2.4.58], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.166], Strict-Transport-Security[max-age=31536000], Title[Main index :: Packet Fossils], UncommonHeaders[x-content-type-options,referrer-policy,content-security-policy], X-Frame-Options[DENY]

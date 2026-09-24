@@ -1,0 +1,20 @@
+HTTP/1.1 301 Moved Permanently
+Date: Thu, 24 Sep 2026 16:12:31 GMT
+Server: Apache/2.4.58 (Ubuntu)
+Location: https://130.208.246.166/
+Content-Length: 313
+Content-Type: text/html; charset=iso-8859-1
+
+HTTP/1.1 200 OK
+Date: Thu, 24 Sep 2026 16:12:31 GMT
+Server: Apache/2.4.58 (Ubuntu)
+Content-Length: 12867
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: same-origin
+Content-Security-Policy: default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'
+Cache-Control: private, no-store
+Strict-Transport-Security: max-age=31536000
+Vary: Cookie,Accept-Encoding
+Content-Type: text/html; charset=utf-8
+

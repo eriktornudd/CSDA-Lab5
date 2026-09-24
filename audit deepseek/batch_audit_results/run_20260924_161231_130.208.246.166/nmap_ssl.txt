@@ -1,0 +1,61 @@
+Starting Nmap 7.80 ( https://nmap.org ) at 2026-09-24 16:12 GMT
+Nmap scan report for 130.208.246.166
+Host is up (0.0059s latency).
+
+PORT    STATE SERVICE  VERSION
+443/tcp open  ssl/http Apache httpd 2.4.58 ((Ubuntu))
+|_http-server-header: Apache/2.4.58 (Ubuntu)
+| ssl-enum-ciphers: 
+|   TLSv1.2: 
+|     ciphers: 
+|       TLS_DHE_RSA_WITH_AES_128_CBC_SHA (dh 3072) - A
+|       TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 (dh 3072) - A
+|       TLS_DHE_RSA_WITH_AES_128_CCM (dh 3072) - A
+|       TLS_DHE_RSA_WITH_AES_128_CCM_8 (dh 3072) - A
+|       TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 (dh 3072) - A
+|       TLS_DHE_RSA_WITH_AES_256_CBC_SHA (dh 3072) - A
+|       TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 (dh 3072) - A
+|       TLS_DHE_RSA_WITH_AES_256_CCM (dh 3072) - A
+|       TLS_DHE_RSA_WITH_AES_256_CCM_8 (dh 3072) - A
+|       TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 (dh 3072) - A
+|       TLS_DHE_RSA_WITH_ARIA_128_GCM_SHA256 (dh 3072) - A
+|       TLS_DHE_RSA_WITH_ARIA_256_GCM_SHA384 (dh 3072) - A
+|       TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA (dh 3072) - A
+|       TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256 (dh 3072) - A
+|       TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA (dh 3072) - A
+|       TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256 (dh 3072) - A
+|       TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (dh 3072) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA (secp256r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 (secp256r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (secp256r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (secp256r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (secp256r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (secp256r1) - A
+|       TLS_ECDHE_RSA_WITH_ARIA_128_GCM_SHA256 (secp256r1) - A
+|       TLS_ECDHE_RSA_WITH_ARIA_256_GCM_SHA384 (secp256r1) - A
+|       TLS_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256 (secp256r1) - A
+|       TLS_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384 (secp256r1) - A
+|       TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (secp256r1) - A
+|       TLS_RSA_WITH_AES_128_CBC_SHA (rsa 3072) - A
+|       TLS_RSA_WITH_AES_128_CBC_SHA256 (rsa 3072) - A
+|       TLS_RSA_WITH_AES_128_CCM (rsa 3072) - A
+|       TLS_RSA_WITH_AES_128_CCM_8 (rsa 3072) - A
+|       TLS_RSA_WITH_AES_128_GCM_SHA256 (rsa 3072) - A
+|       TLS_RSA_WITH_AES_256_CBC_SHA (rsa 3072) - A
+|       TLS_RSA_WITH_AES_256_CBC_SHA256 (rsa 3072) - A
+|       TLS_RSA_WITH_AES_256_CCM (rsa 3072) - A
+|       TLS_RSA_WITH_AES_256_CCM_8 (rsa 3072) - A
+|       TLS_RSA_WITH_AES_256_GCM_SHA384 (rsa 3072) - A
+|       TLS_RSA_WITH_ARIA_128_GCM_SHA256 (rsa 3072) - A
+|       TLS_RSA_WITH_ARIA_256_GCM_SHA384 (rsa 3072) - A
+|       TLS_RSA_WITH_CAMELLIA_128_CBC_SHA (rsa 3072) - A
+|       TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256 (rsa 3072) - A
+|       TLS_RSA_WITH_CAMELLIA_256_CBC_SHA (rsa 3072) - A
+|       TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256 (rsa 3072) - A
+|     compressors: 
+|       NULL
+|     cipher preference: client
+|_  least strength: A
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 13.70 seconds

@@ -1,0 +1,7 @@
+HTTP/1.1 301 Moved Permanently
+Date: Thu, 24 Sep 2026 16:16:36 GMT
+Server: Apache/2.4.58 (Ubuntu)
+Location: https://130.208.246.166/
+Content-Length: 313
+Content-Type: text/html; charset=iso-8859-1
+

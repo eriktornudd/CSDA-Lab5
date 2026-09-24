@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Date: Thu, 24 Sep 2026 15:54:59 GMT
+Server: Apache/2.4.58 (Ubuntu)
+Set-Cookie: PHPSESSID=r38omghcdcgabrku53p0bon30d; path=/; HttpOnly; SameSite=Lax
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Vary: Accept-Encoding
+Content-Length: 1171
+Content-Type: text/html; charset=UTF-8
+

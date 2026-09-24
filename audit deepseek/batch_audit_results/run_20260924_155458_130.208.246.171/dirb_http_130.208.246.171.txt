@@ -1,0 +1,34 @@
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+OUTPUT_FILE: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/dirb_http_130.208.246.171.txt
+START_TIME: Thu Sep 24 15:57:19 2026
+URL_BASE: http://130.208.246.171/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+OPTION: Silent Mode
+
+-----------------
+
+GENERATED WORDS: 4612
+
+---- Scanning URL: http://130.208.246.171/ ----
+==> DIRECTORY: http://130.208.246.171/assets/
++ http://130.208.246.171/forum (CODE:200|SIZE:1392)
++ http://130.208.246.171/gallery (CODE:200|SIZE:828)
++ http://130.208.246.171/login (CODE:200|SIZE:1132)
++ http://130.208.246.171/profile (CODE:403|SIZE:842)
++ http://130.208.246.171/register (CODE:200|SIZE:1255)
++ http://130.208.246.171/server-status (CODE:403|SIZE:280)
+==> DIRECTORY: http://130.208.246.171/uploads/
++ http://130.208.246.171/wiki (CODE:200|SIZE:1446)
+
+---- Entering directory: http://130.208.246.171/assets/ ----
+
+---- Entering directory: http://130.208.246.171/uploads/ ----
+
+-----------------
+END_TIME: Thu Sep 24 15:58:48 2026
+DOWNLOADED: 13836 - FOUND: 7

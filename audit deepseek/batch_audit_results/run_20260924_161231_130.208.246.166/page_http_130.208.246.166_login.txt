@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in :: Packet Fossils</title>
+  <link rel="stylesheet" href="/static/forum.css">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+</head>
+
+<body id="top">
+  <a class="skip" href="#content">Skip to the message board</a>
+  <div class="site-shell">
+    <div class="topline"><span><span class="led">●</span> CARRIER DETECTED &nbsp; / &nbsp; EST. SEPTEMBER
+        1993</span><span>September 12077th, 1993</span></div>
+    <header>
+      <div class="brand">
+        <div class="terminal" aria-hidden="true"><span>C:\&gt;_<br> ▄ ▄ ▄</span></div>
+        <div><a class="wordmark" href="/">Packet Fossils<span
+              class="tm">™</span></a>
+          <div class="tagline">The Society for the Preservation of Obsolete Networking Technology</div>
+          <div class="motto">“It worked in 1993. It still works. Stop touching it.”</div>
+        </div>
+      </div>
+      <div class="browser-badge"><b>NETSCAPE</b><span>NOW!<sup> 3.0</sup></span><small>Best viewed at 800 ×
+          600</small></div>
+    </header>
+    <nav aria-label="Main navigation"><a href="/">⌂ Main index</a> <span>|</span> <a
+        href="/gallery">▧ Hardware gallery</a> <span>|</span> <a href="/search">⌕ Search
+        archives</a> <span>|</span> <a href="/netiquette">? Netiquette</a>
+      <div class="nav-account"><a href="/login">[ Log in ]</a> &nbsp; <a href="/register">[
+          Register ]</a></div>
+    </nav>
+    <div class="ticker"><b>*** SYSOP BULLETIN ***</b><span>Welcome to the last working corner of the information superhighway. Please leave your modern sensibilities at the login prompt.</span><b class="new-tag">NEW!</b></div>
+    
+    <main id="content"><div class="breadcrumb"><a href="/">Main index</a> &gt; Log in</div>
+<section class="panel form-panel">
+  <h1 class="bar">Establish a connection</h1>
+  <div class="panel-inner">
+    <pre
+      class="auth-terminal">ATZ
+OK
+PLEASE IDENTIFY YOURSELF.</pre>
+    <p>Your handle and password are your credentials on this network.</p>
+    <form method="post"><input type="hidden" name="csrf" value="YaOJj1SU-MQLA-Q4g9r_asLYtkpobJ2PibsZk4X_p34"><label for="username">Your handle</label><input id="username" name="username"
+        required minlength="3" maxlength="24" pattern="[A-Za-z0-9_\-]{3,24}" autocomplete="username"
+        value=""><small>3–24 letters, numbers, underscores or
+        hyphens.</small><label for="password">Password</label><input id="password" name="password" type="password"
+        required  maxlength="128"
+        autocomplete="current-password"><div class="form-actions"><button type="submit">Log in &gt;&gt;</button><a href="/">Cancel</a></div>
+    </form>
+    <hr><p>No account? <a href="/register">Register a handle.</a></p><small>Lost your password?
+      Contact your site administrator for a reset. This site does not collect email addresses.</small>
+  </div>
+</section></main>
+    <footer>
+      <div class="webring">[ <a href="/netiquette#webring">&lt;&lt; Previous</a> ] &nbsp; <b>THE
+          OBSOLETE WEB RING</b> &nbsp; [ <a href="/netiquette#webring">Next &gt;&gt;</a>
+        ]<small>This site is a proud dead end on the information superhighway.</small></div>
+      <div class="badges"><span class="mini-badge netscape">N<span>NETSCAPE<br>ENHANCED</span></span><span
+          class="mini-badge html">HTML<span>HAND<br>CRAFTED</span></span><span class="mini-badge no-ie">NO<span>ACTIVE
+            X<br>REQUIRED</span></span><span class="mini-badge tcp">TCP/IP<span>PACKETS<br>INSIDE</span></span></div>
+      <p>Best viewed with Netscape Navigator at 800×600. Best argued about over a 14.4k connection.<br>© September
+        1993–September 1993 Packet Fossils. All packets reserved.</p>
+      <p class="footer-small">No cookies were harmed. One is required to log in. &nbsp; · &nbsp; <a href="#top">Back to
+          top ↑</a> &nbsp; · &nbsp; <a href="/netiquette#privacy">Privacy
+          &amp; site notes</a></p>
+    </footer>
+  </div>
+</body>
+
+</html>

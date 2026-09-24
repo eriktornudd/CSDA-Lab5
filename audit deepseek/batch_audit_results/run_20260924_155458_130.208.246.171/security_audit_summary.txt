@@ -1,0 +1,235 @@
+======================================================================
+WEB SECURITY AUDIT REPORT
+Target:        http://130.208.246.171
+Date:          2026-09-24 16:00:47
+Scan duration: 5m 48s (348.9s)
+Run:           /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171
+======================================================================
+
+EXECUTIVE SUMMARY
+----------------------------------------------------------------------
+Checks performed      : 19
+Web service reachable : yes
+Open ports            : 2
+HIGH                  : 0
+MEDIUM                : 8
+LOW                   : 19
+INFO                  : 90
+
+CONFIRMED WEB SERVICES
+----------------------------------------------------------------------
+  http://130.208.246.171  HTTP 200  Apache/2.4.58 (Ubuntu)
+  http://130.208.246.171:8080  HTTP 200  Apache/2.4.58 (Ubuntu)
+
+OPEN PORTS
+----------------------------------------------------------------------
+  [80, 8080]
+
+MEDIUM FINDINGS
+----------------------------------------------------------------------
+  [confirmed] Cookie 'PHPSESSID' missing Secure flag  (http://130.208.246.171)
+  [confirmed] Cookie 'PHPSESSID' missing Secure flag  (http://130.208.246.171:8080)
+  [confirmed] Cookie 'PHPSESSID' missing HttpOnly flag  (http://130.208.246.171:8080)
+  [confirmed] Cookie 'PHPSESSID' missing SameSite flag  (http://130.208.246.171:8080)
+  [confirmed] Nikto: GET /: Cookie PHPSESSID created without the httponly flag  (http://130.208.246.171)
+  [confirmed] Nikto: GET /: Cookie PHPSESSID created without the httponly flag  (http://130.208.246.171:8080)
+  [confirmed] Nikto: GET /config.php: /config.php: PHP Config file may contain database IDs and passwords.  (http://130.208.246.171:8080)
+  [confirmed] Nikto: GET /login.php: /login.php: Admin login page/section found.  (http://130.208.246.171:8080)
+
+LOW FINDINGS
+----------------------------------------------------------------------
+  [confirmed] CSP not implemented  (http://130.208.246.171)
+  [confirmed] Clickjacking protection missing  (http://130.208.246.171)
+  [confirmed] MIME sniffing protection missing  (http://130.208.246.171)
+  [confirmed] Referrer policy not set  (http://130.208.246.171)
+  [confirmed] Permissions policy not set  (http://130.208.246.171)
+  [confirmed] COOP not set  (http://130.208.246.171)
+  [confirmed] CORP not set  (http://130.208.246.171)
+  [confirmed] CSP not implemented  (http://130.208.246.171:8080)
+  [confirmed] Clickjacking protection missing  (http://130.208.246.171:8080)
+  [confirmed] MIME sniffing protection missing  (http://130.208.246.171:8080)
+  [confirmed] Referrer policy not set  (http://130.208.246.171:8080)
+  [confirmed] Permissions policy not set  (http://130.208.246.171:8080)
+  [confirmed] COOP not set  (http://130.208.246.171:8080)
+  [confirmed] CORP not set  (http://130.208.246.171:8080)
+  [confirmed] Server discloses version: Apache/2.4.58 (Ubuntu)  (http://130.208.246.171)
+  [confirmed] Server discloses version: Apache/2.4.58 (Ubuntu)  (http://130.208.246.171:8080)
+  [confirmed] Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.  (http://130.208.246.171)
+  [confirmed] Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.  (http://130.208.246.171:8080)
+  [confirmed] Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.  (http://130.208.246.171:8080)
+
+INFO FINDINGS
+----------------------------------------------------------------------
+  [confirmed] Page title: The Malazan Archive  (http://130.208.246.171)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.171)
+  [confirmed] Page title: Home - Tunnblr  (http://130.208.246.171:8080)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1.0  (http://130.208.246.171:8080)
+  [confirmed] Interesting links (10): create_post.php, index.php, login.php, register.php, view_post.php?id=1, view_post.php?id=2, view_post.php?id=3, view_post.php?id=4, view_post.php?id=5, view_post.php?id=6  (http://130.208.246.171:8080)
+  [confirmed] Page title: The Malazan Archive  (http://130.208.246.171/login)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.171/login)
+  [confirmed] Form: action=/login method=POST  (http://130.208.246.171/login)
+  [confirmed] Input fields: csrf, password, username  (http://130.208.246.171/login)
+  [confirmed] Page title: The Malazan Archive  (http://130.208.246.171/register)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.171/register)
+  [confirmed] Form: action=/register method=POST  (http://130.208.246.171/register)
+  [confirmed] Input fields: confirm_password, csrf, password, username  (http://130.208.246.171/register)
+  [confirmed] Page title: The Malazan Archive  (http://130.208.246.171/forum)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.171/forum)
+  [confirmed] Page title: The Malazan Archive  (http://130.208.246.171/gallery)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.171/gallery)
+  [confirmed] Page title: The Malazan Archive  (http://130.208.246.171/wiki)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.171/wiki)
+  [confirmed] Page title: The Malazan Archive  (http://130.208.246.171/characters)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.171/characters)
+  [confirmed] Page title: Log In - Tunnblr  (http://130.208.246.171:8080/login.php)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1.0  (http://130.208.246.171:8080/login.php)
+  [confirmed] Form: action=login.php method=POST  (http://130.208.246.171:8080/login.php)
+  [confirmed] Input fields: csrf_token, password, username  (http://130.208.246.171:8080/login.php)
+  [confirmed] Interesting links (4): create_post.php, index.php, login.php, register.php  (http://130.208.246.171:8080/login.php)
+  [confirmed] Page title: Sign Up - Tunnblr  (http://130.208.246.171:8080/register.php)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1.0  (http://130.208.246.171:8080/register.php)
+  [confirmed] Form: action=register.php method=POST  (http://130.208.246.171:8080/register.php)
+  [confirmed] Input fields: csrf_token, password, password2, username  (http://130.208.246.171:8080/register.php)
+  [confirmed] Interesting links (4): create_post.php, index.php, login.php, register.php  (http://130.208.246.171:8080/register.php)
+  [confirmed] Page title: Log In - Tunnblr  (http://130.208.246.171:8080/create_post.php)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1.0  (http://130.208.246.171:8080/create_post.php)
+  [confirmed] Form: action=login.php method=POST  (http://130.208.246.171:8080/create_post.php)
+  [confirmed] Input fields: csrf_token, password, username  (http://130.208.246.171:8080/create_post.php)
+  [confirmed] Interesting links (4): create_post.php, index.php, login.php, register.php  (http://130.208.246.171:8080/create_post.php)
+  [confirmed] Page title: &lt;script&gt;alert(1)&lt;/script&gt; - Tunnblr  (http://130.208.246.171:8080/view_post.php?id=6)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1.0  (http://130.208.246.171:8080/view_post.php?id=6)
+  [confirmed] Interesting links (4): create_post.php, index.php, login.php, register.php  (http://130.208.246.171:8080/view_post.php?id=6)
+  [confirmed] Page title: test - Tunnblr  (http://130.208.246.171:8080/view_post.php?id=5)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1.0  (http://130.208.246.171:8080/view_post.php?id=5)
+  [confirmed] Interesting links (4): create_post.php, index.php, login.php, register.php  (http://130.208.246.171:8080/view_post.php?id=5)
+  [confirmed] Page title: yoooo - Tunnblr  (http://130.208.246.171:8080/view_post.php?id=4)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1.0  (http://130.208.246.171:8080/view_post.php?id=4)
+  [confirmed] Interesting links (4): create_post.php, index.php, login.php, register.php  (http://130.208.246.171:8080/view_post.php?id=4)
+  [confirmed] Page title: Me when someone tries to hack my website - Tunnblr  (http://130.208.246.171:8080/view_post.php?id=3)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1.0  (http://130.208.246.171:8080/view_post.php?id=3)
+  [confirmed] Interesting links (4): create_post.php, index.php, login.php, register.php  (http://130.208.246.171:8080/view_post.php?id=3)
+  [confirmed] Page title: wsg - Tunnblr  (http://130.208.246.171:8080/view_post.php?id=2)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1.0  (http://130.208.246.171:8080/view_post.php?id=2)
+  [confirmed] Interesting links (4): create_post.php, index.php, login.php, register.php  (http://130.208.246.171:8080/view_post.php?id=2)
+  [confirmed] Page title: Wowza! Very first Tunnblr post! - Tunnblr  (http://130.208.246.171:8080/view_post.php?id=1)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1.0  (http://130.208.246.171:8080/view_post.php?id=1)
+  [confirmed] Interesting links (4): create_post.php, index.php, login.php, register.php  (http://130.208.246.171:8080/view_post.php?id=1)
+  [confirmed] WhatWeb http://130.208.246.171 [200 OK]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[PHPSESSID], IP[130.208.246.171], Title[The Malazan Archive]  (http://130.208.246.171)
+  [confirmed] WhatWeb http://130.208.246.171:8080 [200 OK]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.171], Title[Home - Tunnblr]  (http://130.208.246.171:8080)
+  [confirmed] Protected path exists: /.htaccess (HTTP 403)  (http://130.208.246.171/.htaccess)
+  [confirmed] Protected path exists: /.htpasswd (HTTP 403)  (http://130.208.246.171/.htpasswd)
+  [confirmed] Protected path exists: /server-status (HTTP 403)  (http://130.208.246.171/server-status)
+  [confirmed] Protected path exists: /uploads/ (HTTP 403)  (http://130.208.246.171/uploads/)
+  [confirmed] Path exists but empty: /config.php (HTTP 200, 0 bytes)  (http://130.208.246.171:8080/config.php)
+  [confirmed] Protected path exists: /.htaccess (HTTP 403)  (http://130.208.246.171:8080/.htaccess)
+  [confirmed] Protected path exists: /.htpasswd (HTTP 403)  (http://130.208.246.171:8080/.htpasswd)
+  [confirmed] Protected path exists: /server-status (HTTP 403)  (http://130.208.246.171:8080/server-status)
+  [confirmed] Protected path exists: /uploads/ (HTTP 403)  (http://130.208.246.171:8080/uploads/)
+  [confirmed] Nikto: GET ///etc/hosts: ///etc/hosts: The server install allows reading of any system file by adding an extra '/' to the URL.  (http://130.208.246.171)
+  [confirmed] Nikto: -3092: GET /forum/: /forum/: This might be interesting...  (http://130.208.246.171)
+  [confirmed] Nikto: -3092: GET /login/: /login/: This might be interesting...  (http://130.208.246.171)
+  [confirmed] Nikto: -3092: GET /register/: /register/: This might be interesting...  (http://130.208.246.171)
+  [confirmed] Discovered: http://130.208.246.171/.hta (HTTP 403)  (http://130.208.246.171/.hta)
+  [confirmed] Discovered: http://130.208.246.171/.htaccess (HTTP 403)  (http://130.208.246.171/.htaccess)
+  [confirmed] Discovered: http://130.208.246.171/.htpasswd (HTTP 403)  (http://130.208.246.171/.htpasswd)
+  [confirmed] Discovered: http://130.208.246.171/assets (HTTP 301)  (http://130.208.246.171/assets)
+  [confirmed] Discovered: http://130.208.246.171/forum (HTTP 200)  (http://130.208.246.171/forum)
+  [confirmed] Discovered: http://130.208.246.171/gallery (HTTP 200)  (http://130.208.246.171/gallery)
+  [confirmed] Discovered: http://130.208.246.171/login (HTTP 200)  (http://130.208.246.171/login)
+  [confirmed] Discovered: http://130.208.246.171/profile (HTTP 403)  (http://130.208.246.171/profile)
+  [confirmed] Discovered: http://130.208.246.171/register (HTTP 200)  (http://130.208.246.171/register)
+  [confirmed] Discovered: http://130.208.246.171/server-status (HTTP 403)  (http://130.208.246.171/server-status)
+  [confirmed] Discovered: http://130.208.246.171/uploads (HTTP 301)  (http://130.208.246.171/uploads)
+  [confirmed] Discovered: http://130.208.246.171/wiki (HTTP 200)  (http://130.208.246.171/wiki)
+  [confirmed] Discovered: http://130.208.246.171:8080/.hta (HTTP 403)  (http://130.208.246.171:8080/.hta)
+  [confirmed] Discovered: http://130.208.246.171:8080/.htaccess (HTTP 403)  (http://130.208.246.171:8080/.htaccess)
+  [confirmed] Discovered: http://130.208.246.171:8080/.htpasswd (HTTP 403)  (http://130.208.246.171:8080/.htpasswd)
+  [confirmed] Discovered: http://130.208.246.171:8080/admin (HTTP 301)  (http://130.208.246.171:8080/admin)
+  [confirmed] Discovered: http://130.208.246.171:8080/css (HTTP 301)  (http://130.208.246.171:8080/css)
+  [confirmed] Discovered: http://130.208.246.171:8080/includes (HTTP 301)  (http://130.208.246.171:8080/includes)
+  [confirmed] Discovered: http://130.208.246.171:8080/index.php (HTTP 200)  (http://130.208.246.171:8080/index.php)
+  [confirmed] Discovered: http://130.208.246.171:8080/server-status (HTTP 403)  (http://130.208.246.171:8080/server-status)
+  [confirmed] Discovered: http://130.208.246.171:8080/uploads (HTTP 301)  (http://130.208.246.171:8080/uploads)
+
+
+CHECK TIMINGS
+----------------------------------------------------------------------
+  directory_discovery    3m 55s
+  nikto                  1m 37s
+  whatweb                8.44s
+  sensitive_files        4.08s
+  page_analysis          1.54s
+  service_discovery      1.42s
+  http_methods           108ms
+  cors                   96ms
+  dns_info               51ms
+  cookies                35ms
+  body_analysis          19ms
+  info_disclosure        19ms
+  cache_control          12ms
+  security_headers       10ms
+  ssl_nmap               0ms
+  ssl_testssl            0ms
+  ssl_certificate        0ms
+  csp_analysis           0ms
+  https_redirect         0ms
+
+
+DETAILED RESULTS
+----------------------------------------------------------------------
+
+[SERVICE_DISCOVERY] (1.42s)
+  Summary: 2 HTTP/HTTPS service(s) confirmed, 0 other open port(s)...
+
+[DNS_INFO] (51ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/dns_info.txt
+
+[BODY_ANALYSIS] (19ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/body_http_130.208.246.171.txt
+
+[PAGE_ANALYSIS] (1.54s)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/page_http_130.208.246.171_login.txt
+
+[WHATWEB] (8.44s)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/whatweb.txt
+
+[SSL_NMAP] (0ms)
+  Error: No HTTPS service confirmed; skipping SSL enumeration
+
+[SSL_TESTSSL] (0ms)
+  Error: No HTTPS service confirmed; skipping testssl
+
+[SSL_CERTIFICATE] (0ms)
+  Error: No HTTPS service confirmed
+
+[SECURITY_HEADERS] (10ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/headers.txt
+
+[CSP_ANALYSIS] (0ms)
+
+[CACHE_CONTROL] (12ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/cache_control.txt
+
+[COOKIES] (35ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/cookies.txt
+
+[HTTP_METHODS] (108ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/methods.txt
+
+[HTTPS_REDIRECT] (0ms)
+  Error: No HTTPS service confirmed; cannot evaluate redirect
+
+[INFO_DISCLOSURE] (19ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/disclosure.txt
+
+[CORS] (96ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/cors.txt
+
+[SENSITIVE_FILES] (4.08s)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/sensitive_files.txt
+
+[NIKTO] (1m 37s)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/nikto_http_130.208.246.171.txt
+  Summary: - Nikto v2.1.5 --------------------------------------------------------------------------- + Target IP:          130.208.246.171 + Target Hostname:    130.208.246.171 + Target Port:        80 + Start Time:         2026-09-24 15:55:15 (GMT0) ---------...
+
+[DIRECTORY_DISCOVERY] (3m 55s)

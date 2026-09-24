@@ -1,0 +1,165 @@
+{
+  "target": "http://130.208.246.165",
+  "timestamp": "20260924_162638",
+  "domain": "130.208.246.165",
+  "run_directory": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162638_130.208.246.165",
+  "scan_duration_seconds": 19.678600311279297,
+  "scan_duration_human": "19.68s",
+  "available_tools": {
+    "whatweb": true,
+    "nmap": true,
+    "nikto": true,
+    "dirb": true,
+    "ffuf": true,
+    "openssl": true,
+    "curl": true,
+    "dig": true,
+    "testssl": true
+  },
+  "services": [],
+  "open_ports": [],
+  "non_http_services": [],
+  "results": {
+    "service_discovery": {
+      "candidates_probed": 2,
+      "ports_scanned": 96,
+      "port_scan_seconds": 1.0471289157867432,
+      "open_ports": [],
+      "non_http_services": [],
+      "confirmed_services": [],
+      "findings": [
+        {
+          "title": "No reachable web service found",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "Scanned 96 ports; 0 open; no HTTP/HTTPS response",
+          "url": null,
+          "check": "service_discovery"
+        }
+      ],
+      "summary": "No reachable web service confirmed",
+      "_duration_seconds": 19.662697076797485
+    },
+    "dns_info": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162638_130.208.246.165/dns_info.txt",
+      "dns_info": {
+        "input": "130.208.246.165",
+        "is_ip_literal": true,
+        "resolved_ips": [
+          "130.208.246.165"
+        ],
+        "reverse_dns": null
+      },
+      "findings": [],
+      "_duration_seconds": 0.013228654861450195
+    },
+    "body_analysis": {
+      "error": "No reachable web service confirmed; 'body_analysis' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 1.2159347534179688e-05
+    },
+    "page_analysis": {
+      "error": "No reachable web service confirmed; 'page_analysis' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 1.7642974853515625e-05
+    },
+    "whatweb": {
+      "error": "No reachable web service confirmed; 'whatweb' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 8.893013000488281e-05
+    },
+    "ssl_nmap": {
+      "error": "No reachable web service confirmed; 'ssl_nmap' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 6.771087646484375e-05
+    },
+    "ssl_testssl": {
+      "error": "No reachable web service confirmed; 'ssl_testssl' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 3.695487976074219e-05
+    },
+    "ssl_certificate": {
+      "error": "No reachable web service confirmed; 'ssl_certificate' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 6.151199340820312e-05
+    },
+    "security_headers": {
+      "error": "No reachable web service confirmed; 'security_headers' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 6.723403930664062e-05
+    },
+    "csp_analysis": {
+      "error": "No reachable web service confirmed; 'csp_analysis' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 8.344650268554688e-05
+    },
+    "cache_control": {
+      "error": "No reachable web service confirmed; 'cache_control' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 4.00543212890625e-05
+    },
+    "cookies": {
+      "error": "No reachable web service confirmed; 'cookies' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 8.606910705566406e-05
+    },
+    "http_methods": {
+      "error": "No reachable web service confirmed; 'http_methods' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 5.030632019042969e-05
+    },
+    "https_redirect": {
+      "error": "No reachable web service confirmed; 'https_redirect' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 4.9114227294921875e-05
+    },
+    "info_disclosure": {
+      "error": "No reachable web service confirmed; 'info_disclosure' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 3.361701965332031e-05
+    },
+    "cors": {
+      "error": "No reachable web service confirmed; 'cors' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 7.843971252441406e-05
+    },
+    "sensitive_files": {
+      "error": "No reachable web service confirmed; 'sensitive_files' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.00014138221740722656
+    },
+    "nikto": {
+      "error": "No reachable web service confirmed; 'nikto' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 5.1021575927734375e-05
+    },
+    "directory_discovery": {
+      "error": "No reachable web service confirmed; 'directory_discovery' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 8.893013000488281e-05
+    }
+  },
+  "check_durations": {
+    "service_discovery": 19.663,
+    "dns_info": 0.013,
+    "body_analysis": 0.0,
+    "page_analysis": 0.0,
+    "whatweb": 0.0,
+    "ssl_nmap": 0.0,
+    "ssl_testssl": 0.0,
+    "ssl_certificate": 0.0,
+    "security_headers": 0.0,
+    "csp_analysis": 0.0,
+    "cache_control": 0.0,
+    "cookies": 0.0,
+    "http_methods": 0.0,
+    "https_redirect": 0.0,
+    "info_disclosure": 0.0,
+    "cors": 0.0,
+    "sensitive_files": 0.0,
+    "nikto": 0.0,
+    "directory_discovery": 0.0
+  },
+  "summary": {
+    "total_checks": 19,
+    "web_service_reachable": false,
+    "open_port_count": 0,
+    "findings_by_severity": {
+      "HIGH": [],
+      "MEDIUM": [],
+      "LOW": [],
+      "INFO": [
+        {
+          "title": "No reachable web service found",
+          "check": "service_discovery",
+          "url": null,
+          "evidence": "Scanned 96 ports; 0 open; no HTTP/HTTPS response",
+          "confidence": "confirmed"
+        }
+      ]
+    }
+  }
+}

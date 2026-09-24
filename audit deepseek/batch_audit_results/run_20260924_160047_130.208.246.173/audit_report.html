@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html><head><meta charset='utf-8'>
+<title>Audit Report - http://130.208.246.173</title>
+<style>
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;
+max-width:960px;margin:2em auto;padding:0 1em;color:#222;}
+h1{border-bottom:3px solid #333;padding-bottom:8px;}
+h2{margin-top:1.6em;color:#333;}
+.meta{color:#666;font-size:.9em;}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;
+color:#fff;font-weight:600;font-size:.8em;margin-right:8px;}
+.check{border:1px solid #e0e0e0;border-radius:6px;
+padding:10px 14px;margin:10px 0;background:#fafafa;}
+.check code{background:#eef;padding:1px 5px;border-radius:3px;
+font-size:.85em;}
+.none{color:#888;font-style:italic;}
+.conf{color:#888;font-size:.85em;margin-left:6px;}
+.ev{color:#555;font-size:.9em;display:block;margin-left:16px;}
+table.svc{border-collapse:collapse;width:100%;}
+table.svc td,table.svc th{border:1px solid #ddd;padding:6px;
+text-align:left;font-size:.9em;}
+</style></head><body>
+<h1>Security Audit Report</h1>
+<p class='meta'><b>Target:</b> http://130.208.246.173<br>
+<b>Web service reachable:</b> yes<br>
+<b>Open ports:</b> 2<br>
+<b>Scan duration:</b> 2m 59s (179.0s)<br>
+<b>Run folder:</b> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173</code><br>
+<b>Generated:</b> 2026-09-24 16:03:47</p>
+<h2>Executive Summary</h2>
+<table style='border-collapse:collapse'>
+<tr><td><span class='badge' style='background:#d32f2f'>HIGH</span></td><td>0 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#f57c00'>MEDIUM</span></td><td>8 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#fbc02d'>LOW</span></td><td>11 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#0288d1'>INFO</span></td><td>42 finding(s)</td></tr>
+</table>
+<h2>Confirmed Web Services</h2>
+<table class='svc'>
+<tr><th>URL</th><th>Status</th><th>Server</th><th>Content-Type</th></tr>
+<tr><td><code>http://130.208.246.173</code></td><td>200</td><td>Apache/2.4.58 (Ubuntu)</td><td>text/html; charset=UTF-8</td></tr>
+</table>
+<h2>Non-HTTP Services</h2>
+<table class='svc'>
+<tr><th>Port</th><th>Banner</th></tr>
+<tr><td>22</td><td>SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.19
+Invalid SSH identification string.</td></tr>
+</table>
+<h2>DNS / Host Resolution</h2>
+<ul>
+<li><b>input:</b> 130.208.246.173</li>
+<li><b>is_ip_literal:</b> True</li>
+<li><b>resolved_ips:</b> [&#x27;130.208.246.173&#x27;]</li>
+</ul>
+<h2>HIGH Findings</h2>
+<p class='none'>None</p>
+<h2>MEDIUM Findings</h2>
+<ul>
+<li>Cookie &#x27;PHPSESSID&#x27; missing Secure flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>PHPSESSID=tfsphliate0emlquqc58jeqjur; path=/</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Cookie &#x27;PHPSESSID&#x27; missing HttpOnly flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>PHPSESSID=tfsphliate0emlquqc58jeqjur; path=/</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Cookie &#x27;PHPSESSID&#x27; missing SameSite flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>PHPSESSID=tfsphliate0emlquqc58jeqjur; path=/</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Server error on path: /uploads/ (HTTP 500)
+<span class='conf'>[tentative]</span>
+<span class='ev'>http://130.208.246.173/uploads/ returned HTTP 500 — path was processed</span>
+<span class='ev'><code>http://130.208.246.173/uploads/</code></span>
+</li>
+<li>Nikto: GET /: Cookie PHPSESSID created without the httponly flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Nikto: GET /config.php: /config.php: PHP Config file may contain database IDs and passwords.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Nikto: GET /login.php: /login.php: Admin login page/section found.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Server error on path: http://130.208.246.173/uploads (HTTP 500)
+<span class='conf'>[tentative]</span>
+<span class='ev'>612 bytes — path was processed</span>
+<span class='ev'><code>http://130.208.246.173/uploads</code></span>
+</li>
+</ul>
+<h2>LOW Findings</h2>
+<ul>
+<li>CSP not implemented
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Content-Security-Policy absent on http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Clickjacking protection missing
+<span class='conf'>[confirmed]</span>
+<span class='ev'>X-Frame-Options absent on http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>MIME sniffing protection missing
+<span class='conf'>[confirmed]</span>
+<span class='ev'>X-Content-Type-Options absent on http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Referrer policy not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Referrer-Policy absent on http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Permissions policy not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Permissions-Policy absent on http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>COOP not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Cross-Origin-Opener-Policy absent on http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>CORP not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Cross-Origin-Resource-Policy absent on http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Server discloses version: Apache/2.4.58 (Ubuntu)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>server: Apache/2.4.58 (Ubuntu)</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Nikto: GET /: Server leaks inodes via ETags, header found with file /, fields: 0x29af 0x65bc388512682
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+</ul>
+<h2>INFO Findings</h2>
+<ul>
+<li>Non-HTTP service on port 22: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.19
+Invalid SSH identification string.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>TCP port 22 is open</span>
+</li>
+<li>Page title: Rare Minecraft Worlds — Forum
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Interesting links (8): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php, thread.php?id=1, thread.php?id=2
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Page title: Login — Rare Minecraft Worlds
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/login.php</span>
+<span class='ev'><code>http://130.208.246.173/login.php</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/login.php</span>
+<span class='ev'><code>http://130.208.246.173/login.php</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/login.php</span>
+<span class='ev'><code>http://130.208.246.173/login.php</code></span>
+</li>
+<li>Input fields: csrf_token, password, username
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/login.php</span>
+<span class='ev'><code>http://130.208.246.173/login.php</code></span>
+</li>
+<li>Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/login.php</span>
+<span class='ev'><code>http://130.208.246.173/login.php</code></span>
+</li>
+<li>Page title: Register — Rare Minecraft Worlds
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/register.php</span>
+<span class='ev'><code>http://130.208.246.173/register.php</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/register.php</span>
+<span class='ev'><code>http://130.208.246.173/register.php</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/register.php</span>
+<span class='ev'><code>http://130.208.246.173/register.php</code></span>
+</li>
+<li>Input fields: confirm, csrf_token, password, username
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/register.php</span>
+<span class='ev'><code>http://130.208.246.173/register.php</code></span>
+</li>
+<li>Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/register.php</span>
+<span class='ev'><code>http://130.208.246.173/register.php</code></span>
+</li>
+<li>Page title: Screenshot Gallery — Rare Minecraft Worlds
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/gallery.php</span>
+<span class='ev'><code>http://130.208.246.173/gallery.php</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/gallery.php</span>
+<span class='ev'><code>http://130.208.246.173/gallery.php</code></span>
+</li>
+<li>Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/gallery.php</span>
+<span class='ev'><code>http://130.208.246.173/gallery.php</code></span>
+</li>
+<li>Page title: World Downloads — Rare Minecraft Worlds
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/worlds.php</span>
+<span class='ev'><code>http://130.208.246.173/worlds.php</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/worlds.php</span>
+<span class='ev'><code>http://130.208.246.173/worlds.php</code></span>
+</li>
+<li>Interesting links (8): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, download_world.php?id=1, download_world.php?id=2, login.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/worlds.php</span>
+<span class='ev'><code>http://130.208.246.173/worlds.php</code></span>
+</li>
+<li>Page title: I AM GOD — Rare Minecraft Worlds
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/thread.php?id=2</span>
+<span class='ev'><code>http://130.208.246.173/thread.php?id=2</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/thread.php?id=2</span>
+<span class='ev'><code>http://130.208.246.173/thread.php?id=2</code></span>
+</li>
+<li>Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/thread.php?id=2</span>
+<span class='ev'><code>http://130.208.246.173/thread.php?id=2</code></span>
+</li>
+<li>Page title: &amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt; — Rare Minecraft Worlds
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/thread.php?id=1</span>
+<span class='ev'><code>http://130.208.246.173/thread.php?id=1</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/thread.php?id=1</span>
+<span class='ev'><code>http://130.208.246.173/thread.php?id=1</code></span>
+</li>
+<li>Interesting links (5): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/thread.php?id=1</span>
+<span class='ev'><code>http://130.208.246.173/thread.php?id=1</code></span>
+</li>
+<li>WhatWeb http://130.208.246.173 [200 OK]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.173], Title[Rare Minecraft Worlds — Forum]
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173</span>
+<span class='ev'><code>http://130.208.246.173</code></span>
+</li>
+<li>Path exists but empty: /config.php (HTTP 200, 0 bytes)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/config.php — likely an executed PHP file</span>
+<span class='ev'><code>http://130.208.246.173/config.php</code></span>
+</li>
+<li>Protected path exists: /config.sample.php (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/config.sample.php returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.173/config.sample.php</code></span>
+</li>
+<li>Path exists but empty: /includes/db.php (HTTP 200, 0 bytes)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/includes/db.php — likely an executed PHP file</span>
+<span class='ev'><code>http://130.208.246.173/includes/db.php</code></span>
+</li>
+<li>Protected path exists: /.htaccess (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/.htaccess returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.173/.htaccess</code></span>
+</li>
+<li>Protected path exists: /.htpasswd (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/.htpasswd returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.173/.htpasswd</code></span>
+</li>
+<li>Protected path exists: /server-status (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.173/server-status returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.173/server-status</code></span>
+</li>
+<li>Discovered: http://130.208.246.173/.hta (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.173/.hta</code></span>
+</li>
+<li>Discovered: http://130.208.246.173/.htaccess (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.173/.htaccess</code></span>
+</li>
+<li>Discovered: http://130.208.246.173/.htpasswd (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.173/.htpasswd</code></span>
+</li>
+<li>Discovered: http://130.208.246.173/admin (HTTP 301)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>318 bytes</span>
+<span class='ev'><code>http://130.208.246.173/admin</code></span>
+</li>
+<li>Discovered: http://130.208.246.173/css (HTTP 301)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>316 bytes</span>
+<span class='ev'><code>http://130.208.246.173/css</code></span>
+</li>
+<li>Discovered: http://130.208.246.173/includes (HTTP 301)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>321 bytes</span>
+<span class='ev'><code>http://130.208.246.173/includes</code></span>
+</li>
+<li>Discovered: http://130.208.246.173/index.php (HTTP 200)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>1574 bytes</span>
+<span class='ev'><code>http://130.208.246.173/index.php</code></span>
+</li>
+<li>Discovered: http://130.208.246.173/js (HTTP 301)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>315 bytes</span>
+<span class='ev'><code>http://130.208.246.173/js</code></span>
+</li>
+<li>Discovered: http://130.208.246.173/server-status (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.173/server-status</code></span>
+</li>
+</ul>
+<h2>Check Timings</h2>
+<table class='svc'>
+<tr><th>Check</th><th>Duration</th></tr>
+<tr><td>directory_discovery</td><td>2m 5s</td></tr>
+<tr><td>nikto</td><td>45.87s</td></tr>
+<tr><td>whatweb</td><td>4.12s</td></tr>
+<tr><td>service_discovery</td><td>1.66s</td></tr>
+<tr><td>sensitive_files</td><td>1.25s</td></tr>
+<tr><td>page_analysis</td><td>196ms</td></tr>
+<tr><td>dns_info</td><td>49ms</td></tr>
+<tr><td>http_methods</td><td>39ms</td></tr>
+<tr><td>cors</td><td>37ms</td></tr>
+<tr><td>body_analysis</td><td>15ms</td></tr>
+<tr><td>cache_control</td><td>12ms</td></tr>
+<tr><td>security_headers</td><td>11ms</td></tr>
+<tr><td>info_disclosure</td><td>11ms</td></tr>
+<tr><td>cookies</td><td>10ms</td></tr>
+<tr><td>ssl_nmap</td><td>0ms</td></tr>
+<tr><td>ssl_testssl</td><td>0ms</td></tr>
+<tr><td>ssl_certificate</td><td>0ms</td></tr>
+<tr><td>csp_analysis</td><td>0ms</td></tr>
+<tr><td>https_redirect</td><td>0ms</td></tr>
+</table>
+<h2>Detailed Results</h2>
+<div class='check'><b>service_discovery</b> <span class='conf'>(1.66s)</span><br>
+<i>Summary:</i> 1 HTTP/HTTPS service(s) confirmed, 1 other open port(s)...
+</div>
+<div class='check'><b>dns_info</b> <span class='conf'>(49ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/dns_info.txt</code><br>
+</div>
+<div class='check'><b>body_analysis</b> <span class='conf'>(15ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/body_http_130.208.246.173.txt</code><br>
+</div>
+<div class='check'><b>page_analysis</b> <span class='conf'>(196ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/page_http_130.208.246.173_login.php.txt</code><br>
+</div>
+<div class='check'><b>whatweb</b> <span class='conf'>(4.12s)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/whatweb.txt</code><br>
+</div>
+<div class='check'><b>ssl_nmap</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; skipping SSL enumeration<br>
+</div>
+<div class='check'><b>ssl_testssl</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; skipping testssl<br>
+</div>
+<div class='check'><b>ssl_certificate</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed<br>
+</div>
+<div class='check'><b>security_headers</b> <span class='conf'>(11ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/headers.txt</code><br>
+</div>
+<div class='check'><b>csp_analysis</b> <span class='conf'>(0ms)</span><br>
+</div>
+<div class='check'><b>cache_control</b> <span class='conf'>(12ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/cache_control.txt</code><br>
+</div>
+<div class='check'><b>cookies</b> <span class='conf'>(10ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/cookies.txt</code><br>
+</div>
+<div class='check'><b>http_methods</b> <span class='conf'>(39ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/methods.txt</code><br>
+</div>
+<div class='check'><b>https_redirect</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; cannot evaluate redirect<br>
+</div>
+<div class='check'><b>info_disclosure</b> <span class='conf'>(11ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/disclosure.txt</code><br>
+</div>
+<div class='check'><b>cors</b> <span class='conf'>(37ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/cors.txt</code><br>
+</div>
+<div class='check'><b>sensitive_files</b> <span class='conf'>(1.25s)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/sensitive_files.txt</code><br>
+</div>
+<div class='check'><b>nikto</b> <span class='conf'>(45.87s)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/nikto_http_130.208.246.173.txt</code><br>
+<i>Summary:</i> - Nikto v2.1.5 --------------------------------------------------------------------------- + Target IP:          130.208.246.173 + Target Hostname:    130.208.246.173 + Target Port:        80 + Start Time:         2026-09-24 16:00:55 (GMT0) -----------------------------------------------------------...
+</div>
+<div class='check'><b>directory_discovery</b> <span class='conf'>(2m 5s)</span><br>
+</div>
+</body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rare Minecraft Worlds — Forum</title>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="./index.php">⛏ Rare Minecraft Worlds</a>
+    <nav>
+        <a href="./index.php">Forum</a>
+        <a href="./gallery.php">Gallery</a>
+        <a href="./worlds.php">World Downloads</a>
+                    <a href="./login.php">Login</a>
+            <a href="./register.php">Register</a>
+            </nav>
+</header>
+<div class="container">
+<div class="panel">
+    <h1>Message Board</h1>
+    <p>Share your rare seed discoveries, ask for help finding wild structures, and talk shop with other rare-world hunters.</p>
+            <a href="login.php" class="btn">Log in to post</a>
+    </div>
+
+<ul class="thread-list">
+                <li>
+            <a href="thread.php?id=2">I AM GOD</a>
+                        <div class="meta">
+                by Herobrine &middot; 5d ago                &middot; 0 replies            </div>
+        </li>
+            <li>
+            <a href="thread.php?id=1">&lt;script&gt;alert(document.cookie)&lt;/script&gt;</a>
+            <span class="tag admin">Locked</span>            <div class="meta">
+                by Herobrine &middot; 5d ago                &middot; 2 replies            </div>
+        </li>
+    </ul>
+</div>
+<footer>&copy; 2026 Rare Minecraft Worlds — a fan community for rare Minecraft seed hunters.</footer>
+</body>
+</html>

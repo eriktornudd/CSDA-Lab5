@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Board — Tröllasteinar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="index.php">
+      <span class="brand-mark" aria-hidden="true">&#9650;</span>
+      <span class="brand-text">
+        <strong>Tröllasteinar</strong>
+        <small>The Icelandic Troll-Rock Spotters&rsquo; Society</small>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="index.php">Board</a>
+              <a href="login.php">Log in</a>
+        <a class="cta" href="register.php">Join</a>
+          </nav>
+  </div>
+</header>
+<main class="board">
+  <div class="board-head">
+    <h1>The Board</h1>
+    <p class="muted">Sightings, finds, and rocks that unmistakably resemble trolls.</p>
+  </div>
+
+  
+      <p class="notice"><a href="login.php">Log in</a> or <a href="register.php">join</a> to post and upload photos.</p>
+  
+  <section class="posts">
+          <p class="muted">No sightings yet. Be the first to report a troll-rock.</p>
+    
+      </section>
+</main>
+<footer class="site-footer">
+  <p>Tröllasteinar — a CSDA Lab 4 demonstration forum. Basalt, moss &amp; folklore.</p>
+</footer>
+</body>
+</html>

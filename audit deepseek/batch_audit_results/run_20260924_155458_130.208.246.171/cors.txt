@@ -1,0 +1,46 @@
+HTTP/1.1 200 OK
+Date: Thu, 24 Sep 2026 15:55:10 GMT
+Server: Apache/2.4.58 (Ubuntu)
+Set-Cookie: PHPSESSID=7ahjsm0e9s1vctjf0f1ipgp7i2; path=/; HttpOnly; SameSite=Lax
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Vary: Accept-Encoding
+Content-Length: 1171
+Content-Type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Malazan Archive</title>
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="/">The Malazan Archive</a>
+    <nav>
+        <a href="/forum">Forum</a>
+        <a href="/gallery">Fanart</a>
+        <a href="/wiki">Wiki</a>
+        <a href="/characters">Characters</a>
+                    <a href="/login">Log in</a>
+            <a href="/register">Register</a>
+            </nav>
+</header>
+<main class="site-main">
+<h1>Welcome to the Malazan Archive</h1>
+<p>A community space for discussion, fanart, and reference material for the Malazan Book of the Fallen series.</p>
+<ul class="home-links">
+    <li><a href="/forum">Visit the forum</a></li>
+    <li><a href="/gallery">Browse fanart</a></li>
+    <li><a href="/wiki">Read the book wiki</a></li>
+    <li><a href="/characters">Check the character list</a></li>
+</ul>
+</main>
+<footer class="site-footer">
+    <p>A fan-made archive. Malazan Book of the Fallen belongs to Steven Erikson.</p>
+</footer>
+</body>
+</html>

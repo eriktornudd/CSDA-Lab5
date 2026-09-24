@@ -1,0 +1,36 @@
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+OUTPUT_FILE: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_161231_130.208.246.166/dirb_https_130.208.246.166_443.txt
+START_TIME: Thu Sep 24 16:22:04 2026
+URL_BASE: https://130.208.246.166:443/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+OPTION: Silent Mode
+
+-----------------
+
+GENERATED WORDS: 4612
+
+---- Scanning URL: https://130.208.246.166:443/ ----
++ https://130.208.246.166:443/account (CODE:302|SIZE:229)
++ https://130.208.246.166:443/admin (CODE:302|SIZE:225)
++ https://130.208.246.166:443/gallery (CODE:200|SIZE:3863)
+==> DIRECTORY: https://130.208.246.166:443/javascript/
++ https://130.208.246.166:443/login (CODE:200|SIZE:4144)
++ https://130.208.246.166:443/logout (CODE:405|SIZE:3426)
++ https://130.208.246.166:443/register (CODE:200|SIZE:4476)
++ https://130.208.246.166:443/search (CODE:200|SIZE:3400)
++ https://130.208.246.166:443/server-status (CODE:403|SIZE:281)
+
+---- Entering directory: https://130.208.246.166:443/javascript/ ----
+==> DIRECTORY: https://130.208.246.166:443/javascript/jquery/
+
+---- Entering directory: https://130.208.246.166:443/javascript/jquery/ ----
++ https://130.208.246.166:443/javascript/jquery/jquery (CODE:200|SIZE:289782)
+
+-----------------
+END_TIME: Thu Sep 24 16:23:15 2026
+DOWNLOADED: 13836 - FOUND: 9

@@ -1,0 +1,72 @@
+HTTP/1.1 200 OK
+Date: Thu, 24 Sep 2026 16:05:19 GMT
+Server: Apache/2.4.58 (Ubuntu)
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Referrer-Policy: same-origin
+Set-Cookie: pokecollect_d39bb653aa41=s8a372t0giukfo6pr4j5h8k297; path=/; HttpOnly; SameSite=Lax
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Vary: Accept-Encoding
+Content-Length: 2485
+Content-Type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home · PokeCollect</title>
+<link rel="icon" href="assets/pokeball.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.php"><img src="assets/pokeball.svg" alt="" width="34" height="34"><span>PokeCollect</span></a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle"><label for="nav-toggle" class="nav-burger" aria-label="Menu">☰</label>
+    <nav class="mainnav">
+              <a href="index.php" class="active">Home</a>
+              <a href="forum.php">Forum</a>
+              <a href="gallery.php">Gallery</a>
+              <a href="cards.php">Card Registry</a>
+              <a href="map.php">World Map</a>
+                </nav>
+    <div class="usernav">
+              <a href="login.php">Log in</a>
+        <a href="register.php" class="btn btn-small">Join</a>
+          </div>
+  </div>
+</header>
+<main class="wrap">
+<section class="hero">
+  <div>
+    <h1>PokeCollect</h1>
+    <p class="lead">Rare Pokémon cards from every corner of the world</p>
+    <p>Show off your grail cards, log where in the world you found them, and talk shop with collectors everywhere.</p>
+          <p><a class="btn" href="register.php">Create a free account</a> <a class="btn btn-ghost" href="login.php">Log in</a></p>
+      </div>
+  <div class="hero-art" aria-hidden="true"><img src="assets/pokeball.svg" alt=""></div>
+</section>
+
+<section class="stats">
+      <div class="stat"><strong>1</strong><span>Collectors</span></div>
+      <div class="stat"><strong>0</strong><span>Cards registered</span></div>
+      <div class="stat"><strong>0</strong><span>Countries</span></div>
+      <div class="stat"><strong>0</strong><span>Forum posts</span></div>
+  </section>
+
+  <section class="panel center">
+    <h2>Members only</h2>
+    <p>The forum, gallery and card registry are available to registered collectors. <a href="login.php">Log in</a> or <a href="register.php">sign up</a> to take a look.</p>
+  </section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <p>PokeCollect — Rare Pokémon cards from every corner of the world</p>
+    <p class="muted small">Fan community site. Pokémon and all related names are trademarks of Nintendo, Creatures Inc. and GAME FREAK inc.</p>
+  </div>
+</footer>
+</body>
+</html>

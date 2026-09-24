@@ -1,0 +1,1291 @@
+{
+  "target": "http://130.208.246.173",
+  "timestamp": "20260924_160047",
+  "domain": "130.208.246.173",
+  "run_directory": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173",
+  "scan_duration_seconds": 179.0392141342163,
+  "scan_duration_human": "2m 59s",
+  "available_tools": {
+    "whatweb": true,
+    "nmap": true,
+    "nikto": true,
+    "dirb": true,
+    "ffuf": true,
+    "openssl": true,
+    "curl": true,
+    "dig": true,
+    "testssl": true
+  },
+  "services": [
+    {
+      "url": "http://130.208.246.173",
+      "scheme": "http",
+      "port": 80,
+      "status": 200,
+      "server": "Apache/2.4.58 (Ubuntu)",
+      "content_type": "text/html; charset=UTF-8"
+    }
+  ],
+  "open_ports": [
+    22,
+    80
+  ],
+  "non_http_services": [
+    {
+      "port": 22,
+      "banner": "SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.19\r\nInvalid SSH identification string."
+    }
+  ],
+  "results": {
+    "service_discovery": {
+      "candidates_probed": 4,
+      "ports_scanned": 96,
+      "port_scan_seconds": -0.3826611042022705,
+      "open_ports": [
+        22,
+        80
+      ],
+      "non_http_services": [
+        {
+          "port": 22,
+          "banner": "SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.19\r\nInvalid SSH identification string."
+        }
+      ],
+      "confirmed_services": [
+        {
+          "url": "http://130.208.246.173",
+          "scheme": "http",
+          "port": 80,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "findings": [
+        {
+          "title": "Non-HTTP service on port 22: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.19\r\nInvalid SSH identification string.",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "TCP port 22 is open",
+          "url": null,
+          "check": "service_discovery"
+        }
+      ],
+      "summary": "1 HTTP/HTTPS service(s) confirmed, 1 other open port(s)",
+      "_duration_seconds": 1.6564087867736816
+    },
+    "dns_info": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/dns_info.txt",
+      "dns_info": {
+        "input": "130.208.246.173",
+        "is_ip_literal": true,
+        "resolved_ips": [
+          "130.208.246.173"
+        ],
+        "reverse_dns": null
+      },
+      "findings": [],
+      "_duration_seconds": 0.048629045486450195
+    },
+    "body_analysis": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/body_http_130.208.246.173.txt",
+      "findings": [
+        {
+          "title": "Page title: Rare Minecraft Worlds \u2014 Forum",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Interesting links (8): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php, thread.php?id=1, thread.php?id=2",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "body_analysis"
+        }
+      ],
+      "_duration_seconds": 0.014740705490112305
+    },
+    "page_analysis": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/page_http_130.208.246.173_login.php.txt",
+      "pages_fetched": [
+        {
+          "url": "http://130.208.246.173/login.php",
+          "status": 200,
+          "size": 1384,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.173/register.php",
+          "status": 200,
+          "size": 1556,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.173/index.php",
+          "status": 200,
+          "size": 1580,
+          "duplicate": true
+        },
+        {
+          "url": "http://130.208.246.173/gallery.php",
+          "status": 200,
+          "size": 2257,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.173/worlds.php",
+          "status": 200,
+          "size": 1715,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.173/thread.php?id=2",
+          "status": 200,
+          "size": 1159,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.173/thread.php?id=1",
+          "status": 200,
+          "size": 1617,
+          "duplicate": false
+        }
+      ],
+      "findings": [
+        {
+          "title": "Page title: Login \u2014 Rare Minecraft Worlds",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/login.php",
+          "url": "http://130.208.246.173/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/login.php",
+          "url": "http://130.208.246.173/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/login.php",
+          "url": "http://130.208.246.173/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: csrf_token, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/login.php",
+          "url": "http://130.208.246.173/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/login.php",
+          "url": "http://130.208.246.173/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Register \u2014 Rare Minecraft Worlds",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/register.php",
+          "url": "http://130.208.246.173/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/register.php",
+          "url": "http://130.208.246.173/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/register.php",
+          "url": "http://130.208.246.173/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: confirm, csrf_token, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/register.php",
+          "url": "http://130.208.246.173/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/register.php",
+          "url": "http://130.208.246.173/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Screenshot Gallery \u2014 Rare Minecraft Worlds",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/gallery.php",
+          "url": "http://130.208.246.173/gallery.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/gallery.php",
+          "url": "http://130.208.246.173/gallery.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/gallery.php",
+          "url": "http://130.208.246.173/gallery.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: World Downloads \u2014 Rare Minecraft Worlds",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/worlds.php",
+          "url": "http://130.208.246.173/worlds.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/worlds.php",
+          "url": "http://130.208.246.173/worlds.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (8): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, download_world.php?id=1, download_world.php?id=2, login.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/worlds.php",
+          "url": "http://130.208.246.173/worlds.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: I AM GOD \u2014 Rare Minecraft Worlds",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/thread.php?id=2",
+          "url": "http://130.208.246.173/thread.php?id=2",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/thread.php?id=2",
+          "url": "http://130.208.246.173/thread.php?id=2",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/thread.php?id=2",
+          "url": "http://130.208.246.173/thread.php?id=2",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: &lt;script&gt;alert(document.cookie)&lt;/script&gt; \u2014 Rare Minecraft Worlds",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/thread.php?id=1",
+          "url": "http://130.208.246.173/thread.php?id=1",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/thread.php?id=1",
+          "url": "http://130.208.246.173/thread.php?id=1",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (5): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/thread.php?id=1",
+          "url": "http://130.208.246.173/thread.php?id=1",
+          "check": "page_analysis"
+        }
+      ],
+      "_duration_seconds": 0.19562005996704102
+    },
+    "whatweb": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/whatweb.txt",
+      "findings": [
+        {
+          "title": "WhatWeb http://130.208.246.173 [200 OK]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.173], Title[Rare Minecraft Worlds \u2014 Forum]",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "whatweb"
+        }
+      ],
+      "_duration_seconds": 4.122729063034058
+    },
+    "ssl_nmap": {
+      "error": "No HTTPS service confirmed; skipping SSL enumeration",
+      "_duration_seconds": 3.552436828613281e-05
+    },
+    "ssl_testssl": {
+      "error": "No HTTPS service confirmed; skipping testssl",
+      "_duration_seconds": 0.0002281665802001953
+    },
+    "ssl_certificate": {
+      "error": "No HTTPS service confirmed",
+      "_duration_seconds": 2.7179718017578125e-05
+    },
+    "security_headers": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/headers.txt",
+      "present_headers": [],
+      "missing_headers": [
+        {
+          "header": "Content-Security-Policy",
+          "issue": "CSP not implemented",
+          "url": "http://130.208.246.173"
+        },
+        {
+          "header": "X-Frame-Options",
+          "issue": "Clickjacking protection missing",
+          "url": "http://130.208.246.173"
+        },
+        {
+          "header": "X-Content-Type-Options",
+          "issue": "MIME sniffing protection missing",
+          "url": "http://130.208.246.173"
+        },
+        {
+          "header": "Referrer-Policy",
+          "issue": "Referrer policy not set",
+          "url": "http://130.208.246.173"
+        },
+        {
+          "header": "Permissions-Policy",
+          "issue": "Permissions policy not set",
+          "url": "http://130.208.246.173"
+        }
+      ],
+      "findings": [
+        {
+          "title": "CSP not implemented",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Content-Security-Policy absent on http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "security_headers"
+        },
+        {
+          "title": "Clickjacking protection missing",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "X-Frame-Options absent on http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "security_headers"
+        },
+        {
+          "title": "MIME sniffing protection missing",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "X-Content-Type-Options absent on http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "security_headers"
+        },
+        {
+          "title": "Referrer policy not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Referrer-Policy absent on http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "security_headers"
+        },
+        {
+          "title": "Permissions policy not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Permissions-Policy absent on http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "security_headers"
+        },
+        {
+          "title": "COOP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "security_headers"
+        },
+        {
+          "title": "CORP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "security_headers"
+        }
+      ],
+      "raw_headers": "HTTP/1.1 200 OK\nDate: Thu, 24 Sep 2026 16:00:47 GMT\nServer: Apache/2.4.58 (Ubuntu)\nSet-Cookie: PHPSESSID=tfsphliate0emlquqc58jeqjur; path=/\nExpires: Thu, 19 Nov 1981 08:52:00 GMT\nCache-Control: no-store, no-cache, must-revalidate\nPragma: no-cache\nVary: Accept-Encoding\nContent-Length: 1580\nContent-Type: text/html; charset=UTF-8\n\n",
+      "_duration_seconds": 0.010963201522827148
+    },
+    "csp_analysis": {
+      "output_file": null,
+      "findings": [],
+      "_duration_seconds": 0.00010633468627929688
+    },
+    "cache_control": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/cache_control.txt",
+      "findings": [],
+      "_duration_seconds": 0.012291908264160156
+    },
+    "cookies": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/cookies.txt",
+      "cookies_found": 1,
+      "findings": [
+        {
+          "title": "Cookie 'PHPSESSID' missing Secure flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "PHPSESSID=tfsphliate0emlquqc58jeqjur; path=/",
+          "url": "http://130.208.246.173",
+          "check": "cookies"
+        },
+        {
+          "title": "Cookie 'PHPSESSID' missing HttpOnly flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "PHPSESSID=tfsphliate0emlquqc58jeqjur; path=/",
+          "url": "http://130.208.246.173",
+          "check": "cookies"
+        },
+        {
+          "title": "Cookie 'PHPSESSID' missing SameSite flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "PHPSESSID=tfsphliate0emlquqc58jeqjur; path=/",
+          "url": "http://130.208.246.173",
+          "check": "cookies"
+        }
+      ],
+      "_duration_seconds": 0.009892463684082031
+    },
+    "http_methods": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/methods.txt",
+      "allowed_methods": [],
+      "findings": [],
+      "_duration_seconds": 0.03867483139038086
+    },
+    "https_redirect": {
+      "error": "No HTTPS service confirmed; cannot evaluate redirect",
+      "_duration_seconds": 3.3855438232421875e-05
+    },
+    "info_disclosure": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/disclosure.txt",
+      "findings": [
+        {
+          "title": "Server discloses version: Apache/2.4.58 (Ubuntu)",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "server: Apache/2.4.58 (Ubuntu)",
+          "url": "http://130.208.246.173",
+          "check": "info_disclosure"
+        }
+      ],
+      "_duration_seconds": 0.010686635971069336
+    },
+    "cors": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/cors.txt",
+      "findings": [],
+      "_duration_seconds": 0.0369868278503418
+    },
+    "sensitive_files": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/sensitive_files.txt",
+      "findings": [
+        {
+          "title": "Path exists but empty: /config.php (HTTP 200, 0 bytes)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/config.php \u2014 likely an executed PHP file",
+          "url": "http://130.208.246.173/config.php",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /config.sample.php (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/config.sample.php returned HTTP 403",
+          "url": "http://130.208.246.173/config.sample.php",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Path exists but empty: /includes/db.php (HTTP 200, 0 bytes)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/includes/db.php \u2014 likely an executed PHP file",
+          "url": "http://130.208.246.173/includes/db.php",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.htaccess (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/.htaccess returned HTTP 403",
+          "url": "http://130.208.246.173/.htaccess",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.htpasswd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/.htpasswd returned HTTP 403",
+          "url": "http://130.208.246.173/.htpasswd",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /server-status (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.173/server-status returned HTTP 403",
+          "url": "http://130.208.246.173/server-status",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Server error on path: /uploads/ (HTTP 500)",
+          "severity": "MEDIUM",
+          "confidence": "tentative",
+          "evidence": "http://130.208.246.173/uploads/ returned HTTP 500 \u2014 path was processed",
+          "url": "http://130.208.246.173/uploads/",
+          "check": "sensitive_files"
+        }
+      ],
+      "_duration_seconds": 1.2530717849731445
+    },
+    "nikto": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/nikto_http_130.208.246.173.txt",
+      "summary": "- Nikto v2.1.5\n---------------------------------------------------------------------------\n+ Target IP:          130.208.246.173\n+ Target Hostname:    130.208.246.173\n+ Target Port:        80\n+ Start Time:         2026-09-24 16:00:55 (GMT0)\n---------------------------------------------------------------------------\n+ Server: Apache/2.4.58 (Ubuntu)\n+ The anti-clickjacking X-Frame-Options header is not present.\n+ Cookie PHPSESSID created without the httponly flag\n+ No CGI Directories found (use '-C all' to force check all possible dirs)\n+ Server leaks inodes via ETags, header found with file /, fields: 0x29af 0x65bc388512682 \n+ DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.\n+ /config.php: PHP Config fil",
+      "findings": [
+        {
+          "title": "Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Cookie PHPSESSID created without the httponly flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Server leaks inodes via ETags, header found with file /, fields: 0x29af 0x65bc388512682",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /config.php: /config.php: PHP Config file may contain database IDs and passwords.",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /login.php: /login.php: Admin login page/section found.",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.173",
+          "url": "http://130.208.246.173",
+          "check": "nikto"
+        }
+      ],
+      "_duration_seconds": 45.86700510978699
+    },
+    "directory_discovery": {
+      "ffuf": {
+        "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/ffuf_http_130.208.246.173.json",
+        "output_files": [
+          "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/ffuf_http_130.208.246.173.json"
+        ],
+        "wordlist": "/snap/seclists/current/Discovery/Web-Content/common.txt",
+        "findings": [
+          {
+            "title": "Discovered: http://130.208.246.173/.hta (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.173/.hta",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.173/.htaccess (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.173/.htaccess",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.173/.htpasswd (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.173/.htpasswd",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.173/admin (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "318 bytes",
+            "url": "http://130.208.246.173/admin",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.173/css (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "316 bytes",
+            "url": "http://130.208.246.173/css",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.173/includes (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "321 bytes",
+            "url": "http://130.208.246.173/includes",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.173/index.php (HTTP 200)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "1574 bytes",
+            "url": "http://130.208.246.173/index.php",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.173/js (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "315 bytes",
+            "url": "http://130.208.246.173/js",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.173/server-status (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.173/server-status",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Server error on path: http://130.208.246.173/uploads (HTTP 500)",
+            "severity": "MEDIUM",
+            "confidence": "tentative",
+            "evidence": "612 bytes \u2014 path was processed",
+            "url": "http://130.208.246.173/uploads",
+            "check": "directory_discovery"
+          }
+        ]
+      },
+      "dirb": {
+        "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173/dirb_http_130.208.246.173.txt",
+        "findings": []
+      },
+      "findings": [
+        {
+          "title": "Discovered: http://130.208.246.173/.hta (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.173/.hta",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/.htaccess (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.173/.htaccess",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/.htpasswd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.173/.htpasswd",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/admin (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "318 bytes",
+          "url": "http://130.208.246.173/admin",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/css (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "316 bytes",
+          "url": "http://130.208.246.173/css",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/includes (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "321 bytes",
+          "url": "http://130.208.246.173/includes",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/index.php (HTTP 200)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "1574 bytes",
+          "url": "http://130.208.246.173/index.php",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/js (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "315 bytes",
+          "url": "http://130.208.246.173/js",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/server-status (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.173/server-status",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Server error on path: http://130.208.246.173/uploads (HTTP 500)",
+          "severity": "MEDIUM",
+          "confidence": "tentative",
+          "evidence": "612 bytes \u2014 path was processed",
+          "url": "http://130.208.246.173/uploads",
+          "check": "directory_discovery"
+        }
+      ],
+      "_duration_seconds": 125.7583155632019
+    }
+  },
+  "check_durations": {
+    "service_discovery": 1.656,
+    "dns_info": 0.049,
+    "body_analysis": 0.015,
+    "page_analysis": 0.196,
+    "whatweb": 4.123,
+    "ssl_nmap": 0.0,
+    "ssl_testssl": 0.0,
+    "ssl_certificate": 0.0,
+    "security_headers": 0.011,
+    "csp_analysis": 0.0,
+    "cache_control": 0.012,
+    "cookies": 0.01,
+    "http_methods": 0.039,
+    "https_redirect": 0.0,
+    "info_disclosure": 0.011,
+    "cors": 0.037,
+    "sensitive_files": 1.253,
+    "nikto": 45.867,
+    "directory_discovery": 125.758
+  },
+  "summary": {
+    "total_checks": 19,
+    "web_service_reachable": true,
+    "open_port_count": 2,
+    "findings_by_severity": {
+      "HIGH": [],
+      "MEDIUM": [
+        {
+          "title": "Cookie 'PHPSESSID' missing Secure flag",
+          "check": "cookies",
+          "url": "http://130.208.246.173",
+          "evidence": "PHPSESSID=tfsphliate0emlquqc58jeqjur; path=/",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Cookie 'PHPSESSID' missing HttpOnly flag",
+          "check": "cookies",
+          "url": "http://130.208.246.173",
+          "evidence": "PHPSESSID=tfsphliate0emlquqc58jeqjur; path=/",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Cookie 'PHPSESSID' missing SameSite flag",
+          "check": "cookies",
+          "url": "http://130.208.246.173",
+          "evidence": "PHPSESSID=tfsphliate0emlquqc58jeqjur; path=/",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Server error on path: /uploads/ (HTTP 500)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.173/uploads/",
+          "evidence": "http://130.208.246.173/uploads/ returned HTTP 500 \u2014 path was processed",
+          "confidence": "tentative"
+        },
+        {
+          "title": "Nikto: GET /: Cookie PHPSESSID created without the httponly flag",
+          "check": "nikto",
+          "url": "http://130.208.246.173",
+          "evidence": "nikto report for http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /config.php: /config.php: PHP Config file may contain database IDs and passwords.",
+          "check": "nikto",
+          "url": "http://130.208.246.173",
+          "evidence": "nikto report for http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /login.php: /login.php: Admin login page/section found.",
+          "check": "nikto",
+          "url": "http://130.208.246.173",
+          "evidence": "nikto report for http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Server error on path: http://130.208.246.173/uploads (HTTP 500)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.173/uploads",
+          "evidence": "612 bytes \u2014 path was processed",
+          "confidence": "tentative"
+        }
+      ],
+      "LOW": [
+        {
+          "title": "CSP not implemented",
+          "check": "security_headers",
+          "url": "http://130.208.246.173",
+          "evidence": "Content-Security-Policy absent on http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Clickjacking protection missing",
+          "check": "security_headers",
+          "url": "http://130.208.246.173",
+          "evidence": "X-Frame-Options absent on http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "MIME sniffing protection missing",
+          "check": "security_headers",
+          "url": "http://130.208.246.173",
+          "evidence": "X-Content-Type-Options absent on http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Referrer policy not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.173",
+          "evidence": "Referrer-Policy absent on http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Permissions policy not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.173",
+          "evidence": "Permissions-Policy absent on http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "COOP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.173",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "CORP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.173",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Server discloses version: Apache/2.4.58 (Ubuntu)",
+          "check": "info_disclosure",
+          "url": "http://130.208.246.173",
+          "evidence": "server: Apache/2.4.58 (Ubuntu)",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.",
+          "check": "nikto",
+          "url": "http://130.208.246.173",
+          "evidence": "nikto report for http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Server leaks inodes via ETags, header found with file /, fields: 0x29af 0x65bc388512682",
+          "check": "nikto",
+          "url": "http://130.208.246.173",
+          "evidence": "nikto report for http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.",
+          "check": "nikto",
+          "url": "http://130.208.246.173",
+          "evidence": "nikto report for http://130.208.246.173",
+          "confidence": "confirmed"
+        }
+      ],
+      "INFO": [
+        {
+          "title": "Non-HTTP service on port 22: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.19\r\nInvalid SSH identification string.",
+          "check": "service_discovery",
+          "url": null,
+          "evidence": "TCP port 22 is open",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Rare Minecraft Worlds \u2014 Forum",
+          "check": "body_analysis",
+          "url": "http://130.208.246.173",
+          "evidence": "http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "body_analysis",
+          "url": "http://130.208.246.173",
+          "evidence": "http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (8): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php, thread.php?id=1, thread.php?id=2",
+          "check": "body_analysis",
+          "url": "http://130.208.246.173",
+          "evidence": "http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Login \u2014 Rare Minecraft Worlds",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/login.php",
+          "evidence": "http://130.208.246.173/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/login.php",
+          "evidence": "http://130.208.246.173/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/login.php",
+          "evidence": "http://130.208.246.173/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: csrf_token, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/login.php",
+          "evidence": "http://130.208.246.173/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/login.php",
+          "evidence": "http://130.208.246.173/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Register \u2014 Rare Minecraft Worlds",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/register.php",
+          "evidence": "http://130.208.246.173/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/register.php",
+          "evidence": "http://130.208.246.173/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/register.php",
+          "evidence": "http://130.208.246.173/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: confirm, csrf_token, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/register.php",
+          "evidence": "http://130.208.246.173/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/register.php",
+          "evidence": "http://130.208.246.173/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Screenshot Gallery \u2014 Rare Minecraft Worlds",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/gallery.php",
+          "evidence": "http://130.208.246.173/gallery.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/gallery.php",
+          "evidence": "http://130.208.246.173/gallery.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/gallery.php",
+          "evidence": "http://130.208.246.173/gallery.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: World Downloads \u2014 Rare Minecraft Worlds",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/worlds.php",
+          "evidence": "http://130.208.246.173/worlds.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/worlds.php",
+          "evidence": "http://130.208.246.173/worlds.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (8): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, download_world.php?id=1, download_world.php?id=2, login.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/worlds.php",
+          "evidence": "http://130.208.246.173/worlds.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: I AM GOD \u2014 Rare Minecraft Worlds",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/thread.php?id=2",
+          "evidence": "http://130.208.246.173/thread.php?id=2",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/thread.php?id=2",
+          "evidence": "http://130.208.246.173/thread.php?id=2",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (6): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php, login.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/thread.php?id=2",
+          "evidence": "http://130.208.246.173/thread.php?id=2",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: &lt;script&gt;alert(document.cookie)&lt;/script&gt; \u2014 Rare Minecraft Worlds",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/thread.php?id=1",
+          "evidence": "http://130.208.246.173/thread.php?id=1",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/thread.php?id=1",
+          "evidence": "http://130.208.246.173/thread.php?id=1",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (5): ./gallery.php, ./index.php, ./login.php, ./register.php, ./worlds.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.173/thread.php?id=1",
+          "evidence": "http://130.208.246.173/thread.php?id=1",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "WhatWeb http://130.208.246.173 [200 OK]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.173], Title[Rare Minecraft Worlds \u2014 Forum]",
+          "check": "whatweb",
+          "url": "http://130.208.246.173",
+          "evidence": "http://130.208.246.173",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Path exists but empty: /config.php (HTTP 200, 0 bytes)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.173/config.php",
+          "evidence": "http://130.208.246.173/config.php \u2014 likely an executed PHP file",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /config.sample.php (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.173/config.sample.php",
+          "evidence": "http://130.208.246.173/config.sample.php returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Path exists but empty: /includes/db.php (HTTP 200, 0 bytes)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.173/includes/db.php",
+          "evidence": "http://130.208.246.173/includes/db.php \u2014 likely an executed PHP file",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.htaccess (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.173/.htaccess",
+          "evidence": "http://130.208.246.173/.htaccess returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.htpasswd (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.173/.htpasswd",
+          "evidence": "http://130.208.246.173/.htpasswd returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /server-status (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.173/server-status",
+          "evidence": "http://130.208.246.173/server-status returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/.hta (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.173/.hta",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/.htaccess (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.173/.htaccess",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/.htpasswd (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.173/.htpasswd",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/admin (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.173/admin",
+          "evidence": "318 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/css (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.173/css",
+          "evidence": "316 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/includes (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.173/includes",
+          "evidence": "321 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/index.php (HTTP 200)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.173/index.php",
+          "evidence": "1574 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/js (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.173/js",
+          "evidence": "315 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.173/server-status (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.173/server-status",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        }
+      ]
+    }
+  }
+}

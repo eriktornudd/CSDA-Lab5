@@ -1,0 +1,8 @@
+{
+  "timeout": 300,
+  "timeout_ssl": 900,
+  "timeout_nikto": 900,
+  "timeout_dirscan": 900,
+  "whatweb_aggression": 3,
+  "ffuf_wordlist": "/snap/seclists/current/Discovery/Web-Content/common.txt"
+}

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html><head><meta charset='utf-8'>
+<title>Audit Report - http://130.208.246.171</title>
+<style>
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;
+max-width:960px;margin:2em auto;padding:0 1em;color:#222;}
+h1{border-bottom:3px solid #333;padding-bottom:8px;}
+h2{margin-top:1.6em;color:#333;}
+.meta{color:#666;font-size:.9em;}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;
+color:#fff;font-weight:600;font-size:.8em;margin-right:8px;}
+.check{border:1px solid #e0e0e0;border-radius:6px;
+padding:10px 14px;margin:10px 0;background:#fafafa;}
+.check code{background:#eef;padding:1px 5px;border-radius:3px;
+font-size:.85em;}
+.none{color:#888;font-style:italic;}
+.conf{color:#888;font-size:.85em;margin-left:6px;}
+.ev{color:#555;font-size:.9em;display:block;margin-left:16px;}
+table.svc{border-collapse:collapse;width:100%;}
+table.svc td,table.svc th{border:1px solid #ddd;padding:6px;
+text-align:left;font-size:.9em;}
+</style></head><body>
+<h1>Security Audit Report</h1>
+<p class='meta'><b>Target:</b> http://130.208.246.171<br>
+<b>Web service reachable:</b> yes<br>
+<b>Open ports:</b> 2<br>
+<b>Scan duration:</b> 5m 48s (348.9s)<br>
+<b>Run folder:</b> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171</code><br>
+<b>Generated:</b> 2026-09-24 16:00:47</p>
+<h2>Executive Summary</h2>
+<table style='border-collapse:collapse'>
+<tr><td><span class='badge' style='background:#d32f2f'>HIGH</span></td><td>0 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#f57c00'>MEDIUM</span></td><td>8 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#fbc02d'>LOW</span></td><td>19 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#0288d1'>INFO</span></td><td>90 finding(s)</td></tr>
+</table>
+<h2>Confirmed Web Services</h2>
+<table class='svc'>
+<tr><th>URL</th><th>Status</th><th>Server</th><th>Content-Type</th></tr>
+<tr><td><code>http://130.208.246.171</code></td><td>200</td><td>Apache/2.4.58 (Ubuntu)</td><td>text/html; charset=UTF-8</td></tr>
+<tr><td><code>http://130.208.246.171:8080</code></td><td>200</td><td>Apache/2.4.58 (Ubuntu)</td><td>text/html; charset=UTF-8</td></tr>
+</table>
+<h2>DNS / Host Resolution</h2>
+<ul>
+<li><b>input:</b> 130.208.246.171</li>
+<li><b>is_ip_literal:</b> True</li>
+<li><b>resolved_ips:</b> [&#x27;130.208.246.171&#x27;]</li>
+</ul>
+<h2>HIGH Findings</h2>
+<p class='none'>None</p>
+<h2>MEDIUM Findings</h2>
+<ul>
+<li>Cookie &#x27;PHPSESSID&#x27; missing Secure flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>PHPSESSID=r38omghcdcgabrku53p0bon30d; path=/; HttpOnly; SameSite=Lax</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>Cookie &#x27;PHPSESSID&#x27; missing Secure flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>PHPSESSID=gk2o8an52j51fv7s967ettspd7; path=/</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Cookie &#x27;PHPSESSID&#x27; missing HttpOnly flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>PHPSESSID=gk2o8an52j51fv7s967ettspd7; path=/</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Cookie &#x27;PHPSESSID&#x27; missing SameSite flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>PHPSESSID=gk2o8an52j51fv7s967ettspd7; path=/</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Nikto: GET /: Cookie PHPSESSID created without the httponly flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>Nikto: GET /: Cookie PHPSESSID created without the httponly flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Nikto: GET /config.php: /config.php: PHP Config file may contain database IDs and passwords.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Nikto: GET /login.php: /login.php: Admin login page/section found.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+</ul>
+<h2>LOW Findings</h2>
+<ul>
+<li>CSP not implemented
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Content-Security-Policy absent on http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>Clickjacking protection missing
+<span class='conf'>[confirmed]</span>
+<span class='ev'>X-Frame-Options absent on http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>MIME sniffing protection missing
+<span class='conf'>[confirmed]</span>
+<span class='ev'>X-Content-Type-Options absent on http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>Referrer policy not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Referrer-Policy absent on http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>Permissions policy not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Permissions-Policy absent on http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>COOP not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Cross-Origin-Opener-Policy absent on http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>CORP not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Cross-Origin-Resource-Policy absent on http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>CSP not implemented
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Content-Security-Policy absent on http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Clickjacking protection missing
+<span class='conf'>[confirmed]</span>
+<span class='ev'>X-Frame-Options absent on http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>MIME sniffing protection missing
+<span class='conf'>[confirmed]</span>
+<span class='ev'>X-Content-Type-Options absent on http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Referrer policy not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Referrer-Policy absent on http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Permissions policy not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Permissions-Policy absent on http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>COOP not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Cross-Origin-Opener-Policy absent on http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>CORP not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Cross-Origin-Resource-Policy absent on http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Server discloses version: Apache/2.4.58 (Ubuntu)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>server: Apache/2.4.58 (Ubuntu)</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>Server discloses version: Apache/2.4.58 (Ubuntu)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>server: Apache/2.4.58 (Ubuntu)</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+</ul>
+<h2>INFO Findings</h2>
+<ul>
+<li>Page title: The Malazan Archive
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>Page title: Home - Tunnblr
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1.0
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Interesting links (10): create_post.php, index.php, login.php, register.php, view_post.php?id=1, view_post.php?id=2, view_post.php?id=3, view_post.php?id=4, view_post.php?id=5, view_post.php?id=6
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Page title: The Malazan Archive
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/login</span>
+<span class='ev'><code>http://130.208.246.171/login</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/login</span>
+<span class='ev'><code>http://130.208.246.171/login</code></span>
+</li>
+<li>Form: action=/login method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/login</span>
+<span class='ev'><code>http://130.208.246.171/login</code></span>
+</li>
+<li>Input fields: csrf, password, username
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/login</span>
+<span class='ev'><code>http://130.208.246.171/login</code></span>
+</li>
+<li>Page title: The Malazan Archive
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/register</span>
+<span class='ev'><code>http://130.208.246.171/register</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/register</span>
+<span class='ev'><code>http://130.208.246.171/register</code></span>
+</li>
+<li>Form: action=/register method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/register</span>
+<span class='ev'><code>http://130.208.246.171/register</code></span>
+</li>
+<li>Input fields: confirm_password, csrf, password, username
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/register</span>
+<span class='ev'><code>http://130.208.246.171/register</code></span>
+</li>
+<li>Page title: The Malazan Archive
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/forum</span>
+<span class='ev'><code>http://130.208.246.171/forum</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/forum</span>
+<span class='ev'><code>http://130.208.246.171/forum</code></span>
+</li>
+<li>Page title: The Malazan Archive
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/gallery</span>
+<span class='ev'><code>http://130.208.246.171/gallery</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/gallery</span>
+<span class='ev'><code>http://130.208.246.171/gallery</code></span>
+</li>
+<li>Page title: The Malazan Archive
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/wiki</span>
+<span class='ev'><code>http://130.208.246.171/wiki</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/wiki</span>
+<span class='ev'><code>http://130.208.246.171/wiki</code></span>
+</li>
+<li>Page title: The Malazan Archive
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/characters</span>
+<span class='ev'><code>http://130.208.246.171/characters</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/characters</span>
+<span class='ev'><code>http://130.208.246.171/characters</code></span>
+</li>
+<li>Page title: Log In - Tunnblr
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/login.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/login.php</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1.0
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/login.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/login.php</code></span>
+</li>
+<li>Form: action=login.php method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/login.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/login.php</code></span>
+</li>
+<li>Input fields: csrf_token, password, username
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/login.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/login.php</code></span>
+</li>
+<li>Interesting links (4): create_post.php, index.php, login.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/login.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/login.php</code></span>
+</li>
+<li>Page title: Sign Up - Tunnblr
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/register.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/register.php</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1.0
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/register.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/register.php</code></span>
+</li>
+<li>Form: action=register.php method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/register.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/register.php</code></span>
+</li>
+<li>Input fields: csrf_token, password, password2, username
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/register.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/register.php</code></span>
+</li>
+<li>Interesting links (4): create_post.php, index.php, login.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/register.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/register.php</code></span>
+</li>
+<li>Page title: Log In - Tunnblr
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/create_post.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/create_post.php</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1.0
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/create_post.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/create_post.php</code></span>
+</li>
+<li>Form: action=login.php method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/create_post.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/create_post.php</code></span>
+</li>
+<li>Input fields: csrf_token, password, username
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/create_post.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/create_post.php</code></span>
+</li>
+<li>Interesting links (4): create_post.php, index.php, login.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/create_post.php</span>
+<span class='ev'><code>http://130.208.246.171:8080/create_post.php</code></span>
+</li>
+<li>Page title: &amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; - Tunnblr
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=6</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=6</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1.0
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=6</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=6</code></span>
+</li>
+<li>Interesting links (4): create_post.php, index.php, login.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=6</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=6</code></span>
+</li>
+<li>Page title: test - Tunnblr
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=5</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=5</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1.0
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=5</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=5</code></span>
+</li>
+<li>Interesting links (4): create_post.php, index.php, login.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=5</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=5</code></span>
+</li>
+<li>Page title: yoooo - Tunnblr
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=4</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=4</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1.0
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=4</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=4</code></span>
+</li>
+<li>Interesting links (4): create_post.php, index.php, login.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=4</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=4</code></span>
+</li>
+<li>Page title: Me when someone tries to hack my website - Tunnblr
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=3</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=3</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1.0
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=3</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=3</code></span>
+</li>
+<li>Interesting links (4): create_post.php, index.php, login.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=3</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=3</code></span>
+</li>
+<li>Page title: wsg - Tunnblr
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=2</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=2</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1.0
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=2</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=2</code></span>
+</li>
+<li>Interesting links (4): create_post.php, index.php, login.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=2</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=2</code></span>
+</li>
+<li>Page title: Wowza! Very first Tunnblr post! - Tunnblr
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=1</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=1</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1.0
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=1</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=1</code></span>
+</li>
+<li>Interesting links (4): create_post.php, index.php, login.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/view_post.php?id=1</span>
+<span class='ev'><code>http://130.208.246.171:8080/view_post.php?id=1</code></span>
+</li>
+<li>WhatWeb http://130.208.246.171 [200 OK]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[PHPSESSID], IP[130.208.246.171], Title[The Malazan Archive]
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>WhatWeb http://130.208.246.171:8080 [200 OK]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.171], Title[Home - Tunnblr]
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080</span>
+<span class='ev'><code>http://130.208.246.171:8080</code></span>
+</li>
+<li>Protected path exists: /.htaccess (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/.htaccess returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.171/.htaccess</code></span>
+</li>
+<li>Protected path exists: /.htpasswd (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/.htpasswd returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.171/.htpasswd</code></span>
+</li>
+<li>Protected path exists: /server-status (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/server-status returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.171/server-status</code></span>
+</li>
+<li>Protected path exists: /uploads/ (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171/uploads/ returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.171/uploads/</code></span>
+</li>
+<li>Path exists but empty: /config.php (HTTP 200, 0 bytes)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/config.php — likely an executed PHP file</span>
+<span class='ev'><code>http://130.208.246.171:8080/config.php</code></span>
+</li>
+<li>Protected path exists: /.htaccess (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/.htaccess returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.171:8080/.htaccess</code></span>
+</li>
+<li>Protected path exists: /.htpasswd (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/.htpasswd returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.171:8080/.htpasswd</code></span>
+</li>
+<li>Protected path exists: /server-status (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/server-status returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.171:8080/server-status</code></span>
+</li>
+<li>Protected path exists: /uploads/ (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.171:8080/uploads/ returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.171:8080/uploads/</code></span>
+</li>
+<li>Nikto: GET ///etc/hosts: ///etc/hosts: The server install allows reading of any system file by adding an extra &#x27;/&#x27; to the URL.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>Nikto: -3092: GET /forum/: /forum/: This might be interesting...
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>Nikto: -3092: GET /login/: /login/: This might be interesting...
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>Nikto: -3092: GET /register/: /register/: This might be interesting...
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.171</span>
+<span class='ev'><code>http://130.208.246.171</code></span>
+</li>
+<li>Discovered: http://130.208.246.171/.hta (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.171/.hta</code></span>
+</li>
+<li>Discovered: http://130.208.246.171/.htaccess (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.171/.htaccess</code></span>
+</li>
+<li>Discovered: http://130.208.246.171/.htpasswd (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.171/.htpasswd</code></span>
+</li>
+<li>Discovered: http://130.208.246.171/assets (HTTP 301)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>319 bytes</span>
+<span class='ev'><code>http://130.208.246.171/assets</code></span>
+</li>
+<li>Discovered: http://130.208.246.171/forum (HTTP 200)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>1392 bytes</span>
+<span class='ev'><code>http://130.208.246.171/forum</code></span>
+</li>
+<li>Discovered: http://130.208.246.171/gallery (HTTP 200)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>828 bytes</span>
+<span class='ev'><code>http://130.208.246.171/gallery</code></span>
+</li>
+<li>Discovered: http://130.208.246.171/login (HTTP 200)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>1132 bytes</span>
+<span class='ev'><code>http://130.208.246.171/login</code></span>
+</li>
+<li>Discovered: http://130.208.246.171/profile (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>840 bytes</span>
+<span class='ev'><code>http://130.208.246.171/profile</code></span>
+</li>
+<li>Discovered: http://130.208.246.171/register (HTTP 200)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>1255 bytes</span>
+<span class='ev'><code>http://130.208.246.171/register</code></span>
+</li>
+<li>Discovered: http://130.208.246.171/server-status (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.171/server-status</code></span>
+</li>
+<li>Discovered: http://130.208.246.171/uploads (HTTP 301)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>320 bytes</span>
+<span class='ev'><code>http://130.208.246.171/uploads</code></span>
+</li>
+<li>Discovered: http://130.208.246.171/wiki (HTTP 200)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>1444 bytes</span>
+<span class='ev'><code>http://130.208.246.171/wiki</code></span>
+</li>
+<li>Discovered: http://130.208.246.171:8080/.hta (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>199 bytes</span>
+<span class='ev'><code>http://130.208.246.171:8080/.hta</code></span>
+</li>
+<li>Discovered: http://130.208.246.171:8080/.htaccess (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>199 bytes</span>
+<span class='ev'><code>http://130.208.246.171:8080/.htaccess</code></span>
+</li>
+<li>Discovered: http://130.208.246.171:8080/.htpasswd (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>199 bytes</span>
+<span class='ev'><code>http://130.208.246.171:8080/.htpasswd</code></span>
+</li>
+<li>Discovered: http://130.208.246.171:8080/admin (HTTP 301)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>242 bytes</span>
+<span class='ev'><code>http://130.208.246.171:8080/admin</code></span>
+</li>
+<li>Discovered: http://130.208.246.171:8080/css (HTTP 301)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>240 bytes</span>
+<span class='ev'><code>http://130.208.246.171:8080/css</code></span>
+</li>
+<li>Discovered: http://130.208.246.171:8080/includes (HTTP 301)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>245 bytes</span>
+<span class='ev'><code>http://130.208.246.171:8080/includes</code></span>
+</li>
+<li>Discovered: http://130.208.246.171:8080/index.php (HTTP 200)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>3426 bytes</span>
+<span class='ev'><code>http://130.208.246.171:8080/index.php</code></span>
+</li>
+<li>Discovered: http://130.208.246.171:8080/server-status (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>199 bytes</span>
+<span class='ev'><code>http://130.208.246.171:8080/server-status</code></span>
+</li>
+<li>Discovered: http://130.208.246.171:8080/uploads (HTTP 301)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>244 bytes</span>
+<span class='ev'><code>http://130.208.246.171:8080/uploads</code></span>
+</li>
+</ul>
+<h2>Check Timings</h2>
+<table class='svc'>
+<tr><th>Check</th><th>Duration</th></tr>
+<tr><td>directory_discovery</td><td>3m 55s</td></tr>
+<tr><td>nikto</td><td>1m 37s</td></tr>
+<tr><td>whatweb</td><td>8.44s</td></tr>
+<tr><td>sensitive_files</td><td>4.08s</td></tr>
+<tr><td>page_analysis</td><td>1.54s</td></tr>
+<tr><td>service_discovery</td><td>1.42s</td></tr>
+<tr><td>http_methods</td><td>108ms</td></tr>
+<tr><td>cors</td><td>96ms</td></tr>
+<tr><td>dns_info</td><td>51ms</td></tr>
+<tr><td>cookies</td><td>35ms</td></tr>
+<tr><td>body_analysis</td><td>19ms</td></tr>
+<tr><td>info_disclosure</td><td>19ms</td></tr>
+<tr><td>cache_control</td><td>12ms</td></tr>
+<tr><td>security_headers</td><td>10ms</td></tr>
+<tr><td>ssl_nmap</td><td>0ms</td></tr>
+<tr><td>ssl_testssl</td><td>0ms</td></tr>
+<tr><td>ssl_certificate</td><td>0ms</td></tr>
+<tr><td>csp_analysis</td><td>0ms</td></tr>
+<tr><td>https_redirect</td><td>0ms</td></tr>
+</table>
+<h2>Detailed Results</h2>
+<div class='check'><b>service_discovery</b> <span class='conf'>(1.42s)</span><br>
+<i>Summary:</i> 2 HTTP/HTTPS service(s) confirmed, 0 other open port(s)...
+</div>
+<div class='check'><b>dns_info</b> <span class='conf'>(51ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/dns_info.txt</code><br>
+</div>
+<div class='check'><b>body_analysis</b> <span class='conf'>(19ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/body_http_130.208.246.171.txt</code><br>
+</div>
+<div class='check'><b>page_analysis</b> <span class='conf'>(1.54s)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/page_http_130.208.246.171_login.txt</code><br>
+</div>
+<div class='check'><b>whatweb</b> <span class='conf'>(8.44s)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/whatweb.txt</code><br>
+</div>
+<div class='check'><b>ssl_nmap</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; skipping SSL enumeration<br>
+</div>
+<div class='check'><b>ssl_testssl</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; skipping testssl<br>
+</div>
+<div class='check'><b>ssl_certificate</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed<br>
+</div>
+<div class='check'><b>security_headers</b> <span class='conf'>(10ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/headers.txt</code><br>
+</div>
+<div class='check'><b>csp_analysis</b> <span class='conf'>(0ms)</span><br>
+</div>
+<div class='check'><b>cache_control</b> <span class='conf'>(12ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/cache_control.txt</code><br>
+</div>
+<div class='check'><b>cookies</b> <span class='conf'>(35ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/cookies.txt</code><br>
+</div>
+<div class='check'><b>http_methods</b> <span class='conf'>(108ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/methods.txt</code><br>
+</div>
+<div class='check'><b>https_redirect</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; cannot evaluate redirect<br>
+</div>
+<div class='check'><b>info_disclosure</b> <span class='conf'>(19ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/disclosure.txt</code><br>
+</div>
+<div class='check'><b>cors</b> <span class='conf'>(96ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/cors.txt</code><br>
+</div>
+<div class='check'><b>sensitive_files</b> <span class='conf'>(4.08s)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/sensitive_files.txt</code><br>
+</div>
+<div class='check'><b>nikto</b> <span class='conf'>(1m 37s)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171/nikto_http_130.208.246.171.txt</code><br>
+<i>Summary:</i> - Nikto v2.1.5 --------------------------------------------------------------------------- + Target IP:          130.208.246.171 + Target Hostname:    130.208.246.171 + Target Port:        80 + Start Time:         2026-09-24 15:55:15 (GMT0) -----------------------------------------------------------...
+</div>
+<div class='check'><b>directory_discovery</b> <span class='conf'>(3m 55s)</span><br>
+</div>
+</body></html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login — Rare Minecraft Worlds</title>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="./index.php">⛏ Rare Minecraft Worlds</a>
+    <nav>
+        <a href="./index.php">Forum</a>
+        <a href="./gallery.php">Gallery</a>
+        <a href="./worlds.php">World Downloads</a>
+                    <a href="./login.php">Login</a>
+            <a href="./register.php">Register</a>
+            </nav>
+</header>
+<div class="container">
+<div class="panel" style="max-width:420px;margin:0 auto;">
+    <h1>Log In</h1>
+        <form method="post">
+        <input type="hidden" name="csrf_token" value="8c48a020234ae2fbf2a71044a95b08fb866896bb59dc3e1ecfffd2cbb5a58542">        <label for="username">Username</label>
+        <input type="text" id="username" name="username" value="" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit" class="btn">Log In</button>
+    </form>
+    <p>Need an account? <a href="register.php">Register here</a></p>
+</div>
+</div>
+<footer>&copy; 2026 Rare Minecraft Worlds — a fan community for rare Minecraft seed hunters.</footer>
+</body>
+</html>

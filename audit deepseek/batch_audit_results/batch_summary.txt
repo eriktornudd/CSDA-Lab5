@@ -1,0 +1,50 @@
+==============================================================================
+BATCH SECURITY AUDIT SUMMARY
+Started : 2026-09-24 15:54:58
+Finished: 2026-09-24 16:27:41
+Duration: 32m 42s
+Targets : 15
+==============================================================================
+
+Target               Status        Time  High   Med   Low  Info  Open ports
+------------------------------------------------------------------------------
+130.208.246.171      ok          5m 49s     0     8    19    90  80,8080
+130.208.246.173      ok          2m 59s     0     8    11    42  22,80
+130.208.246.176      ok          1m 24s     0     8     6    34  80
+130.208.246.177      ok          6m 38s    12     8    15  4640  80,8000
+130.208.246.180      ok          19.93s     0     0     0     1  
+130.208.246.168      ok          21.20s     0     0     0     1  
+130.208.246.166      ok         11m 24s     4     3    21  4851  80,443
+130.208.246.170      ok          21.41s     0     0     0     1  
+130.208.246.164      ok          19.85s     0     0     0     1  
+130.208.246.175      ok           1.25s     0     0     0     1  
+130.208.246.174      ok          19.85s     0     0     0     1  
+130.208.246.167      ok          1m 39s     0     2     7   153  80
+130.208.246.165      ok          19.76s     0     0     0     1  
+130.208.246.185      ok          21.24s     0     0     0     1  
+130.208.246.213      ok          21.98s     0     0     0     2  22
+
+
+HOSTS WITH HIGH-SEVERITY FINDINGS
+------------------------------------------------------------------------------
+  130.208.246.177 (12 HIGH) -> /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160511_130.208.246.177
+  130.208.246.166 (4 HIGH) -> /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_161231_130.208.246.166
+
+
+PER-TARGET RUN DIRECTORIES
+------------------------------------------------------------------------------
+  130.208.246.171      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171
+  130.208.246.173      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173
+  130.208.246.176      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176
+  130.208.246.177      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160511_130.208.246.177
+  130.208.246.180      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_161150_130.208.246.180
+  130.208.246.168      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_161210_130.208.246.168
+  130.208.246.166      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_161231_130.208.246.166
+  130.208.246.170      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162356_130.208.246.170
+  130.208.246.164      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162417_130.208.246.164
+  130.208.246.175      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162437_130.208.246.175
+  130.208.246.174      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162438_130.208.246.174
+  130.208.246.167      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167
+  130.208.246.165      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162638_130.208.246.165
+  130.208.246.185      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162658_130.208.246.185
+  130.208.246.213      /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162719_130.208.246.213

@@ -1,0 +1,105 @@
+======================================================================
+WEB SECURITY AUDIT REPORT
+Target:        http://130.208.246.170
+Date:          2026-09-24 16:24:17
+Scan duration: 21.22s (21.2s)
+Run:           /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162356_130.208.246.170
+======================================================================
+
+EXECUTIVE SUMMARY
+----------------------------------------------------------------------
+Checks performed      : 19
+Web service reachable : no
+Open ports            : 0
+HIGH                  : 0
+MEDIUM                : 0
+LOW                   : 0
+INFO                  : 1
+
+INFO FINDINGS
+----------------------------------------------------------------------
+  [confirmed] No reachable web service found
+
+
+CHECK TIMINGS
+----------------------------------------------------------------------
+  service_discovery      21.19s
+  dns_info               30ms
+  body_analysis          0ms
+  page_analysis          0ms
+  whatweb                0ms
+  ssl_nmap               0ms
+  ssl_testssl            0ms
+  ssl_certificate        0ms
+  security_headers       0ms
+  csp_analysis           0ms
+  cache_control          0ms
+  cookies                0ms
+  http_methods           0ms
+  https_redirect         0ms
+  info_disclosure        0ms
+  cors                   0ms
+  sensitive_files        0ms
+  nikto                  0ms
+  directory_discovery    0ms
+
+
+DETAILED RESULTS
+----------------------------------------------------------------------
+
+[SERVICE_DISCOVERY] (21.19s)
+  Summary: No reachable web service confirmed...
+
+[DNS_INFO] (30ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162356_130.208.246.170/dns_info.txt
+
+[BODY_ANALYSIS] (0ms)
+  Error: No reachable web service confirmed; 'body_analysis' skipped (this prevents false-positive findings)
+
+[PAGE_ANALYSIS] (0ms)
+  Error: No reachable web service confirmed; 'page_analysis' skipped (this prevents false-positive findings)
+
+[WHATWEB] (0ms)
+  Error: No reachable web service confirmed; 'whatweb' skipped (this prevents false-positive findings)
+
+[SSL_NMAP] (0ms)
+  Error: No reachable web service confirmed; 'ssl_nmap' skipped (this prevents false-positive findings)
+
+[SSL_TESTSSL] (0ms)
+  Error: No reachable web service confirmed; 'ssl_testssl' skipped (this prevents false-positive findings)
+
+[SSL_CERTIFICATE] (0ms)
+  Error: No reachable web service confirmed; 'ssl_certificate' skipped (this prevents false-positive findings)
+
+[SECURITY_HEADERS] (0ms)
+  Error: No reachable web service confirmed; 'security_headers' skipped (this prevents false-positive findings)
+
+[CSP_ANALYSIS] (0ms)
+  Error: No reachable web service confirmed; 'csp_analysis' skipped (this prevents false-positive findings)
+
+[CACHE_CONTROL] (0ms)
+  Error: No reachable web service confirmed; 'cache_control' skipped (this prevents false-positive findings)
+
+[COOKIES] (0ms)
+  Error: No reachable web service confirmed; 'cookies' skipped (this prevents false-positive findings)
+
+[HTTP_METHODS] (0ms)
+  Error: No reachable web service confirmed; 'http_methods' skipped (this prevents false-positive findings)
+
+[HTTPS_REDIRECT] (0ms)
+  Error: No reachable web service confirmed; 'https_redirect' skipped (this prevents false-positive findings)
+
+[INFO_DISCLOSURE] (0ms)
+  Error: No reachable web service confirmed; 'info_disclosure' skipped (this prevents false-positive findings)
+
+[CORS] (0ms)
+  Error: No reachable web service confirmed; 'cors' skipped (this prevents false-positive findings)
+
+[SENSITIVE_FILES] (0ms)
+  Error: No reachable web service confirmed; 'sensitive_files' skipped (this prevents false-positive findings)
+
+[NIKTO] (0ms)
+  Error: No reachable web service confirmed; 'nikto' skipped (this prevents false-positive findings)
+
+[DIRECTORY_DISCOVERY] (0ms)
+  Error: No reachable web service confirmed; 'directory_discovery' skipped (this prevents false-positive findings)

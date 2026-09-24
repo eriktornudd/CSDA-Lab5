@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html><head><meta charset='utf-8'>
+<title>Audit Report - http://130.208.246.167</title>
+<style>
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;
+max-width:960px;margin:2em auto;padding:0 1em;color:#222;}
+h1{border-bottom:3px solid #333;padding-bottom:8px;}
+h2{margin-top:1.6em;color:#333;}
+.meta{color:#666;font-size:.9em;}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;
+color:#fff;font-weight:600;font-size:.8em;margin-right:8px;}
+.check{border:1px solid #e0e0e0;border-radius:6px;
+padding:10px 14px;margin:10px 0;background:#fafafa;}
+.check code{background:#eef;padding:1px 5px;border-radius:3px;
+font-size:.85em;}
+.none{color:#888;font-style:italic;}
+.conf{color:#888;font-size:.85em;margin-left:6px;}
+.ev{color:#555;font-size:.9em;display:block;margin-left:16px;}
+table.svc{border-collapse:collapse;width:100%;}
+table.svc td,table.svc th{border:1px solid #ddd;padding:6px;
+text-align:left;font-size:.9em;}
+</style></head><body>
+<h1>Security Audit Report</h1>
+<p class='meta'><b>Target:</b> http://130.208.246.167<br>
+<b>Web service reachable:</b> yes<br>
+<b>Open ports:</b> 1<br>
+<b>Scan duration:</b> 1m 39s (99.8s)<br>
+<b>Run folder:</b> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167</code><br>
+<b>Generated:</b> 2026-09-24 16:26:38</p>
+<h2>Executive Summary</h2>
+<table style='border-collapse:collapse'>
+<tr><td><span class='badge' style='background:#d32f2f'>HIGH</span></td><td>0 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#f57c00'>MEDIUM</span></td><td>2 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#fbc02d'>LOW</span></td><td>7 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#0288d1'>INFO</span></td><td>153 finding(s)</td></tr>
+</table>
+<h2>Confirmed Web Services</h2>
+<table class='svc'>
+<tr><th>URL</th><th>Status</th><th>Server</th><th>Content-Type</th></tr>
+<tr><td><code>http://130.208.246.167</code></td><td>200</td><td>Apache/2.4.58 (Ubuntu)</td><td>text/html; charset=UTF-8</td></tr>
+</table>
+<h2>DNS / Host Resolution</h2>
+<ul>
+<li><b>input:</b> 130.208.246.167</li>
+<li><b>is_ip_literal:</b> True</li>
+<li><b>resolved_ips:</b> [&#x27;130.208.246.167&#x27;]</li>
+</ul>
+<h2>HIGH Findings</h2>
+<p class='none'>None</p>
+<h2>MEDIUM Findings</h2>
+<ul>
+<li>Cookie &#x27;pokepoop_session&#x27; missing Secure flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>pokepoop_session=hk65iga4ea7vk6g55smtsg6fbi; path=/; HttpOnly; SameSite=Lax</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Nikto: GET /: Cookie pokepoop_session created without the httponly flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+</ul>
+<h2>LOW Findings</h2>
+<ul>
+<li>Clickjacking protection missing
+<span class='conf'>[confirmed]</span>
+<span class='ev'>X-Frame-Options absent on http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>COOP not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Cross-Origin-Opener-Policy absent on http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>CORP not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Cross-Origin-Resource-Policy absent on http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Server discloses version: Apache/2.4.58 (Ubuntu)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>server: Apache/2.4.58 (Ubuntu)</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Nikto: GET /: Server leaks inodes via ETags, header found with file /, fields: 0x29af 0x65b83becfeaf9
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+</ul>
+<h2>INFO Findings</h2>
+<ul>
+<li>Page title: A little weird. A lot of good company. · Poké &amp;amp; Poop
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Meta theme-color: #182c25
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Meta description: A cozy community for Pokémon collectors, daily gut check-ins, and wonderfully offbeat conversations.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Script loaded: /assets/app.js
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Page title: Welcome back · Poké &amp;amp; Poop
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=login</span>
+<span class='ev'><code>http://130.208.246.167/?page=login</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=login</span>
+<span class='ev'><code>http://130.208.246.167/?page=login</code></span>
+</li>
+<li>Meta theme-color: #182c25
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=login</span>
+<span class='ev'><code>http://130.208.246.167/?page=login</code></span>
+</li>
+<li>Meta description: A cozy community for Pokémon collectors, daily gut check-ins, and wonderfully offbeat conversations.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=login</span>
+<span class='ev'><code>http://130.208.246.167/?page=login</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=login</span>
+<span class='ev'><code>http://130.208.246.167/?page=login</code></span>
+</li>
+<li>Input fields: action, csrf, identity, password
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=login</span>
+<span class='ev'><code>http://130.208.246.167/?page=login</code></span>
+</li>
+<li>Script loaded: /assets/app.js
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=login</span>
+<span class='ev'><code>http://130.208.246.167/?page=login</code></span>
+</li>
+<li>Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=login</span>
+<span class='ev'><code>http://130.208.246.167/?page=login</code></span>
+</li>
+<li>Page title: Join the club · Poké &amp;amp; Poop
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=register</span>
+<span class='ev'><code>http://130.208.246.167/?page=register</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=register</span>
+<span class='ev'><code>http://130.208.246.167/?page=register</code></span>
+</li>
+<li>Meta theme-color: #182c25
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=register</span>
+<span class='ev'><code>http://130.208.246.167/?page=register</code></span>
+</li>
+<li>Meta description: A cozy community for Pokémon collectors, daily gut check-ins, and wonderfully offbeat conversations.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=register</span>
+<span class='ev'><code>http://130.208.246.167/?page=register</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=register</span>
+<span class='ev'><code>http://130.208.246.167/?page=register</code></span>
+</li>
+<li>Input fields: action, csrf, email, password, password_confirm, username
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=register</span>
+<span class='ev'><code>http://130.208.246.167/?page=register</code></span>
+</li>
+<li>Script loaded: /assets/app.js
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=register</span>
+<span class='ev'><code>http://130.208.246.167/?page=register</code></span>
+</li>
+<li>Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=register</span>
+<span class='ev'><code>http://130.208.246.167/?page=register</code></span>
+</li>
+<li>Email addresses found: you@example.com
+<span class='conf'>[tentative]</span>
+<span class='ev'>http://130.208.246.167/?page=register</span>
+<span class='ev'><code>http://130.208.246.167/?page=register</code></span>
+</li>
+<li>Page title: Welcome back · Poké &amp;amp; Poop
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=collection</span>
+<span class='ev'><code>http://130.208.246.167/?page=collection</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=collection</span>
+<span class='ev'><code>http://130.208.246.167/?page=collection</code></span>
+</li>
+<li>Meta theme-color: #182c25
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=collection</span>
+<span class='ev'><code>http://130.208.246.167/?page=collection</code></span>
+</li>
+<li>Meta description: A cozy community for Pokémon collectors, daily gut check-ins, and wonderfully offbeat conversations.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=collection</span>
+<span class='ev'><code>http://130.208.246.167/?page=collection</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=collection</span>
+<span class='ev'><code>http://130.208.246.167/?page=collection</code></span>
+</li>
+<li>Input fields: action, csrf, identity, password
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=collection</span>
+<span class='ev'><code>http://130.208.246.167/?page=collection</code></span>
+</li>
+<li>Script loaded: /assets/app.js
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=collection</span>
+<span class='ev'><code>http://130.208.246.167/?page=collection</code></span>
+</li>
+<li>Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=collection</span>
+<span class='ev'><code>http://130.208.246.167/?page=collection</code></span>
+</li>
+<li>Page title: Welcome back · Poké &amp;amp; Poop
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=health</span>
+<span class='ev'><code>http://130.208.246.167/?page=health</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=health</span>
+<span class='ev'><code>http://130.208.246.167/?page=health</code></span>
+</li>
+<li>Meta theme-color: #182c25
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=health</span>
+<span class='ev'><code>http://130.208.246.167/?page=health</code></span>
+</li>
+<li>Meta description: A cozy community for Pokémon collectors, daily gut check-ins, and wonderfully offbeat conversations.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=health</span>
+<span class='ev'><code>http://130.208.246.167/?page=health</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=health</span>
+<span class='ev'><code>http://130.208.246.167/?page=health</code></span>
+</li>
+<li>Input fields: action, csrf, identity, password
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=health</span>
+<span class='ev'><code>http://130.208.246.167/?page=health</code></span>
+</li>
+<li>Script loaded: /assets/app.js
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=health</span>
+<span class='ev'><code>http://130.208.246.167/?page=health</code></span>
+</li>
+<li>Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=health</span>
+<span class='ev'><code>http://130.208.246.167/?page=health</code></span>
+</li>
+<li>Page title: Welcome back · Poké &amp;amp; Poop
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=members</span>
+<span class='ev'><code>http://130.208.246.167/?page=members</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=members</span>
+<span class='ev'><code>http://130.208.246.167/?page=members</code></span>
+</li>
+<li>Meta theme-color: #182c25
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=members</span>
+<span class='ev'><code>http://130.208.246.167/?page=members</code></span>
+</li>
+<li>Meta description: A cozy community for Pokémon collectors, daily gut check-ins, and wonderfully offbeat conversations.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=members</span>
+<span class='ev'><code>http://130.208.246.167/?page=members</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=members</span>
+<span class='ev'><code>http://130.208.246.167/?page=members</code></span>
+</li>
+<li>Input fields: action, csrf, identity, password
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=members</span>
+<span class='ev'><code>http://130.208.246.167/?page=members</code></span>
+</li>
+<li>Script loaded: /assets/app.js
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=members</span>
+<span class='ev'><code>http://130.208.246.167/?page=members</code></span>
+</li>
+<li>Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/?page=members</span>
+<span class='ev'><code>http://130.208.246.167/?page=members</code></span>
+</li>
+<li>WhatWeb http://130.208.246.167 [200 OK]: Apache[2.4.58], Cookies[pokepoop_session], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[pokepoop_session], IP[130.208.246.167], Script, Title[A little weird.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Protected path exists: /.env (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/.env returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.167/.env</code></span>
+</li>
+<li>Protected path exists: /.env.bak (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/.env.bak returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.167/.env.bak</code></span>
+</li>
+<li>Protected path exists: /.env.local (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/.env.local returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.167/.env.local</code></span>
+</li>
+<li>Protected path exists: /.env.production (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/.env.production returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.167/.env.production</code></span>
+</li>
+<li>Protected path exists: /.git/config (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/.git/config returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.167/.git/config</code></span>
+</li>
+<li>Protected path exists: /.git/HEAD (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/.git/HEAD returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.167/.git/HEAD</code></span>
+</li>
+<li>Protected path exists: /.gitignore (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/.gitignore returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.167/.gitignore</code></span>
+</li>
+<li>Protected path exists: /.svn/entries (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/.svn/entries returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.167/.svn/entries</code></span>
+</li>
+<li>Protected path exists: /.htaccess (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/.htaccess returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.167/.htaccess</code></span>
+</li>
+<li>Protected path exists: /.htpasswd (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/.htpasswd returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.167/.htpasswd</code></span>
+</li>
+<li>Protected path exists: /server-status (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/server-status returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.167/server-status</code></span>
+</li>
+<li>Protected path exists: /.DS_Store (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/.DS_Store returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.167/.DS_Store</code></span>
+</li>
+<li>Protected path exists: /.editorconfig (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/.editorconfig returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.167/.editorconfig</code></span>
+</li>
+<li>Protected path exists: /.well-known/security.txt (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.167/.well-known/security.txt returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/security.txt</code></span>
+</li>
+<li>Nikto: GET /: Uncommon header &#x27;permissions-policy&#x27; found, with contents: camera=(), microphone=(), geolocation=()
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Nikto: GET /: Uncommon header &#x27;referrer-policy&#x27; found, with contents: same-origin
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Nikto: GET /: Uncommon header &#x27;x-content-type-options&#x27; found, with contents: nosniff
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Nikto: GET /: Uncommon header &#x27;content-security-policy&#x27; found, with contents: default-src &#x27;self&#x27;; img-src &#x27;self&#x27; blob:; style-src &#x27;self&#x27;; script-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;self&#x27;; frame-ancestors &#x27;none&#x27;; form-action &#x27;self&#x27;
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.167</span>
+<span class='ev'><code>http://130.208.246.167</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.cvs (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.cvs</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.bash_history (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.bash_history</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.bashrc (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.bashrc</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.forward (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.forward</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.env (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.env</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.cache (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.cache</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.config (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.config</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.git-rewrite (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.git-rewrite</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.git/index (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.git/index</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.gitkeep (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.gitkeep</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.git_release (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.git_release</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.gitconfig (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.gitconfig</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.gitk (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.gitk</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.gitignore (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.gitignore</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.htpasswd (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.htpasswd</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.hta (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.hta</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.history (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.history</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.gitreview (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.gitreview</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.passwd (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.passwd</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.mysql_history (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.mysql_history</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.htaccess (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.htaccess</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.gitmodules (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.gitmodules</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.listings (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.listings</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.listing (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.listing</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.sh_history (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.sh_history</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.rhosts (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.rhosts</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.svn (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.svn</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.profile (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.profile</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.ssh (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.ssh</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.perf (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.perf</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.subversion (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.subversion</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.svn/entries (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.svn/entries</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.swf (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.swf</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.svnignore (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.svnignore</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/assetlinks.json (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/assetlinks.json</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/caldav (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/caldav</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/browserid (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/browserid</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/ashrae (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/ashrae</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/carddav (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/carddav</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/apple-app-site-association (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/apple-app-site-association</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.web (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.web</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/autoconfig/mail (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/autoconfig/mail</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/apple-developer-merchantid-domain-association (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/apple-developer-merchantid-domain-association</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/acme-challenge (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/acme-challenge</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/est (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/est</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/csvm (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/csvm</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/change-password (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/change-password</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/enterprise-transport-security (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/enterprise-transport-security</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/coap (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/coap</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/dnt-policy.txt (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/dnt-policy.txt</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/dots (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/dots</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/dnt (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/dnt</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/core (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/core</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/ecips (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/ecips</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/keybase.txt (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/keybase.txt</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/host-meta.json (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/host-meta.json</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/http-opportunistic (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/http-opportunistic</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/host-meta (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/host-meta</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/idp-proxy (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/idp-proxy</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/jmap (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/jmap</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/jwks.json (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/jwks.json</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/hoba (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/hoba</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/looking-glass (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/looking-glass</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/genid (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/genid</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/ni (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/ni</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/oauth-authorization-server (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/oauth-authorization-server</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/nodeinfo (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/nodeinfo</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/pki-validation (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/pki-validation</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/humans.txt (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/humans.txt</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/posh (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/posh</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/openpgpkey (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/openpgpkey</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/resourcesync (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/resourcesync</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/pvd (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/pvd</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/security.txt (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/security.txt</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/openorg (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/openorg</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/reload-config (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/reload-config</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/repute-template (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/repute-template</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/void (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/void</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/webfinger (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/webfinger</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/stun-key (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/stun-key</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/time (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/time</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/timezone (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/timezone</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/thread (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/thread</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/.well-known/uma2-configuration (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/.well-known/uma2-configuration</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/assets (HTTP 301)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>319 bytes</span>
+<span class='ev'><code>http://130.208.246.167/assets</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/index.php (HTTP 200)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>12049 bytes</span>
+<span class='ev'><code>http://130.208.246.167/index.php</code></span>
+</li>
+<li>Discovered: http://130.208.246.167/server-status (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.167/server-status</code></span>
+</li>
+</ul>
+<h2>Check Timings</h2>
+<table class='svc'>
+<tr><th>Check</th><th>Duration</th></tr>
+<tr><td>directory_discovery</td><td>49.82s</td></tr>
+<tr><td>nikto</td><td>41.10s</td></tr>
+<tr><td>whatweb</td><td>5.37s</td></tr>
+<tr><td>sensitive_files</td><td>1.86s</td></tr>
+<tr><td>service_discovery</td><td>1.14s</td></tr>
+<tr><td>page_analysis</td><td>280ms</td></tr>
+<tr><td>http_methods</td><td>58ms</td></tr>
+<tr><td>cors</td><td>48ms</td></tr>
+<tr><td>dns_info</td><td>18ms</td></tr>
+<tr><td>cache_control</td><td>14ms</td></tr>
+<tr><td>body_analysis</td><td>13ms</td></tr>
+<tr><td>security_headers</td><td>12ms</td></tr>
+<tr><td>info_disclosure</td><td>12ms</td></tr>
+<tr><td>cookies</td><td>11ms</td></tr>
+<tr><td>csp_analysis</td><td>10ms</td></tr>
+<tr><td>ssl_nmap</td><td>0ms</td></tr>
+<tr><td>ssl_testssl</td><td>0ms</td></tr>
+<tr><td>ssl_certificate</td><td>0ms</td></tr>
+<tr><td>https_redirect</td><td>0ms</td></tr>
+</table>
+<h2>Detailed Results</h2>
+<div class='check'><b>service_discovery</b> <span class='conf'>(1.14s)</span><br>
+<i>Summary:</i> 1 HTTP/HTTPS service(s) confirmed, 0 other open port(s)...
+</div>
+<div class='check'><b>dns_info</b> <span class='conf'>(18ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/dns_info.txt</code><br>
+</div>
+<div class='check'><b>body_analysis</b> <span class='conf'>(13ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/body_http_130.208.246.167.txt</code><br>
+</div>
+<div class='check'><b>page_analysis</b> <span class='conf'>(280ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/page_http_130.208.246.167_?page=login.txt</code><br>
+</div>
+<div class='check'><b>whatweb</b> <span class='conf'>(5.37s)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/whatweb.txt</code><br>
+</div>
+<div class='check'><b>ssl_nmap</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; skipping SSL enumeration<br>
+</div>
+<div class='check'><b>ssl_testssl</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; skipping testssl<br>
+</div>
+<div class='check'><b>ssl_certificate</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed<br>
+</div>
+<div class='check'><b>security_headers</b> <span class='conf'>(12ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/headers.txt</code><br>
+</div>
+<div class='check'><b>csp_analysis</b> <span class='conf'>(10ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/csp.txt</code><br>
+</div>
+<div class='check'><b>cache_control</b> <span class='conf'>(14ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/cache_control.txt</code><br>
+</div>
+<div class='check'><b>cookies</b> <span class='conf'>(11ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/cookies.txt</code><br>
+</div>
+<div class='check'><b>http_methods</b> <span class='conf'>(58ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/methods.txt</code><br>
+</div>
+<div class='check'><b>https_redirect</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; cannot evaluate redirect<br>
+</div>
+<div class='check'><b>info_disclosure</b> <span class='conf'>(12ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/disclosure.txt</code><br>
+</div>
+<div class='check'><b>cors</b> <span class='conf'>(48ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/cors.txt</code><br>
+</div>
+<div class='check'><b>sensitive_files</b> <span class='conf'>(1.86s)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/sensitive_files.txt</code><br>
+</div>
+<div class='check'><b>nikto</b> <span class='conf'>(41.10s)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/nikto_http_130.208.246.167.txt</code><br>
+<i>Summary:</i> - Nikto v2.1.5 --------------------------------------------------------------------------- + Target IP:          130.208.246.167 + Target Hostname:    130.208.246.167 + Target Port:        80 + Start Time:         2026-09-24 16:25:09 (GMT0) -----------------------------------------------------------...
+</div>
+<div class='check'><b>directory_discovery</b> <span class='conf'>(49.82s)</span><br>
+</div>
+</body></html>

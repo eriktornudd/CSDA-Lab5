@@ -1,0 +1,280 @@
+======================================================================
+WEB SECURITY AUDIT REPORT
+Target:        http://130.208.246.167
+Date:          2026-09-24 16:26:38
+Scan duration: 1m 39s (99.8s)
+Run:           /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167
+======================================================================
+
+EXECUTIVE SUMMARY
+----------------------------------------------------------------------
+Checks performed      : 19
+Web service reachable : yes
+Open ports            : 1
+HIGH                  : 0
+MEDIUM                : 2
+LOW                   : 7
+INFO                  : 153
+
+CONFIRMED WEB SERVICES
+----------------------------------------------------------------------
+  http://130.208.246.167  HTTP 200  Apache/2.4.58 (Ubuntu)
+
+OPEN PORTS
+----------------------------------------------------------------------
+  [80]
+
+MEDIUM FINDINGS
+----------------------------------------------------------------------
+  [confirmed] Cookie 'pokepoop_session' missing Secure flag  (http://130.208.246.167)
+  [confirmed] Nikto: GET /: Cookie pokepoop_session created without the httponly flag  (http://130.208.246.167)
+
+LOW FINDINGS
+----------------------------------------------------------------------
+  [confirmed] Clickjacking protection missing  (http://130.208.246.167)
+  [confirmed] COOP not set  (http://130.208.246.167)
+  [confirmed] CORP not set  (http://130.208.246.167)
+  [confirmed] Server discloses version: Apache/2.4.58 (Ubuntu)  (http://130.208.246.167)
+  [confirmed] Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.  (http://130.208.246.167)
+  [confirmed] Nikto: GET /: Server leaks inodes via ETags, header found with file /, fields: 0x29af 0x65b83becfeaf9  (http://130.208.246.167)
+  [confirmed] Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.  (http://130.208.246.167)
+
+INFO FINDINGS
+----------------------------------------------------------------------
+  [confirmed] Page title: A little weird. A lot of good company. · Poké &amp; Poop  (http://130.208.246.167)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.167)
+  [confirmed] Meta theme-color: #182c25  (http://130.208.246.167)
+  [confirmed] Meta description: A cozy community for Pokémon collectors, daily gut check-ins, and wonderfully offbeat conversations.  (http://130.208.246.167)
+  [confirmed] Script loaded: /assets/app.js  (http://130.208.246.167)
+  [confirmed] Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register  (http://130.208.246.167)
+  [confirmed] Page title: Welcome back · Poké &amp; Poop  (http://130.208.246.167/?page=login)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.167/?page=login)
+  [confirmed] Meta theme-color: #182c25  (http://130.208.246.167/?page=login)
+  [confirmed] Meta description: A cozy community for Pokémon collectors, daily gut check-ins, and wonderfully offbeat conversations.  (http://130.208.246.167/?page=login)
+  [confirmed] Form: action=(same page) method=POST  (http://130.208.246.167/?page=login)
+  [confirmed] Input fields: action, csrf, identity, password  (http://130.208.246.167/?page=login)
+  [confirmed] Script loaded: /assets/app.js  (http://130.208.246.167/?page=login)
+  [confirmed] Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register  (http://130.208.246.167/?page=login)
+  [confirmed] Page title: Join the club · Poké &amp; Poop  (http://130.208.246.167/?page=register)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.167/?page=register)
+  [confirmed] Meta theme-color: #182c25  (http://130.208.246.167/?page=register)
+  [confirmed] Meta description: A cozy community for Pokémon collectors, daily gut check-ins, and wonderfully offbeat conversations.  (http://130.208.246.167/?page=register)
+  [confirmed] Form: action=(same page) method=POST  (http://130.208.246.167/?page=register)
+  [confirmed] Input fields: action, csrf, email, password, password_confirm, username  (http://130.208.246.167/?page=register)
+  [confirmed] Script loaded: /assets/app.js  (http://130.208.246.167/?page=register)
+  [confirmed] Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register  (http://130.208.246.167/?page=register)
+  [tentative] Email addresses found: you@example.com  (http://130.208.246.167/?page=register)
+  [confirmed] Page title: Welcome back · Poké &amp; Poop  (http://130.208.246.167/?page=collection)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.167/?page=collection)
+  [confirmed] Meta theme-color: #182c25  (http://130.208.246.167/?page=collection)
+  [confirmed] Meta description: A cozy community for Pokémon collectors, daily gut check-ins, and wonderfully offbeat conversations.  (http://130.208.246.167/?page=collection)
+  [confirmed] Form: action=(same page) method=POST  (http://130.208.246.167/?page=collection)
+  [confirmed] Input fields: action, csrf, identity, password  (http://130.208.246.167/?page=collection)
+  [confirmed] Script loaded: /assets/app.js  (http://130.208.246.167/?page=collection)
+  [confirmed] Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register  (http://130.208.246.167/?page=collection)
+  [confirmed] Page title: Welcome back · Poké &amp; Poop  (http://130.208.246.167/?page=health)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.167/?page=health)
+  [confirmed] Meta theme-color: #182c25  (http://130.208.246.167/?page=health)
+  [confirmed] Meta description: A cozy community for Pokémon collectors, daily gut check-ins, and wonderfully offbeat conversations.  (http://130.208.246.167/?page=health)
+  [confirmed] Form: action=(same page) method=POST  (http://130.208.246.167/?page=health)
+  [confirmed] Input fields: action, csrf, identity, password  (http://130.208.246.167/?page=health)
+  [confirmed] Script loaded: /assets/app.js  (http://130.208.246.167/?page=health)
+  [confirmed] Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register  (http://130.208.246.167/?page=health)
+  [confirmed] Page title: Welcome back · Poké &amp; Poop  (http://130.208.246.167/?page=members)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.167/?page=members)
+  [confirmed] Meta theme-color: #182c25  (http://130.208.246.167/?page=members)
+  [confirmed] Meta description: A cozy community for Pokémon collectors, daily gut check-ins, and wonderfully offbeat conversations.  (http://130.208.246.167/?page=members)
+  [confirmed] Form: action=(same page) method=POST  (http://130.208.246.167/?page=members)
+  [confirmed] Input fields: action, csrf, identity, password  (http://130.208.246.167/?page=members)
+  [confirmed] Script loaded: /assets/app.js  (http://130.208.246.167/?page=members)
+  [confirmed] Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register  (http://130.208.246.167/?page=members)
+  [confirmed] WhatWeb http://130.208.246.167 [200 OK]: Apache[2.4.58], Cookies[pokepoop_session], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[pokepoop_session], IP[130.208.246.167], Script, Title[A little weird.  (http://130.208.246.167)
+  [confirmed] Protected path exists: /.env (HTTP 403)  (http://130.208.246.167/.env)
+  [confirmed] Protected path exists: /.env.bak (HTTP 403)  (http://130.208.246.167/.env.bak)
+  [confirmed] Protected path exists: /.env.local (HTTP 403)  (http://130.208.246.167/.env.local)
+  [confirmed] Protected path exists: /.env.production (HTTP 403)  (http://130.208.246.167/.env.production)
+  [confirmed] Protected path exists: /.git/config (HTTP 403)  (http://130.208.246.167/.git/config)
+  [confirmed] Protected path exists: /.git/HEAD (HTTP 403)  (http://130.208.246.167/.git/HEAD)
+  [confirmed] Protected path exists: /.gitignore (HTTP 403)  (http://130.208.246.167/.gitignore)
+  [confirmed] Protected path exists: /.svn/entries (HTTP 403)  (http://130.208.246.167/.svn/entries)
+  [confirmed] Protected path exists: /.htaccess (HTTP 403)  (http://130.208.246.167/.htaccess)
+  [confirmed] Protected path exists: /.htpasswd (HTTP 403)  (http://130.208.246.167/.htpasswd)
+  [confirmed] Protected path exists: /server-status (HTTP 403)  (http://130.208.246.167/server-status)
+  [confirmed] Protected path exists: /.DS_Store (HTTP 403)  (http://130.208.246.167/.DS_Store)
+  [confirmed] Protected path exists: /.editorconfig (HTTP 403)  (http://130.208.246.167/.editorconfig)
+  [confirmed] Protected path exists: /.well-known/security.txt (HTTP 403)  (http://130.208.246.167/.well-known/security.txt)
+  [confirmed] Nikto: GET /: Uncommon header 'permissions-policy' found, with contents: camera=(), microphone=(), geolocation=()  (http://130.208.246.167)
+  [confirmed] Nikto: GET /: Uncommon header 'referrer-policy' found, with contents: same-origin  (http://130.208.246.167)
+  [confirmed] Nikto: GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff  (http://130.208.246.167)
+  [confirmed] Nikto: GET /: Uncommon header 'content-security-policy' found, with contents: default-src 'self'; img-src 'self' blob:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'  (http://130.208.246.167)
+  [confirmed] Discovered: http://130.208.246.167/.cvs (HTTP 403)  (http://130.208.246.167/.cvs)
+  [confirmed] Discovered: http://130.208.246.167/.bash_history (HTTP 403)  (http://130.208.246.167/.bash_history)
+  [confirmed] Discovered: http://130.208.246.167/.bashrc (HTTP 403)  (http://130.208.246.167/.bashrc)
+  [confirmed] Discovered: http://130.208.246.167/.forward (HTTP 403)  (http://130.208.246.167/.forward)
+  [confirmed] Discovered: http://130.208.246.167/.env (HTTP 403)  (http://130.208.246.167/.env)
+  [confirmed] Discovered: http://130.208.246.167/.cache (HTTP 403)  (http://130.208.246.167/.cache)
+  [confirmed] Discovered: http://130.208.246.167/.config (HTTP 403)  (http://130.208.246.167/.config)
+  [confirmed] Discovered: http://130.208.246.167/.git-rewrite (HTTP 403)  (http://130.208.246.167/.git-rewrite)
+  [confirmed] Discovered: http://130.208.246.167/.git/index (HTTP 403)  (http://130.208.246.167/.git/index)
+  [confirmed] Discovered: http://130.208.246.167/.gitkeep (HTTP 403)  (http://130.208.246.167/.gitkeep)
+  [confirmed] Discovered: http://130.208.246.167/.git_release (HTTP 403)  (http://130.208.246.167/.git_release)
+  [confirmed] Discovered: http://130.208.246.167/.gitconfig (HTTP 403)  (http://130.208.246.167/.gitconfig)
+  [confirmed] Discovered: http://130.208.246.167/.gitk (HTTP 403)  (http://130.208.246.167/.gitk)
+  [confirmed] Discovered: http://130.208.246.167/.gitignore (HTTP 403)  (http://130.208.246.167/.gitignore)
+  [confirmed] Discovered: http://130.208.246.167/.htpasswd (HTTP 403)  (http://130.208.246.167/.htpasswd)
+  [confirmed] Discovered: http://130.208.246.167/.hta (HTTP 403)  (http://130.208.246.167/.hta)
+  [confirmed] Discovered: http://130.208.246.167/.history (HTTP 403)  (http://130.208.246.167/.history)
+  [confirmed] Discovered: http://130.208.246.167/.gitreview (HTTP 403)  (http://130.208.246.167/.gitreview)
+  [confirmed] Discovered: http://130.208.246.167/.passwd (HTTP 403)  (http://130.208.246.167/.passwd)
+  [confirmed] Discovered: http://130.208.246.167/.mysql_history (HTTP 403)  (http://130.208.246.167/.mysql_history)
+  [confirmed] Discovered: http://130.208.246.167/.htaccess (HTTP 403)  (http://130.208.246.167/.htaccess)
+  [confirmed] Discovered: http://130.208.246.167/.gitmodules (HTTP 403)  (http://130.208.246.167/.gitmodules)
+  [confirmed] Discovered: http://130.208.246.167/.listings (HTTP 403)  (http://130.208.246.167/.listings)
+  [confirmed] Discovered: http://130.208.246.167/.listing (HTTP 403)  (http://130.208.246.167/.listing)
+  [confirmed] Discovered: http://130.208.246.167/.sh_history (HTTP 403)  (http://130.208.246.167/.sh_history)
+  [confirmed] Discovered: http://130.208.246.167/.rhosts (HTTP 403)  (http://130.208.246.167/.rhosts)
+  [confirmed] Discovered: http://130.208.246.167/.svn (HTTP 403)  (http://130.208.246.167/.svn)
+  [confirmed] Discovered: http://130.208.246.167/.profile (HTTP 403)  (http://130.208.246.167/.profile)
+  [confirmed] Discovered: http://130.208.246.167/.ssh (HTTP 403)  (http://130.208.246.167/.ssh)
+  [confirmed] Discovered: http://130.208.246.167/.perf (HTTP 403)  (http://130.208.246.167/.perf)
+  [confirmed] Discovered: http://130.208.246.167/.subversion (HTTP 403)  (http://130.208.246.167/.subversion)
+  [confirmed] Discovered: http://130.208.246.167/.svn/entries (HTTP 403)  (http://130.208.246.167/.svn/entries)
+  [confirmed] Discovered: http://130.208.246.167/.swf (HTTP 403)  (http://130.208.246.167/.swf)
+  [confirmed] Discovered: http://130.208.246.167/.svnignore (HTTP 403)  (http://130.208.246.167/.svnignore)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/assetlinks.json (HTTP 403)  (http://130.208.246.167/.well-known/assetlinks.json)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/caldav (HTTP 403)  (http://130.208.246.167/.well-known/caldav)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/browserid (HTTP 403)  (http://130.208.246.167/.well-known/browserid)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/ashrae (HTTP 403)  (http://130.208.246.167/.well-known/ashrae)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/carddav (HTTP 403)  (http://130.208.246.167/.well-known/carddav)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/apple-app-site-association (HTTP 403)  (http://130.208.246.167/.well-known/apple-app-site-association)
+  [confirmed] Discovered: http://130.208.246.167/.web (HTTP 403)  (http://130.208.246.167/.web)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/autoconfig/mail (HTTP 403)  (http://130.208.246.167/.well-known/autoconfig/mail)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/apple-developer-merchantid-domain-association (HTTP 403)  (http://130.208.246.167/.well-known/apple-developer-merchantid-domain-association)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/acme-challenge (HTTP 403)  (http://130.208.246.167/.well-known/acme-challenge)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/est (HTTP 403)  (http://130.208.246.167/.well-known/est)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/csvm (HTTP 403)  (http://130.208.246.167/.well-known/csvm)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/change-password (HTTP 403)  (http://130.208.246.167/.well-known/change-password)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/enterprise-transport-security (HTTP 403)  (http://130.208.246.167/.well-known/enterprise-transport-security)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/coap (HTTP 403)  (http://130.208.246.167/.well-known/coap)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/dnt-policy.txt (HTTP 403)  (http://130.208.246.167/.well-known/dnt-policy.txt)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/dots (HTTP 403)  (http://130.208.246.167/.well-known/dots)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/dnt (HTTP 403)  (http://130.208.246.167/.well-known/dnt)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/core (HTTP 403)  (http://130.208.246.167/.well-known/core)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/ecips (HTTP 403)  (http://130.208.246.167/.well-known/ecips)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/keybase.txt (HTTP 403)  (http://130.208.246.167/.well-known/keybase.txt)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/host-meta.json (HTTP 403)  (http://130.208.246.167/.well-known/host-meta.json)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/http-opportunistic (HTTP 403)  (http://130.208.246.167/.well-known/http-opportunistic)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/host-meta (HTTP 403)  (http://130.208.246.167/.well-known/host-meta)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/idp-proxy (HTTP 403)  (http://130.208.246.167/.well-known/idp-proxy)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/jmap (HTTP 403)  (http://130.208.246.167/.well-known/jmap)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/jwks.json (HTTP 403)  (http://130.208.246.167/.well-known/jwks.json)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/hoba (HTTP 403)  (http://130.208.246.167/.well-known/hoba)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/looking-glass (HTTP 403)  (http://130.208.246.167/.well-known/looking-glass)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/genid (HTTP 403)  (http://130.208.246.167/.well-known/genid)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/ni (HTTP 403)  (http://130.208.246.167/.well-known/ni)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/oauth-authorization-server (HTTP 403)  (http://130.208.246.167/.well-known/oauth-authorization-server)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/nodeinfo (HTTP 403)  (http://130.208.246.167/.well-known/nodeinfo)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/pki-validation (HTTP 403)  (http://130.208.246.167/.well-known/pki-validation)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/humans.txt (HTTP 403)  (http://130.208.246.167/.well-known/humans.txt)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/posh (HTTP 403)  (http://130.208.246.167/.well-known/posh)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/openpgpkey (HTTP 403)  (http://130.208.246.167/.well-known/openpgpkey)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/resourcesync (HTTP 403)  (http://130.208.246.167/.well-known/resourcesync)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/pvd (HTTP 403)  (http://130.208.246.167/.well-known/pvd)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/security.txt (HTTP 403)  (http://130.208.246.167/.well-known/security.txt)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/openorg (HTTP 403)  (http://130.208.246.167/.well-known/openorg)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/reload-config (HTTP 403)  (http://130.208.246.167/.well-known/reload-config)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/repute-template (HTTP 403)  (http://130.208.246.167/.well-known/repute-template)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/void (HTTP 403)  (http://130.208.246.167/.well-known/void)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/webfinger (HTTP 403)  (http://130.208.246.167/.well-known/webfinger)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/stun-key (HTTP 403)  (http://130.208.246.167/.well-known/stun-key)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/time (HTTP 403)  (http://130.208.246.167/.well-known/time)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/timezone (HTTP 403)  (http://130.208.246.167/.well-known/timezone)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/thread (HTTP 403)  (http://130.208.246.167/.well-known/thread)
+  [confirmed] Discovered: http://130.208.246.167/.well-known/uma2-configuration (HTTP 403)  (http://130.208.246.167/.well-known/uma2-configuration)
+  [confirmed] Discovered: http://130.208.246.167/assets (HTTP 301)  (http://130.208.246.167/assets)
+  [confirmed] Discovered: http://130.208.246.167/index.php (HTTP 200)  (http://130.208.246.167/index.php)
+  [confirmed] Discovered: http://130.208.246.167/server-status (HTTP 403)  (http://130.208.246.167/server-status)
+
+
+CHECK TIMINGS
+----------------------------------------------------------------------
+  directory_discovery    49.82s
+  nikto                  41.10s
+  whatweb                5.37s
+  sensitive_files        1.86s
+  service_discovery      1.14s
+  page_analysis          280ms
+  http_methods           58ms
+  cors                   48ms
+  dns_info               18ms
+  cache_control          14ms
+  body_analysis          13ms
+  security_headers       12ms
+  info_disclosure        12ms
+  cookies                11ms
+  csp_analysis           10ms
+  ssl_nmap               0ms
+  ssl_testssl            0ms
+  ssl_certificate        0ms
+  https_redirect         0ms
+
+
+DETAILED RESULTS
+----------------------------------------------------------------------
+
+[SERVICE_DISCOVERY] (1.14s)
+  Summary: 1 HTTP/HTTPS service(s) confirmed, 0 other open port(s)...
+
+[DNS_INFO] (18ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/dns_info.txt
+
+[BODY_ANALYSIS] (13ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/body_http_130.208.246.167.txt
+
+[PAGE_ANALYSIS] (280ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/page_http_130.208.246.167_?page=login.txt
+
+[WHATWEB] (5.37s)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/whatweb.txt
+
+[SSL_NMAP] (0ms)
+  Error: No HTTPS service confirmed; skipping SSL enumeration
+
+[SSL_TESTSSL] (0ms)
+  Error: No HTTPS service confirmed; skipping testssl
+
+[SSL_CERTIFICATE] (0ms)
+  Error: No HTTPS service confirmed
+
+[SECURITY_HEADERS] (12ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/headers.txt
+
+[CSP_ANALYSIS] (10ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/csp.txt
+
+[CACHE_CONTROL] (14ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/cache_control.txt
+
+[COOKIES] (11ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/cookies.txt
+
+[HTTP_METHODS] (58ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/methods.txt
+
+[HTTPS_REDIRECT] (0ms)
+  Error: No HTTPS service confirmed; cannot evaluate redirect
+
+[INFO_DISCLOSURE] (12ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/disclosure.txt
+
+[CORS] (48ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/cors.txt
+
+[SENSITIVE_FILES] (1.86s)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/sensitive_files.txt
+
+[NIKTO] (41.10s)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/nikto_http_130.208.246.167.txt
+  Summary: - Nikto v2.1.5 --------------------------------------------------------------------------- + Target IP:          130.208.246.167 + Target Hostname:    130.208.246.167 + Target Port:        80 + Start Time:         2026-09-24 16:25:09 (GMT0) ---------...
+
+[DIRECTORY_DISCOVERY] (49.82s)

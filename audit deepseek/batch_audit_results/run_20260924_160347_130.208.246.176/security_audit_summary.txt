@@ -1,0 +1,166 @@
+======================================================================
+WEB SECURITY AUDIT REPORT
+Target:        http://130.208.246.176
+Date:          2026-09-24 16:05:11
+Scan duration: 1m 24s (84.2s)
+Run:           /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176
+======================================================================
+
+EXECUTIVE SUMMARY
+----------------------------------------------------------------------
+Checks performed      : 19
+Web service reachable : yes
+Open ports            : 1
+HIGH                  : 0
+MEDIUM                : 8
+LOW                   : 6
+INFO                  : 34
+
+CONFIRMED WEB SERVICES
+----------------------------------------------------------------------
+  http://130.208.246.176  HTTP 200  Apache/2.4.58 (Ubuntu)
+
+OPEN PORTS
+----------------------------------------------------------------------
+  [80]
+
+MEDIUM FINDINGS
+----------------------------------------------------------------------
+  [confirmed] CSP allows 'unsafe-inline'  (http://130.208.246.176)
+  [confirmed] Cookie 'trollsid' missing Secure flag  (http://130.208.246.176)
+  [tentative] Server error on path: /uploads/ (HTTP 500)  (http://130.208.246.176/uploads/)
+  [confirmed] Nikto: GET /: Uncommon header 'content-security-policy' found, with contents: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'  (http://130.208.246.176)
+  [confirmed] Nikto: GET /: Cookie trollsid created without the httponly flag  (http://130.208.246.176)
+  [confirmed] Nikto: GET /config.php: /config.php: PHP Config file may contain database IDs and passwords.  (http://130.208.246.176)
+  [confirmed] Nikto: GET /login.php: /login.php: Admin login page/section found.  (http://130.208.246.176)
+  [tentative] Server error on path: http://130.208.246.176/uploads (HTTP 500)  (http://130.208.246.176/uploads)
+
+LOW FINDINGS
+----------------------------------------------------------------------
+  [confirmed] Permissions policy not set  (http://130.208.246.176)
+  [confirmed] COOP not set  (http://130.208.246.176)
+  [confirmed] CORP not set  (http://130.208.246.176)
+  [confirmed] CSP missing object-src directive  (http://130.208.246.176)
+  [confirmed] Server discloses version: Apache/2.4.58 (Ubuntu)  (http://130.208.246.176)
+  [confirmed] Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.  (http://130.208.246.176)
+
+INFO FINDINGS
+----------------------------------------------------------------------
+  [confirmed] Page title: Board — Tröllasteinar  (http://130.208.246.176)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.176)
+  [confirmed] Meta robots: noindex  (http://130.208.246.176)
+  [confirmed] Interesting links (3): index.php, login.php, register.php  (http://130.208.246.176)
+  [confirmed] Page title: Log in — Tröllasteinar  (http://130.208.246.176/login.php)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.176/login.php)
+  [confirmed] Meta robots: noindex  (http://130.208.246.176/login.php)
+  [confirmed] Form: action=login.php method=POST  (http://130.208.246.176/login.php)
+  [confirmed] Input fields: csrf, password, username  (http://130.208.246.176/login.php)
+  [confirmed] Interesting links (3): index.php, login.php, register.php  (http://130.208.246.176/login.php)
+  [confirmed] Page title: Create an account — Tröllasteinar  (http://130.208.246.176/register.php)
+  [confirmed] Meta viewport: width=device-width, initial-scale=1  (http://130.208.246.176/register.php)
+  [confirmed] Meta robots: noindex  (http://130.208.246.176/register.php)
+  [confirmed] Form: action=register.php method=POST  (http://130.208.246.176/register.php)
+  [confirmed] Input fields: confirm, csrf, password, username  (http://130.208.246.176/register.php)
+  [confirmed] Interesting links (3): index.php, login.php, register.php  (http://130.208.246.176/register.php)
+  [confirmed] WhatWeb http://130.208.246.176 [200 OK]: Apache[2.4.58], Cookies[trollsid], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[trollsid], IP[130.208.246.176], Title[Board — Tröllasteinar], UncommonHeaders  (http://130.208.246.176)
+  [confirmed] Path exists but empty: /config.php (HTTP 200, 0 bytes)  (http://130.208.246.176/config.php)
+  [confirmed] Path exists but empty: /db.php (HTTP 200, 0 bytes)  (http://130.208.246.176/db.php)
+  [confirmed] Protected path exists: /.htaccess (HTTP 403)  (http://130.208.246.176/.htaccess)
+  [confirmed] Protected path exists: /.htpasswd (HTTP 403)  (http://130.208.246.176/.htpasswd)
+  [confirmed] Protected path exists: /server-status (HTTP 403)  (http://130.208.246.176/server-status)
+  [confirmed] Nikto: GET /: Uncommon header 'x-frame-options' found, with contents: DENY  (http://130.208.246.176)
+  [confirmed] Nikto: GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff  (http://130.208.246.176)
+  [confirmed] Nikto: GET /: Uncommon header 'referrer-policy' found, with contents: no-referrer  (http://130.208.246.176)
+  [confirmed] Nikto: -3093: GET /db.php: /db.php: This might be interesting... has been seen in web logs from an unknown scanner.  (http://130.208.246.176)
+  [confirmed] Discovered: http://130.208.246.176/.hta (HTTP 403)  (http://130.208.246.176/.hta)
+  [confirmed] Discovered: http://130.208.246.176/.htpasswd (HTTP 403)  (http://130.208.246.176/.htpasswd)
+  [confirmed] Discovered: http://130.208.246.176/.htaccess (HTTP 403)  (http://130.208.246.176/.htaccess)
+  [confirmed] Discovered: http://130.208.246.176/Thumbs.db (HTTP 403)  (http://130.208.246.176/Thumbs.db)
+  [confirmed] Discovered: http://130.208.246.176/admin.php (HTTP 302)  (http://130.208.246.176/admin.php)
+  [confirmed] Discovered: http://130.208.246.176/index.php (HTTP 200)  (http://130.208.246.176/index.php)
+  [confirmed] Discovered: http://130.208.246.176/server-status (HTTP 403)  (http://130.208.246.176/server-status)
+  [confirmed] Discovered: http://130.208.246.176/thumbs.db (HTTP 403)  (http://130.208.246.176/thumbs.db)
+
+
+CHECK TIMINGS
+----------------------------------------------------------------------
+  nikto                  43.40s
+  directory_discovery    36.53s
+  sensitive_files        1.38s
+  whatweb                1.25s
+  service_discovery      1.14s
+  page_analysis          290ms
+  dns_info               54ms
+  cors                   44ms
+  http_methods           29ms
+  body_analysis          21ms
+  csp_analysis           8ms
+  security_headers       7ms
+  info_disclosure        7ms
+  cache_control          6ms
+  cookies                6ms
+  ssl_nmap               0ms
+  ssl_testssl            0ms
+  ssl_certificate        0ms
+  https_redirect         0ms
+
+
+DETAILED RESULTS
+----------------------------------------------------------------------
+
+[SERVICE_DISCOVERY] (1.14s)
+  Summary: 1 HTTP/HTTPS service(s) confirmed, 0 other open port(s)...
+
+[DNS_INFO] (54ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/dns_info.txt
+
+[BODY_ANALYSIS] (21ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/body_http_130.208.246.176.txt
+
+[PAGE_ANALYSIS] (290ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/page_http_130.208.246.176_login.php.txt
+
+[WHATWEB] (1.25s)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/whatweb.txt
+
+[SSL_NMAP] (0ms)
+  Error: No HTTPS service confirmed; skipping SSL enumeration
+
+[SSL_TESTSSL] (0ms)
+  Error: No HTTPS service confirmed; skipping testssl
+
+[SSL_CERTIFICATE] (0ms)
+  Error: No HTTPS service confirmed
+
+[SECURITY_HEADERS] (7ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/headers.txt
+
+[CSP_ANALYSIS] (8ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/csp.txt
+
+[CACHE_CONTROL] (6ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/cache_control.txt
+
+[COOKIES] (6ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/cookies.txt
+
+[HTTP_METHODS] (29ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/methods.txt
+
+[HTTPS_REDIRECT] (0ms)
+  Error: No HTTPS service confirmed; cannot evaluate redirect
+
+[INFO_DISCLOSURE] (7ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/disclosure.txt
+
+[CORS] (44ms)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/cors.txt
+
+[SENSITIVE_FILES] (1.38s)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/sensitive_files.txt
+
+[NIKTO] (43.40s)
+  Output: /mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176/nikto_http_130.208.246.176.txt
+  Summary: - Nikto v2.1.5 --------------------------------------------------------------------------- + Target IP:          130.208.246.176 + Target Hostname:    130.208.246.176 + Target Port:        80 + Start Time:         2026-09-24 16:03:51 (GMT0) ---------...
+
+[DIRECTORY_DISCOVERY] (36.53s)

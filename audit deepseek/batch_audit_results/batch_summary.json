@@ -1,0 +1,323 @@
+{
+  "batch_started": "2026-09-24T15:54:58",
+  "batch_finished": "2026-09-24T16:27:41",
+  "batch_duration_seconds": 1962.801582813263,
+  "batch_duration_human": "32m 42s",
+  "target_count": 15,
+  "per_target": {
+    "130.208.246.171": {
+      "status": "ok",
+      "url": "http://130.208.246.171",
+      "duration_seconds": 349.1926746368408,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171",
+      "counts": {
+        "HIGH": 0,
+        "MEDIUM": 8,
+        "LOW": 19,
+        "INFO": 90
+      },
+      "open_ports": [
+        80,
+        8080
+      ],
+      "services": [
+        {
+          "url": "http://130.208.246.171",
+          "scheme": "http",
+          "port": 80,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "http://130.208.246.171:8080",
+          "scheme": "http",
+          "port": 8080,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ]
+    },
+    "130.208.246.173": {
+      "status": "ok",
+      "url": "http://130.208.246.173",
+      "duration_seconds": 179.20580554008484,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173",
+      "counts": {
+        "HIGH": 0,
+        "MEDIUM": 8,
+        "LOW": 11,
+        "INFO": 42
+      },
+      "open_ports": [
+        22,
+        80
+      ],
+      "services": [
+        {
+          "url": "http://130.208.246.173",
+          "scheme": "http",
+          "port": 80,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ]
+    },
+    "130.208.246.176": {
+      "status": "ok",
+      "url": "http://130.208.246.176",
+      "duration_seconds": 84.32076668739319,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176",
+      "counts": {
+        "HIGH": 0,
+        "MEDIUM": 8,
+        "LOW": 6,
+        "INFO": 34
+      },
+      "open_ports": [
+        80
+      ],
+      "services": [
+        {
+          "url": "http://130.208.246.176",
+          "scheme": "http",
+          "port": 80,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ]
+    },
+    "130.208.246.177": {
+      "status": "ok",
+      "url": "http://130.208.246.177",
+      "duration_seconds": 398.89017057418823,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160511_130.208.246.177",
+      "counts": {
+        "HIGH": 12,
+        "MEDIUM": 8,
+        "LOW": 15,
+        "INFO": 4640
+      },
+      "open_ports": [
+        80,
+        8000
+      ],
+      "services": [
+        {
+          "url": "http://130.208.246.177",
+          "scheme": "http",
+          "port": 80,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=UTF-8"
+        },
+        {
+          "url": "http://130.208.246.177:8000",
+          "scheme": "http",
+          "port": 8000,
+          "status": 200,
+          "server": "",
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ]
+    },
+    "130.208.246.180": {
+      "status": "ok",
+      "url": "http://130.208.246.180",
+      "duration_seconds": 19.932668924331665,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_161150_130.208.246.180",
+      "counts": {
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "INFO": 1
+      },
+      "open_ports": [],
+      "services": []
+    },
+    "130.208.246.168": {
+      "status": "ok",
+      "url": "http://130.208.246.168",
+      "duration_seconds": 21.1973934173584,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_161210_130.208.246.168",
+      "counts": {
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "INFO": 1
+      },
+      "open_ports": [],
+      "services": []
+    },
+    "130.208.246.166": {
+      "status": "ok",
+      "url": "http://130.208.246.166",
+      "duration_seconds": 684.6296637058258,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_161231_130.208.246.166",
+      "counts": {
+        "HIGH": 4,
+        "MEDIUM": 3,
+        "LOW": 21,
+        "INFO": 4851
+      },
+      "open_ports": [
+        80,
+        443
+      ],
+      "services": [
+        {
+          "url": "http://130.208.246.166",
+          "scheme": "http",
+          "port": 80,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://130.208.246.166:443",
+          "scheme": "https",
+          "port": 443,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "http://130.208.246.166:443",
+          "scheme": "http",
+          "port": 443,
+          "status": 400,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=iso-8859-1"
+        }
+      ]
+    },
+    "130.208.246.170": {
+      "status": "ok",
+      "url": "http://130.208.246.170",
+      "duration_seconds": 21.410539150238037,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162356_130.208.246.170",
+      "counts": {
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "INFO": 1
+      },
+      "open_ports": [],
+      "services": []
+    },
+    "130.208.246.164": {
+      "status": "ok",
+      "url": "http://130.208.246.164",
+      "duration_seconds": 19.85380530357361,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162417_130.208.246.164",
+      "counts": {
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "INFO": 1
+      },
+      "open_ports": [],
+      "services": []
+    },
+    "130.208.246.175": {
+      "status": "ok",
+      "url": "http://130.208.246.175",
+      "duration_seconds": 1.2490794658660889,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162437_130.208.246.175",
+      "counts": {
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "INFO": 1
+      },
+      "open_ports": [],
+      "services": []
+    },
+    "130.208.246.174": {
+      "status": "ok",
+      "url": "http://130.208.246.174",
+      "duration_seconds": 19.85217022895813,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162438_130.208.246.174",
+      "counts": {
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "INFO": 1
+      },
+      "open_ports": [],
+      "services": []
+    },
+    "130.208.246.167": {
+      "status": "ok",
+      "url": "http://130.208.246.167",
+      "duration_seconds": 99.949387550354,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167",
+      "counts": {
+        "HIGH": 0,
+        "MEDIUM": 2,
+        "LOW": 7,
+        "INFO": 153
+      },
+      "open_ports": [
+        80
+      ],
+      "services": [
+        {
+          "url": "http://130.208.246.167",
+          "scheme": "http",
+          "port": 80,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ]
+    },
+    "130.208.246.165": {
+      "status": "ok",
+      "url": "http://130.208.246.165",
+      "duration_seconds": 19.761820316314697,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162638_130.208.246.165",
+      "counts": {
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "INFO": 1
+      },
+      "open_ports": [],
+      "services": []
+    },
+    "130.208.246.185": {
+      "status": "ok",
+      "url": "http://130.208.246.185",
+      "duration_seconds": 21.238394737243652,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162658_130.208.246.185",
+      "counts": {
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "INFO": 1
+      },
+      "open_ports": [],
+      "services": []
+    },
+    "130.208.246.213": {
+      "status": "ok",
+      "url": "http://130.208.246.213",
+      "duration_seconds": 21.981207847595215,
+      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162719_130.208.246.213",
+      "counts": {
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "INFO": 2
+      },
+      "open_ports": [
+        22
+      ],
+      "services": []
+    }
+  }
+}

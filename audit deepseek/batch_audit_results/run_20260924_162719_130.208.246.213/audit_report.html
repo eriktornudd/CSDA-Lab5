@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html><head><meta charset='utf-8'>
+<title>Audit Report - http://130.208.246.213</title>
+<style>
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;
+max-width:960px;margin:2em auto;padding:0 1em;color:#222;}
+h1{border-bottom:3px solid #333;padding-bottom:8px;}
+h2{margin-top:1.6em;color:#333;}
+.meta{color:#666;font-size:.9em;}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;
+color:#fff;font-weight:600;font-size:.8em;margin-right:8px;}
+.check{border:1px solid #e0e0e0;border-radius:6px;
+padding:10px 14px;margin:10px 0;background:#fafafa;}
+.check code{background:#eef;padding:1px 5px;border-radius:3px;
+font-size:.85em;}
+.none{color:#888;font-style:italic;}
+.conf{color:#888;font-size:.85em;margin-left:6px;}
+.ev{color:#555;font-size:.9em;display:block;margin-left:16px;}
+table.svc{border-collapse:collapse;width:100%;}
+table.svc td,table.svc th{border:1px solid #ddd;padding:6px;
+text-align:left;font-size:.9em;}
+</style></head><body>
+<h1>Security Audit Report</h1>
+<p class='meta'><b>Target:</b> http://130.208.246.213<br>
+<b>Web service reachable:</b> no<br>
+<b>Open ports:</b> 1<br>
+<b>Scan duration:</b> 21.88s (21.9s)<br>
+<b>Run folder:</b> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162719_130.208.246.213</code><br>
+<b>Generated:</b> 2026-09-24 16:27:41</p>
+<h2>Executive Summary</h2>
+<table style='border-collapse:collapse'>
+<tr><td><span class='badge' style='background:#d32f2f'>HIGH</span></td><td>0 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#f57c00'>MEDIUM</span></td><td>0 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#fbc02d'>LOW</span></td><td>0 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#0288d1'>INFO</span></td><td>2 finding(s)</td></tr>
+</table>
+<h2>Non-HTTP Services</h2>
+<table class='svc'>
+<tr><th>Port</th><th>Banner</th></tr>
+<tr><td>22</td><td>SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.19
+Invalid SSH identification string.</td></tr>
+</table>
+<h2>DNS / Host Resolution</h2>
+<ul>
+<li><b>input:</b> 130.208.246.213</li>
+<li><b>is_ip_literal:</b> True</li>
+<li><b>resolved_ips:</b> [&#x27;130.208.246.213&#x27;]</li>
+</ul>
+<h2>HIGH Findings</h2>
+<p class='none'>None</p>
+<h2>MEDIUM Findings</h2>
+<p class='none'>None</p>
+<h2>LOW Findings</h2>
+<p class='none'>None</p>
+<h2>INFO Findings</h2>
+<ul>
+<li>No reachable web service found
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Scanned 96 ports; 1 open; no HTTP/HTTPS response</span>
+</li>
+<li>Non-HTTP service on port 22: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.19
+Invalid SSH identification string.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>TCP port 22 is open</span>
+</li>
+</ul>
+<h2>Check Timings</h2>
+<table class='svc'>
+<tr><th>Check</th><th>Duration</th></tr>
+<tr><td>service_discovery</td><td>21.83s</td></tr>
+<tr><td>dns_info</td><td>49ms</td></tr>
+<tr><td>body_analysis</td><td>0ms</td></tr>
+<tr><td>page_analysis</td><td>0ms</td></tr>
+<tr><td>whatweb</td><td>0ms</td></tr>
+<tr><td>ssl_nmap</td><td>0ms</td></tr>
+<tr><td>ssl_testssl</td><td>0ms</td></tr>
+<tr><td>ssl_certificate</td><td>0ms</td></tr>
+<tr><td>security_headers</td><td>0ms</td></tr>
+<tr><td>csp_analysis</td><td>0ms</td></tr>
+<tr><td>cache_control</td><td>0ms</td></tr>
+<tr><td>cookies</td><td>0ms</td></tr>
+<tr><td>http_methods</td><td>0ms</td></tr>
+<tr><td>https_redirect</td><td>0ms</td></tr>
+<tr><td>info_disclosure</td><td>0ms</td></tr>
+<tr><td>cors</td><td>0ms</td></tr>
+<tr><td>sensitive_files</td><td>0ms</td></tr>
+<tr><td>nikto</td><td>0ms</td></tr>
+<tr><td>directory_discovery</td><td>0ms</td></tr>
+</table>
+<h2>Detailed Results</h2>
+<div class='check'><b>service_discovery</b> <span class='conf'>(21.83s)</span><br>
+<i>Summary:</i> No reachable web service confirmed...
+</div>
+<div class='check'><b>dns_info</b> <span class='conf'>(49ms)</span><br>
+<i>Output:</i> <code>/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162719_130.208.246.213/dns_info.txt</code><br>
+</div>
+<div class='check'><b>body_analysis</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;body_analysis&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>page_analysis</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;page_analysis&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>whatweb</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;whatweb&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>ssl_nmap</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;ssl_nmap&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>ssl_testssl</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;ssl_testssl&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>ssl_certificate</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;ssl_certificate&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>security_headers</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;security_headers&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>csp_analysis</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;csp_analysis&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>cache_control</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;cache_control&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>cookies</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;cookies&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>http_methods</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;http_methods&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>https_redirect</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;https_redirect&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>info_disclosure</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;info_disclosure&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>cors</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;cors&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>sensitive_files</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;sensitive_files&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>nikto</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;nikto&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+<div class='check'><b>directory_discovery</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No reachable web service confirmed; &#x27;directory_discovery&#x27; skipped (this prevents false-positive findings)<br>
+</div>
+</body></html>

@@ -1,0 +1,3410 @@
+{
+  "target": "http://130.208.246.167",
+  "timestamp": "20260924_162458",
+  "domain": "130.208.246.167",
+  "run_directory": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167",
+  "scan_duration_seconds": 99.78873753547668,
+  "scan_duration_human": "1m 39s",
+  "available_tools": {
+    "whatweb": true,
+    "nmap": true,
+    "nikto": true,
+    "dirb": true,
+    "ffuf": true,
+    "openssl": true,
+    "curl": true,
+    "dig": true,
+    "testssl": true
+  },
+  "services": [
+    {
+      "url": "http://130.208.246.167",
+      "scheme": "http",
+      "port": 80,
+      "status": 200,
+      "server": "Apache/2.4.58 (Ubuntu)",
+      "content_type": "text/html; charset=UTF-8"
+    }
+  ],
+  "open_ports": [
+    80
+  ],
+  "non_http_services": [],
+  "results": {
+    "service_discovery": {
+      "candidates_probed": 2,
+      "ports_scanned": 96,
+      "port_scan_seconds": 1.0850205421447754,
+      "open_ports": [
+        80
+      ],
+      "non_http_services": [],
+      "confirmed_services": [
+        {
+          "url": "http://130.208.246.167",
+          "scheme": "http",
+          "port": 80,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "findings": [],
+      "summary": "1 HTTP/HTTPS service(s) confirmed, 0 other open port(s)",
+      "_duration_seconds": 1.143758773803711
+    },
+    "dns_info": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/dns_info.txt",
+      "dns_info": {
+        "input": "130.208.246.167",
+        "is_ip_literal": true,
+        "resolved_ips": [
+          "130.208.246.167"
+        ],
+        "reverse_dns": null
+      },
+      "findings": [],
+      "_duration_seconds": 0.017946481704711914
+    },
+    "body_analysis": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/body_http_130.208.246.167.txt",
+      "findings": [
+        {
+          "title": "Page title: A little weird. A lot of good company. \u00b7 Pok\u00e9 &amp; Poop",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Meta theme-color: #182c25",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Meta description: A cozy community for Pok\u00e9mon collectors, daily gut check-ins, and wonderfully offbeat conversations.",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Script loaded: /assets/app.js",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "body_analysis"
+        }
+      ],
+      "_duration_seconds": 0.013094902038574219
+    },
+    "page_analysis": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/page_http_130.208.246.167_?page=login.txt",
+      "pages_fetched": [
+        {
+          "url": "http://130.208.246.167/?page=login",
+          "status": 200,
+          "size": 5105,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.167/?page=register",
+          "status": 200,
+          "size": 5708,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.167/?page=home",
+          "status": 200,
+          "size": 12120,
+          "duplicate": true
+        },
+        {
+          "url": "http://130.208.246.167/?page=forum",
+          "status": 200,
+          "size": 12120,
+          "duplicate": true
+        },
+        {
+          "url": "http://130.208.246.167/?page=collection",
+          "status": 200,
+          "size": 5105,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.167/?page=health",
+          "status": 200,
+          "size": 5105,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.167/?page=members",
+          "status": 200,
+          "size": 5105,
+          "duplicate": false
+        }
+      ],
+      "findings": [
+        {
+          "title": "Page title: Welcome back \u00b7 Pok\u00e9 &amp; Poop",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=login",
+          "url": "http://130.208.246.167/?page=login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=login",
+          "url": "http://130.208.246.167/?page=login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta theme-color: #182c25",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=login",
+          "url": "http://130.208.246.167/?page=login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta description: A cozy community for Pok\u00e9mon collectors, daily gut check-ins, and wonderfully offbeat conversations.",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=login",
+          "url": "http://130.208.246.167/?page=login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=login",
+          "url": "http://130.208.246.167/?page=login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: action, csrf, identity, password",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=login",
+          "url": "http://130.208.246.167/?page=login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Script loaded: /assets/app.js",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=login",
+          "url": "http://130.208.246.167/?page=login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=login",
+          "url": "http://130.208.246.167/?page=login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Join the club \u00b7 Pok\u00e9 &amp; Poop",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=register",
+          "url": "http://130.208.246.167/?page=register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=register",
+          "url": "http://130.208.246.167/?page=register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta theme-color: #182c25",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=register",
+          "url": "http://130.208.246.167/?page=register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta description: A cozy community for Pok\u00e9mon collectors, daily gut check-ins, and wonderfully offbeat conversations.",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=register",
+          "url": "http://130.208.246.167/?page=register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=register",
+          "url": "http://130.208.246.167/?page=register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: action, csrf, email, password, password_confirm, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=register",
+          "url": "http://130.208.246.167/?page=register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Script loaded: /assets/app.js",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=register",
+          "url": "http://130.208.246.167/?page=register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=register",
+          "url": "http://130.208.246.167/?page=register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Email addresses found: you@example.com",
+          "severity": "INFO",
+          "confidence": "tentative",
+          "evidence": "http://130.208.246.167/?page=register",
+          "url": "http://130.208.246.167/?page=register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Welcome back \u00b7 Pok\u00e9 &amp; Poop",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "url": "http://130.208.246.167/?page=collection",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "url": "http://130.208.246.167/?page=collection",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta theme-color: #182c25",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "url": "http://130.208.246.167/?page=collection",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta description: A cozy community for Pok\u00e9mon collectors, daily gut check-ins, and wonderfully offbeat conversations.",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "url": "http://130.208.246.167/?page=collection",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "url": "http://130.208.246.167/?page=collection",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: action, csrf, identity, password",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "url": "http://130.208.246.167/?page=collection",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Script loaded: /assets/app.js",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "url": "http://130.208.246.167/?page=collection",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "url": "http://130.208.246.167/?page=collection",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Welcome back \u00b7 Pok\u00e9 &amp; Poop",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=health",
+          "url": "http://130.208.246.167/?page=health",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=health",
+          "url": "http://130.208.246.167/?page=health",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta theme-color: #182c25",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=health",
+          "url": "http://130.208.246.167/?page=health",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta description: A cozy community for Pok\u00e9mon collectors, daily gut check-ins, and wonderfully offbeat conversations.",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=health",
+          "url": "http://130.208.246.167/?page=health",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=health",
+          "url": "http://130.208.246.167/?page=health",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: action, csrf, identity, password",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=health",
+          "url": "http://130.208.246.167/?page=health",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Script loaded: /assets/app.js",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=health",
+          "url": "http://130.208.246.167/?page=health",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=health",
+          "url": "http://130.208.246.167/?page=health",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Welcome back \u00b7 Pok\u00e9 &amp; Poop",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=members",
+          "url": "http://130.208.246.167/?page=members",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=members",
+          "url": "http://130.208.246.167/?page=members",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta theme-color: #182c25",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=members",
+          "url": "http://130.208.246.167/?page=members",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta description: A cozy community for Pok\u00e9mon collectors, daily gut check-ins, and wonderfully offbeat conversations.",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=members",
+          "url": "http://130.208.246.167/?page=members",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=members",
+          "url": "http://130.208.246.167/?page=members",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: action, csrf, identity, password",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=members",
+          "url": "http://130.208.246.167/?page=members",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Script loaded: /assets/app.js",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=members",
+          "url": "http://130.208.246.167/?page=members",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/?page=members",
+          "url": "http://130.208.246.167/?page=members",
+          "check": "page_analysis"
+        }
+      ],
+      "_duration_seconds": 0.28000664710998535
+    },
+    "whatweb": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/whatweb.txt",
+      "findings": [
+        {
+          "title": "WhatWeb http://130.208.246.167 [200 OK]: Apache[2.4.58], Cookies[pokepoop_session], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[pokepoop_session], IP[130.208.246.167], Script, Title[A little weird.",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "whatweb"
+        }
+      ],
+      "_duration_seconds": 5.374425888061523
+    },
+    "ssl_nmap": {
+      "error": "No HTTPS service confirmed; skipping SSL enumeration",
+      "_duration_seconds": 7.081031799316406e-05
+    },
+    "ssl_testssl": {
+      "error": "No HTTPS service confirmed; skipping testssl",
+      "_duration_seconds": 7.43865966796875e-05
+    },
+    "ssl_certificate": {
+      "error": "No HTTPS service confirmed",
+      "_duration_seconds": 2.5510787963867188e-05
+    },
+    "security_headers": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/headers.txt",
+      "present_headers": [
+        {
+          "header": "Content-Security-Policy",
+          "url": "http://130.208.246.167",
+          "value": "default-src 'self'; img-src 'self' blob:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"
+        },
+        {
+          "header": "X-Content-Type-Options",
+          "url": "http://130.208.246.167",
+          "value": "nosniff"
+        },
+        {
+          "header": "Referrer-Policy",
+          "url": "http://130.208.246.167",
+          "value": "same-origin"
+        },
+        {
+          "header": "Permissions-Policy",
+          "url": "http://130.208.246.167",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ],
+      "missing_headers": [
+        {
+          "header": "X-Frame-Options",
+          "issue": "Clickjacking protection missing",
+          "url": "http://130.208.246.167"
+        }
+      ],
+      "findings": [
+        {
+          "title": "Clickjacking protection missing",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "X-Frame-Options absent on http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "security_headers"
+        },
+        {
+          "title": "COOP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "security_headers"
+        },
+        {
+          "title": "CORP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "security_headers"
+        }
+      ],
+      "raw_headers": "HTTP/1.1 200 OK\nDate: Thu, 24 Sep 2026 16:24:59 GMT\nServer: Apache/2.4.58 (Ubuntu)\nSet-Cookie: pokepoop_session=hk65iga4ea7vk6g55smtsg6fbi; path=/; HttpOnly; SameSite=Lax\nExpires: Thu, 19 Nov 1981 08:52:00 GMT\nCache-Control: no-store\nPragma: no-cache\nContent-Security-Policy: default-src 'self'; img-src 'self' blob:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'\nX-Content-Type-Options: nosniff\nReferrer-Policy: same-origin\nPermissions-Policy: camera=(), microphone=(), geolocation=()\nVary: Accept-Encoding\nTransfer-Encoding: chunked\nContent-Type: text/html; charset=UTF-8\n\n",
+      "_duration_seconds": 0.011658668518066406
+    },
+    "csp_analysis": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/csp.txt",
+      "findings": [],
+      "_duration_seconds": 0.01024007797241211
+    },
+    "cache_control": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/cache_control.txt",
+      "findings": [],
+      "_duration_seconds": 0.014294862747192383
+    },
+    "cookies": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/cookies.txt",
+      "cookies_found": 1,
+      "findings": [
+        {
+          "title": "Cookie 'pokepoop_session' missing Secure flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "pokepoop_session=hk65iga4ea7vk6g55smtsg6fbi; path=/; HttpOnly; SameSite=Lax",
+          "url": "http://130.208.246.167",
+          "check": "cookies"
+        }
+      ],
+      "_duration_seconds": 0.010866403579711914
+    },
+    "http_methods": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/methods.txt",
+      "allowed_methods": [],
+      "findings": [],
+      "_duration_seconds": 0.057907819747924805
+    },
+    "https_redirect": {
+      "error": "No HTTPS service confirmed; cannot evaluate redirect",
+      "_duration_seconds": 3.552436828613281e-05
+    },
+    "info_disclosure": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/disclosure.txt",
+      "findings": [
+        {
+          "title": "Server discloses version: Apache/2.4.58 (Ubuntu)",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "server: Apache/2.4.58 (Ubuntu)",
+          "url": "http://130.208.246.167",
+          "check": "info_disclosure"
+        }
+      ],
+      "_duration_seconds": 0.012156963348388672
+    },
+    "cors": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/cors.txt",
+      "findings": [],
+      "_duration_seconds": 0.047948360443115234
+    },
+    "sensitive_files": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/sensitive_files.txt",
+      "findings": [
+        {
+          "title": "Protected path exists: /.env (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/.env returned HTTP 403",
+          "url": "http://130.208.246.167/.env",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.env.bak (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/.env.bak returned HTTP 403",
+          "url": "http://130.208.246.167/.env.bak",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.env.local (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/.env.local returned HTTP 403",
+          "url": "http://130.208.246.167/.env.local",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.env.production (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/.env.production returned HTTP 403",
+          "url": "http://130.208.246.167/.env.production",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.git/config (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/.git/config returned HTTP 403",
+          "url": "http://130.208.246.167/.git/config",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.git/HEAD (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/.git/HEAD returned HTTP 403",
+          "url": "http://130.208.246.167/.git/HEAD",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.gitignore (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/.gitignore returned HTTP 403",
+          "url": "http://130.208.246.167/.gitignore",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.svn/entries (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/.svn/entries returned HTTP 403",
+          "url": "http://130.208.246.167/.svn/entries",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.htaccess (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/.htaccess returned HTTP 403",
+          "url": "http://130.208.246.167/.htaccess",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.htpasswd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/.htpasswd returned HTTP 403",
+          "url": "http://130.208.246.167/.htpasswd",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /server-status (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/server-status returned HTTP 403",
+          "url": "http://130.208.246.167/server-status",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.DS_Store (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/.DS_Store returned HTTP 403",
+          "url": "http://130.208.246.167/.DS_Store",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.editorconfig (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/.editorconfig returned HTTP 403",
+          "url": "http://130.208.246.167/.editorconfig",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.well-known/security.txt (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.167/.well-known/security.txt returned HTTP 403",
+          "url": "http://130.208.246.167/.well-known/security.txt",
+          "check": "sensitive_files"
+        }
+      ],
+      "_duration_seconds": 1.8639721870422363
+    },
+    "nikto": {
+      "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/nikto_http_130.208.246.167.txt",
+      "summary": "- Nikto v2.1.5\n---------------------------------------------------------------------------\n+ Target IP:          130.208.246.167\n+ Target Hostname:    130.208.246.167\n+ Target Port:        80\n+ Start Time:         2026-09-24 16:25:09 (GMT0)\n---------------------------------------------------------------------------\n+ Server: Apache/2.4.58 (Ubuntu)\n+ The anti-clickjacking X-Frame-Options header is not present.\n+ Uncommon header 'permissions-policy' found, with contents: camera=(), microphone=(), geolocation=()\n+ Uncommon header 'referrer-policy' found, with contents: same-origin\n+ Uncommon header 'x-content-type-options' found, with contents: nosniff\n+ Uncommon header 'content-security-policy' found, with contents: default-src 'self'; img-src 'self' blob:; style-src 'self'; script-src 'self",
+      "findings": [
+        {
+          "title": "Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'permissions-policy' found, with contents: camera=(), microphone=(), geolocation=()",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'referrer-policy' found, with contents: same-origin",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'content-security-policy' found, with contents: default-src 'self'; img-src 'self' blob:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Cookie pokepoop_session created without the httponly flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Server leaks inodes via ETags, header found with file /, fields: 0x29af 0x65b83becfeaf9",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.167",
+          "url": "http://130.208.246.167",
+          "check": "nikto"
+        }
+      ],
+      "_duration_seconds": 41.10393261909485
+    },
+    "directory_discovery": {
+      "ffuf": {
+        "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/ffuf_http_130.208.246.167.json",
+        "output_files": [
+          "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/ffuf_http_130.208.246.167.json"
+        ],
+        "wordlist": "/snap/seclists/current/Discovery/Web-Content/common.txt",
+        "findings": [
+          {
+            "title": "Discovered: http://130.208.246.167/.cvs (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.cvs",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.bash_history (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.bash_history",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.bashrc (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.bashrc",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.forward (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.forward",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.env (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.env",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.cache (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.cache",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.config (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.config",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.git-rewrite (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.git-rewrite",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.git/index (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.git/index",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.gitkeep (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.gitkeep",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.git_release (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.git_release",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.gitconfig (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.gitconfig",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.gitk (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.gitk",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.gitignore (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.gitignore",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.htpasswd (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.htpasswd",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.hta (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.hta",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.history (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.history",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.gitreview (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.gitreview",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.passwd (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.passwd",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.mysql_history (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.mysql_history",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.htaccess (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.htaccess",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.gitmodules (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.gitmodules",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.listings (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.listings",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.listing (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.listing",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.sh_history (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.sh_history",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.rhosts (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.rhosts",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.svn (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.svn",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.profile (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.profile",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.ssh (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.ssh",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.perf (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.perf",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.subversion (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.subversion",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.svn/entries (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.svn/entries",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.swf (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.swf",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.svnignore (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.svnignore",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/assetlinks.json (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/assetlinks.json",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/caldav (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/caldav",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/browserid (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/browserid",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/ashrae (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/ashrae",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/carddav (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/carddav",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/apple-app-site-association (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/apple-app-site-association",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.web (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.web",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/autoconfig/mail (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/autoconfig/mail",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/apple-developer-merchantid-domain-association (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/apple-developer-merchantid-domain-association",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/acme-challenge (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/acme-challenge",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/est (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/est",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/csvm (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/csvm",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/change-password (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/change-password",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/enterprise-transport-security (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/enterprise-transport-security",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/coap (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/coap",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/dnt-policy.txt (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/dnt-policy.txt",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/dots (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/dots",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/dnt (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/dnt",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/core (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/core",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/ecips (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/ecips",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/keybase.txt (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/keybase.txt",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/host-meta.json (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/host-meta.json",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/http-opportunistic (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/http-opportunistic",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/host-meta (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/host-meta",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/idp-proxy (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/idp-proxy",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/jmap (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/jmap",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/jwks.json (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/jwks.json",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/hoba (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/hoba",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/looking-glass (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/looking-glass",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/genid (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/genid",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/ni (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/ni",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/oauth-authorization-server (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/oauth-authorization-server",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/nodeinfo (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/nodeinfo",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/pki-validation (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/pki-validation",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/humans.txt (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/humans.txt",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/posh (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/posh",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/openpgpkey (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/openpgpkey",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/resourcesync (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/resourcesync",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/pvd (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/pvd",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/security.txt (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/security.txt",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/openorg (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/openorg",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/reload-config (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/reload-config",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/repute-template (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/repute-template",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/void (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/void",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/webfinger (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/webfinger",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/stun-key (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/stun-key",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/time (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/time",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/timezone (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/timezone",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/thread (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/thread",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/.well-known/uma2-configuration (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/.well-known/uma2-configuration",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/assets (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "319 bytes",
+            "url": "http://130.208.246.167/assets",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/index.php (HTTP 200)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "12049 bytes",
+            "url": "http://130.208.246.167/index.php",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.167/server-status (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.167/server-status",
+            "check": "directory_discovery"
+          }
+        ]
+      },
+      "dirb": {
+        "output_file": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167/dirb_http_130.208.246.167.txt",
+        "findings": []
+      },
+      "findings": [
+        {
+          "title": "Discovered: http://130.208.246.167/.cvs (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.cvs",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.bash_history (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.bash_history",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.bashrc (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.bashrc",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.forward (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.forward",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.env (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.env",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.cache (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.cache",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.config (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.config",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.git-rewrite (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.git-rewrite",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.git/index (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.git/index",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.gitkeep (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.gitkeep",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.git_release (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.git_release",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.gitconfig (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.gitconfig",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.gitk (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.gitk",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.gitignore (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.gitignore",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.htpasswd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.htpasswd",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.hta (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.hta",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.history (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.history",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.gitreview (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.gitreview",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.passwd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.passwd",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.mysql_history (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.mysql_history",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.htaccess (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.htaccess",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.gitmodules (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.gitmodules",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.listings (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.listings",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.listing (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.listing",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.sh_history (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.sh_history",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.rhosts (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.rhosts",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.svn (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.svn",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.profile (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.profile",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.ssh (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.ssh",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.perf (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.perf",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.subversion (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.subversion",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.svn/entries (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.svn/entries",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.swf (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.swf",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.svnignore (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.svnignore",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/assetlinks.json (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/assetlinks.json",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/caldav (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/caldav",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/browserid (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/browserid",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/ashrae (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/ashrae",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/carddav (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/carddav",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/apple-app-site-association (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/apple-app-site-association",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.web (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.web",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/autoconfig/mail (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/autoconfig/mail",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/apple-developer-merchantid-domain-association (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/apple-developer-merchantid-domain-association",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/acme-challenge (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/acme-challenge",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/est (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/est",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/csvm (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/csvm",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/change-password (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/change-password",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/enterprise-transport-security (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/enterprise-transport-security",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/coap (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/coap",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/dnt-policy.txt (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/dnt-policy.txt",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/dots (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/dots",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/dnt (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/dnt",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/core (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/core",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/ecips (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/ecips",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/keybase.txt (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/keybase.txt",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/host-meta.json (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/host-meta.json",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/http-opportunistic (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/http-opportunistic",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/host-meta (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/host-meta",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/idp-proxy (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/idp-proxy",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/jmap (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/jmap",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/jwks.json (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/jwks.json",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/hoba (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/hoba",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/looking-glass (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/looking-glass",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/genid (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/genid",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/ni (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/ni",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/oauth-authorization-server (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/oauth-authorization-server",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/nodeinfo (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/nodeinfo",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/pki-validation (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/pki-validation",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/humans.txt (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/humans.txt",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/posh (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/posh",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/openpgpkey (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/openpgpkey",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/resourcesync (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/resourcesync",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/pvd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/pvd",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/security.txt (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/security.txt",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/openorg (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/openorg",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/reload-config (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/reload-config",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/repute-template (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/repute-template",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/void (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/void",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/webfinger (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/webfinger",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/stun-key (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/stun-key",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/time (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/time",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/timezone (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/timezone",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/thread (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/thread",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/uma2-configuration (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/.well-known/uma2-configuration",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/assets (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "319 bytes",
+          "url": "http://130.208.246.167/assets",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/index.php (HTTP 200)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "12049 bytes",
+          "url": "http://130.208.246.167/index.php",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/server-status (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.167/server-status",
+          "check": "directory_discovery"
+        }
+      ],
+      "_duration_seconds": 49.823657274246216
+    }
+  },
+  "check_durations": {
+    "service_discovery": 1.144,
+    "dns_info": 0.018,
+    "body_analysis": 0.013,
+    "page_analysis": 0.28,
+    "whatweb": 5.374,
+    "ssl_nmap": 0.0,
+    "ssl_testssl": 0.0,
+    "ssl_certificate": 0.0,
+    "security_headers": 0.012,
+    "csp_analysis": 0.01,
+    "cache_control": 0.014,
+    "cookies": 0.011,
+    "http_methods": 0.058,
+    "https_redirect": 0.0,
+    "info_disclosure": 0.012,
+    "cors": 0.048,
+    "sensitive_files": 1.864,
+    "nikto": 41.104,
+    "directory_discovery": 49.824
+  },
+  "summary": {
+    "total_checks": 19,
+    "web_service_reachable": true,
+    "open_port_count": 1,
+    "findings_by_severity": {
+      "HIGH": [],
+      "MEDIUM": [
+        {
+          "title": "Cookie 'pokepoop_session' missing Secure flag",
+          "check": "cookies",
+          "url": "http://130.208.246.167",
+          "evidence": "pokepoop_session=hk65iga4ea7vk6g55smtsg6fbi; path=/; HttpOnly; SameSite=Lax",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Cookie pokepoop_session created without the httponly flag",
+          "check": "nikto",
+          "url": "http://130.208.246.167",
+          "evidence": "nikto report for http://130.208.246.167",
+          "confidence": "confirmed"
+        }
+      ],
+      "LOW": [
+        {
+          "title": "Clickjacking protection missing",
+          "check": "security_headers",
+          "url": "http://130.208.246.167",
+          "evidence": "X-Frame-Options absent on http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "COOP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.167",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "CORP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.167",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Server discloses version: Apache/2.4.58 (Ubuntu)",
+          "check": "info_disclosure",
+          "url": "http://130.208.246.167",
+          "evidence": "server: Apache/2.4.58 (Ubuntu)",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.",
+          "check": "nikto",
+          "url": "http://130.208.246.167",
+          "evidence": "nikto report for http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Server leaks inodes via ETags, header found with file /, fields: 0x29af 0x65b83becfeaf9",
+          "check": "nikto",
+          "url": "http://130.208.246.167",
+          "evidence": "nikto report for http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.",
+          "check": "nikto",
+          "url": "http://130.208.246.167",
+          "evidence": "nikto report for http://130.208.246.167",
+          "confidence": "confirmed"
+        }
+      ],
+      "INFO": [
+        {
+          "title": "Page title: A little weird. A lot of good company. \u00b7 Pok\u00e9 &amp; Poop",
+          "check": "body_analysis",
+          "url": "http://130.208.246.167",
+          "evidence": "http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "body_analysis",
+          "url": "http://130.208.246.167",
+          "evidence": "http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta theme-color: #182c25",
+          "check": "body_analysis",
+          "url": "http://130.208.246.167",
+          "evidence": "http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta description: A cozy community for Pok\u00e9mon collectors, daily gut check-ins, and wonderfully offbeat conversations.",
+          "check": "body_analysis",
+          "url": "http://130.208.246.167",
+          "evidence": "http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Script loaded: /assets/app.js",
+          "check": "body_analysis",
+          "url": "http://130.208.246.167",
+          "evidence": "http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register",
+          "check": "body_analysis",
+          "url": "http://130.208.246.167",
+          "evidence": "http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Welcome back \u00b7 Pok\u00e9 &amp; Poop",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=login",
+          "evidence": "http://130.208.246.167/?page=login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=login",
+          "evidence": "http://130.208.246.167/?page=login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta theme-color: #182c25",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=login",
+          "evidence": "http://130.208.246.167/?page=login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta description: A cozy community for Pok\u00e9mon collectors, daily gut check-ins, and wonderfully offbeat conversations.",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=login",
+          "evidence": "http://130.208.246.167/?page=login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=login",
+          "evidence": "http://130.208.246.167/?page=login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: action, csrf, identity, password",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=login",
+          "evidence": "http://130.208.246.167/?page=login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Script loaded: /assets/app.js",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=login",
+          "evidence": "http://130.208.246.167/?page=login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=login",
+          "evidence": "http://130.208.246.167/?page=login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Join the club \u00b7 Pok\u00e9 &amp; Poop",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=register",
+          "evidence": "http://130.208.246.167/?page=register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=register",
+          "evidence": "http://130.208.246.167/?page=register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta theme-color: #182c25",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=register",
+          "evidence": "http://130.208.246.167/?page=register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta description: A cozy community for Pok\u00e9mon collectors, daily gut check-ins, and wonderfully offbeat conversations.",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=register",
+          "evidence": "http://130.208.246.167/?page=register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=register",
+          "evidence": "http://130.208.246.167/?page=register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: action, csrf, email, password, password_confirm, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=register",
+          "evidence": "http://130.208.246.167/?page=register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Script loaded: /assets/app.js",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=register",
+          "evidence": "http://130.208.246.167/?page=register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=register",
+          "evidence": "http://130.208.246.167/?page=register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Email addresses found: you@example.com",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=register",
+          "evidence": "http://130.208.246.167/?page=register",
+          "confidence": "tentative"
+        },
+        {
+          "title": "Page title: Welcome back \u00b7 Pok\u00e9 &amp; Poop",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=collection",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=collection",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta theme-color: #182c25",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=collection",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta description: A cozy community for Pok\u00e9mon collectors, daily gut check-ins, and wonderfully offbeat conversations.",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=collection",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=collection",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: action, csrf, identity, password",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=collection",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Script loaded: /assets/app.js",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=collection",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=collection",
+          "evidence": "http://130.208.246.167/?page=collection",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Welcome back \u00b7 Pok\u00e9 &amp; Poop",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=health",
+          "evidence": "http://130.208.246.167/?page=health",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=health",
+          "evidence": "http://130.208.246.167/?page=health",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta theme-color: #182c25",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=health",
+          "evidence": "http://130.208.246.167/?page=health",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta description: A cozy community for Pok\u00e9mon collectors, daily gut check-ins, and wonderfully offbeat conversations.",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=health",
+          "evidence": "http://130.208.246.167/?page=health",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=health",
+          "evidence": "http://130.208.246.167/?page=health",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: action, csrf, identity, password",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=health",
+          "evidence": "http://130.208.246.167/?page=health",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Script loaded: /assets/app.js",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=health",
+          "evidence": "http://130.208.246.167/?page=health",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=health",
+          "evidence": "http://130.208.246.167/?page=health",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Welcome back \u00b7 Pok\u00e9 &amp; Poop",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=members",
+          "evidence": "http://130.208.246.167/?page=members",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=members",
+          "evidence": "http://130.208.246.167/?page=members",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta theme-color: #182c25",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=members",
+          "evidence": "http://130.208.246.167/?page=members",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta description: A cozy community for Pok\u00e9mon collectors, daily gut check-ins, and wonderfully offbeat conversations.",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=members",
+          "evidence": "http://130.208.246.167/?page=members",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=members",
+          "evidence": "http://130.208.246.167/?page=members",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: action, csrf, identity, password",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=members",
+          "evidence": "http://130.208.246.167/?page=members",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Script loaded: /assets/app.js",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=members",
+          "evidence": "http://130.208.246.167/?page=members",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (7): /?page=collection, /?page=forum, /?page=health, /?page=home, /?page=login, /?page=members, /?page=register",
+          "check": "page_analysis",
+          "url": "http://130.208.246.167/?page=members",
+          "evidence": "http://130.208.246.167/?page=members",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "WhatWeb http://130.208.246.167 [200 OK]: Apache[2.4.58], Cookies[pokepoop_session], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[pokepoop_session], IP[130.208.246.167], Script, Title[A little weird.",
+          "check": "whatweb",
+          "url": "http://130.208.246.167",
+          "evidence": "http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.env (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.167/.env",
+          "evidence": "http://130.208.246.167/.env returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.env.bak (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.167/.env.bak",
+          "evidence": "http://130.208.246.167/.env.bak returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.env.local (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.167/.env.local",
+          "evidence": "http://130.208.246.167/.env.local returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.env.production (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.167/.env.production",
+          "evidence": "http://130.208.246.167/.env.production returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.git/config (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.167/.git/config",
+          "evidence": "http://130.208.246.167/.git/config returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.git/HEAD (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.167/.git/HEAD",
+          "evidence": "http://130.208.246.167/.git/HEAD returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.gitignore (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.167/.gitignore",
+          "evidence": "http://130.208.246.167/.gitignore returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.svn/entries (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.167/.svn/entries",
+          "evidence": "http://130.208.246.167/.svn/entries returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.htaccess (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.167/.htaccess",
+          "evidence": "http://130.208.246.167/.htaccess returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.htpasswd (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.167/.htpasswd",
+          "evidence": "http://130.208.246.167/.htpasswd returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /server-status (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.167/server-status",
+          "evidence": "http://130.208.246.167/server-status returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.DS_Store (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.167/.DS_Store",
+          "evidence": "http://130.208.246.167/.DS_Store returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.editorconfig (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.167/.editorconfig",
+          "evidence": "http://130.208.246.167/.editorconfig returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.well-known/security.txt (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.167/.well-known/security.txt",
+          "evidence": "http://130.208.246.167/.well-known/security.txt returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'permissions-policy' found, with contents: camera=(), microphone=(), geolocation=()",
+          "check": "nikto",
+          "url": "http://130.208.246.167",
+          "evidence": "nikto report for http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'referrer-policy' found, with contents: same-origin",
+          "check": "nikto",
+          "url": "http://130.208.246.167",
+          "evidence": "nikto report for http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff",
+          "check": "nikto",
+          "url": "http://130.208.246.167",
+          "evidence": "nikto report for http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'content-security-policy' found, with contents: default-src 'self'; img-src 'self' blob:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+          "check": "nikto",
+          "url": "http://130.208.246.167",
+          "evidence": "nikto report for http://130.208.246.167",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.cvs (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.cvs",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.bash_history (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.bash_history",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.bashrc (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.bashrc",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.forward (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.forward",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.env (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.env",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.cache (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.cache",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.config (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.config",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.git-rewrite (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.git-rewrite",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.git/index (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.git/index",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.gitkeep (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.gitkeep",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.git_release (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.git_release",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.gitconfig (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.gitconfig",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.gitk (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.gitk",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.gitignore (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.gitignore",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.htpasswd (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.htpasswd",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.hta (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.hta",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.history (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.history",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.gitreview (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.gitreview",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.passwd (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.passwd",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.mysql_history (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.mysql_history",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.htaccess (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.htaccess",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.gitmodules (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.gitmodules",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.listings (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.listings",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.listing (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.listing",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.sh_history (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.sh_history",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.rhosts (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.rhosts",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.svn (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.svn",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.profile (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.profile",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.ssh (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.ssh",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.perf (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.perf",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.subversion (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.subversion",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.svn/entries (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.svn/entries",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.swf (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.swf",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.svnignore (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.svnignore",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/assetlinks.json (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/assetlinks.json",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/caldav (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/caldav",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/browserid (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/browserid",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/ashrae (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/ashrae",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/carddav (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/carddav",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/apple-app-site-association (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/apple-app-site-association",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.web (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.web",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/autoconfig/mail (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/autoconfig/mail",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/apple-developer-merchantid-domain-association (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/apple-developer-merchantid-domain-association",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/acme-challenge (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/acme-challenge",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/est (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/est",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/csvm (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/csvm",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/change-password (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/change-password",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/enterprise-transport-security (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/enterprise-transport-security",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/coap (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/coap",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/dnt-policy.txt (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/dnt-policy.txt",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/dots (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/dots",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/dnt (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/dnt",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/core (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/core",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/ecips (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/ecips",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/keybase.txt (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/keybase.txt",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/host-meta.json (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/host-meta.json",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/http-opportunistic (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/http-opportunistic",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/host-meta (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/host-meta",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/idp-proxy (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/idp-proxy",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/jmap (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/jmap",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/jwks.json (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/jwks.json",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/hoba (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/hoba",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/looking-glass (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/looking-glass",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/genid (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/genid",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/ni (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/ni",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/oauth-authorization-server (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/oauth-authorization-server",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/nodeinfo (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/nodeinfo",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/pki-validation (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/pki-validation",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/humans.txt (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/humans.txt",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/posh (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/posh",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/openpgpkey (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/openpgpkey",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/resourcesync (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/resourcesync",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/pvd (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/pvd",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/security.txt (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/security.txt",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/openorg (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/openorg",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/reload-config (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/reload-config",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/repute-template (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/repute-template",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/void (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/void",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/webfinger (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/webfinger",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/stun-key (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/stun-key",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/time (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/time",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/timezone (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/timezone",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/thread (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/thread",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/.well-known/uma2-configuration (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/.well-known/uma2-configuration",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/assets (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/assets",
+          "evidence": "319 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/index.php (HTTP 200)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/index.php",
+          "evidence": "12049 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.167/server-status (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.167/server-status",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        }
+      ]
+    }
+  }
+}
