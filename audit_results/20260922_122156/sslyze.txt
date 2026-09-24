@@ -1,0 +1,14 @@
+COMMAND: sslyze 130.208.246.173
+
+STDOUT:
+
+ CHECKING CONNECTIVITY TO SERVER(S)
+ ----------------------------------
+
+   130.208.246.173:443       => ERROR: Connection to the server timed out; discarding scan.
+
+ SCANS COMPLETED IN 5.10570 S
+ ----------------------------
+
+STDERR:
+

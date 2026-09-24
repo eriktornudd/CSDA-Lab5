@@ -1,0 +1,28 @@
+COMMAND: nikto -h https://130.208.246.166/ -timeout 10
+
+STDOUT:
+- Nikto v2.6.1
+---------------------------------------------------------------------------
++ Target IP:          130.208.246.166
++ Target Hostname:    130.208.246.166
++ Target Port:        443
+---------------------------------------------------------------------------
++ SSL Info:           Subject:  /CN=130.208.246.166
+                      CN:       130.208.246.166
+                      Ciphers:  AEAD-CHACHA20-POLY1305-SHA256
+                      Issuer:   /CN=130.208.246.166
++ Platform:           Unknown
++ Start Time:         2026-09-23 14:44:52 (GMT0)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.58 (Ubuntu)
++ No CGI Directories found (use '-C all' to force check all possible dirs). CGI tests skipped.
++ [999990] OPTIONS: Allowed HTTP Methods: GET, HEAD, OPTIONS .
++ [600050] Apache/2.4.58 appears to be outdated (current is at least 2.4.68).
++ [013587] /: Suggested security header missing: permissions-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy
++ 8276 requests: 0 errors and 3 items reported on the remote host
++ End Time:           2026-09-23 14:46:36 (GMT0) (104 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+STDERR:
+

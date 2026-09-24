@@ -1,0 +1,17 @@
+COMMAND: gobuster dir -u http://130.208.246.173/ -w /Users/eriktornudd/dev/git/CSDA-Lab5/wordlists/common.txt -q -t 5 --timeout 10s
+
+STDOUT:
+index.php            (Status: 200) [Size: 1580]
+admin                (Status: 301) [Size: 318] [--> http://130.208.246.173/admin/]
+login.php            (Status: 200) [Size: 1384]
+config.php           (Status: 200) [Size: 0]
+.htpasswd            (Status: 403) [Size: 280]
+.htaccess            (Status: 403) [Size: 280]
+uploads              (Status: 500) [Size: 612]
+js                   (Status: 301) [Size: 315] [--> http://130.208.246.173/js/]
+css                  (Status: 301) [Size: 316] [--> http://130.208.246.173/css/]
+includes             (Status: 301) [Size: 321] [--> http://130.208.246.173/includes/]
+server-status        (Status: 403) [Size: 280]
+
+STDERR:
+

@@ -1,0 +1,124 @@
+{
+  "run_started": "2026-09-23T14:20:39.668609",
+  "targets_total": 15,
+  "hosts": {
+    "130.208.246.171": {
+      "status": "live",
+      "tools_run": [
+        "nmap",
+        "nikto",
+        "gobuster"
+      ],
+      "tools_skipped": {
+        "whatweb": "whatweb not installed",
+        "testssl": "no TLS service responded on port 443"
+      },
+      "leads_count": 4
+    },
+    "130.208.246.173": {
+      "status": "live",
+      "tools_run": [
+        "nmap",
+        "nikto",
+        "gobuster"
+      ],
+      "tools_skipped": {
+        "whatweb": "whatweb not installed",
+        "testssl": "no TLS service responded on port 443"
+      },
+      "leads_count": 4
+    },
+    "130.208.246.176": {
+      "status": "live",
+      "tools_run": [
+        "nmap",
+        "nikto",
+        "gobuster"
+      ],
+      "tools_skipped": {
+        "whatweb": "whatweb not installed",
+        "testssl": "no TLS service responded on port 443"
+      },
+      "leads_count": 3
+    },
+    "130.208.246.177": {
+      "status": "live",
+      "tools_run": [
+        "nmap",
+        "nikto",
+        "gobuster"
+      ],
+      "tools_skipped": {
+        "whatweb": "whatweb not installed",
+        "testssl": "no TLS service responded on port 443"
+      },
+      "leads_count": 4
+    },
+    "130.208.246.180": {
+      "status": "no_site"
+    },
+    "130.208.246.168": {
+      "status": "no_site"
+    },
+    "130.208.246.166": {
+      "status": "live",
+      "tools_run": [
+        "nmap",
+        "nikto",
+        "testssl",
+        "gobuster"
+      ],
+      "tools_skipped": {
+        "whatweb": "whatweb not installed"
+      },
+      "leads_count": 4
+    },
+    "130.208.246.170": {
+      "status": "live",
+      "tools_run": [
+        "nmap",
+        "nikto",
+        "gobuster"
+      ],
+      "tools_skipped": {
+        "whatweb": "whatweb not installed",
+        "testssl": "no TLS service responded on port 443"
+      },
+      "leads_count": 2
+    },
+    "130.208.246.164": {
+      "status": "no_site"
+    },
+    "130.208.246.175": {
+      "status": "no_site"
+    },
+    "130.208.246.174": {
+      "status": "no_site"
+    },
+    "130.208.246.167": {
+      "status": "live",
+      "tools_run": [
+        "nmap",
+        "nikto",
+        "gobuster"
+      ],
+      "tools_skipped": {
+        "whatweb": "whatweb not installed",
+        "testssl": "no TLS service responded on port 443"
+      },
+      "leads_count": 4
+    },
+    "130.208.246.165": {
+      "status": "no_site"
+    },
+    "130.208.246.185": {
+      "status": "no_site"
+    },
+    "130.208.246.213": {
+      "status": "no_site"
+    }
+  },
+  "run_finished": "2026-09-23T14:57:44.791061",
+  "live_count": 7,
+  "no_site_count": 8
+}

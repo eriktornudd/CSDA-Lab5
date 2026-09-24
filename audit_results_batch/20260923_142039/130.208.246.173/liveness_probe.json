@@ -1,0 +1,25 @@
+{
+  "http": {
+    "live": true,
+    "url": "http://130.208.246.173/",
+    "status": 200,
+    "headers": {
+      "Date": "Wed, 23 Sep 2026 14:22:45 GMT",
+      "Server": "Apache/2.4.58 (Ubuntu)",
+      "Set-Cookie": "PHPSESSID=6ehogda5mbdeahmq4gfoddqe79; path=/",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Vary": "Accept-Encoding",
+      "Content-Length": "1580",
+      "Connection": "close",
+      "Content-Type": "text/html; charset=UTF-8"
+    },
+    "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Rare Minecraft Worlds \u2014 Forum</title>\n<link rel=\"stylesheet\" href=\"./css/style.css\">\n</head>\n<body>\n<header class=\"site-header\">\n    <a class=\"brand\" href=\"./index.php\">\u26cf Rare Minecraft Worlds</a>\n    <nav>\n        <a href=\"./index.php\">Forum</a>\n        <a href=\"./gallery.php\">Gallery</a>\n        <a href=\"./worlds.php\">World Downloads</a>\n                    <a href=\"./login.php\">Login</a>\n            <a href=\"./register.php\">Register</a>\n            </nav>\n</header>\n<div class=\"container\">\n<div class=\"panel\">\n    <h1>Message Board</h1>\n    <p>Share your rare seed discoveries, ask for help finding wild structures, and talk shop with other rare-world hunters.</p>\n            <a href=\"login.php\" class=\"btn\">Log in to post</a>\n    </div>\n\n<ul class=\"thread-list\">\n                <li>\n            <a href=\"thread.php?id=2\">I AM GOD</a>\n                        <div class=\"meta\">\n                by Herobrine &middot; 4d ago                &middot; 0 replies            </div>\n        </li>\n            <li>\n            <a href=\"thread.php?id=1\">&lt;script&gt;alert(document.cookie)&lt;/script&gt;</a>\n            <span class=\"tag admin\">Locked</span>            <div class=\"meta\">\n                by Herobrine &middot; 4d ago                &middot; 2 replies            </div>\n        </li>\n    </ul>\n</div>\n<footer>&copy; 2026 Rare Minecraft Worlds \u2014 a fan community for rare Minecraft seed hunters.</footer>\n</body>\n</html>\n"
+  },
+  "https": {
+    "live": false,
+    "url": "https://130.208.246.173/",
+    "error": "<urlopen error timed out>"
+  }
+}

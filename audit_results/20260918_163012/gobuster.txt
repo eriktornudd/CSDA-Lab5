@@ -1,0 +1,7 @@
+COMMAND: gobuster dir -u http://130.208.246.171 -w /usr/share/wordlists/dirb/common.txt
+
+STDOUT:
+
+STDERR:
+2026/09/18 16:53:13 wordlist file "/usr/share/wordlists/dirb/common.txt" does not exist: stat /usr/share/wordlists/dirb/common.txt: no such file or directory
+

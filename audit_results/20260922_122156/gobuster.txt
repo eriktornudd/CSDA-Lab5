@@ -1,0 +1,34 @@
+COMMAND: gobuster dir -u http://130.208.246.173 -w /Users/eriktornudd/dev/git/CSDA-Lab5/wordlists/common.txt
+
+STDOUT:
+===============================================================
+Gobuster v3.8.2
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://130.208.246.173
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /Users/eriktornudd/dev/git/CSDA-Lab5/wordlists/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.8.2
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+admin                (Status: 301) [Size: 318] [--> http://130.208.246.173/admin/]
+index.php            (Status: 200) [Size: 1580]
+login.php            (Status: 200) [Size: 1384]
+.htaccess            (Status: 403) [Size: 280]
+config.php           (Status: 200) [Size: 0]
+.htpasswd            (Status: 403) [Size: 280]
+uploads              (Status: 500) [Size: 612]
+css                  (Status: 301) [Size: 316] [--> http://130.208.246.173/css/]
+js                   (Status: 301) [Size: 315] [--> http://130.208.246.173/js/]
+includes             (Status: 301) [Size: 321] [--> http://130.208.246.173/includes/]
+server-status        (Status: 403) [Size: 280]
+===============================================================
+Finished
+===============================================================
+
+STDERR:
+

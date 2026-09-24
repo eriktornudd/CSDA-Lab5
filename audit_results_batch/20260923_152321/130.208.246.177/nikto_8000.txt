@@ -1,0 +1,31 @@
+COMMAND: nikto -h http://130.208.246.177:8000/ -timeout 10
+
+STDOUT:
+- Nikto v2.6.1
+---------------------------------------------------------------------------
++ Target IP:          130.208.246.177
++ Target Hostname:    130.208.246.177
++ Target Port:        8000
++ Platform:           Unknown
++ Start Time:         2026-09-23 15:37:09 (GMT0)
+---------------------------------------------------------------------------
++ Server: No banner retrieved
++ No CGI Directories found (use '-C all' to force check all possible dirs). CGI tests skipped.
++ [013587] /: Suggested security header missing: x-content-type-options. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
++ [013587] /: Suggested security header missing: strict-transport-security. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
++ [013587] /: Suggested security header missing: permissions-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy
++ [013587] /: Suggested security header missing: referrer-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
++ [013587] /: Suggested security header missing: content-security-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
++ [000294] /sips/sipssys/users/a/admin/user: SIPS v0.2.2 allows user account info (including password) to be retrieved remotely. See: https://vulners.com/exploitdb/EDB-ID:22381
++ [000777] /user.php?op=confirmnewuser&module=NS-NewUser&uNikto=%22%3E%3Cimg%20src=%22javascript:alert(document.cookie);%22%3E&email=test@test.com: Post Nuke 0.7.2.3-Phoenix is vulnerable to Cross Site Scripting (XSS).
++ [002324] /db.php: This might be interesting: has been seen in web logs from an unknown scanner.
++ [999979] http://100.100.100.200/latest/meta-data/: IP address found in the 'host' header. The IP is "100.100.100.200". See: https://portswigger.net/kb/issues/00600300_private-ip-addresses-disclosed
++ [007342] /: X-Frame-Options header is deprecated and was replaced with the Content-Security-Policy HTTP header with the frame-ancestors directive. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options
++ [007352] /: The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type. See: https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/missing-content-type-header/
++ 8414 requests: 9 errors and 11 items reported on the remote host
++ End Time:           2026-09-23 15:39:57 (GMT0) (168 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+STDERR:
+

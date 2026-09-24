@@ -1,0 +1,28 @@
+{
+  "http": {
+    "live": true,
+    "url": "http://130.208.246.177/",
+    "status": 200,
+    "headers": {
+      "Date": "Wed, 23 Sep 2026 14:40:55 GMT",
+      "Server": "Apache/2.4.58 (Ubuntu)",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "Referrer-Policy": "same-origin",
+      "Set-Cookie": "pokecollect_d39bb653aa41=umaucpgmav7k26k4c9glgob7gi; path=/; HttpOnly; SameSite=Lax",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Vary": "Accept-Encoding",
+      "Content-Length": "2485",
+      "Connection": "close",
+      "Content-Type": "text/html; charset=UTF-8"
+    },
+    "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Home \u00b7 PokeCollect</title>\n<link rel=\"icon\" href=\"assets/pokeball.svg\" type=\"image/svg+xml\">\n<link rel=\"stylesheet\" href=\"assets/style.css\">\n</head>\n<body>\n<header class=\"topbar\">\n  <div class=\"wrap topbar-inner\">\n    <a class=\"brand\" href=\"index.php\"><img src=\"assets/pokeball.svg\" alt=\"\" width=\"34\" height=\"34\"><span>PokeCollect</span></a>\n    <input type=\"checkbox\" id=\"nav-toggle\" class=\"nav-toggle\"><label for=\"nav-toggle\" class=\"nav-burger\" aria-label=\"Menu\">\u2630</label>\n    <nav class=\"mainnav\">\n              <a href=\"index.php\" class=\"active\">Home</a>\n              <a href=\"forum.php\">Forum</a>\n              <a href=\"gallery.php\">Gallery</a>\n              <a href=\"cards.php\">Card Registry</a>\n              <a href=\"map.php\">World Map</a>\n                </nav>\n    <div class=\"usernav\">\n              <a href=\"login.php\">Log in</a>\n        <a href=\"register.php\" class=\"btn btn-small\">Join</a>\n          </div>\n  </div>\n</header>\n<main class=\"wrap\">\n<section class=\"hero\">\n  <div>\n    <h1>PokeCollect</h1>\n    <p class=\"lead\">Rare Pok\u00e9mon cards from every corner of the world</p>\n    <p>Show off your grail cards, log where in the world you found them, and talk shop with collectors everywhere.</p>\n          <p><a class=\"btn\" href=\"register.php\">Create a free account</a> <a class=\"btn btn-ghost\" href=\"login.php\">Log in</a></p>\n      </div>\n  <div class=\"hero-art\" aria-hidden=\"true\"><img src=\"assets/pokeball.svg\" alt=\"\"></div>\n</section>\n\n<section class=\"stats\">\n      <div class=\"stat\"><strong>1</strong><span>Collectors</span></div>\n      <div class=\"stat\"><strong>0</strong><span>Cards registered</span></div>\n      <div class=\"stat\"><strong>0</strong><span>Countries</span></div>\n      <div class=\"stat\"><strong>0</strong><span>Forum posts</span></div>\n  </section>\n\n  <section class=\"panel center\">\n    <h2>Members only</h2>\n    <p>The forum, gallery and card registry are available to registered collectors. <a href=\"login.php\">Log in</a> or <a href=\"register.php\">sign up</a> to take a look.</p>\n  </section>\n</main>\n<footer class=\"footer\">\n  <div class=\"wrap\">\n    <p>PokeCollect \u2014 Rare Pok\u00e9mon cards from every corner of the world</p>\n    <p class=\"muted small\">Fan community site. Pok\u00e9mon and all related names are trademarks of Nintendo, Creatures Inc. and GAME FREAK inc.</p>\n  </div>\n</footer>\n</body>\n</html>\n"
+  },
+  "https": {
+    "live": false,
+    "url": "https://130.208.246.177/",
+    "error": "<urlopen error timed out>"
+  }
+}

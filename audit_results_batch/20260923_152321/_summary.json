@@ -1,0 +1,80 @@
+{
+  "run_started": "2026-09-23T15:23:21.674283",
+  "targets_total": 15,
+  "hosts": {
+    "130.208.246.180": {
+      "status": "no_site"
+    },
+    "130.208.246.168": {
+      "status": "no_site"
+    },
+    "130.208.246.170": {
+      "status": "no_site"
+    },
+    "130.208.246.164": {
+      "status": "no_site"
+    },
+    "130.208.246.175": {
+      "status": "no_site"
+    },
+    "130.208.246.174": {
+      "status": "no_site"
+    },
+    "130.208.246.165": {
+      "status": "no_site"
+    },
+    "130.208.246.185": {
+      "status": "no_site"
+    },
+    "130.208.246.213": {
+      "status": "no_site"
+    },
+    "130.208.246.171": {
+      "status": "live",
+      "ports": [
+        80,
+        8080
+      ],
+      "leads_count": 11
+    },
+    "130.208.246.173": {
+      "status": "live",
+      "ports": [
+        80
+      ],
+      "leads_count": 5
+    },
+    "130.208.246.176": {
+      "status": "live",
+      "ports": [
+        80
+      ],
+      "leads_count": 5
+    },
+    "130.208.246.177": {
+      "status": "live",
+      "ports": [
+        80,
+        8000
+      ],
+      "leads_count": 10
+    },
+    "130.208.246.166": {
+      "status": "live",
+      "ports": [
+        443
+      ],
+      "leads_count": 5
+    },
+    "130.208.246.167": {
+      "status": "live",
+      "ports": [
+        80
+      ],
+      "leads_count": 5
+    }
+  },
+  "run_finished": "2026-09-23T15:48:59.825663",
+  "live_count": 6,
+  "no_site_count": 9
+}

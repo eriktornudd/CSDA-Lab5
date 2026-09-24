@@ -1,0 +1,29 @@
+{
+  "http": {
+    "live": true,
+    "url": "http://130.208.246.176/",
+    "status": 200,
+    "headers": {
+      "Date": "Wed, 23 Sep 2026 14:24:46 GMT",
+      "Server": "Apache/2.4.58 (Ubuntu)",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "DENY",
+      "Referrer-Policy": "no-referrer",
+      "Set-Cookie": "trollsid=2a62rgvbo6veavleb7kd49de5c; path=/; HttpOnly; SameSite=Lax",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Content-Security-Policy": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'",
+      "Vary": "Accept-Encoding",
+      "Content-Length": "1380",
+      "Connection": "close",
+      "Content-Type": "text/html; charset=UTF-8"
+    },
+    "body": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <meta name=\"robots\" content=\"noindex\">\n  <title>Board \u2014 Tr\u00f6llasteinar</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n<header class=\"masthead\">\n  <div class=\"masthead-inner\">\n    <a class=\"brand\" href=\"index.php\">\n      <span class=\"brand-mark\" aria-hidden=\"true\">&#9650;</span>\n      <span class=\"brand-text\">\n        <strong>Tr\u00f6llasteinar</strong>\n        <small>The Icelandic Troll-Rock Spotters&rsquo; Society</small>\n      </span>\n    </a>\n    <nav class=\"nav\">\n      <a href=\"index.php\">Board</a>\n              <a href=\"login.php\">Log in</a>\n        <a class=\"cta\" href=\"register.php\">Join</a>\n          </nav>\n  </div>\n</header>\n<main class=\"board\">\n  <div class=\"board-head\">\n    <h1>The Board</h1>\n    <p class=\"muted\">Sightings, finds, and rocks that unmistakably resemble trolls.</p>\n  </div>\n\n  \n      <p class=\"notice\"><a href=\"login.php\">Log in</a> or <a href=\"register.php\">join</a> to post and upload photos.</p>\n  \n  <section class=\"posts\">\n          <p class=\"muted\">No sightings yet. Be the first to report a troll-rock.</p>\n    \n      </section>\n</main>\n<footer class=\"site-footer\">\n  <p>Tr\u00f6llasteinar \u2014 a CSDA Lab 4 demonstration forum. Basalt, moss &amp; folklore.</p>\n</footer>\n</body>\n</html>\n"
+  },
+  "https": {
+    "live": false,
+    "url": "https://130.208.246.176/",
+    "error": "<urlopen error timed out>"
+  }
+}

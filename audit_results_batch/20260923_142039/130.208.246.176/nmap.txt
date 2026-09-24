@@ -1,0 +1,15 @@
+COMMAND: nmap -sV --reason -Pn -T4 --top-ports 300 130.208.246.176
+
+STDOUT:
+Starting Nmap 7.991 ( https://nmap.org ) at 2026-09-23 14:24 +0000
+Nmap scan report for 130.208.246.176
+Host is up, received user-set (0.0046s latency).
+Not shown: 299 filtered tcp ports (no-response)
+PORT   STATE SERVICE REASON  VERSION
+80/tcp open  http    syn-ack Apache httpd 2.4.58 ((Ubuntu))
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 24.21 seconds
+
+STDERR:
+

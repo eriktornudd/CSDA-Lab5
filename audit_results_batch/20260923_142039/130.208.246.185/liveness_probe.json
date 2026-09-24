@@ -1,0 +1,12 @@
+{
+  "http": {
+    "live": false,
+    "url": "http://130.208.246.185/",
+    "error": "<urlopen error timed out>"
+  },
+  "https": {
+    "live": false,
+    "url": "https://130.208.246.185/",
+    "error": "<urlopen error timed out>"
+  }
+}

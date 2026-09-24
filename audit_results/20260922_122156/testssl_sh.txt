@@ -1,0 +1,24 @@
+COMMAND: testssl.sh http://130.208.246.173
+
+STDOUT:
+
+[1m
+#####################################################################[m
+  [1mtestssl.sh[m version [1m3.2.4[m from [1mhttps://testssl.sh/[m
+  [1m([m[0;37ma15144a 2026-09-18 21:05:33[m[1m)[m
+[1m
+  This program is free software. Distribution and modification under
+  GPLv2 permitted. USAGE w/o ANY WARRANTY. USE IT AT YOUR OWN RISK![m
+
+  Please file bugs @ [1mhttps://testssl.sh/bugs/[m
+[1m#####################################################################[m
+
+  Using [3mOpenSSL 4.0.2 (Aug 25 2026)[m  [~96 ciphers]
+  on MacBook-Air-som-tillhor-Erik:/opt/homebrew/opt/openssl@4/bin/openssl
+
+
+
+
+STDERR:
+[1;35mFatal error: "http" is not what you meant probably[m
+

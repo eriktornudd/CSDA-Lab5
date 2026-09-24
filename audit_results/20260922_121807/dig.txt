@@ -1,0 +1,26 @@
+COMMAND: dig 130.208.246.171 ANY
+
+STDOUT:
+
+; <<>> DiG 9.10.6 <<>> 130.208.246.171 ANY
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 31071
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4000
+;; QUESTION SECTION:
+;130.208.246.171.		IN	ANY
+
+;; AUTHORITY SECTION:
+.			900	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2026092200 1800 900 604800 86400
+
+;; Query time: 6 msec
+;; SERVER: 10.11.1.2#53(10.11.1.2)
+;; WHEN: Tue Sep 22 12:18:08 GMT 2026
+;; MSG SIZE  rcvd: 119
+
+
+STDERR:
+

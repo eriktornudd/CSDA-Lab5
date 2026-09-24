@@ -1,0 +1,21 @@
+COMMAND: gobuster dir -u http://130.208.246.167/ -w /Users/eriktornudd/dev/git/CSDA-Lab5/wordlists/common.txt -q -t 5 --timeout 10s
+
+STDOUT:
+index.php            (Status: 200) [Size: 12120]
+.htaccess            (Status: 403) [Size: 280]
+.env                 (Status: 403) [Size: 280]
+.git                 (Status: 403) [Size: 280]
+.htpasswd            (Status: 403) [Size: 280]
+assets               (Status: 301) [Size: 319] [--> http://130.208.246.167/assets/]
+server-status        (Status: 403) [Size: 280]
+.ssh                 (Status: 403) [Size: 280]
+.aws                 (Status: 403) [Size: 280]
+.docker              (Status: 403) [Size: 280]
+.gitignore           (Status: 403) [Size: 280]
+.travis.yml          (Status: 403) [Size: 280]
+.gitlab-ci.yml       (Status: 403) [Size: 280]
+.well-known/security.txt (Status: 403) [Size: 280]
+.well-known          (Status: 403) [Size: 280]
+
+STDERR:
+

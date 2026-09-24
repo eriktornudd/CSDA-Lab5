@@ -1,0 +1,26 @@
+COMMAND: nikto -h http://130.208.246.176/ -timeout 10
+
+STDOUT:
+- Nikto v2.6.1
+---------------------------------------------------------------------------
++ Target IP:          130.208.246.176
++ Target Hostname:    130.208.246.176
++ Target Port:        80
++ Platform:           Unknown
++ Start Time:         2026-09-23 15:35:07 (GMT0)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.58 (Ubuntu)
++ No CGI Directories found (use '-C all' to force check all possible dirs). CGI tests skipped.
++ [999967] /: Web Server returns a valid response with junk HTTP methods which may cause false positives.
++ [600050] Apache/2.4.58 appears to be outdated (current is at least 2.4.68).
++ [013587] /: Suggested security header missing: strict-transport-security. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
++ [013587] /: Suggested security header missing: permissions-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy
++ [002324] /db.php: This might be interesting: has been seen in web logs from an unknown scanner.
++ [006333] /login.php: Admin login page/section found.
++ 8228 requests: 0 errors and 6 items reported on the remote host
++ End Time:           2026-09-23 15:35:57 (GMT0) (50 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+STDERR:
+

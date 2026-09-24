@@ -1,0 +1,3 @@
+COMMAND: nikto -h http://130.208.246.176/ -timeout 10
+
+TIMED OUT after 900s

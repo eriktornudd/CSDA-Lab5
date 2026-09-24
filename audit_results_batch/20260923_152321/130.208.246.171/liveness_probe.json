@@ -1,0 +1,25 @@
+{
+  "http": {
+    "live": true,
+    "url": "http://130.208.246.171/",
+    "status": 200,
+    "headers": {
+      "Date": "Wed, 23 Sep 2026 15:23:21 GMT",
+      "Server": "Apache/2.4.58 (Ubuntu)",
+      "Set-Cookie": "PHPSESSID=n0i62msh42d5krst5qbg3t81n0; path=/; HttpOnly; SameSite=Lax",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Vary": "Accept-Encoding",
+      "Content-Length": "1171",
+      "Connection": "close",
+      "Content-Type": "text/html; charset=UTF-8"
+    },
+    "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>The Malazan Archive</title>\n<link rel=\"stylesheet\" href=\"/assets/style.css\">\n</head>\n<body>\n<header class=\"site-header\">\n    <a class=\"brand\" href=\"/\">The Malazan Archive</a>\n    <nav>\n        <a href=\"/forum\">Forum</a>\n        <a href=\"/gallery\">Fanart</a>\n        <a href=\"/wiki\">Wiki</a>\n        <a href=\"/characters\">Characters</a>\n                    <a href=\"/login\">Log in</a>\n            <a href=\"/register\">Register</a>\n            </nav>\n</header>\n<main class=\"site-main\">\n<h1>Welcome to the Malazan Archive</h1>\n<p>A community space for discussion, fanart, and reference material for the Malazan Book of the Fallen series.</p>\n<ul class=\"home-links\">\n    <li><a href=\"/forum\">Visit the forum</a></li>\n    <li><a href=\"/gallery\">Browse fanart</a></li>\n    <li><a href=\"/wiki\">Read the book wiki</a></li>\n    <li><a href=\"/characters\">Check the character list</a></li>\n</ul>\n</main>\n<footer class=\"site-footer\">\n    <p>A fan-made archive. Malazan Book of the Fallen belongs to Steven Erikson.</p>\n</footer>\n</body>\n</html>\n"
+  },
+  "https": {
+    "live": false,
+    "url": "https://130.208.246.171/",
+    "error": "<urlopen error timed out>"
+  }
+}

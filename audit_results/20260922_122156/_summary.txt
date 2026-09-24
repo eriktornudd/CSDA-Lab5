@@ -1,0 +1,13 @@
+Audit run: 20260922_122156
+Target: 130.208.246.173 / http://130.208.246.173
+
+Tools run:
+  - whois: Domain/IP ownership info
+  - dig: DNS records
+  - nmap: Port scan + service versions
+  - nikto: Known misconfig / vuln scan
+  - testssl.sh: TLS/SSL config check
+  - sslyze: TLS/SSL config check (alt)
+  - gobuster: Directory brute force (requires wordlist)
+
+Tools missing (not run):

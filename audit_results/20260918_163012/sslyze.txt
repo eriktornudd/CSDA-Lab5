@@ -1,0 +1,14 @@
+COMMAND: sslyze 130.208.246.171
+
+STDOUT:
+
+ CHECKING CONNECTIVITY TO SERVER(S)
+ ----------------------------------
+
+   130.208.246.171:443       => ERROR: Connection to the server failed; discarding scan.
+
+ SCANS COMPLETED IN 0.3805 S
+ ---------------------------
+
+STDERR:
+

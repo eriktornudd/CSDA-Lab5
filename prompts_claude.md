@@ -76,6 +76,7 @@ Check if you're on shared infrastructure. If the lab VM sits behind a shared IP,
 Rate limit more than you would internally. Scanning over the internet vs. LAN means more noise, more chance of getting flagged, and more chance of actually degrading service if the VM's bandwidth/resources are modest. Consider adding -T2 or -T3 to the nmap command (currently unthrottled) if you go this route.
 
 If your course specifically told you "the target is exposed publicly, test it as such" — go ahead, just put the public IP/domain in host/url. If that wasn't explicit, it's worth a quick check with whoever's running the course before you point scanners at it from outside the network.
+
 ### Prompt 5
 
 
