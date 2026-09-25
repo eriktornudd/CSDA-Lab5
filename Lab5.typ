@@ -3,7 +3,7 @@
 
 #let title = "Lab 5, Attack vibecoded websites"
 #let course = "Cyber Security: Defence against the Dark Arts"
-#let author = "Erik Törnudd, Niko Schuppan-Cruz"
+#let author = "Erik Törnudd, Nikola Schuppan-Cruz"
 
 #set document(title: title, author: author)
 #set page(
@@ -28,4 +28,35 @@
 
 #v(1cm)
 
-= Report
+We would like to be part of the paper on the security of AI generated websites (and listed as co-authors).
+
+//-----------------------------------------------------------
+= Executive Summary
+
+
+//-----------------------------------------------------------
+= What we did
+
+
+//-----------------------------------------------------------
+== Making our websites
+
+=== Website "The Malazan Archive"
+made by Erik
+
+
+=== Website "Hallownest Explorer's Forum"
+made by Nikola
+
+
+//-----------------------------------------------------------
+== Attacking all websites
+Using LLMs we generated "security audit" scripts that would use all the tools we have learned in the course, and more, to attack the websites. The scripts were then run against the websites and the results were recorded.
+
+=== Using DeepSeek
+
+=== Using Claude
+
+
+//-----------------------------------------------------------
+= Results
