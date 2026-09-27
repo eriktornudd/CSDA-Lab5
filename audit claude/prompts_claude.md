@@ -1,6 +1,6 @@
 # Claude code, sonnet 5
 ### Prompt 1
-”I am performing a security audit as part of an introductory course on cyber security. Could you please provide me with a list of commands that could be used to evaluate the security of a hosted website? Please respond in english
+I am performing a security audit as part of an introductory course on cyber security. Could you please provide me with a list of commands that could be used to evaluate the security of a hosted website? Please respond in english
 ### Response 1
 Standard recon/assessment toolkit for web app security testing. Here's what you'd actually use, organized by phase:
 
