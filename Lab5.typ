@@ -28,6 +28,10 @@
 
 #v(1cm)
 
+// "As long as it needs to be and not longer."
+// "Marked on content, not length."
+// - Jacky
+
 We would like to be part of the paper on the security of AI generated websites (and listed as co-authors).
 
 //-----------------------------------------------------------
@@ -35,28 +39,44 @@ We would like to be part of the paper on the security of AI generated websites (
 
 
 //-----------------------------------------------------------
-= What we did
+#pagebreak()
+= "Attacking" the websites
+
+Using the LLMs "DeepSeek" and "Claude" we generated security auditing scripts that would use all the tools we have gotten to know in the course, and more, to attack the websites. The scripts were then run against the websites and the results were recorded.
+
+The initial two prompts for both DeepSeek and Claude were the same:
+1. #quote(block:true)[I am performing a security audit as part of an introductory course on cyber security. Could you please provide me with a list of commands that could be used to evaluate the security of a hosted website? Please respond in english]
+2. #quote(block:true)[Please put all of these into an executable python script to automate this security audit on any given website]
+
+Their responses to the first prompt were the exact same, word for word. They specified the "gold standard" tools for security auditing, separated into four phases:
+1. Reconnaissance: ``` whois, dig ANY, nslookup, dig axfr, nmap -sV -p, curl -I, whatweb, theHarvester -d```
+2. Directory and Content Discovery: ``` gobuster dir -u -w, ffuf -u /FUZZ - w```
+3. Vulnerability Scanning: ``` nikto -h, nmap --script vuln, testssl.sh, sslyze```
+4. Manual Checks with `curl` like ``` curl /nonexistent``` or ``` curl -X OPTIONS -i``` and manual inspection of the `Set-Cookie` header and security flags like `Secure`, `HttpOnly`, and `SameSite`.
+
+After the second prompt their responses differed, so our prompts did as well.
+While DeepSeek produced a script immediately, Claude's guardrails initially prevented it from doing so.
+
+== Using DeepSeek
+
+When presented with the task of generating a security auditing script, DeepSeek produced the python script immediately. It was bare-boned, functional and produced results.
+There were no guardrails to circumvent to get the script.
+
+
+
+== Using Claude
+
 
 
 //-----------------------------------------------------------
-== Making our websites
-
-=== Website "The Malazan Archive"
-made by Erik
-
-
-=== Website "Hallownest Explorer's Forum"
-made by Nikola
-
-
-//-----------------------------------------------------------
-== Attacking all websites
-Using LLMs we generated "security audit" scripts that would use all the tools we have learned in the course, and more, to attack the websites. The scripts were then run against the websites and the results were recorded.
-
-=== Using DeepSeek
-
-=== Using Claude
-
-
-//-----------------------------------------------------------
+#pagebreak()
 = Results
+
+
+//-----------------------------------------------------------
+#pagebreak()
+#align(center)[= Appendix]
+
+and now ...
+prompts
+
