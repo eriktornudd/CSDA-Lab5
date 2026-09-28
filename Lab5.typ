@@ -71,7 +71,8 @@ The final version (v8) featured TCP port scanning, service and banner grabbing, 
 
 == Using Claude
 
-When presented with the task of generating a security 
+When presented with the task of generating a security audit script claude was very sceptical at first, not wanting to make a general purpose tool that would fire all the different tools against any website whoms IP was fed into it. After assuring it that the target websites were labb VMs it did not hesitate to create the script, even if it did add a couple of inconvenient details in running the script like having to type in a string confiming I have permission to run the script agains the target.
+
 
 //-----------------------------------------------------------
 #pagebreak()
