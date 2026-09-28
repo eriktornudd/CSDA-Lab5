@@ -35,12 +35,12 @@
 We would like to be part of the paper on the security of AI generated websites (and listed as co-authors).
 
 //-----------------------------------------------------------
-= Executive Summary
+#align(center)[= Executive Summary]
 
 ...
 
 //-----------------------------------------------------------
-= "Attacking" the websites
+#align(center)[= Attacking the websites]
 
 Using the LLMs "DeepSeek" and "Claude" we generated security auditing scripts that would use all the tools we have gotten to know in the course, and more, to attack the websites. The scripts were then run against the websites and the results were recorded.
 
@@ -67,14 +67,13 @@ Over the course of eight sequential prompts, DeepSeek produced a script that was
 The main workflow for this process was to run the script on select IPs, and feed the output back into DeepSeek, asking it to tailor the script to the given website, and make the output more readable.
 Doing this, DeepSeek added things like cookie-flag checks, "dangerous HTTP methods" checks, sensitive file checks, severity classifications for notable findings (Critical, Medium, Low, Info), advanced CLI flags, HTML reporting, and several safety fixes.
 
-The final version (v8) featured TCP port scanning, service and banner grabbing, DNS resolution, HTML content analysis, and timing metrics for overall exectuion and individual checks.
+The final version (v8) featured TCP port scanning, service and banner grabbing, DNS resolution, HTML content analysis, and timing metrics for overall execution and individual checks.
 
 == Using Claude
 
 When presented with the task of generating a security 
 
 //-----------------------------------------------------------
-#pagebreak()
 = Results
 
 
@@ -82,6 +81,6 @@ When presented with the task of generating a security
 #pagebreak()
 #align(center)[= Appendix]
 
-and now ...
-prompts
+For the full scripts and prompt files, visit https://github.com/eriktornudd/CSDA-Lab5.
 
+...
