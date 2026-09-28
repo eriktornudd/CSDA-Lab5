@@ -67,6 +67,8 @@ Over the course of eight sequential prompts, DeepSeek produced a script that was
 The main workflow for this process was to run the script on select IPs, and feed the output back into DeepSeek, asking it to tailor the script to the given website, and make the output more readable.
 Doing this, DeepSeek added things like cookie-flag checks, "dangerous HTTP methods" checks, sensitive file checks, severity classifications for notable findings (Critical, Medium, Low, Info), advanced CLI flags, HTML reporting, and several safety fixes.
 
+The final version (v8) featured TCP port scanning, service and banner grabbing, DNS resolution, HTML content analysis, and timing metrics for overall exectuion and individual checks.
+
 == Using Claude
 
 When presented with the task of generating a security 
