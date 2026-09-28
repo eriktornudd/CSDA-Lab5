@@ -40,7 +40,9 @@ We would like to be part of the paper on the security of AI generated websites (
 ...
 
 //-----------------------------------------------------------
-#align(center)[= Attacking the websites]
+#align(center)[= What we did]
+
+== Generating Security Audit Scripts
 
 Using the LLMs "DeepSeek" and "Claude" we generated security auditing scripts that would use all the tools we have gotten to know in the course, and more, to attack the websites. The scripts were then run against the websites and the results were recorded.
 
@@ -57,7 +59,7 @@ Their responses to the first prompt were the exact same, word for word. They spe
 After the second prompt their responses differed, so our prompts did as well.
 While DeepSeek produced a script immediately, Claude's guardrails initially prevented it from doing so.
 
-== Using DeepSeek
+=== Using DeepSeek
 
 When presented with the task of generating a security auditing script, DeepSeek produced the python script immediately. It was bare-boned, functional and produced results.
 
@@ -69,9 +71,20 @@ Doing this, DeepSeek added things like cookie-flag checks, "dangerous HTTP metho
 
 The final version (v8) featured TCP port scanning, service and banner grabbing, DNS resolution, HTML content analysis, and timing metrics for overall execution and individual checks.
 
-== Using Claude
+=== Using Claude
 
 When presented with the task of generating a security 
+
+
+== Attacking the sites
+
+The full list of IPs used for this is:
+
+```
+130.208.246.171 130.208.246.173 130.208.246.176 130.208.246.177 130.208.246.180 130.208.246.168 130.208.246.166 130.208.246.170 130.208.246.164 130.208.246.175 130.208.246.174 130.208.246.167 130.208.246.165 130.208.246.185 130.208.246.213
+```
+
+For the script made with DeepSeek the main IP it was tested on is `130.208.246.173`.
 
 //-----------------------------------------------------------
 = Results
