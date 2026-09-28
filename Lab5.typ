@@ -35,12 +35,14 @@
 We would like to be part of the paper on the security of AI generated websites (and listed as co-authors).
 
 //-----------------------------------------------------------
-= Executive Summary
+#align(center)[= Executive Summary]
 
 ...
 
 //-----------------------------------------------------------
-= "Attacking" the websites
+#align(center)[= What we did]
+
+== Generating Security Audit Scripts
 
 Using the LLMs "DeepSeek" and "Claude" we generated security auditing scripts that would use all the tools we have gotten to know in the course, and more, to attack the websites. The scripts were then run against the websites and the results were recorded.
 
@@ -57,7 +59,7 @@ Their responses to the first prompt were the exact same, word for word. They spe
 After the second prompt their responses differed, so our prompts did as well.
 While DeepSeek produced a script immediately, Claude's guardrails initially prevented it from doing so.
 
-== Using DeepSeek
+=== Using DeepSeek
 
 When presented with the task of generating a security auditing script, DeepSeek produced the python script immediately. It was bare-boned, functional and produced results.
 
@@ -67,9 +69,9 @@ Over the course of eight sequential prompts, DeepSeek produced a script that was
 The main workflow for this process was to run the script on select IPs, and feed the output back into DeepSeek, asking it to tailor the script to the given website, and make the output more readable.
 Doing this, DeepSeek added things like cookie-flag checks, "dangerous HTTP methods" checks, sensitive file checks, severity classifications for notable findings (Critical, Medium, Low, Info), advanced CLI flags, HTML reporting, and several safety fixes.
 
-The final version (v8) featured TCP port scanning, service and banner grabbing, DNS resolution, HTML content analysis, and timing metrics for overall exectuion and individual checks.
+The final version (v8) featured TCP port scanning, service and banner grabbing, DNS resolution, HTML content analysis, and timing metrics for overall execution and individual checks.
 
-== Using Claude
+=== Using Claude
 
 === Chat function
 When presented with the task of generating a security audit script claude was very sceptical at first, not wanting to make a general purpose tool that would fire all the different tools against any website whoms IP was fed into it. After assuring it that the target websites were labb VMs it did not hesitate to create the script, even if it did add a couple of inconvenient details in running the script like having to type in a string confiming I have permission to run the script agains the target. The script in question was running perfectly fine in the sense that it ran all the tools available in the machine simply marking the tools not found. 
@@ -80,8 +82,18 @@ This script was mainly tested on my own site I had created for Lab 4 and thus ve
 To test the capabiliies and differences between claude code and the ordinary chat functions coding ability I asked claude code to create a new script testing more different tools while also looping through all the IP adresses of the different lab servers ensuring it hit all the different websites that were created in the course and give us all the potential weaknessess found.
 
 
+
+== Attacking the sites
+
+The full list of IPs used for this is:
+
+```
+130.208.246.171 130.208.246.173 130.208.246.176 130.208.246.177 130.208.246.180 130.208.246.168 130.208.246.166 130.208.246.170 130.208.246.164 130.208.246.175 130.208.246.174 130.208.246.167 130.208.246.165 130.208.246.185 130.208.246.213
+```
+
+For the script made with DeepSeek the main IP it was tested on is `130.208.246.173`.
+
 //-----------------------------------------------------------
-#pagebreak()
 = Results
 
 
@@ -89,6 +101,6 @@ To test the capabiliies and differences between claude code and the ordinary cha
 #pagebreak()
 #align(center)[= Appendix]
 
-and now ...
-prompts
+For the full scripts and prompt files, visit https://github.com/eriktornudd/CSDA-Lab5.
 
+...
