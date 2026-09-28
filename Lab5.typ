@@ -71,7 +71,13 @@ The final version (v8) featured TCP port scanning, service and banner grabbing, 
 
 == Using Claude
 
-When presented with the task of generating a security audit script claude was very sceptical at first, not wanting to make a general purpose tool that would fire all the different tools against any website whoms IP was fed into it. After assuring it that the target websites were labb VMs it did not hesitate to create the script, even if it did add a couple of inconvenient details in running the script like having to type in a string confiming I have permission to run the script agains the target.
+=== Chat function
+When presented with the task of generating a security audit script claude was very sceptical at first, not wanting to make a general purpose tool that would fire all the different tools against any website whoms IP was fed into it. After assuring it that the target websites were labb VMs it did not hesitate to create the script, even if it did add a couple of inconvenient details in running the script like having to type in a string confiming I have permission to run the script agains the target. The script in question was running perfectly fine in the sense that it ran all the tools available in the machine simply marking the tools not found. 
+
+This script was mainly tested on my own site I had created for Lab 4 and thus verified against the manual tests I had done on the site on my own.
+
+=== Claude code
+To test the capabiliies and differences between claude code and the ordinary chat functions coding ability I asked claude code to create a new script testing more different tools while also looping through all the IP adresses of the different lab servers ensuring it hit all the different websites that were created in the course and give us all the potential weaknessess found.
 
 
 //-----------------------------------------------------------
