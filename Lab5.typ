@@ -143,12 +143,8 @@ During the lab I used `130.208.246.173` for testing and developing the script. W
 While it doesn't now, at the time of being targeted `130.208.246.177` was shown to have several High severity findings as well.
 
 == Claude
-<<<<<<< HEAD
-The following is the summary output of the claude batch script. It shows how many potential vulnerabilites were found for each of the IPs for manual testing I continue
-=======
-The following is the sumary output of the claude batch script. It shows how many potenital vulnerabilites were found at 11:06 29/9/26 for each of the IPs for manual testing I continue and choose to focus on 130.208.246.166 as it has among the most potenital vulnerabilites to explore.
+The following is the summary output of the Claude batch script. It shows how many potential vulnerabilites were found at 11:06 29/9/26 for each of the IPs. I continue and choose to focus on 130.208.246.166 for manual testing as it has among the most potential vulnerabilites to explore.
 
->>>>>>> refs/remotes/origin/main
 ```
 {
   "run_started": "2026-09-29T10:23:15.771003",
