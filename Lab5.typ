@@ -92,6 +92,7 @@ The full list of IPs used for this is:
 ```
 
 For the script made with DeepSeek the main IP it was tested on is `130.208.246.173`.
+The script made with Claude was tested using a batching script that looped over all IPs listed above, testing all ports individually.
 
 //-----------------------------------------------------------
 = Results
