@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Profile &middot; One Piece Nakama</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="wrap">
+        <a class="brand" href="/index.php">&#127988;&#8205;&#9760;&#65039; One Piece Nakama</a>
+        <nav>
+            <a href="/forum.php">Forum</a>
+            <a href="/gallery.php">Fan Art</a>
+            <a href="/marketplace.php">Marketplace</a>
+                                            <span class="who">Ahoy, <a href="/profile.php">root</a>!</span>
+                <a href="/logout.php">Logout</a>
+                    </nav>
+    </div>
+</header>
+<main class="wrap">
+<h1>My Profile</h1>
+<p>Username: <strong>root</strong> &middot; Email: admin@gmail.com</p>
+<h2>Change Password</h2>
+<form method="post" class="card form">
+    <input type="hidden" name="csrf_token" value="1511a2d1bb7bb9ff89193987683a916bc1b66752a62c41399e8c95feb669c454">    <label>Current Password<input type="password" name="current_password" required></label>
+    <label>New Password<input type="password" name="new_password" required minlength="8"></label>
+    <label>Confirm New Password<input type="password" name="confirm_password" required minlength="8"></label>
+    <button type="submit" class="btn btn-primary">Update Password</button>
+</form>
+</main>
+<footer class="site-footer">
+    <div class="wrap">
+        <p>&copy; 2026 One Piece Nakama &mdash; a fan-made community. One Piece is the property of
+        Eiichiro Oda, Shueisha, and Toei Animation. This is an unofficial, non-commercial fan project.</p>
+    </div>
+</footer>
+<script>
+document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-confirm]');
+    if (el && !confirm(el.getAttribute('data-confirm'))) {
+        e.preventDefault();
+    }
+});
+</script>
+</body>
+</html>

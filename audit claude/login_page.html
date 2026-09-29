@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login &middot; One Piece Nakama</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="wrap">
+        <a class="brand" href="/index.php">&#127988;&#8205;&#9760;&#65039; One Piece Nakama</a>
+        <nav>
+            <a href="/forum.php">Forum</a>
+            <a href="/gallery.php">Fan Art</a>
+            <a href="/marketplace.php">Marketplace</a>
+                            <a href="/login.php">Login</a>
+                <a href="/register.php">Register</a>
+                    </nav>
+    </div>
+</header>
+<main class="wrap">
+<h1>Log In</h1>
+<form method="post" class="card form">
+    <input type="hidden" name="csrf_token" value="1511a2d1bb7bb9ff89193987683a916bc1b66752a62c41399e8c95feb669c454">    <label>Username
+        <input type="text" name="username" value="" required>
+    </label>
+    <label>Password
+        <input type="password" name="password" required>
+    </label>
+    <button type="submit" class="btn btn-primary">Log In</button>
+</form>
+<p>New here? <a href="/register.php">Create an account</a></p>
+</main>
+<footer class="site-footer">
+    <div class="wrap">
+        <p>&copy; 2026 One Piece Nakama &mdash; a fan-made community. One Piece is the property of
+        Eiichiro Oda, Shueisha, and Toei Animation. This is an unofficial, non-commercial fan project.</p>
+    </div>
+</footer>
+<script>
+document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-confirm]');
+    if (el && !confirm(el.getAttribute('data-confirm'))) {
+        e.preventDefault();
+    }
+});
+</script>
+</body>
+</html>

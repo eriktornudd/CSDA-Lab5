@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Episode Discussion &middot; One Piece Nakama</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="wrap">
+        <a class="brand" href="/index.php">&#127988;&#8205;&#9760;&#65039; One Piece Nakama</a>
+        <nav>
+            <a href="/forum.php">Forum</a>
+            <a href="/gallery.php">Fan Art</a>
+            <a href="/marketplace.php">Marketplace</a>
+                                            <span class="who">Ahoy, <a href="/profile.php">root</a>!</span>
+                <a href="/logout.php">Logout</a>
+                    </nav>
+    </div>
+</header>
+<main class="wrap">
+<div class="page-head">
+    <div>
+        <h1>Episode Discussion</h1>
+        <p>Talk about anime episodes, animation, pacing, and adaptation choices.</p>
+    </div>
+            <a class="btn btn-primary" href="/new_thread.php?category_id=1">New Thread</a>
+    </div>
+<table class="thread-table">
+    <thead>
+        <tr>
+            <th>Thread</th><th>Author</th><th>Replies</th><th>Last Activity</th>
+                    </tr>
+    </thead>
+    <tbody>
+                <tr><td colspan="5">No threads yet. Be the first to start a discussion!</td></tr>
+        </tbody>
+</table>
+<p><a href="/forum.php">&larr; Back to Forum</a></p>
+</main>
+<footer class="site-footer">
+    <div class="wrap">
+        <p>&copy; 2026 One Piece Nakama &mdash; a fan-made community. One Piece is the property of
+        Eiichiro Oda, Shueisha, and Toei Animation. This is an unofficial, non-commercial fan project.</p>
+    </div>
+</footer>
+<script>
+document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-confirm]');
+    if (el && !confirm(el.getAttribute('data-confirm'))) {
+        e.preventDefault();
+    }
+});
+</script>
+</body>
+</html>
