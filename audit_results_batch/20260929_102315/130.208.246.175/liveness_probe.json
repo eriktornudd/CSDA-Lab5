@@ -1,0 +1,12 @@
+{
+  "http": {
+    "live": false,
+    "url": "http://130.208.246.175/",
+    "error": "<urlopen error [Errno 61] Connection refused>"
+  },
+  "https": {
+    "live": false,
+    "url": "https://130.208.246.175/",
+    "error": "<urlopen error timed out>"
+  }
+}

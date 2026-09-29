@@ -1,0 +1,7 @@
+COMMAND: whatweb https://130.208.246.166/
+
+STDOUT:
+
+STDERR:
+[1m[31mERROR Opening: https://130.208.246.166/ - can't modify frozen Hash: {verify_mode: 1, verify_hostname: true, options: 2147614800}[0m
+

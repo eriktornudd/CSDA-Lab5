@@ -1,0 +1,10 @@
+COMMAND: nikto -h http://130.208.246.170/ -timeout 10
+
+STDOUT:
+- Nikto v2.6.1
+---------------------------------------------------------------------------
++ [FAIL] Unable to connect to 130.208.246.170:80.
+
+STDERR:
+Argument "Unable to connect to 130.208.246.170:80" isn't numeric in numeric ne (!=) at /opt/homebrew/bin/nikto line 155.
+

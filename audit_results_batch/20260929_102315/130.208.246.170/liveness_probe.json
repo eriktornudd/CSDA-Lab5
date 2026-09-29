@@ -1,0 +1,29 @@
+{
+  "http": {
+    "live": true,
+    "url": "http://130.208.246.170/",
+    "status": 200,
+    "headers": {
+      "Date": "Tue, 29 Sep 2026 10:24:25 GMT",
+      "Server": "Apache/2.4.58 (Ubuntu)",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "DENY",
+      "Referrer-Policy": "no-referrer",
+      "Content-Security-Policy": "default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; object-src 'none'; frame-ancestors 'none'",
+      "Set-Cookie": "PHPSESSID=kn0do9adbamutfiorb68fancvp; path=/; HttpOnly; SameSite=Lax",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Vary": "Accept-Encoding",
+      "Content-Length": "1525",
+      "Connection": "close",
+      "Content-Type": "text/html; charset=UTF-8"
+    },
+    "body": "<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Cloudspotters Iceland</title>\n<link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n<header class=\"topbar\">\n  <a class=\"brand\" href=\"index.php\">\u2601 Cloudspotters Iceland</a>\n  <nav>\n    <a href=\"board.php\">Message board</a>\n    <a href=\"gallery.php\">Cloud gallery</a>\n          <a href=\"login.php\">Log in</a>\n      <a href=\"register.php\">Sign up</a>\n      </nav>\n</header>\n<main class=\"wrap\">\n<div class=\"card\">\n  <h1>Welcome to Cloudspotters Iceland \u2601</h1>\n  <p>A tiny community for people who chase, photograph and identify the clouds over Iceland,\n     lenticulars over Esja, mammatus before a storm, the odd nacreous glow in winter.</p>\n  <p>\n          <a href=\"register.php\">Create an account</a> or <a href=\"login.php\">log in</a> to post and upload.\n      </p>\n</div>\n\n<div class=\"card\">\n  <h2>Latest from the board</h2>\n      <div class=\"post\">\n      <div class=\"meta\"><strong>sky_7279</strong> &middot; 2026-09-15 00:26:42 UTC</div>\n      <div class=\"body\">&lt;script&gt;alert(1)&lt;/script&gt;</div>\n    </div>\n      <div class=\"post\">\n      <div class=\"meta\"><strong>sky_7279</strong> &middot; 2026-09-15 00:26:41 UTC</div>\n      <div class=\"body\">live test: mammatus before the storm</div>\n    </div>\n  </div>\n</main>\n<footer class=\"foot\">\n  <p>Cloudspotters Iceland &middot; a small hobby forum for people who photograph the Icelandic sky.</p>\n</footer>\n</body>\n</html>\n"
+  },
+  "https": {
+    "live": false,
+    "url": "https://130.208.246.170/",
+    "error": "<urlopen error timed out>"
+  }
+}

@@ -36,7 +36,7 @@ We would like to be part of the paper on the security of AI generated websites (
 
 //-----------------------------------------------------------
 #align(center)[= Executive Summary]
-
+Using the free version of Deepseek and a paid version of Claude we 
 ...
 
 //-----------------------------------------------------------
@@ -97,7 +97,101 @@ The script made with Claude was tested using a batching script that looped over 
 //-----------------------------------------------------------
 = Results
 
+== DeepSeek
 
+== Claude
+The following is the sumary output of the claude batch script. It shows how many potenital vulnerabilites were found for each of the IPs for manual testing I continue
+```
+{
+  "run_started": "2026-09-29T10:23:15.771003",
+  "targets_total": 15,
+  "hosts": {
+    "130.208.246.180": {
+      "status": "no_site"
+    },
+    "130.208.246.168": {
+      "status": "no_site"
+    },
+    "130.208.246.164": {
+      "status": "no_site"
+    },
+    "130.208.246.175": {
+      "status": "no_site"
+    },
+    "130.208.246.165": {
+      "status": "no_site"
+    },
+    "130.208.246.185": {
+      "status": "no_site"
+    },
+    "130.208.246.213": {
+      "status": "no_site"
+    },
+    "130.208.246.171": {
+      "status": "live",
+      "ports": [
+        80,
+        8080
+      ],
+      "leads_count": 11
+    },
+    "130.208.246.173": {
+      "status": "live",
+      "ports": [
+        80
+      ],
+      "leads_count": 5
+    },
+    "130.208.246.176": {
+      "status": "live",
+      "ports": [
+        80
+      ],
+      "leads_count": 5
+    },
+    "130.208.246.177": {
+      "status": "live",
+      "ports": [
+        80,
+        8000
+      ],
+      "leads_count": 10
+    },
+    "130.208.246.166": {
+      "status": "live",
+      "ports": [
+        443,
+        8080
+      ],
+      "leads_count": 11
+    },
+    "130.208.246.170": {
+      "status": "live",
+      "ports": [
+        80
+      ],
+      "leads_count": 3
+    },
+    "130.208.246.174": {
+      "status": "live",
+      "ports": [
+        80
+      ],
+      "leads_count": 6
+    },
+    "130.208.246.167": {
+      "status": "live",
+      "ports": [
+        80
+      ],
+      "leads_count": 5
+    }
+  },
+  "run_finished": "2026-09-29T10:58:20.138930",
+  "live_count": 8,
+  "no_site_count": 7
+}
+```
 //-----------------------------------------------------------
 #pagebreak()
 #align(center)[= Appendix]

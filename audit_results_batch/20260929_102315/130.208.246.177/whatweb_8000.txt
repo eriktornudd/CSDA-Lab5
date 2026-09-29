@@ -1,0 +1,7 @@
+COMMAND: whatweb http://130.208.246.177:8000/
+
+STDOUT:
+[1m[34mhttp://130.208.246.177:8000/[0m [200 OK] [1mCookies[0m[[0m[22mPHPSESSID[0m], [1mCountry[0m[[0m[22mICELAND[0m][[1m[31mIS[0m], [1mHTML5[0m, [1mHttpOnly[0m[[0m[22mPHPSESSID[0m], [1mIP[0m[[0m[22m130.208.246.177[0m], [1mPasswordField[0m[[0m[22mpassword[0m], [1mTitle[0m[[1m[33mSmash & Rally Badminton Club[0m]
+
+STDERR:
+

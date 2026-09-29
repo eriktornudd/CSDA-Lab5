@@ -1,0 +1,25 @@
+{
+  "http": {
+    "live": true,
+    "url": "http://130.208.246.174/",
+    "status": 200,
+    "headers": {
+      "Date": "Tue, 29 Sep 2026 10:24:58 GMT",
+      "Server": "Apache/2.4.58 (Ubuntu)",
+      "Set-Cookie": "PHPSESSID=8ockeb1s2ot143h6utfbugnime; path=/",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Vary": "Accept-Encoding",
+      "Content-Length": "725",
+      "Connection": "close",
+      "Content-Type": "text/html; charset=UTF-8"
+    },
+    "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Log in \u2014 Good Seat DB</title><link rel=\"stylesheet\" href=\"assets/style.css\"></head><body>\n<header><a class=\"brand\" href=\"index.php\">The \u201cGood Seat\u201d Database</a><nav>\n<a href=\"login.php\">Log in</a><a href=\"register.php\">Join</a></nav></header><main><h1>Log in.</h1><form method=\"post\" class=\"narrow\"><input type=\"hidden\" name=\"t\" value=\"7ec78be7e755f7f87ebc1acdb961a46b\"><label>Username<input name=\"name\" required></label><label>Password<input name=\"pass\" type=\"password\" required></label><button>Log in</button></form></main><footer>Sit well. Share the good ones.</footer></body></html>"
+  },
+  "https": {
+    "live": false,
+    "url": "https://130.208.246.174/",
+    "error": "<urlopen error timed out>"
+  }
+}

@@ -1,0 +1,7 @@
+COMMAND: gobuster dir -u http://130.208.246.177:8000/ -w /Users/eriktornudd/dev/git/CSDA-Lab5/audit claude/wordlists/common.txt -q -t 5 --timeout 10s
+
+STDOUT:
+
+STDERR:
+2026/09/29 10:57:02 the server returns a status code that matches the provided options for non existing urls. http://130.208.246.177:8000/bfb07803-6609-4a89-9683-cb1ccb7f2d57 => 200 (Length: 1528). Please exclude the response length or the status code or set the wildcard option.. To continue please exclude the status code or the length
+

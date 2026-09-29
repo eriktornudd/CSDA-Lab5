@@ -1,0 +1,26 @@
+COMMAND: gobuster dir -u http://130.208.246.166:8080/ -w /Users/eriktornudd/dev/git/CSDA-Lab5/audit claude/wordlists/common.txt -q -t 5 --timeout 10s
+
+STDOUT:
+index.php            (Status: 200) [Size: 1638]
+admin                (Status: 301) [Size: 325] [--> http://130.208.246.166:8080/admin/]
+login.php            (Status: 200) [Size: 1745]
+.env                 (Status: 403) [Size: 282]
+.git                 (Status: 403) [Size: 282]
+.htaccess            (Status: 403) [Size: 282]
+.htpasswd            (Status: 403) [Size: 282]
+assets               (Status: 301) [Size: 326] [--> http://130.208.246.166:8080/assets/]
+uploads              (Status: 301) [Size: 327] [--> http://130.208.246.166:8080/uploads/]
+javascript           (Status: 301) [Size: 330] [--> http://130.208.246.166:8080/javascript/]
+server-status        (Status: 403) [Size: 282]
+.ssh                 (Status: 403) [Size: 282]
+.docker              (Status: 403) [Size: 282]
+.aws                 (Status: 403) [Size: 282]
+.gitignore           (Status: 403) [Size: 282]
+.travis.yml          (Status: 403) [Size: 282]
+.gitlab-ci.yml       (Status: 403) [Size: 282]
+.well-known/security.txt (Status: 403) [Size: 282]
+.well-known          (Status: 403) [Size: 282]
+assets/css           (Status: 301) [Size: 330] [--> http://130.208.246.166:8080/assets/css/]
+
+STDERR:
+
