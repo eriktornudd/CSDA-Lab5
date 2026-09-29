@@ -102,8 +102,49 @@ All iterations of scripts were run after checking to make sure it was the only s
 
 == DeepSeek
 
+=== Batching Results DeepSeek
+
+The following is the summarized output of the DeepSeek batch script. It shows how many potential vulnerabilities were found for each of the IPs, which ports those IPs are hosting websites on, and how long it took to run the security audit script on each IP.
+
+```
+==============================================================================
+BATCH SECURITY AUDIT SUMMARY
+Started : 2026-09-29 11:32:00
+Finished: 2026-09-29 12:24:42
+Duration: 52m 41s
+Targets : 15
+==============================================================================
+
+Target               Status        Time  High   Med   Low  Info  Open ports
+------------------------------------------------------------------------------
+130.208.246.171      ok          6m 28s     0     8    19    90  80,8080
+130.208.246.173      ok          3m 23s     0     8    11    42  22,80
+130.208.246.176      ok          1m 41s     0     8     6    34  80
+130.208.246.177      ok          2m 26s     0     3     7    65  80
+130.208.246.180      ok          7m 40s     0     6    15   159  5000,8080
+130.208.246.168      ok          7m 32s    88   222    11  6696  8000,8080
+130.208.246.166      ok         16m 54s     4     6    27  4986  80,443,8080
+130.208.246.170      ok          21.97s     0     0     0     1  
+130.208.246.164      ok          21.48s     0     0     0     1  
+130.208.246.175      ok           2.28s     0     0     0     1  
+130.208.246.174      ok          2m 28s     0    12     9    36  80
+130.208.246.167      ok          2m 14s     0     2     7   164  80
+130.208.246.165      ok          21.18s     0     0     0     1  
+130.208.246.185      ok          21.21s     0     0     0     1  
+130.208.246.213      ok          23.09s     0     0     0     2  22
+
+```
+
+=== Manual Testing based on DeepSeek results
+
+Using the data I got with this security audit script, I targeted 
+`130.208.246.173`, `130.208.246.177`, and `130.208.246.168`.
+
+During the lab I used `130.208.246.173` for testing and developing the script. While doing this, I also attempted several manual scans and attacks, like Stored Cross-Site Scripting in the form of an html script formated as plain-text, an .html file, and as a .png file. I also attempted SQL Injection on the login form and tried changing cookie-IDs, user-IDs, and more through the URL and the browser's terminal.
+While it doesn't now, at the time of being targeted `130.208.246.177` was shown to have several High severity findings as well.
+
 == Claude
-The following is the sumary output of the claude batch script. It shows how many potenital vulnerabilites were found for each of the IPs for manual testing I continue
+The following is the summary output of the claude batch script. It shows how many potential vulnerabilites were found for each of the IPs for manual testing I continue
 ```
 {
   "run_started": "2026-09-29T10:23:15.771003",

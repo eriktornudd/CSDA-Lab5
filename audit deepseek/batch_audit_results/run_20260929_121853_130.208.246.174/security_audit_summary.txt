@@ -1,0 +1,174 @@
+======================================================================
+WEB SECURITY AUDIT REPORT
+Target:        http://130.208.246.174
+Date:          2026-09-29 12:21:21
+Scan duration: 2m 26s (146.5s)
+Run:           /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174
+======================================================================
+
+EXECUTIVE SUMMARY
+----------------------------------------------------------------------
+Checks performed      : 19
+Web service reachable : yes
+Open ports            : 1
+HIGH                  : 0
+MEDIUM                : 12
+LOW                   : 9
+INFO                  : 36
+
+CONFIRMED WEB SERVICES
+----------------------------------------------------------------------
+  http://130.208.246.174  HTTP 200  Apache/2.4.58 (Ubuntu)
+
+OPEN PORTS
+----------------------------------------------------------------------
+  [80]
+
+MEDIUM FINDINGS
+----------------------------------------------------------------------
+  [tentative] POST form without CSRF token (action=(same page))  (http://130.208.246.174)
+  [tentative] POST form without CSRF token (action=(same page))  (http://130.208.246.174/login.php)
+  [tentative] POST form without CSRF token (action=(same page))  (http://130.208.246.174/register.php)
+  [tentative] POST form without CSRF token (action=(same page))  (http://130.208.246.174/index.php)
+  [confirmed] Cookie 'PHPSESSID' missing Secure flag  (http://130.208.246.174)
+  [confirmed] Cookie 'PHPSESSID' missing HttpOnly flag  (http://130.208.246.174)
+  [confirmed] Cookie 'PHPSESSID' missing SameSite flag  (http://130.208.246.174)
+  [confirmed] Cookie 'PHPSESSID' missing Secure flag  (http://130.208.246.174)
+  [confirmed] Cookie 'PHPSESSID' missing HttpOnly flag  (http://130.208.246.174)
+  [confirmed] Cookie 'PHPSESSID' missing SameSite flag  (http://130.208.246.174)
+  [confirmed] Nikto: GET /: Cookie PHPSESSID created without the httponly flag  (http://130.208.246.174)
+  [confirmed] Nikto: GET /login.php: /login.php: Admin login page/section found.  (http://130.208.246.174)
+
+LOW FINDINGS
+----------------------------------------------------------------------
+  [confirmed] CSP not implemented  (http://130.208.246.174)
+  [confirmed] Clickjacking protection missing  (http://130.208.246.174)
+  [confirmed] MIME sniffing protection missing  (http://130.208.246.174)
+  [confirmed] Referrer policy not set  (http://130.208.246.174)
+  [confirmed] Permissions policy not set  (http://130.208.246.174)
+  [confirmed] COOP not set  (http://130.208.246.174)
+  [confirmed] CORP not set  (http://130.208.246.174)
+  [confirmed] Server discloses version: Apache/2.4.58 (Ubuntu)  (http://130.208.246.174)
+  [confirmed] Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.  (http://130.208.246.174)
+
+INFO FINDINGS
+----------------------------------------------------------------------
+  [confirmed] Page title: Log in — Good Seat DB  (http://130.208.246.174)
+  [confirmed] Meta viewport: width=device-width,initial-scale=1  (http://130.208.246.174)
+  [confirmed] Form: action=(same page) method=POST  (http://130.208.246.174)
+  [confirmed] Input fields: name, pass, t  (http://130.208.246.174)
+  [confirmed] Interesting links (3): index.php, login.php, register.php  (http://130.208.246.174)
+  [confirmed] Page title: Log in — Good Seat DB  (http://130.208.246.174/login.php)
+  [confirmed] Meta viewport: width=device-width,initial-scale=1  (http://130.208.246.174/login.php)
+  [confirmed] Form: action=(same page) method=POST  (http://130.208.246.174/login.php)
+  [confirmed] Input fields: name, pass, t  (http://130.208.246.174/login.php)
+  [confirmed] Interesting links (3): index.php, login.php, register.php  (http://130.208.246.174/login.php)
+  [confirmed] Page title: Join — Good Seat DB  (http://130.208.246.174/register.php)
+  [confirmed] Meta viewport: width=device-width,initial-scale=1  (http://130.208.246.174/register.php)
+  [confirmed] Form: action=(same page) method=POST  (http://130.208.246.174/register.php)
+  [confirmed] Input fields: email, name, pass, t  (http://130.208.246.174/register.php)
+  [confirmed] Interesting links (3): index.php, login.php, register.php  (http://130.208.246.174/register.php)
+  [confirmed] Page title: Log in — Good Seat DB  (http://130.208.246.174/index.php)
+  [confirmed] Meta viewport: width=device-width,initial-scale=1  (http://130.208.246.174/index.php)
+  [confirmed] Form: action=(same page) method=POST  (http://130.208.246.174/index.php)
+  [confirmed] Input fields: name, pass, t  (http://130.208.246.174/index.php)
+  [confirmed] Interesting links (3): index.php, login.php, register.php  (http://130.208.246.174/index.php)
+  [confirmed] WhatWeb http://130.208.246.174 [302 Found]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.174], RedirectLocation[login.php]  (http://130.208.246.174)
+  [confirmed] WhatWeb http://130.208.246.174/login.php [200 OK]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.174], PasswordField[pass], Title[Log in — Good Seat DB]  (http://130.208.246.174/login.php)
+  [confirmed] Protected path exists: /.htaccess (HTTP 403)  (http://130.208.246.174/.htaccess)
+  [confirmed] Protected path exists: /.htpasswd (HTTP 403)  (http://130.208.246.174/.htpasswd)
+  [confirmed] Protected path exists: /server-status (HTTP 403)  (http://130.208.246.174/server-status)
+  [confirmed] Protected path exists: /uploads/ (HTTP 403)  (http://130.208.246.174/uploads/)
+  [confirmed] Discovered: http://130.208.246.174/.htaccess (HTTP 403)  (http://130.208.246.174/.htaccess)
+  [confirmed] Discovered: http://130.208.246.174/.htpasswd (HTTP 403)  (http://130.208.246.174/.htpasswd)
+  [confirmed] Discovered: http://130.208.246.174/.hta (HTTP 403)  (http://130.208.246.174/.hta)
+  [confirmed] Discovered: http://130.208.246.174/admin.php (HTTP 302)  (http://130.208.246.174/admin.php)
+  [confirmed] Discovered: http://130.208.246.174/assets (HTTP 301)  (http://130.208.246.174/assets)
+  [confirmed] Discovered: http://130.208.246.174/data (HTTP 403)  (http://130.208.246.174/data)
+  [confirmed] Discovered: http://130.208.246.174/inc (HTTP 403)  (http://130.208.246.174/inc)
+  [confirmed] Discovered: http://130.208.246.174/index.php (HTTP 302)  (http://130.208.246.174/index.php)
+  [confirmed] Discovered: http://130.208.246.174/server-status (HTTP 403)  (http://130.208.246.174/server-status)
+  [confirmed] Discovered: http://130.208.246.174/uploads (HTTP 403)  (http://130.208.246.174/uploads)
+
+
+CHECK TIMINGS
+----------------------------------------------------------------------
+  directory_discovery    1m 6s
+  nikto                  1m 5s
+  whatweb                11.01s
+  service_discovery      1.90s
+  sensitive_files        1.33s
+  page_analysis          293ms
+  dns_info               155ms
+  body_analysis          85ms
+  http_methods           36ms
+  cors                   33ms
+  cache_control          10ms
+  info_disclosure        10ms
+  security_headers       9ms
+  cookies                9ms
+  ssl_nmap               0ms
+  ssl_testssl            0ms
+  ssl_certificate        0ms
+  csp_analysis           0ms
+  https_redirect         0ms
+
+
+DETAILED RESULTS
+----------------------------------------------------------------------
+
+[SERVICE_DISCOVERY] (1.90s)
+  Summary: 1 HTTP/HTTPS service(s) confirmed, 0 other open port(s)...
+
+[DNS_INFO] (155ms)
+  Output: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/dns_info.txt
+
+[BODY_ANALYSIS] (85ms)
+  Output: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/body_http_130.208.246.174.txt
+
+[PAGE_ANALYSIS] (293ms)
+  Output: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/page_http_130.208.246.174_login.php.txt
+
+[WHATWEB] (11.01s)
+  Output: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/whatweb.txt
+
+[SSL_NMAP] (0ms)
+  Error: No HTTPS service confirmed; skipping SSL enumeration
+
+[SSL_TESTSSL] (0ms)
+  Error: No HTTPS service confirmed; skipping testssl
+
+[SSL_CERTIFICATE] (0ms)
+  Error: No HTTPS service confirmed
+
+[SECURITY_HEADERS] (9ms)
+  Output: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/headers.txt
+
+[CSP_ANALYSIS] (0ms)
+
+[CACHE_CONTROL] (10ms)
+  Output: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/cache_control.txt
+
+[COOKIES] (9ms)
+  Output: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/cookies.txt
+
+[HTTP_METHODS] (36ms)
+  Output: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/methods.txt
+
+[HTTPS_REDIRECT] (0ms)
+  Error: No HTTPS service confirmed; cannot evaluate redirect
+
+[INFO_DISCLOSURE] (10ms)
+  Output: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/disclosure.txt
+
+[CORS] (33ms)
+  Output: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/cors.txt
+
+[SENSITIVE_FILES] (1.33s)
+  Output: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/sensitive_files.txt
+
+[NIKTO] (1m 5s)
+  Output: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/nikto_http_130.208.246.174.txt
+  Summary: - Nikto v2.1.5 --------------------------------------------------------------------------- + Target IP:          130.208.246.174 + Target Hostname:    130.208.246.174 + Target Port:        80 + Start Time:         2026-09-29 12:19:10 (GMT0) ---------...
+
+[DIRECTORY_DISCOVERY] (1m 6s)

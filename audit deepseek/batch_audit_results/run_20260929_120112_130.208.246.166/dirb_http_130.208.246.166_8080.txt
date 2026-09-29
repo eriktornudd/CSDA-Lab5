@@ -1,0 +1,79 @@
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+OUTPUT_FILE: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_120112_130.208.246.166/dirb_http_130.208.246.166_8080.txt
+START_TIME: Tue Sep 29 12:14:23 2026
+URL_BASE: http://130.208.246.166:8080/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+OPTION: Silent Mode
+
+-----------------
+
+GENERATED WORDS: 4612
+
+---- Scanning URL: http://130.208.246.166:8080/ ----
+==> DIRECTORY: http://130.208.246.166:8080/admin/
+==> DIRECTORY: http://130.208.246.166:8080/assets/
++ http://130.208.246.166:8080/index.php (CODE:200|SIZE:1638)
+==> DIRECTORY: http://130.208.246.166:8080/javascript/
++ http://130.208.246.166:8080/server-status (CODE:403|SIZE:282)
+==> DIRECTORY: http://130.208.246.166:8080/uploads/
+
+---- Entering directory: http://130.208.246.166:8080/admin/ ----
++ http://130.208.246.166:8080/admin/index.php (CODE:302|SIZE:0)
+
+---- Entering directory: http://130.208.246.166:8080/assets/ ----
+==> DIRECTORY: http://130.208.246.166:8080/assets/css/
+
+---- Entering directory: http://130.208.246.166:8080/javascript/ ----
+==> DIRECTORY: http://130.208.246.166:8080/javascript/jquery/
+
+---- Entering directory: http://130.208.246.166:8080/uploads/ ----
++ http://130.208.246.166:8080/uploads/admin.cgi (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/admin.php (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/admin.pl (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/AT-admin.cgi (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/cachemgr.cgi (CODE:403|SIZE:282)
+==> DIRECTORY: http://130.208.246.166:8080/uploads/gallery/
++ http://130.208.246.166:8080/uploads/index.php (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/info.php (CODE:403|SIZE:282)
+==> DIRECTORY: http://130.208.246.166:8080/uploads/marketplace/
++ http://130.208.246.166:8080/uploads/phpinfo.php (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/xmlrpc.php (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/xmlrpc_server.php (CODE:403|SIZE:282)
+
+---- Entering directory: http://130.208.246.166:8080/assets/css/ ----
+
+---- Entering directory: http://130.208.246.166:8080/javascript/jquery/ ----
++ http://130.208.246.166:8080/javascript/jquery/jquery (CODE:200|SIZE:289782)
+
+---- Entering directory: http://130.208.246.166:8080/uploads/gallery/ ----
++ http://130.208.246.166:8080/uploads/gallery/admin.cgi (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/gallery/admin.php (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/gallery/admin.pl (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/gallery/AT-admin.cgi (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/gallery/cachemgr.cgi (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/gallery/index.php (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/gallery/info.php (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/gallery/phpinfo.php (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/gallery/xmlrpc.php (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/gallery/xmlrpc_server.php (CODE:403|SIZE:282)
+
+---- Entering directory: http://130.208.246.166:8080/uploads/marketplace/ ----
++ http://130.208.246.166:8080/uploads/marketplace/admin.cgi (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/marketplace/admin.php (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/marketplace/admin.pl (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/marketplace/AT-admin.cgi (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/marketplace/cachemgr.cgi (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/marketplace/index.php (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/marketplace/info.php (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/marketplace/phpinfo.php (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/marketplace/xmlrpc.php (CODE:403|SIZE:282)
++ http://130.208.246.166:8080/uploads/marketplace/xmlrpc_server.php (CODE:403|SIZE:282)
+
+-----------------
+END_TIME: Tue Sep 29 12:18:06 2026
+DOWNLOADED: 41508 - FOUND: 34

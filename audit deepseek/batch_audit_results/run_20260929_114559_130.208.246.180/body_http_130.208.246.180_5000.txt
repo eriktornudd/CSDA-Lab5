@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pigeon Watchers Anonymous</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>🐦 Pigeon Watchers Anonymous</h1>
+    <nav>
+      <a href="/">Sightings Board</a>
+      
+        <a href="/login">Log in</a>
+        <a href="/register">Join the Society</a>
+      
+    </nav>
+  </header>
+
+  
+    
+  
+
+  <main>
+    
+  <h2>Recent Sightings</h2>
+  
+  
+    <article class="post">
+      <h3>Pegion Google image  .</h3>
+      <p class="meta">Spotted by Poonam on 2026-09-28T08:43:27.298991</p>
+      
+        <img src="/static/uploads/20260928084327297545_Screenshot_2026-09-28_at_08.42.01.png" alt="Pigeon photo">
+      
+      <p>Uploading for Feature verification</p>
+    </article>
+  
+    <article class="post">
+      <h3>Pegion sighting in Mumbai</h3>
+      <p class="meta">Spotted by Poonam on 2026-09-28T08:40:16.882577</p>
+      
+        <img src="/static/uploads/20260928084016881952_Mumbai_Pegion.png" alt="Pigeon photo">
+      
+      <p>Location : Marine Drive, Bombay</p>
+    </article>
+  
+    <article class="post">
+      <h3>fake image test</h3>
+      <p class="meta">Spotted by testsec on 2026-09-15T22:23:33.651860</p>
+      
+        <img src="/static/uploads/20260915222333651558_fake.jpg" alt="Pigeon photo">
+      
+      <p>uploading disguised file</p>
+    </article>
+  
+    <article class="post">
+      <h3>fake image test</h3>
+      <p class="meta">Spotted by testsec on 2026-09-15T22:17:32.948801</p>
+      
+        <img src="/static/uploads/20260915221732948353_fake.jpg" alt="Pigeon photo">
+      
+      <p>uploading disguised file</p>
+    </article>
+  
+
+  </main>
+
+  <footer>
+    <p>A society dedicated to the appreciation of urban pigeons, est. this afternoon.</p>
+  </footer>
+</body>
+</html>

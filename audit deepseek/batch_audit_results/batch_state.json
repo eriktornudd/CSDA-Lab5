@@ -1,5 +1,5 @@
 {
-  "batch_started": 1790265298.637534,
+  "batch_started": 1790681520.3062074,
   "targets": [
     "130.208.246.171",
     "130.208.246.173",
@@ -37,8 +37,8 @@
   "per_target": {
     "130.208.246.171": {
       "status": "ok",
-      "duration_seconds": 349.1926746368408,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_155458_130.208.246.171",
+      "duration_seconds": 388.1559684276581,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_113200_130.208.246.171",
       "error": null,
       "counts": {
         "HIGH": 0,
@@ -49,8 +49,8 @@
     },
     "130.208.246.173": {
       "status": "ok",
-      "duration_seconds": 179.20580554008484,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160047_130.208.246.173",
+      "duration_seconds": 203.4072904586792,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_113828_130.208.246.173",
       "error": null,
       "counts": {
         "HIGH": 0,
@@ -61,8 +61,8 @@
     },
     "130.208.246.176": {
       "status": "ok",
-      "duration_seconds": 84.32076668739319,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160347_130.208.246.176",
+      "duration_seconds": 101.15647268295288,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114151_130.208.246.176",
       "error": null,
       "counts": {
         "HIGH": 0,
@@ -73,56 +73,56 @@
     },
     "130.208.246.177": {
       "status": "ok",
-      "duration_seconds": 398.89017057418823,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_160511_130.208.246.177",
+      "duration_seconds": 146.3567283153534,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177",
       "error": null,
       "counts": {
-        "HIGH": 12,
-        "MEDIUM": 8,
-        "LOW": 15,
-        "INFO": 4640
+        "HIGH": 0,
+        "MEDIUM": 3,
+        "LOW": 7,
+        "INFO": 65
       }
     },
     "130.208.246.180": {
       "status": "ok",
-      "duration_seconds": 19.932668924331665,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_161150_130.208.246.180",
+      "duration_seconds": 460.47310042381287,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180",
       "error": null,
       "counts": {
         "HIGH": 0,
-        "MEDIUM": 0,
-        "LOW": 0,
-        "INFO": 1
+        "MEDIUM": 6,
+        "LOW": 15,
+        "INFO": 159
       }
     },
     "130.208.246.168": {
       "status": "ok",
-      "duration_seconds": 21.1973934173584,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_161210_130.208.246.168",
+      "duration_seconds": 452.81505703926086,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_115339_130.208.246.168",
       "error": null,
       "counts": {
-        "HIGH": 0,
-        "MEDIUM": 0,
-        "LOW": 0,
-        "INFO": 1
+        "HIGH": 88,
+        "MEDIUM": 222,
+        "LOW": 11,
+        "INFO": 6696
       }
     },
     "130.208.246.166": {
       "status": "ok",
-      "duration_seconds": 684.6296637058258,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_161231_130.208.246.166",
+      "duration_seconds": 1014.7004928588867,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_120112_130.208.246.166",
       "error": null,
       "counts": {
         "HIGH": 4,
-        "MEDIUM": 3,
-        "LOW": 21,
-        "INFO": 4851
+        "MEDIUM": 6,
+        "LOW": 27,
+        "INFO": 4986
       }
     },
     "130.208.246.170": {
       "status": "ok",
-      "duration_seconds": 21.410539150238037,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162356_130.208.246.170",
+      "duration_seconds": 21.974411010742188,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121807_130.208.246.170",
       "error": null,
       "counts": {
         "HIGH": 0,
@@ -133,8 +133,8 @@
     },
     "130.208.246.164": {
       "status": "ok",
-      "duration_seconds": 19.85380530357361,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162417_130.208.246.164",
+      "duration_seconds": 21.48279118537903,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121829_130.208.246.164",
       "error": null,
       "counts": {
         "HIGH": 0,
@@ -145,8 +145,8 @@
     },
     "130.208.246.175": {
       "status": "ok",
-      "duration_seconds": 1.2490794658660889,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162437_130.208.246.175",
+      "duration_seconds": 2.280578374862671,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121851_130.208.246.175",
       "error": null,
       "counts": {
         "HIGH": 0,
@@ -157,32 +157,32 @@
     },
     "130.208.246.174": {
       "status": "ok",
-      "duration_seconds": 19.85217022895813,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162438_130.208.246.174",
+      "duration_seconds": 148.5349943637848,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174",
       "error": null,
       "counts": {
         "HIGH": 0,
-        "MEDIUM": 0,
-        "LOW": 0,
-        "INFO": 1
+        "MEDIUM": 12,
+        "LOW": 9,
+        "INFO": 36
       }
     },
     "130.208.246.167": {
       "status": "ok",
-      "duration_seconds": 99.949387550354,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162458_130.208.246.167",
+      "duration_seconds": 134.67713332176208,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_122121_130.208.246.167",
       "error": null,
       "counts": {
         "HIGH": 0,
         "MEDIUM": 2,
         "LOW": 7,
-        "INFO": 153
+        "INFO": 164
       }
     },
     "130.208.246.165": {
       "status": "ok",
-      "duration_seconds": 19.761820316314697,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162638_130.208.246.165",
+      "duration_seconds": 21.184951066970825,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_122336_130.208.246.165",
       "error": null,
       "counts": {
         "HIGH": 0,
@@ -193,8 +193,8 @@
     },
     "130.208.246.185": {
       "status": "ok",
-      "duration_seconds": 21.238394737243652,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162658_130.208.246.185",
+      "duration_seconds": 21.21292519569397,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_122357_130.208.246.185",
       "error": null,
       "counts": {
         "HIGH": 0,
@@ -205,8 +205,8 @@
     },
     "130.208.246.213": {
       "status": "ok",
-      "duration_seconds": 21.981207847595215,
-      "run_dir": "/mnt/c/users/nikos/Documents/Obsidian Vault/courses/csda/labs/l5/batch_audit_results/run_20260924_162719_130.208.246.213",
+      "duration_seconds": 23.091803789138794,
+      "run_dir": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_122419_130.208.246.213",
       "error": null,
       "counts": {
         "HIGH": 0,

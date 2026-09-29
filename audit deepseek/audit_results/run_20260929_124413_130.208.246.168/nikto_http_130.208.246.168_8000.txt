@@ -1,0 +1,8 @@
+- Nikto v2.1.5/2.1.5
++ Target Host: 130.208.246.168
++ Target Port: 8000
++ GET /: Uncommon header 'referrer-policy' found, with contents: same-origin
++ GET /: Uncommon header 'x-frame-options' found, with contents: DENY
++ GET /: Uncommon header 'content-security-policy' found, with contents: default-src 'self'; img-src 'self' data:; style-src 'self'
++ GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff
++ OPTIONS /: Allowed HTTP Methods: GET, OPTIONS, HEAD 

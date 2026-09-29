@@ -1,0 +1,22 @@
+HTTP/1.1 302 Found
+Date: Tue, 29 Sep 2026 12:18:57 GMT
+Server: Apache/2.4.58 (Ubuntu)
+Set-Cookie: PHPSESSID=n7rvt20b4o2omaqk2ipk0kd91q; path=/
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Location: login.php
+Content-Length: 0
+Content-Type: text/html; charset=UTF-8
+
+HTTP/1.1 200 OK
+Date: Tue, 29 Sep 2026 12:18:57 GMT
+Server: Apache/2.4.58 (Ubuntu)
+Set-Cookie: PHPSESSID=b5qo173j654vhpsth9plpqmac7; path=/
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Vary: Accept-Encoding
+Content-Length: 725
+Content-Type: text/html; charset=UTF-8
+

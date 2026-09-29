@@ -1,0 +1,8 @@
+{
+  "input": "130.208.246.174",
+  "is_ip_literal": true,
+  "resolved_ips": [
+    "130.208.246.174"
+  ],
+  "reverse_dns": null
+}

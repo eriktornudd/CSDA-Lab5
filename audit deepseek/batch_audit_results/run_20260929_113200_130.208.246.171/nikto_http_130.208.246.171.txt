@@ -1,0 +1,9 @@
+- Nikto v2.1.5/2.1.5
++ Target Host: 130.208.246.171
++ Target Port: 80
++ GET /: The anti-clickjacking X-Frame-Options header is not present.
++ GET /: Cookie PHPSESSID created without the httponly flag
++ GET ///etc/hosts: ///etc/hosts: The server install allows reading of any system file by adding an extra '/' to the URL.
++ -3092: GET /forum/: /forum/: This might be interesting...
++ -3092: GET /login/: /login/: This might be interesting...
++ -3092: GET /register/: /register/: This might be interesting...

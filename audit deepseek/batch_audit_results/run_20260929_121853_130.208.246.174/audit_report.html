@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html><head><meta charset='utf-8'>
+<title>Audit Report - http://130.208.246.174</title>
+<style>
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;
+max-width:960px;margin:2em auto;padding:0 1em;color:#222;}
+h1{border-bottom:3px solid #333;padding-bottom:8px;}
+h2{margin-top:1.6em;color:#333;}
+.meta{color:#666;font-size:.9em;}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;
+color:#fff;font-weight:600;font-size:.8em;margin-right:8px;}
+.check{border:1px solid #e0e0e0;border-radius:6px;
+padding:10px 14px;margin:10px 0;background:#fafafa;}
+.check code{background:#eef;padding:1px 5px;border-radius:3px;
+font-size:.85em;}
+.none{color:#888;font-style:italic;}
+.conf{color:#888;font-size:.85em;margin-left:6px;}
+.ev{color:#555;font-size:.9em;display:block;margin-left:16px;}
+table.svc{border-collapse:collapse;width:100%;}
+table.svc td,table.svc th{border:1px solid #ddd;padding:6px;
+text-align:left;font-size:.9em;}
+</style></head><body>
+<h1>Security Audit Report</h1>
+<p class='meta'><b>Target:</b> http://130.208.246.174<br>
+<b>Web service reachable:</b> yes<br>
+<b>Open ports:</b> 1<br>
+<b>Scan duration:</b> 2m 26s (146.5s)<br>
+<b>Run folder:</b> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174</code><br>
+<b>Generated:</b> 2026-09-29 12:21:21</p>
+<h2>Executive Summary</h2>
+<table style='border-collapse:collapse'>
+<tr><td><span class='badge' style='background:#d32f2f'>HIGH</span></td><td>0 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#f57c00'>MEDIUM</span></td><td>12 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#fbc02d'>LOW</span></td><td>9 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#0288d1'>INFO</span></td><td>36 finding(s)</td></tr>
+</table>
+<h2>Confirmed Web Services</h2>
+<table class='svc'>
+<tr><th>URL</th><th>Status</th><th>Server</th><th>Content-Type</th></tr>
+<tr><td><code>http://130.208.246.174</code></td><td>200</td><td>Apache/2.4.58 (Ubuntu)</td><td>text/html; charset=UTF-8</td></tr>
+</table>
+<h2>DNS / Host Resolution</h2>
+<ul>
+<li><b>input:</b> 130.208.246.174</li>
+<li><b>is_ip_literal:</b> True</li>
+<li><b>resolved_ips:</b> [&#x27;130.208.246.174&#x27;]</li>
+</ul>
+<h2>HIGH Findings</h2>
+<p class='none'>None</p>
+<h2>MEDIUM Findings</h2>
+<ul>
+<li>POST form without CSRF token (action=(same page))
+<span class='conf'>[tentative]</span>
+<span class='ev'>No csrf hidden input in form on http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>POST form without CSRF token (action=(same page))
+<span class='conf'>[tentative]</span>
+<span class='ev'>No csrf hidden input in form on http://130.208.246.174/login.php</span>
+<span class='ev'><code>http://130.208.246.174/login.php</code></span>
+</li>
+<li>POST form without CSRF token (action=(same page))
+<span class='conf'>[tentative]</span>
+<span class='ev'>No csrf hidden input in form on http://130.208.246.174/register.php</span>
+<span class='ev'><code>http://130.208.246.174/register.php</code></span>
+</li>
+<li>POST form without CSRF token (action=(same page))
+<span class='conf'>[tentative]</span>
+<span class='ev'>No csrf hidden input in form on http://130.208.246.174/index.php</span>
+<span class='ev'><code>http://130.208.246.174/index.php</code></span>
+</li>
+<li>Cookie &#x27;PHPSESSID&#x27; missing Secure flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>PHPSESSID=n7rvt20b4o2omaqk2ipk0kd91q; path=/</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Cookie &#x27;PHPSESSID&#x27; missing HttpOnly flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>PHPSESSID=n7rvt20b4o2omaqk2ipk0kd91q; path=/</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Cookie &#x27;PHPSESSID&#x27; missing SameSite flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>PHPSESSID=n7rvt20b4o2omaqk2ipk0kd91q; path=/</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Cookie &#x27;PHPSESSID&#x27; missing Secure flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>PHPSESSID=b5qo173j654vhpsth9plpqmac7; path=/</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Cookie &#x27;PHPSESSID&#x27; missing HttpOnly flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>PHPSESSID=b5qo173j654vhpsth9plpqmac7; path=/</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Cookie &#x27;PHPSESSID&#x27; missing SameSite flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>PHPSESSID=b5qo173j654vhpsth9plpqmac7; path=/</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Nikto: GET /: Cookie PHPSESSID created without the httponly flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Nikto: GET /login.php: /login.php: Admin login page/section found.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+</ul>
+<h2>LOW Findings</h2>
+<ul>
+<li>CSP not implemented
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Content-Security-Policy absent on http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Clickjacking protection missing
+<span class='conf'>[confirmed]</span>
+<span class='ev'>X-Frame-Options absent on http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>MIME sniffing protection missing
+<span class='conf'>[confirmed]</span>
+<span class='ev'>X-Content-Type-Options absent on http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Referrer policy not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Referrer-Policy absent on http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Permissions policy not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Permissions-Policy absent on http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>COOP not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Cross-Origin-Opener-Policy absent on http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>CORP not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Cross-Origin-Resource-Policy absent on http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Server discloses version: Apache/2.4.58 (Ubuntu)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>server: Apache/2.4.58 (Ubuntu)</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+</ul>
+<h2>INFO Findings</h2>
+<ul>
+<li>Page title: Log in — Good Seat DB
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Meta viewport: width=device-width,initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Input fields: name, pass, t
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Interesting links (3): index.php, login.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>Page title: Log in — Good Seat DB
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/login.php</span>
+<span class='ev'><code>http://130.208.246.174/login.php</code></span>
+</li>
+<li>Meta viewport: width=device-width,initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/login.php</span>
+<span class='ev'><code>http://130.208.246.174/login.php</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/login.php</span>
+<span class='ev'><code>http://130.208.246.174/login.php</code></span>
+</li>
+<li>Input fields: name, pass, t
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/login.php</span>
+<span class='ev'><code>http://130.208.246.174/login.php</code></span>
+</li>
+<li>Interesting links (3): index.php, login.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/login.php</span>
+<span class='ev'><code>http://130.208.246.174/login.php</code></span>
+</li>
+<li>Page title: Join — Good Seat DB
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/register.php</span>
+<span class='ev'><code>http://130.208.246.174/register.php</code></span>
+</li>
+<li>Meta viewport: width=device-width,initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/register.php</span>
+<span class='ev'><code>http://130.208.246.174/register.php</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/register.php</span>
+<span class='ev'><code>http://130.208.246.174/register.php</code></span>
+</li>
+<li>Input fields: email, name, pass, t
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/register.php</span>
+<span class='ev'><code>http://130.208.246.174/register.php</code></span>
+</li>
+<li>Interesting links (3): index.php, login.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/register.php</span>
+<span class='ev'><code>http://130.208.246.174/register.php</code></span>
+</li>
+<li>Page title: Log in — Good Seat DB
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/index.php</span>
+<span class='ev'><code>http://130.208.246.174/index.php</code></span>
+</li>
+<li>Meta viewport: width=device-width,initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/index.php</span>
+<span class='ev'><code>http://130.208.246.174/index.php</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/index.php</span>
+<span class='ev'><code>http://130.208.246.174/index.php</code></span>
+</li>
+<li>Input fields: name, pass, t
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/index.php</span>
+<span class='ev'><code>http://130.208.246.174/index.php</code></span>
+</li>
+<li>Interesting links (3): index.php, login.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/index.php</span>
+<span class='ev'><code>http://130.208.246.174/index.php</code></span>
+</li>
+<li>WhatWeb http://130.208.246.174 [302 Found]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.174], RedirectLocation[login.php]
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174</span>
+<span class='ev'><code>http://130.208.246.174</code></span>
+</li>
+<li>WhatWeb http://130.208.246.174/login.php [200 OK]: Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.174], PasswordField[pass], Title[Log in — Good Seat DB]
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/login.php</span>
+<span class='ev'><code>http://130.208.246.174/login.php</code></span>
+</li>
+<li>Protected path exists: /.htaccess (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/.htaccess returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.174/.htaccess</code></span>
+</li>
+<li>Protected path exists: /.htpasswd (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/.htpasswd returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.174/.htpasswd</code></span>
+</li>
+<li>Protected path exists: /server-status (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/server-status returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.174/server-status</code></span>
+</li>
+<li>Protected path exists: /uploads/ (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.174/uploads/ returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.174/uploads/</code></span>
+</li>
+<li>Discovered: http://130.208.246.174/.htaccess (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.174/.htaccess</code></span>
+</li>
+<li>Discovered: http://130.208.246.174/.htpasswd (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.174/.htpasswd</code></span>
+</li>
+<li>Discovered: http://130.208.246.174/.hta (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.174/.hta</code></span>
+</li>
+<li>Discovered: http://130.208.246.174/admin.php (HTTP 302)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>0 bytes</span>
+<span class='ev'><code>http://130.208.246.174/admin.php</code></span>
+</li>
+<li>Discovered: http://130.208.246.174/assets (HTTP 301)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>319 bytes</span>
+<span class='ev'><code>http://130.208.246.174/assets</code></span>
+</li>
+<li>Discovered: http://130.208.246.174/data (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.174/data</code></span>
+</li>
+<li>Discovered: http://130.208.246.174/inc (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.174/inc</code></span>
+</li>
+<li>Discovered: http://130.208.246.174/index.php (HTTP 302)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>0 bytes</span>
+<span class='ev'><code>http://130.208.246.174/index.php</code></span>
+</li>
+<li>Discovered: http://130.208.246.174/server-status (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.174/server-status</code></span>
+</li>
+<li>Discovered: http://130.208.246.174/uploads (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.174/uploads</code></span>
+</li>
+</ul>
+<h2>Check Timings</h2>
+<table class='svc'>
+<tr><th>Check</th><th>Duration</th></tr>
+<tr><td>directory_discovery</td><td>1m 6s</td></tr>
+<tr><td>nikto</td><td>1m 5s</td></tr>
+<tr><td>whatweb</td><td>11.01s</td></tr>
+<tr><td>service_discovery</td><td>1.90s</td></tr>
+<tr><td>sensitive_files</td><td>1.33s</td></tr>
+<tr><td>page_analysis</td><td>293ms</td></tr>
+<tr><td>dns_info</td><td>155ms</td></tr>
+<tr><td>body_analysis</td><td>85ms</td></tr>
+<tr><td>http_methods</td><td>36ms</td></tr>
+<tr><td>cors</td><td>33ms</td></tr>
+<tr><td>cache_control</td><td>10ms</td></tr>
+<tr><td>info_disclosure</td><td>10ms</td></tr>
+<tr><td>security_headers</td><td>9ms</td></tr>
+<tr><td>cookies</td><td>9ms</td></tr>
+<tr><td>ssl_nmap</td><td>0ms</td></tr>
+<tr><td>ssl_testssl</td><td>0ms</td></tr>
+<tr><td>ssl_certificate</td><td>0ms</td></tr>
+<tr><td>csp_analysis</td><td>0ms</td></tr>
+<tr><td>https_redirect</td><td>0ms</td></tr>
+</table>
+<h2>Detailed Results</h2>
+<div class='check'><b>service_discovery</b> <span class='conf'>(1.90s)</span><br>
+<i>Summary:</i> 1 HTTP/HTTPS service(s) confirmed, 0 other open port(s)...
+</div>
+<div class='check'><b>dns_info</b> <span class='conf'>(155ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/dns_info.txt</code><br>
+</div>
+<div class='check'><b>body_analysis</b> <span class='conf'>(85ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/body_http_130.208.246.174.txt</code><br>
+</div>
+<div class='check'><b>page_analysis</b> <span class='conf'>(293ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/page_http_130.208.246.174_login.php.txt</code><br>
+</div>
+<div class='check'><b>whatweb</b> <span class='conf'>(11.01s)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/whatweb.txt</code><br>
+</div>
+<div class='check'><b>ssl_nmap</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; skipping SSL enumeration<br>
+</div>
+<div class='check'><b>ssl_testssl</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; skipping testssl<br>
+</div>
+<div class='check'><b>ssl_certificate</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed<br>
+</div>
+<div class='check'><b>security_headers</b> <span class='conf'>(9ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/headers.txt</code><br>
+</div>
+<div class='check'><b>csp_analysis</b> <span class='conf'>(0ms)</span><br>
+</div>
+<div class='check'><b>cache_control</b> <span class='conf'>(10ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/cache_control.txt</code><br>
+</div>
+<div class='check'><b>cookies</b> <span class='conf'>(9ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/cookies.txt</code><br>
+</div>
+<div class='check'><b>http_methods</b> <span class='conf'>(36ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/methods.txt</code><br>
+</div>
+<div class='check'><b>https_redirect</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; cannot evaluate redirect<br>
+</div>
+<div class='check'><b>info_disclosure</b> <span class='conf'>(10ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/disclosure.txt</code><br>
+</div>
+<div class='check'><b>cors</b> <span class='conf'>(33ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/cors.txt</code><br>
+</div>
+<div class='check'><b>sensitive_files</b> <span class='conf'>(1.33s)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/sensitive_files.txt</code><br>
+</div>
+<div class='check'><b>nikto</b> <span class='conf'>(1m 5s)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121853_130.208.246.174/nikto_http_130.208.246.174.txt</code><br>
+<i>Summary:</i> - Nikto v2.1.5 --------------------------------------------------------------------------- + Target IP:          130.208.246.174 + Target Hostname:    130.208.246.174 + Target Port:        80 + Start Time:         2026-09-29 12:19:10 (GMT0) -----------------------------------------------------------...
+</div>
+<div class='check'><b>directory_discovery</b> <span class='conf'>(1m 6s)</span><br>
+</div>
+</body></html>

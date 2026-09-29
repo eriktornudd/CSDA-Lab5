@@ -1,0 +1,1 @@
+http://130.208.246.167 [200 OK] Apache[2.4.58], Cookies[pokepoop_session], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[pokepoop_session], IP[130.208.246.167], Script, Title[A little weird. A lot of good company. · Poké &amp; Poop], UncommonHeaders[content-security-policy,x-content-type-options,referrer-policy,permissions-policy]

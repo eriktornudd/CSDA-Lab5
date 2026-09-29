@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Server: Werkzeug/3.0.3 Python/3.12.3
+Date: Tue, 29 Sep 2026 11:46:28 GMT
+Content-Type: text/html; charset=utf-8
+Allow: OPTIONS, HEAD, GET
+Content-Length: 0
+Connection: close
+

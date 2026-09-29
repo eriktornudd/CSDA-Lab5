@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Date: Tue, 29 Sep 2026 11:43:38 GMT
+Server: Apache/2.4.58 (Ubuntu)
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Referrer-Policy: same-origin
+Set-Cookie: pokecollect_d39bb653aa41=ndmdtmpcp63lc4ka5mmcel52gt; path=/; HttpOnly; SameSite=Lax
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Vary: Accept-Encoding
+Content-Length: 2485
+Content-Type: text/html; charset=UTF-8
+

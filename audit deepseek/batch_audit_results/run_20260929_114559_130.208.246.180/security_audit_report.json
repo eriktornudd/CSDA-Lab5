@@ -1,0 +1,3878 @@
+{
+  "target": "http://130.208.246.180",
+  "timestamp": "20260929_114559",
+  "domain": "130.208.246.180",
+  "run_directory": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180",
+  "scan_duration_seconds": 460.26604747772217,
+  "scan_duration_human": "7m 40s",
+  "available_tools": {
+    "whatweb": true,
+    "nmap": true,
+    "nikto": true,
+    "dirb": true,
+    "ffuf": true,
+    "openssl": true,
+    "curl": true,
+    "dig": true,
+    "testssl": true
+  },
+  "services": [
+    {
+      "url": "http://130.208.246.180:5000",
+      "scheme": "http",
+      "port": 5000,
+      "status": 200,
+      "server": "Werkzeug/3.0.3 Python/3.12.3",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "http://130.208.246.180:8080",
+      "scheme": "http",
+      "port": 8080,
+      "status": 200,
+      "server": "Apache/2.4.58 (Ubuntu)",
+      "content_type": "text/html; charset=UTF-8"
+    }
+  ],
+  "open_ports": [
+    5000,
+    8080
+  ],
+  "non_http_services": [],
+  "results": {
+    "service_discovery": {
+      "candidates_probed": 6,
+      "ports_scanned": 96,
+      "port_scan_seconds": 1.06781005859375,
+      "open_ports": [
+        5000,
+        8080
+      ],
+      "non_http_services": [],
+      "confirmed_services": [
+        {
+          "url": "http://130.208.246.180:5000",
+          "scheme": "http",
+          "port": 5000,
+          "status": 200,
+          "server": "Werkzeug/3.0.3 Python/3.12.3",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "http://130.208.246.180:8080",
+          "scheme": "http",
+          "port": 8080,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "findings": [
+        {
+          "title": "Original target URL did not respond; audit redirected to a discovered service",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "Using http://130.208.246.180:5000",
+          "url": "http://130.208.246.180:5000",
+          "check": "service_discovery"
+        }
+      ],
+      "summary": "2 HTTP/HTTPS service(s) confirmed, 0 other open port(s)",
+      "_duration_seconds": 23.121276378631592
+    },
+    "dns_info": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/dns_info.txt",
+      "dns_info": {
+        "input": "130.208.246.180",
+        "is_ip_literal": true,
+        "resolved_ips": [
+          "130.208.246.180"
+        ],
+        "reverse_dns": null
+      },
+      "findings": [],
+      "_duration_seconds": 0.05138993263244629
+    },
+    "body_analysis": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/body_http_130.208.246.180_5000.txt",
+      "findings": [
+        {
+          "title": "Page title: Pigeon Watchers Anonymous",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:5000",
+          "url": "http://130.208.246.180:5000",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Page title: Welcome | Golazo Diary",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Script loaded: /assets/app.js?v=1789501759",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Interesting links (3): /index.php, /login.php, /register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "body_analysis"
+        }
+      ],
+      "_duration_seconds": 0.02123236656188965
+    },
+    "page_analysis": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/page_http_130.208.246.180_5000_login.txt",
+      "pages_fetched": [
+        {
+          "url": "http://130.208.246.180:5000/login",
+          "status": 200,
+          "size": 813,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.180:5000/register",
+          "status": 200,
+          "size": 924,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.180:8080/login.php",
+          "status": 200,
+          "size": 2201,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.180:8080/register.php",
+          "status": 200,
+          "size": 3443,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.180:8080/index.php",
+          "status": 200,
+          "size": 2413,
+          "duplicate": true
+        }
+      ],
+      "findings": [
+        {
+          "title": "Page title: Pigeon Watchers Anonymous",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:5000/login",
+          "url": "http://130.208.246.180:5000/login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:5000/login",
+          "url": "http://130.208.246.180:5000/login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "POST form without CSRF token (action=(same page))",
+          "severity": "MEDIUM",
+          "confidence": "tentative",
+          "evidence": "No csrf hidden input in form on http://130.208.246.180:5000/login",
+          "url": "http://130.208.246.180:5000/login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:5000/login",
+          "url": "http://130.208.246.180:5000/login",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Pigeon Watchers Anonymous",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:5000/register",
+          "url": "http://130.208.246.180:5000/register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:5000/register",
+          "url": "http://130.208.246.180:5000/register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "POST form without CSRF token (action=(same page))",
+          "severity": "MEDIUM",
+          "confidence": "tentative",
+          "evidence": "No csrf hidden input in form on http://130.208.246.180:5000/register",
+          "url": "http://130.208.246.180:5000/register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: confirm, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:5000/register",
+          "url": "http://130.208.246.180:5000/register",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Log in | Golazo Diary",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/login.php",
+          "url": "http://130.208.246.180:8080/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/login.php",
+          "url": "http://130.208.246.180:8080/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/login.php",
+          "url": "http://130.208.246.180:8080/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: csrf, next, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/login.php",
+          "url": "http://130.208.246.180:8080/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Script loaded: /assets/app.js?v=1789501759",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/login.php",
+          "url": "http://130.208.246.180:8080/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (3): /index.php, /login.php, /register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/login.php",
+          "url": "http://130.208.246.180:8080/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Create account | Golazo Diary",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/register.php",
+          "url": "http://130.208.246.180:8080/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/register.php",
+          "url": "http://130.208.246.180:8080/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/register.php",
+          "url": "http://130.208.246.180:8080/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: csrf, email, favourite_team, password, password_confirm, rules, username, website",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/register.php",
+          "url": "http://130.208.246.180:8080/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Script loaded: /assets/app.js?v=1789501759",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/register.php",
+          "url": "http://130.208.246.180:8080/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (3): /index.php, /login.php, /register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/register.php",
+          "url": "http://130.208.246.180:8080/register.php",
+          "check": "page_analysis"
+        }
+      ],
+      "_duration_seconds": 0.13857674598693848
+    },
+    "whatweb": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/whatweb.txt",
+      "findings": [
+        {
+          "title": "WhatWeb http://130.208.246.180:5000 [200 OK]: Country[ICELAND][IS], HTML5, HTTPServer[Werkzeug/3.0.3 Python/3.12.3], IP[130.208.246.180], Python[3.12.3], Title[Pigeon Watchers Anonymous], Werkzeug[3.0.3]",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:5000",
+          "url": "http://130.208.246.180:5000",
+          "check": "whatweb"
+        },
+        {
+          "title": "WhatWeb http://130.208.246.180:8080 [200 OK]: Apache[2.4.58], Cookies[golazo_sid], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[golazo_sid], IP[130.208.246.180], Script, Title[Welcome | Golazo Diary], Un",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "whatweb"
+        }
+      ],
+      "_duration_seconds": 5.393590688705444
+    },
+    "ssl_nmap": {
+      "error": "No HTTPS service confirmed; skipping SSL enumeration",
+      "_duration_seconds": 1.2636184692382812e-05
+    },
+    "ssl_testssl": {
+      "error": "No HTTPS service confirmed; skipping testssl",
+      "_duration_seconds": 5.4836273193359375e-06
+    },
+    "ssl_certificate": {
+      "error": "No HTTPS service confirmed",
+      "_duration_seconds": 4.5299530029296875e-06
+    },
+    "security_headers": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/headers.txt",
+      "present_headers": [
+        {
+          "header": "Content-Security-Policy",
+          "url": "http://130.208.246.180:8080",
+          "value": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+        },
+        {
+          "header": "X-Frame-Options",
+          "url": "http://130.208.246.180:8080",
+          "value": "DENY"
+        },
+        {
+          "header": "X-Content-Type-Options",
+          "url": "http://130.208.246.180:8080",
+          "value": "nosniff"
+        },
+        {
+          "header": "Referrer-Policy",
+          "url": "http://130.208.246.180:8080",
+          "value": "same-origin"
+        },
+        {
+          "header": "Permissions-Policy",
+          "url": "http://130.208.246.180:8080",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ],
+      "missing_headers": [
+        {
+          "header": "Content-Security-Policy",
+          "issue": "CSP not implemented",
+          "url": "http://130.208.246.180:5000"
+        },
+        {
+          "header": "X-Frame-Options",
+          "issue": "Clickjacking protection missing",
+          "url": "http://130.208.246.180:5000"
+        },
+        {
+          "header": "X-Content-Type-Options",
+          "issue": "MIME sniffing protection missing",
+          "url": "http://130.208.246.180:5000"
+        },
+        {
+          "header": "Referrer-Policy",
+          "issue": "Referrer policy not set",
+          "url": "http://130.208.246.180:5000"
+        },
+        {
+          "header": "Permissions-Policy",
+          "issue": "Permissions policy not set",
+          "url": "http://130.208.246.180:5000"
+        }
+      ],
+      "findings": [
+        {
+          "title": "CSP not implemented",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Content-Security-Policy absent on http://130.208.246.180:5000",
+          "url": "http://130.208.246.180:5000",
+          "check": "security_headers"
+        },
+        {
+          "title": "Clickjacking protection missing",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "X-Frame-Options absent on http://130.208.246.180:5000",
+          "url": "http://130.208.246.180:5000",
+          "check": "security_headers"
+        },
+        {
+          "title": "MIME sniffing protection missing",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "X-Content-Type-Options absent on http://130.208.246.180:5000",
+          "url": "http://130.208.246.180:5000",
+          "check": "security_headers"
+        },
+        {
+          "title": "Referrer policy not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Referrer-Policy absent on http://130.208.246.180:5000",
+          "url": "http://130.208.246.180:5000",
+          "check": "security_headers"
+        },
+        {
+          "title": "Permissions policy not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Permissions-Policy absent on http://130.208.246.180:5000",
+          "url": "http://130.208.246.180:5000",
+          "check": "security_headers"
+        },
+        {
+          "title": "COOP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.180:5000",
+          "url": "http://130.208.246.180:5000",
+          "check": "security_headers"
+        },
+        {
+          "title": "CORP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.180:5000",
+          "url": "http://130.208.246.180:5000",
+          "check": "security_headers"
+        },
+        {
+          "title": "COOP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "security_headers"
+        },
+        {
+          "title": "CORP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "security_headers"
+        }
+      ],
+      "raw_headers": "HTTP/1.1 200 OK\nServer: Werkzeug/3.0.3 Python/3.12.3\nDate: Tue, 29 Sep 2026 11:46:22 GMT\nContent-Type: text/html; charset=utf-8\nContent-Length: 1826\nVary: Cookie\nConnection: close\n\n",
+      "_duration_seconds": 0.0059969425201416016
+    },
+    "csp_analysis": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/csp.txt",
+      "findings": [],
+      "_duration_seconds": 0.005354404449462891
+    },
+    "cache_control": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/cache_control.txt",
+      "findings": [
+        {
+          "title": "No Cache-Control header on response",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:5000 returned no Cache-Control header",
+          "url": "http://130.208.246.180:5000",
+          "check": "cache_control"
+        }
+      ],
+      "_duration_seconds": 0.006131410598754883
+    },
+    "cookies": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/cookies.txt",
+      "cookies_found": 1,
+      "findings": [
+        {
+          "title": "Cookie 'golazo_sid' missing Secure flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "golazo_sid=ld6ie5h4r816u630fj1tjfqtrm; path=/; HttpOnly; SameSite=Lax",
+          "url": "http://130.208.246.180:8080",
+          "check": "cookies"
+        }
+      ],
+      "_duration_seconds": 0.005556583404541016
+    },
+    "http_methods": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/methods.txt",
+      "allowed_methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "findings": [],
+      "_duration_seconds": 0.043366193771362305
+    },
+    "https_redirect": {
+      "error": "No HTTPS service confirmed; cannot evaluate redirect",
+      "_duration_seconds": 1.430511474609375e-05
+    },
+    "info_disclosure": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/disclosure.txt",
+      "findings": [
+        {
+          "title": "Server discloses version: Werkzeug/3.0.3 Python/3.12.3",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "server: Werkzeug/3.0.3 Python/3.12.3",
+          "url": "http://130.208.246.180:5000",
+          "check": "info_disclosure"
+        },
+        {
+          "title": "Server discloses version: Apache/2.4.58 (Ubuntu)",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "server: Apache/2.4.58 (Ubuntu)",
+          "url": "http://130.208.246.180:8080",
+          "check": "info_disclosure"
+        }
+      ],
+      "_duration_seconds": 0.008608102798461914
+    },
+    "cors": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/cors.txt",
+      "findings": [],
+      "_duration_seconds": 0.06264758110046387
+    },
+    "sensitive_files": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/sensitive_files.txt",
+      "findings": [
+        {
+          "title": "Protected path exists: /.env (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/.env returned HTTP 403",
+          "url": "http://130.208.246.180:8080/.env",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.env.bak (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/.env.bak returned HTTP 403",
+          "url": "http://130.208.246.180:8080/.env.bak",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.env.local (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/.env.local returned HTTP 403",
+          "url": "http://130.208.246.180:8080/.env.local",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.env.production (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/.env.production returned HTTP 403",
+          "url": "http://130.208.246.180:8080/.env.production",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.git/config (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/.git/config returned HTTP 403",
+          "url": "http://130.208.246.180:8080/.git/config",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.git/HEAD (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/.git/HEAD returned HTTP 403",
+          "url": "http://130.208.246.180:8080/.git/HEAD",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.gitignore (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/.gitignore returned HTTP 403",
+          "url": "http://130.208.246.180:8080/.gitignore",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.svn/entries (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/.svn/entries returned HTTP 403",
+          "url": "http://130.208.246.180:8080/.svn/entries",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /config.php.bak (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/config.php.bak returned HTTP 403",
+          "url": "http://130.208.246.180:8080/config.php.bak",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /wp-config.php.bak (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/wp-config.php.bak returned HTTP 403",
+          "url": "http://130.208.246.180:8080/wp-config.php.bak",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /backup.sql (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/backup.sql returned HTTP 403",
+          "url": "http://130.208.246.180:8080/backup.sql",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /dump.sql (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/dump.sql returned HTTP 403",
+          "url": "http://130.208.246.180:8080/dump.sql",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /db.sql (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/db.sql returned HTTP 403",
+          "url": "http://130.208.246.180:8080/db.sql",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /database.sql (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/database.sql returned HTTP 403",
+          "url": "http://130.208.246.180:8080/database.sql",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.htaccess (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/.htaccess returned HTTP 403",
+          "url": "http://130.208.246.180:8080/.htaccess",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.htpasswd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/.htpasswd returned HTTP 403",
+          "url": "http://130.208.246.180:8080/.htpasswd",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /server-status (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/server-status returned HTTP 403",
+          "url": "http://130.208.246.180:8080/server-status",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.DS_Store (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/.DS_Store returned HTTP 403",
+          "url": "http://130.208.246.180:8080/.DS_Store",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.editorconfig (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/.editorconfig returned HTTP 403",
+          "url": "http://130.208.246.180:8080/.editorconfig",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.well-known/security.txt (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.180:8080/.well-known/security.txt returned HTTP 403",
+          "url": "http://130.208.246.180:8080/.well-known/security.txt",
+          "check": "sensitive_files"
+        }
+      ],
+      "_duration_seconds": 3.431170701980591
+    },
+    "nikto": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/nikto_http_130.208.246.180_5000.txt",
+      "summary": "- Nikto v2.1.5\n---------------------------------------------------------------------------\n+ Target IP:          130.208.246.180\n+ Target Hostname:    130.208.246.180\n+ Target Port:        5000\n+ Start Time:         2026-09-29 11:46:32 (GMT0)\n---------------------------------------------------------------------------\n+ Server: Werkzeug/3.0.3 Python/3.12.3\n+ The anti-clickjacking X-Frame-Options header is not present.\n+ No CGI Directories found (use '-C all' to force check all possible dirs)\n+ Allowed HTTP Methods: OPTIONS, HEAD, GET \n+ Cookie session created without the httponly flag\n+ 6544 items checked: 0 error(s) and 3 item(s) reported on remote host\n+ End Time:           2026-09-29 11:49:04 (GMT0) (152 seconds)\n---------------------------------------------------------------------------",
+      "findings": [
+        {
+          "title": "Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.180:5000",
+          "url": "http://130.208.246.180:5000",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: OPTIONS /: Allowed HTTP Methods: OPTIONS, HEAD, GET",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.180:5000",
+          "url": "http://130.208.246.180:5000",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /new: Cookie session created without the httponly flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.180:5000",
+          "url": "http://130.208.246.180:5000",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'referrer-policy' found, with contents: same-origin",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'permissions-policy' found, with contents: camera=(), microphone=(), geolocation=()",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'content-security-policy' found, with contents: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'x-frame-options' found, with contents: DENY",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Cookie golazo_sid created without the httponly flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Server leaks inodes via ETags, header found with file /, fields: 0x29af 0x65b96576ee08c",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /login.php: /login.php: Admin login page/section found.",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "url": "http://130.208.246.180:8080",
+          "check": "nikto"
+        }
+      ],
+      "_duration_seconds": 201.19190883636475
+    },
+    "directory_discovery": {
+      "ffuf": {
+        "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/ffuf_http_130.208.246.180_5000.json",
+        "output_files": [
+          "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/ffuf_http_130.208.246.180_5000.json",
+          "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/ffuf_http_130.208.246.180_8080.json"
+        ],
+        "wordlist": "/snap/seclists/current/Discovery/Web-Content/common.txt",
+        "findings": [
+          {
+            "title": "Discovered: http://130.208.246.180:5000/login (HTTP 200)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "810 bytes",
+            "url": "http://130.208.246.180:5000/login",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:5000/logout (HTTP 302)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "189 bytes",
+            "url": "http://130.208.246.180:5000/logout",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:5000/new (HTTP 302)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:5000/new",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:5000/register (HTTP 200)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "921 bytes",
+            "url": "http://130.208.246.180:5000/register",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.env (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.env",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.cvsignore (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.cvsignore",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.bash_history (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.bash_history",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.cache (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.cache",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.git-rewrite (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.git-rewrite",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.bashrc (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.bashrc",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.config (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.config",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.cvs (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.cvs",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.git (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.git",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.git/config (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.git/config",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.gitignore (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.gitignore",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.gitconfig (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.gitconfig",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.gitattributes (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.gitattributes",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.git_release (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.git_release",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.gitk (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.gitk",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.git/HEAD (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.git/HEAD",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.git/logs/ (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.git/logs/",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.gitkeep (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.gitkeep",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.git/index (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.git/index",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.history (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.history",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.gitreview (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.gitreview",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.hta (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.hta",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.gitmodules (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.gitmodules",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.listing (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.listing",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.htpasswd (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.htpasswd",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.mysql_history (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.mysql_history",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.listings (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.listings",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.htaccess (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.htaccess",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.passwd (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.passwd",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.profile (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.profile",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.rhosts (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.rhosts",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.perf (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.perf",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.sh_history (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.sh_history",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.ssh (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.ssh",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.subversion (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.subversion",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/acme-challenge (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/acme-challenge",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.web (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.web",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/apple-app-site-association (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/apple-app-site-association",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/autoconfig/mail (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/autoconfig/mail",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/browserid (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/browserid",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/apple-developer-merchantid-domain-association (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/apple-developer-merchantid-domain-association",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/ashrae (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/ashrae",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/assetlinks.json (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/assetlinks.json",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/carddav (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/carddav",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/caldav (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/caldav",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/change-password (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/change-password",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/coap (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/coap",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/core (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/core",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/dnt (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/dnt",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/est (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/est",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/csvm (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/csvm",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/dots (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/dots",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/enterprise-transport-security (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/enterprise-transport-security",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/dnt-policy.txt (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/dnt-policy.txt",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/ecips (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/ecips",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/genid (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/genid",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/idp-proxy (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/idp-proxy",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/host-meta (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/host-meta",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/host-meta.json (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/host-meta.json",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/http-opportunistic (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/http-opportunistic",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/hoba (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/hoba",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/jmap (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/jmap",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/looking-glass (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/looking-glass",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/keybase.txt (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/keybase.txt",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/jwks.json (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/jwks.json",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/ni (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/ni",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/openid-configuration (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/openid-configuration",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/mud (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/mud",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/mta-sts.txt (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/mta-sts.txt",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/nodeinfo (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/nodeinfo",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/matrix (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/matrix",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/mercure (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/mercure",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/nfv-oauth-server-configuration (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/nfv-oauth-server-configuration",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/oauth-authorization-server (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/oauth-authorization-server",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/openid-federation (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/openid-federation",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/humans.txt (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/humans.txt",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/posh (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/posh",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/security.txt (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/security.txt",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/resourcesync (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/resourcesync",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/reload-config (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/reload-config",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/repute-template (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/repute-template",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/pki-validation (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/pki-validation",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/openorg (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/openorg",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/pvd (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/pvd",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/openpgpkey (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/openpgpkey",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/time (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/time",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/webfinger (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/webfinger",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/void (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/void",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/stun-key (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/stun-key",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/timezone (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/timezone",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/thread (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/thread",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/.well-known/uma2-configuration (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/.well-known/uma2-configuration",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/Thumbs.db (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/Thumbs.db",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/admin (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "242 bytes",
+            "url": "http://130.208.246.180:8080/admin",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/akeeba.backend.log (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/akeeba.backend.log",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/assets (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "243 bytes",
+            "url": "http://130.208.246.180:8080/assets",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/development.log (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/development.log",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/index.php (HTTP 200)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "2411 bytes",
+            "url": "http://130.208.246.180:8080/index.php",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/php.ini (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/php.ini",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/production.log (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/production.log",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/server-status (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/server-status",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/spamlog.log (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/spamlog.log",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.180:8080/thumbs.db (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "199 bytes",
+            "url": "http://130.208.246.180:8080/thumbs.db",
+            "check": "directory_discovery"
+          }
+        ]
+      },
+      "dirb": {
+        "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/dirb_http_130.208.246.180_5000.txt",
+        "findings": []
+      },
+      "findings": [
+        {
+          "title": "Discovered: http://130.208.246.180:5000/login (HTTP 200)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "810 bytes",
+          "url": "http://130.208.246.180:5000/login",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:5000/logout (HTTP 302)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "189 bytes",
+          "url": "http://130.208.246.180:5000/logout",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:5000/new (HTTP 302)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:5000/new",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:5000/register (HTTP 200)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "921 bytes",
+          "url": "http://130.208.246.180:5000/register",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.env (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.env",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.cvsignore (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.cvsignore",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.bash_history (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.bash_history",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.cache (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.cache",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.git-rewrite (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.git-rewrite",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.bashrc (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.bashrc",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.config (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.config",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.cvs (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.cvs",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.git (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.git",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.git/config (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.git/config",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.gitignore (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.gitignore",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.gitconfig (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.gitconfig",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.gitattributes (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.gitattributes",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.git_release (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.git_release",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.gitk (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.gitk",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.git/HEAD (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.git/HEAD",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.git/logs/ (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.git/logs/",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.gitkeep (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.gitkeep",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.git/index (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.git/index",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.history (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.history",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.gitreview (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.gitreview",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.hta (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.hta",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.gitmodules (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.gitmodules",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.listing (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.listing",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.htpasswd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.htpasswd",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.mysql_history (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.mysql_history",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.listings (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.listings",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.htaccess (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.htaccess",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.passwd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.passwd",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.profile (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.profile",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.rhosts (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.rhosts",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.perf (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.perf",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.sh_history (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.sh_history",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.ssh (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.ssh",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.subversion (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.subversion",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/acme-challenge (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/acme-challenge",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.web (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.web",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/apple-app-site-association (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/apple-app-site-association",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/autoconfig/mail (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/autoconfig/mail",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/browserid (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/browserid",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/apple-developer-merchantid-domain-association (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/apple-developer-merchantid-domain-association",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/ashrae (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/ashrae",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/assetlinks.json (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/assetlinks.json",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/carddav (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/carddav",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/caldav (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/caldav",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/change-password (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/change-password",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/coap (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/coap",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/core (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/core",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/dnt (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/dnt",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/est (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/est",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/csvm (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/csvm",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/dots (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/dots",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/enterprise-transport-security (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/enterprise-transport-security",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/dnt-policy.txt (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/dnt-policy.txt",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/ecips (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/ecips",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/genid (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/genid",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/idp-proxy (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/idp-proxy",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/host-meta (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/host-meta",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/host-meta.json (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/host-meta.json",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/http-opportunistic (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/http-opportunistic",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/hoba (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/hoba",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/jmap (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/jmap",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/looking-glass (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/looking-glass",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/keybase.txt (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/keybase.txt",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/jwks.json (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/jwks.json",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/ni (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/ni",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/openid-configuration (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/openid-configuration",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/mud (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/mud",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/mta-sts.txt (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/mta-sts.txt",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/nodeinfo (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/nodeinfo",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/matrix (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/matrix",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/mercure (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/mercure",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/nfv-oauth-server-configuration (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/nfv-oauth-server-configuration",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/oauth-authorization-server (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/oauth-authorization-server",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/openid-federation (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/openid-federation",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/humans.txt (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/humans.txt",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/posh (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/posh",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/security.txt (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/security.txt",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/resourcesync (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/resourcesync",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/reload-config (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/reload-config",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/repute-template (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/repute-template",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/pki-validation (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/pki-validation",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/openorg (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/openorg",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/pvd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/pvd",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/openpgpkey (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/openpgpkey",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/time (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/time",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/webfinger (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/webfinger",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/void (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/void",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/stun-key (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/stun-key",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/timezone (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/timezone",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/thread (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/thread",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/uma2-configuration (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/.well-known/uma2-configuration",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/Thumbs.db (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/Thumbs.db",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/admin (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "242 bytes",
+          "url": "http://130.208.246.180:8080/admin",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/akeeba.backend.log (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/akeeba.backend.log",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/assets (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "243 bytes",
+          "url": "http://130.208.246.180:8080/assets",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/development.log (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/development.log",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/index.php (HTTP 200)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "2411 bytes",
+          "url": "http://130.208.246.180:8080/index.php",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/php.ini (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/php.ini",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/production.log (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/production.log",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/server-status (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/server-status",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/spamlog.log (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/spamlog.log",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/thumbs.db (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "199 bytes",
+          "url": "http://130.208.246.180:8080/thumbs.db",
+          "check": "directory_discovery"
+        }
+      ],
+      "_duration_seconds": 226.77652502059937
+    }
+  },
+  "check_durations": {
+    "service_discovery": 23.121,
+    "dns_info": 0.051,
+    "body_analysis": 0.021,
+    "page_analysis": 0.139,
+    "whatweb": 5.394,
+    "ssl_nmap": 0.0,
+    "ssl_testssl": 0.0,
+    "ssl_certificate": 0.0,
+    "security_headers": 0.006,
+    "csp_analysis": 0.005,
+    "cache_control": 0.006,
+    "cookies": 0.006,
+    "http_methods": 0.043,
+    "https_redirect": 0.0,
+    "info_disclosure": 0.009,
+    "cors": 0.063,
+    "sensitive_files": 3.431,
+    "nikto": 201.192,
+    "directory_discovery": 226.777
+  },
+  "summary": {
+    "total_checks": 19,
+    "web_service_reachable": true,
+    "open_port_count": 2,
+    "findings_by_severity": {
+      "HIGH": [],
+      "MEDIUM": [
+        {
+          "title": "POST form without CSRF token (action=(same page))",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:5000/login",
+          "evidence": "No csrf hidden input in form on http://130.208.246.180:5000/login",
+          "confidence": "tentative"
+        },
+        {
+          "title": "POST form without CSRF token (action=(same page))",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:5000/register",
+          "evidence": "No csrf hidden input in form on http://130.208.246.180:5000/register",
+          "confidence": "tentative"
+        },
+        {
+          "title": "Cookie 'golazo_sid' missing Secure flag",
+          "check": "cookies",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "golazo_sid=ld6ie5h4r816u630fj1tjfqtrm; path=/; HttpOnly; SameSite=Lax",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /new: Cookie session created without the httponly flag",
+          "check": "nikto",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "nikto report for http://130.208.246.180:5000",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Cookie golazo_sid created without the httponly flag",
+          "check": "nikto",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /login.php: /login.php: Admin login page/section found.",
+          "check": "nikto",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        }
+      ],
+      "LOW": [
+        {
+          "title": "CSP not implemented",
+          "check": "security_headers",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "Content-Security-Policy absent on http://130.208.246.180:5000",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Clickjacking protection missing",
+          "check": "security_headers",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "X-Frame-Options absent on http://130.208.246.180:5000",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "MIME sniffing protection missing",
+          "check": "security_headers",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "X-Content-Type-Options absent on http://130.208.246.180:5000",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Referrer policy not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "Referrer-Policy absent on http://130.208.246.180:5000",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Permissions policy not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "Permissions-Policy absent on http://130.208.246.180:5000",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "COOP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.180:5000",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "CORP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.180:5000",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "COOP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "CORP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "No Cache-Control header on response",
+          "check": "cache_control",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "http://130.208.246.180:5000 returned no Cache-Control header",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Server discloses version: Werkzeug/3.0.3 Python/3.12.3",
+          "check": "info_disclosure",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "server: Werkzeug/3.0.3 Python/3.12.3",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Server discloses version: Apache/2.4.58 (Ubuntu)",
+          "check": "info_disclosure",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "server: Apache/2.4.58 (Ubuntu)",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: The anti-clickjacking X-Frame-Options header is not present.",
+          "check": "nikto",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "nikto report for http://130.208.246.180:5000",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Server leaks inodes via ETags, header found with file /, fields: 0x29af 0x65b96576ee08c",
+          "check": "nikto",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.",
+          "check": "nikto",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        }
+      ],
+      "INFO": [
+        {
+          "title": "Original target URL did not respond; audit redirected to a discovered service",
+          "check": "service_discovery",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "Using http://130.208.246.180:5000",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Pigeon Watchers Anonymous",
+          "check": "body_analysis",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "http://130.208.246.180:5000",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Welcome | Golazo Diary",
+          "check": "body_analysis",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "body_analysis",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Script loaded: /assets/app.js?v=1789501759",
+          "check": "body_analysis",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (3): /index.php, /login.php, /register.php",
+          "check": "body_analysis",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Pigeon Watchers Anonymous",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:5000/login",
+          "evidence": "http://130.208.246.180:5000/login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:5000/login",
+          "evidence": "http://130.208.246.180:5000/login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:5000/login",
+          "evidence": "http://130.208.246.180:5000/login",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Pigeon Watchers Anonymous",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:5000/register",
+          "evidence": "http://130.208.246.180:5000/register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:5000/register",
+          "evidence": "http://130.208.246.180:5000/register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: confirm, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:5000/register",
+          "evidence": "http://130.208.246.180:5000/register",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Log in | Golazo Diary",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:8080/login.php",
+          "evidence": "http://130.208.246.180:8080/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:8080/login.php",
+          "evidence": "http://130.208.246.180:8080/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:8080/login.php",
+          "evidence": "http://130.208.246.180:8080/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: csrf, next, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:8080/login.php",
+          "evidence": "http://130.208.246.180:8080/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Script loaded: /assets/app.js?v=1789501759",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:8080/login.php",
+          "evidence": "http://130.208.246.180:8080/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (3): /index.php, /login.php, /register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:8080/login.php",
+          "evidence": "http://130.208.246.180:8080/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Create account | Golazo Diary",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:8080/register.php",
+          "evidence": "http://130.208.246.180:8080/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:8080/register.php",
+          "evidence": "http://130.208.246.180:8080/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:8080/register.php",
+          "evidence": "http://130.208.246.180:8080/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: csrf, email, favourite_team, password, password_confirm, rules, username, website",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:8080/register.php",
+          "evidence": "http://130.208.246.180:8080/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Script loaded: /assets/app.js?v=1789501759",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:8080/register.php",
+          "evidence": "http://130.208.246.180:8080/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (3): /index.php, /login.php, /register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.180:8080/register.php",
+          "evidence": "http://130.208.246.180:8080/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "WhatWeb http://130.208.246.180:5000 [200 OK]: Country[ICELAND][IS], HTML5, HTTPServer[Werkzeug/3.0.3 Python/3.12.3], IP[130.208.246.180], Python[3.12.3], Title[Pigeon Watchers Anonymous], Werkzeug[3.0.3]",
+          "check": "whatweb",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "http://130.208.246.180:5000",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "WhatWeb http://130.208.246.180:8080 [200 OK]: Apache[2.4.58], Cookies[golazo_sid], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[golazo_sid], IP[130.208.246.180], Script, Title[Welcome | Golazo Diary], Un",
+          "check": "whatweb",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.env (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/.env",
+          "evidence": "http://130.208.246.180:8080/.env returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.env.bak (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/.env.bak",
+          "evidence": "http://130.208.246.180:8080/.env.bak returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.env.local (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/.env.local",
+          "evidence": "http://130.208.246.180:8080/.env.local returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.env.production (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/.env.production",
+          "evidence": "http://130.208.246.180:8080/.env.production returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.git/config (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/.git/config",
+          "evidence": "http://130.208.246.180:8080/.git/config returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.git/HEAD (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/.git/HEAD",
+          "evidence": "http://130.208.246.180:8080/.git/HEAD returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.gitignore (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/.gitignore",
+          "evidence": "http://130.208.246.180:8080/.gitignore returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.svn/entries (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/.svn/entries",
+          "evidence": "http://130.208.246.180:8080/.svn/entries returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /config.php.bak (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/config.php.bak",
+          "evidence": "http://130.208.246.180:8080/config.php.bak returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /wp-config.php.bak (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/wp-config.php.bak",
+          "evidence": "http://130.208.246.180:8080/wp-config.php.bak returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /backup.sql (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/backup.sql",
+          "evidence": "http://130.208.246.180:8080/backup.sql returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /dump.sql (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/dump.sql",
+          "evidence": "http://130.208.246.180:8080/dump.sql returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /db.sql (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/db.sql",
+          "evidence": "http://130.208.246.180:8080/db.sql returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /database.sql (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/database.sql",
+          "evidence": "http://130.208.246.180:8080/database.sql returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.htaccess (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/.htaccess",
+          "evidence": "http://130.208.246.180:8080/.htaccess returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.htpasswd (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/.htpasswd",
+          "evidence": "http://130.208.246.180:8080/.htpasswd returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /server-status (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/server-status",
+          "evidence": "http://130.208.246.180:8080/server-status returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.DS_Store (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/.DS_Store",
+          "evidence": "http://130.208.246.180:8080/.DS_Store returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.editorconfig (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/.editorconfig",
+          "evidence": "http://130.208.246.180:8080/.editorconfig returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.well-known/security.txt (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.180:8080/.well-known/security.txt",
+          "evidence": "http://130.208.246.180:8080/.well-known/security.txt returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: OPTIONS /: Allowed HTTP Methods: OPTIONS, HEAD, GET",
+          "check": "nikto",
+          "url": "http://130.208.246.180:5000",
+          "evidence": "nikto report for http://130.208.246.180:5000",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'referrer-policy' found, with contents: same-origin",
+          "check": "nikto",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'permissions-policy' found, with contents: camera=(), microphone=(), geolocation=()",
+          "check": "nikto",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'content-security-policy' found, with contents: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'",
+          "check": "nikto",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff",
+          "check": "nikto",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'x-frame-options' found, with contents: DENY",
+          "check": "nikto",
+          "url": "http://130.208.246.180:8080",
+          "evidence": "nikto report for http://130.208.246.180:8080",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:5000/login (HTTP 200)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:5000/login",
+          "evidence": "810 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:5000/logout (HTTP 302)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:5000/logout",
+          "evidence": "189 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:5000/new (HTTP 302)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:5000/new",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:5000/register (HTTP 200)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:5000/register",
+          "evidence": "921 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.env (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.env",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.cvsignore (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.cvsignore",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.bash_history (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.bash_history",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.cache (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.cache",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.git-rewrite (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.git-rewrite",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.bashrc (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.bashrc",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.config (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.config",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.cvs (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.cvs",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.git (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.git",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.git/config (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.git/config",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.gitignore (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.gitignore",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.gitconfig (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.gitconfig",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.gitattributes (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.gitattributes",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.git_release (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.git_release",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.gitk (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.gitk",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.git/HEAD (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.git/HEAD",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.git/logs/ (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.git/logs/",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.gitkeep (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.gitkeep",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.git/index (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.git/index",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.history (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.history",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.gitreview (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.gitreview",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.hta (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.hta",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.gitmodules (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.gitmodules",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.listing (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.listing",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.htpasswd (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.htpasswd",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.mysql_history (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.mysql_history",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.listings (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.listings",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.htaccess (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.htaccess",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.passwd (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.passwd",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.profile (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.profile",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.rhosts (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.rhosts",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.perf (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.perf",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.sh_history (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.sh_history",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.ssh (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.ssh",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.subversion (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.subversion",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/acme-challenge (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/acme-challenge",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.web (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.web",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/apple-app-site-association (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/apple-app-site-association",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/autoconfig/mail (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/autoconfig/mail",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/browserid (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/browserid",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/apple-developer-merchantid-domain-association (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/apple-developer-merchantid-domain-association",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/ashrae (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/ashrae",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/assetlinks.json (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/assetlinks.json",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/carddav (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/carddav",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/caldav (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/caldav",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/change-password (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/change-password",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/coap (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/coap",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/core (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/core",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/dnt (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/dnt",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/est (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/est",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/csvm (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/csvm",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/dots (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/dots",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/enterprise-transport-security (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/enterprise-transport-security",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/dnt-policy.txt (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/dnt-policy.txt",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/ecips (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/ecips",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/genid (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/genid",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/idp-proxy (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/idp-proxy",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/host-meta (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/host-meta",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/host-meta.json (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/host-meta.json",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/http-opportunistic (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/http-opportunistic",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/hoba (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/hoba",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/jmap (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/jmap",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/looking-glass (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/looking-glass",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/keybase.txt (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/keybase.txt",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/jwks.json (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/jwks.json",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/ni (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/ni",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/openid-configuration (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/openid-configuration",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/mud (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/mud",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/mta-sts.txt (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/mta-sts.txt",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/nodeinfo (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/nodeinfo",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/matrix (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/matrix",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/mercure (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/mercure",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/nfv-oauth-server-configuration (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/nfv-oauth-server-configuration",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/oauth-authorization-server (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/oauth-authorization-server",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/openid-federation (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/openid-federation",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/humans.txt (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/humans.txt",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/posh (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/posh",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/security.txt (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/security.txt",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/resourcesync (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/resourcesync",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/reload-config (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/reload-config",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/repute-template (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/repute-template",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/pki-validation (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/pki-validation",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/openorg (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/openorg",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/pvd (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/pvd",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/openpgpkey (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/openpgpkey",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/time (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/time",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/webfinger (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/webfinger",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/void (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/void",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/stun-key (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/stun-key",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/timezone (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/timezone",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/thread (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/thread",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/.well-known/uma2-configuration (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/.well-known/uma2-configuration",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/Thumbs.db (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/Thumbs.db",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/admin (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/admin",
+          "evidence": "242 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/akeeba.backend.log (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/akeeba.backend.log",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/assets (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/assets",
+          "evidence": "243 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/development.log (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/development.log",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/index.php (HTTP 200)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/index.php",
+          "evidence": "2411 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/php.ini (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/php.ini",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/production.log (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/production.log",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/server-status (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/server-status",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/spamlog.log (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/spamlog.log",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.180:8080/thumbs.db (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.180:8080/thumbs.db",
+          "evidence": "199 bytes",
+          "confidence": "confirmed"
+        }
+      ]
+    }
+  }
+}

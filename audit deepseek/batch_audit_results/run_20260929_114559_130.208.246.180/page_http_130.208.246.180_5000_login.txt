@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pigeon Watchers Anonymous</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>🐦 Pigeon Watchers Anonymous</h1>
+    <nav>
+      <a href="/">Sightings Board</a>
+      
+        <a href="/login">Log in</a>
+        <a href="/register">Join the Society</a>
+      
+    </nav>
+  </header>
+
+  
+    
+  
+
+  <main>
+    
+  <h2>Log In</h2>
+  <form method="post">
+    <label>Username <input type="text" name="username" required></label>
+    <label>Password <input type="password" name="password" required></label>
+    <button type="submit">Log In</button>
+  </form>
+
+  </main>
+
+  <footer>
+    <p>A society dedicated to the appreciation of urban pigeons, est. this afternoon.</p>
+  </footer>
+</body>
+</html>

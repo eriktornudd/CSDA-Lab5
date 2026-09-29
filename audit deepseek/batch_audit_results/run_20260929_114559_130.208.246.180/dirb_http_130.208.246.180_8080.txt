@@ -1,0 +1,61 @@
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+OUTPUT_FILE: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114559_130.208.246.180/dirb_http_130.208.246.180_8080.txt
+START_TIME: Tue Sep 29 11:51:55 2026
+URL_BASE: http://130.208.246.180:8080/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+OPTION: Silent Mode
+
+-----------------
+
+GENERATED WORDS: 4612
+
+---- Scanning URL: http://130.208.246.180:8080/ ----
+==> DIRECTORY: http://130.208.246.180:8080/admin/
++ http://130.208.246.180:8080/akeeba.backend.log (CODE:403|SIZE:199)
+==> DIRECTORY: http://130.208.246.180:8080/assets/
++ http://130.208.246.180:8080/development.log (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/index.php (CODE:200|SIZE:2413)
++ http://130.208.246.180:8080/php.ini (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/production.log (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/server-status (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/spamlog.log (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/thumbs.db (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/Thumbs.db (CODE:403|SIZE:199)
+
+---- Entering directory: http://130.208.246.180:8080/admin/ ----
++ http://130.208.246.180:8080/admin/akeeba.backend.log (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/admin/development.log (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/admin/index.php (CODE:303|SIZE:0)
++ http://130.208.246.180:8080/admin/php.ini (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/admin/production.log (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/admin/spamlog.log (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/admin/thumbs.db (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/admin/Thumbs.db (CODE:403|SIZE:199)
+
+---- Entering directory: http://130.208.246.180:8080/assets/ ----
++ http://130.208.246.180:8080/assets/akeeba.backend.log (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/assets/development.log (CODE:403|SIZE:199)
+==> DIRECTORY: http://130.208.246.180:8080/assets/fonts/
++ http://130.208.246.180:8080/assets/php.ini (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/assets/production.log (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/assets/spamlog.log (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/assets/thumbs.db (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/assets/Thumbs.db (CODE:403|SIZE:199)
+
+---- Entering directory: http://130.208.246.180:8080/assets/fonts/ ----
++ http://130.208.246.180:8080/assets/fonts/akeeba.backend.log (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/assets/fonts/development.log (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/assets/fonts/php.ini (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/assets/fonts/production.log (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/assets/fonts/spamlog.log (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/assets/fonts/thumbs.db (CODE:403|SIZE:199)
++ http://130.208.246.180:8080/assets/fonts/Thumbs.db (CODE:403|SIZE:199)
+
+-----------------
+END_TIME: Tue Sep 29 11:53:39 2026
+DOWNLOADED: 18448 - FOUND: 31

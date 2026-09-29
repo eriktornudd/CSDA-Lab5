@@ -1,0 +1,2 @@
+http://130.208.246.174 [302 Found] Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.174], RedirectLocation[login.php]
+http://130.208.246.174/login.php [200 OK] Apache[2.4.58], Cookies[PHPSESSID], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], IP[130.208.246.174], PasswordField[pass], Title[Log in — Good Seat DB]

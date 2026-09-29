@@ -1,0 +1,13 @@
+HTTP/1.1 200 OK
+Server: gunicorn
+Date: Tue, 29 Sep 2026 11:54:17 GMT
+Connection: close
+Content-Type: text/html; charset=utf-8
+Content-Length: 982
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self'
+Referrer-Policy: same-origin
+Vary: Cookie
+
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MeowsageBoard</title><link rel="stylesheet" href="/static/style.css"></head><body><header><a class="logo" href="/">MeowsageBoard</a><span class="tag">a cozy corner for cat people</span><nav><a href="/login">Login</a> · <a href="/register">Register</a></nav></header><main><section class="welcome"><h1>Welcome to MeowsageBoard ฅ^•ﻌ•^ฅ</h1><p>A tiny message board for discussing the internet's most important subject.</p></section><h2>Boards</h2><div class="boards"><a class="boardcard" href="/login"><b>/loaf/</b><span>General cats</span></a><a class="boardcard" href="/login"><b>/void/</b><span>Black cats</span></a><a class="boardcard" href="/login"><b>/orang/</b><span>Orange-cat chaos</span></a></div><p class="hint">Create an account or log in to enter the boards.</p></main><footer>MeowsageBoard · tiny cats, tiny forum</footer></body></html>

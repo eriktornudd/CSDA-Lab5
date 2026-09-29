@@ -1,0 +1,165 @@
+{
+  "target": "http://130.208.246.175",
+  "timestamp": "20260929_121851",
+  "domain": "130.208.246.175",
+  "run_directory": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121851_130.208.246.175",
+  "scan_duration_seconds": 1.7159452438354492,
+  "scan_duration_human": "1.72s",
+  "available_tools": {
+    "whatweb": true,
+    "nmap": true,
+    "nikto": true,
+    "dirb": true,
+    "ffuf": true,
+    "openssl": true,
+    "curl": true,
+    "dig": true,
+    "testssl": true
+  },
+  "services": [],
+  "open_ports": [],
+  "non_http_services": [],
+  "results": {
+    "service_discovery": {
+      "candidates_probed": 2,
+      "ports_scanned": 96,
+      "port_scan_seconds": 1.2216527462005615,
+      "open_ports": [],
+      "non_http_services": [],
+      "confirmed_services": [],
+      "findings": [
+        {
+          "title": "No reachable web service found",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "Scanned 96 ports; 0 open; no HTTP/HTTPS response",
+          "url": null,
+          "check": "service_discovery"
+        }
+      ],
+      "summary": "No reachable web service confirmed",
+      "_duration_seconds": 1.4337685108184814
+    },
+    "dns_info": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_121851_130.208.246.175/dns_info.txt",
+      "dns_info": {
+        "input": "130.208.246.175",
+        "is_ip_literal": true,
+        "resolved_ips": [
+          "130.208.246.175"
+        ],
+        "reverse_dns": null
+      },
+      "findings": [],
+      "_duration_seconds": 0.27486395835876465
+    },
+    "body_analysis": {
+      "error": "No reachable web service confirmed; 'body_analysis' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.0001533031463623047
+    },
+    "page_analysis": {
+      "error": "No reachable web service confirmed; 'page_analysis' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.00020051002502441406
+    },
+    "whatweb": {
+      "error": "No reachable web service confirmed; 'whatweb' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.0002090930938720703
+    },
+    "ssl_nmap": {
+      "error": "No reachable web service confirmed; 'ssl_nmap' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.00012612342834472656
+    },
+    "ssl_testssl": {
+      "error": "No reachable web service confirmed; 'ssl_testssl' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.0002243518829345703
+    },
+    "ssl_certificate": {
+      "error": "No reachable web service confirmed; 'ssl_certificate' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.00012874603271484375
+    },
+    "security_headers": {
+      "error": "No reachable web service confirmed; 'security_headers' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.00012826919555664062
+    },
+    "csp_analysis": {
+      "error": "No reachable web service confirmed; 'csp_analysis' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 4.0531158447265625e-05
+    },
+    "cache_control": {
+      "error": "No reachable web service confirmed; 'cache_control' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.0002777576446533203
+    },
+    "cookies": {
+      "error": "No reachable web service confirmed; 'cookies' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.00022172927856445312
+    },
+    "http_methods": {
+      "error": "No reachable web service confirmed; 'http_methods' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.00022673606872558594
+    },
+    "https_redirect": {
+      "error": "No reachable web service confirmed; 'https_redirect' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.000125885009765625
+    },
+    "info_disclosure": {
+      "error": "No reachable web service confirmed; 'info_disclosure' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.00022554397583007812
+    },
+    "cors": {
+      "error": "No reachable web service confirmed; 'cors' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.00022935867309570312
+    },
+    "sensitive_files": {
+      "error": "No reachable web service confirmed; 'sensitive_files' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.00018215179443359375
+    },
+    "nikto": {
+      "error": "No reachable web service confirmed; 'nikto' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.00015020370483398438
+    },
+    "directory_discovery": {
+      "error": "No reachable web service confirmed; 'directory_discovery' skipped (this prevents false-positive findings)",
+      "_duration_seconds": 0.0002505779266357422
+    }
+  },
+  "check_durations": {
+    "service_discovery": 1.434,
+    "dns_info": 0.275,
+    "body_analysis": 0.0,
+    "page_analysis": 0.0,
+    "whatweb": 0.0,
+    "ssl_nmap": 0.0,
+    "ssl_testssl": 0.0,
+    "ssl_certificate": 0.0,
+    "security_headers": 0.0,
+    "csp_analysis": 0.0,
+    "cache_control": 0.0,
+    "cookies": 0.0,
+    "http_methods": 0.0,
+    "https_redirect": 0.0,
+    "info_disclosure": 0.0,
+    "cors": 0.0,
+    "sensitive_files": 0.0,
+    "nikto": 0.0,
+    "directory_discovery": 0.0
+  },
+  "summary": {
+    "total_checks": 19,
+    "web_service_reachable": false,
+    "open_port_count": 0,
+    "findings_by_severity": {
+      "HIGH": [],
+      "MEDIUM": [],
+      "LOW": [],
+      "INFO": [
+        {
+          "title": "No reachable web service found",
+          "check": "service_discovery",
+          "url": null,
+          "evidence": "Scanned 96 ports; 0 open; no HTTP/HTTPS response",
+          "confidence": "confirmed"
+        }
+      ]
+    }
+  }
+}

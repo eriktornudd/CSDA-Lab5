@@ -1,0 +1,23 @@
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+OUTPUT_FILE: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_120112_130.208.246.166/dirb_http_130.208.246.166.txt
+START_TIME: Tue Sep 29 12:11:18 2026
+URL_BASE: http://130.208.246.166/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+OPTION: Silent Mode
+
+-----------------
+
+GENERATED WORDS: 4612
+
+---- Scanning URL: http://130.208.246.166/ ----
+(!) WARNING: NOT_FOUND[] not stable, unable to determine correct URLs {30X}.
+    (Try using FineTunning: '-f')
+
+-----------------
+END_TIME: Tue Sep 29 12:11:18 2026
+DOWNLOADED: 0 - FOUND: 0

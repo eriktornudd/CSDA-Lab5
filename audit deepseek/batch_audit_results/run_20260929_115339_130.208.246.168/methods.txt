@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Server: gunicorn
+Date: Tue, 29 Sep 2026 11:54:17 GMT
+Connection: close
+Content-Type: text/html; charset=utf-8
+Allow: GET, OPTIONS, HEAD
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self'
+Referrer-Policy: same-origin
+Content-Length: 0
+

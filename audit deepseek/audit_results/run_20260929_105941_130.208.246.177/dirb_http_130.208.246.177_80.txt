@@ -1,0 +1,61 @@
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+OUTPUT_FILE: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/audit_results/run_20260929_105941_130.208.246.177/dirb_http_130.208.246.177_80.txt
+START_TIME: Tue Sep 29 11:03:59 2026
+URL_BASE: http://130.208.246.177:80/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+OPTION: Silent Mode
+
+-----------------
+
+GENERATED WORDS: 4612
+
+---- Scanning URL: http://130.208.246.177:80/ ----
++ http://130.208.246.177:80/admin.php (CODE:302|SIZE:0)
++ http://130.208.246.177:80/akeeba.backend.log (CODE:403|SIZE:280)
+==> DIRECTORY: http://130.208.246.177:80/assets/
++ http://130.208.246.177:80/development.log (CODE:403|SIZE:280)
++ http://130.208.246.177:80/includes (CODE:403|SIZE:280)
++ http://130.208.246.177:80/index.php (CODE:200|SIZE:2485)
++ http://130.208.246.177:80/production.log (CODE:403|SIZE:280)
++ http://130.208.246.177:80/server-status (CODE:403|SIZE:280)
++ http://130.208.246.177:80/spamlog.log (CODE:403|SIZE:280)
++ http://130.208.246.177:80/thumbs.db (CODE:403|SIZE:280)
++ http://130.208.246.177:80/Thumbs.db (CODE:403|SIZE:280)
+==> DIRECTORY: http://130.208.246.177:80/uploads/
+
+---- Entering directory: http://130.208.246.177:80/assets/ ----
++ http://130.208.246.177:80/assets/akeeba.backend.log (CODE:403|SIZE:280)
++ http://130.208.246.177:80/assets/development.log (CODE:403|SIZE:280)
++ http://130.208.246.177:80/assets/production.log (CODE:403|SIZE:280)
++ http://130.208.246.177:80/assets/spamlog.log (CODE:403|SIZE:280)
++ http://130.208.246.177:80/assets/thumbs.db (CODE:403|SIZE:280)
++ http://130.208.246.177:80/assets/Thumbs.db (CODE:403|SIZE:280)
+
+---- Entering directory: http://130.208.246.177:80/uploads/ ----
++ http://130.208.246.177:80/uploads/admin.cgi (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/admin.php (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/admin.pl (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/akeeba.backend.log (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/AT-admin.cgi (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/cachemgr.cgi (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/development.log (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/index.htm (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/index.html (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/index.php (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/info.php (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/phpinfo.php (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/production.log (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/spamlog.log (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/thumbs.db (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/Thumbs.db (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/xmlrpc.php (CODE:403|SIZE:280)
++ http://130.208.246.177:80/uploads/xmlrpc_server.php (CODE:403|SIZE:280)
+
+-----------------
+END_TIME: Tue Sep 29 11:05:03 2026
+DOWNLOADED: 13836 - FOUND: 34

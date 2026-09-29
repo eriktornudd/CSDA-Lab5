@@ -1,0 +1,1529 @@
+{
+  "target": "http://130.208.246.177",
+  "timestamp": "20260929_114333",
+  "domain": "130.208.246.177",
+  "run_directory": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177",
+  "scan_duration_seconds": 146.16409158706665,
+  "scan_duration_human": "2m 26s",
+  "available_tools": {
+    "whatweb": true,
+    "nmap": true,
+    "nikto": true,
+    "dirb": true,
+    "ffuf": true,
+    "openssl": true,
+    "curl": true,
+    "dig": true,
+    "testssl": true
+  },
+  "services": [
+    {
+      "url": "http://130.208.246.177",
+      "scheme": "http",
+      "port": 80,
+      "status": 200,
+      "server": "Apache/2.4.58 (Ubuntu)",
+      "content_type": "text/html; charset=UTF-8"
+    }
+  ],
+  "open_ports": [
+    80
+  ],
+  "non_http_services": [],
+  "results": {
+    "service_discovery": {
+      "candidates_probed": 2,
+      "ports_scanned": 96,
+      "port_scan_seconds": 1.0518596172332764,
+      "open_ports": [
+        80
+      ],
+      "non_http_services": [],
+      "confirmed_services": [
+        {
+          "url": "http://130.208.246.177",
+          "scheme": "http",
+          "port": 80,
+          "status": 200,
+          "server": "Apache/2.4.58 (Ubuntu)",
+          "content_type": "text/html; charset=UTF-8"
+        }
+      ],
+      "findings": [],
+      "summary": "1 HTTP/HTTPS service(s) confirmed, 0 other open port(s)",
+      "_duration_seconds": 1.1318979263305664
+    },
+    "dns_info": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/dns_info.txt",
+      "dns_info": {
+        "input": "130.208.246.177",
+        "is_ip_literal": true,
+        "resolved_ips": [
+          "130.208.246.177"
+        ],
+        "reverse_dns": null
+      },
+      "findings": [],
+      "_duration_seconds": 0.02358865737915039
+    },
+    "body_analysis": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/body_http_130.208.246.177.txt",
+      "findings": [
+        {
+          "title": "Page title: Home \u00b7 PokeCollect",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "body_analysis"
+        },
+        {
+          "title": "Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "body_analysis"
+        }
+      ],
+      "_duration_seconds": 0.012164592742919922
+    },
+    "page_analysis": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/page_http_130.208.246.177_login.php.txt",
+      "pages_fetched": [
+        {
+          "url": "http://130.208.246.177/login.php",
+          "status": 200,
+          "size": 2017,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.177/register.php",
+          "status": 200,
+          "size": 2336,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.177/index.php",
+          "status": 200,
+          "size": 2485,
+          "duplicate": true
+        },
+        {
+          "url": "http://130.208.246.177/forum.php",
+          "status": 200,
+          "size": 2018,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.177/gallery.php",
+          "status": 200,
+          "size": 2020,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.177/cards.php",
+          "status": 200,
+          "size": 2018,
+          "duplicate": false
+        },
+        {
+          "url": "http://130.208.246.177/map.php",
+          "status": 200,
+          "size": 2016,
+          "duplicate": false
+        }
+      ],
+      "findings": [
+        {
+          "title": "Page title: Log in \u00b7 PokeCollect",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/login.php",
+          "url": "http://130.208.246.177/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/login.php",
+          "url": "http://130.208.246.177/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/login.php",
+          "url": "http://130.208.246.177/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: csrf, next, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/login.php",
+          "url": "http://130.208.246.177/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/login.php",
+          "url": "http://130.208.246.177/login.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Create account \u00b7 PokeCollect",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/register.php",
+          "url": "http://130.208.246.177/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/register.php",
+          "url": "http://130.208.246.177/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/register.php",
+          "url": "http://130.208.246.177/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: csrf, email, password, password2, username, website",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/register.php",
+          "url": "http://130.208.246.177/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/register.php",
+          "url": "http://130.208.246.177/register.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Log in \u00b7 PokeCollect",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/forum.php",
+          "url": "http://130.208.246.177/forum.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/forum.php",
+          "url": "http://130.208.246.177/forum.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/forum.php",
+          "url": "http://130.208.246.177/forum.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: csrf, next, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/forum.php",
+          "url": "http://130.208.246.177/forum.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/forum.php",
+          "url": "http://130.208.246.177/forum.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Log in \u00b7 PokeCollect",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/gallery.php",
+          "url": "http://130.208.246.177/gallery.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/gallery.php",
+          "url": "http://130.208.246.177/gallery.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/gallery.php",
+          "url": "http://130.208.246.177/gallery.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: csrf, next, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/gallery.php",
+          "url": "http://130.208.246.177/gallery.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/gallery.php",
+          "url": "http://130.208.246.177/gallery.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Log in \u00b7 PokeCollect",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/cards.php",
+          "url": "http://130.208.246.177/cards.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/cards.php",
+          "url": "http://130.208.246.177/cards.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/cards.php",
+          "url": "http://130.208.246.177/cards.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: csrf, next, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/cards.php",
+          "url": "http://130.208.246.177/cards.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/cards.php",
+          "url": "http://130.208.246.177/cards.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Page title: Log in \u00b7 PokeCollect",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/map.php",
+          "url": "http://130.208.246.177/map.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/map.php",
+          "url": "http://130.208.246.177/map.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/map.php",
+          "url": "http://130.208.246.177/map.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Input fields: csrf, next, password, username",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/map.php",
+          "url": "http://130.208.246.177/map.php",
+          "check": "page_analysis"
+        },
+        {
+          "title": "Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/map.php",
+          "url": "http://130.208.246.177/map.php",
+          "check": "page_analysis"
+        }
+      ],
+      "_duration_seconds": 0.23225617408752441
+    },
+    "whatweb": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/whatweb.txt",
+      "findings": [
+        {
+          "title": "WhatWeb http://130.208.246.177 [200 OK]: Apache[2.4.58], Cookies[pokecollect_d39bb653aa41], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[pokecollect_d39bb653aa41], IP[130.208.246.177], Title[Home \u00b7 ",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "whatweb"
+        }
+      ],
+      "_duration_seconds": 3.6443233489990234
+    },
+    "ssl_nmap": {
+      "error": "No HTTPS service confirmed; skipping SSL enumeration",
+      "_duration_seconds": 9.846687316894531e-05
+    },
+    "ssl_testssl": {
+      "error": "No HTTPS service confirmed; skipping testssl",
+      "_duration_seconds": 9.489059448242188e-05
+    },
+    "ssl_certificate": {
+      "error": "No HTTPS service confirmed",
+      "_duration_seconds": 7.128715515136719e-05
+    },
+    "security_headers": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/headers.txt",
+      "present_headers": [
+        {
+          "header": "X-Frame-Options",
+          "url": "http://130.208.246.177",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "header": "X-Content-Type-Options",
+          "url": "http://130.208.246.177",
+          "value": "nosniff"
+        },
+        {
+          "header": "Referrer-Policy",
+          "url": "http://130.208.246.177",
+          "value": "same-origin"
+        }
+      ],
+      "missing_headers": [
+        {
+          "header": "Content-Security-Policy",
+          "issue": "CSP not implemented",
+          "url": "http://130.208.246.177"
+        },
+        {
+          "header": "Permissions-Policy",
+          "issue": "Permissions policy not set",
+          "url": "http://130.208.246.177"
+        }
+      ],
+      "findings": [
+        {
+          "title": "CSP not implemented",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Content-Security-Policy absent on http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "security_headers"
+        },
+        {
+          "title": "Permissions policy not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Permissions-Policy absent on http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "security_headers"
+        },
+        {
+          "title": "COOP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "security_headers"
+        },
+        {
+          "title": "CORP not set",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "security_headers"
+        }
+      ],
+      "raw_headers": "HTTP/1.1 200 OK\nDate: Tue, 29 Sep 2026 11:43:34 GMT\nServer: Apache/2.4.58 (Ubuntu)\nX-Content-Type-Options: nosniff\nX-Frame-Options: SAMEORIGIN\nReferrer-Policy: same-origin\nSet-Cookie: pokecollect_d39bb653aa41=jvr9vgvjjk42u7nipuk5j95a9s; path=/; HttpOnly; SameSite=Lax\nExpires: Thu, 19 Nov 1981 08:52:00 GMT\nCache-Control: no-store, no-cache, must-revalidate\nPragma: no-cache\nVary: Accept-Encoding\nContent-Length: 2485\nContent-Type: text/html; charset=UTF-8\n\n",
+      "_duration_seconds": 0.013952970504760742
+    },
+    "csp_analysis": {
+      "output_file": null,
+      "findings": [],
+      "_duration_seconds": 8.7738037109375e-05
+    },
+    "cache_control": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/cache_control.txt",
+      "findings": [],
+      "_duration_seconds": 0.010436296463012695
+    },
+    "cookies": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/cookies.txt",
+      "cookies_found": 1,
+      "findings": [
+        {
+          "title": "Cookie 'pokecollect_d39bb653aa41' missing Secure flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "pokecollect_d39bb653aa41=jvr9vgvjjk42u7nipuk5j95a9s; path=/; HttpOnly; SameSite=Lax",
+          "url": "http://130.208.246.177",
+          "check": "cookies"
+        }
+      ],
+      "_duration_seconds": 0.020365476608276367
+    },
+    "http_methods": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/methods.txt",
+      "allowed_methods": [],
+      "findings": [],
+      "_duration_seconds": 0.04404759407043457
+    },
+    "https_redirect": {
+      "error": "No HTTPS service confirmed; cannot evaluate redirect",
+      "_duration_seconds": 0.00011157989501953125
+    },
+    "info_disclosure": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/disclosure.txt",
+      "findings": [
+        {
+          "title": "Server discloses version: Apache/2.4.58 (Ubuntu)",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "server: Apache/2.4.58 (Ubuntu)",
+          "url": "http://130.208.246.177",
+          "check": "info_disclosure"
+        }
+      ],
+      "_duration_seconds": 0.011682271957397461
+    },
+    "cors": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/cors.txt",
+      "findings": [],
+      "_duration_seconds": 0.0426175594329834
+    },
+    "sensitive_files": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/sensitive_files.txt",
+      "findings": [
+        {
+          "title": "Protected path exists: /config.php (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/config.php returned HTTP 403",
+          "url": "http://130.208.246.177/config.php",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /includes/config.php (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/includes/config.php returned HTTP 403",
+          "url": "http://130.208.246.177/includes/config.php",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /includes/db.php (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/includes/db.php returned HTTP 403",
+          "url": "http://130.208.246.177/includes/db.php",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /includes/database.php (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/includes/database.php returned HTTP 403",
+          "url": "http://130.208.246.177/includes/database.php",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /includes/config.inc.php (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/includes/config.inc.php returned HTTP 403",
+          "url": "http://130.208.246.177/includes/config.inc.php",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /backup.sql (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/backup.sql returned HTTP 403",
+          "url": "http://130.208.246.177/backup.sql",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /dump.sql (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/dump.sql returned HTTP 403",
+          "url": "http://130.208.246.177/dump.sql",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /db.sql (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/db.sql returned HTTP 403",
+          "url": "http://130.208.246.177/db.sql",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /database.sql (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/database.sql returned HTTP 403",
+          "url": "http://130.208.246.177/database.sql",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.htaccess (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/.htaccess returned HTTP 403",
+          "url": "http://130.208.246.177/.htaccess",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /.htpasswd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/.htpasswd returned HTTP 403",
+          "url": "http://130.208.246.177/.htpasswd",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /server-status (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/server-status returned HTTP 403",
+          "url": "http://130.208.246.177/server-status",
+          "check": "sensitive_files"
+        },
+        {
+          "title": "Protected path exists: /uploads/ (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "http://130.208.246.177/uploads/ returned HTTP 403",
+          "url": "http://130.208.246.177/uploads/",
+          "check": "sensitive_files"
+        }
+      ],
+      "_duration_seconds": 1.8778281211853027
+    },
+    "nikto": {
+      "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/nikto_http_130.208.246.177.txt",
+      "summary": "- Nikto v2.1.5\n---------------------------------------------------------------------------\n+ Target IP:          130.208.246.177\n+ Target Hostname:    130.208.246.177\n+ Target Port:        80\n+ Start Time:         2026-09-29 11:43:40 (GMT0)\n---------------------------------------------------------------------------\n+ Server: Apache/2.4.58 (Ubuntu)\n+ Uncommon header 'x-frame-options' found, with contents: SAMEORIGIN\n+ Uncommon header 'referrer-policy' found, with contents: same-origin\n+ Uncommon header 'x-content-type-options' found, with contents: nosniff\n+ Cookie pokecollect_d39bb653aa41 created without the httponly flag\n+ No CGI Directories found (use '-C all' to force check all possible dirs)\n+ DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/li",
+      "findings": [
+        {
+          "title": "Nikto: GET /: Uncommon header 'x-frame-options' found, with contents: SAMEORIGIN",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'referrer-policy' found, with contents: same-origin",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /: Cookie pokecollect_d39bb653aa41 created without the httponly flag",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /stats.html: Server leaks inodes via ETags, header found with file /stats.html, fields: 0x9169b 0x65bc463a68629",
+          "severity": "LOW",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "nikto"
+        },
+        {
+          "title": "Nikto: GET /login.php: /login.php: Admin login page/section found.",
+          "severity": "MEDIUM",
+          "confidence": "confirmed",
+          "evidence": "nikto report for http://130.208.246.177",
+          "url": "http://130.208.246.177",
+          "check": "nikto"
+        }
+      ],
+      "_duration_seconds": 48.40864586830139
+    },
+    "directory_discovery": {
+      "ffuf": {
+        "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/ffuf_http_130.208.246.177.json",
+        "output_files": [
+          "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/ffuf_http_130.208.246.177.json"
+        ],
+        "wordlist": "/snap/seclists/current/Discovery/Web-Content/common.txt",
+        "findings": [
+          {
+            "title": "Discovered: http://130.208.246.177/.htaccess (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.177/.htaccess",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.177/.hta (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.177/.hta",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.177/.htpasswd (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.177/.htpasswd",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.177/Thumbs.db (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.177/Thumbs.db",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.177/admin.php (HTTP 302)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "0 bytes",
+            "url": "http://130.208.246.177/admin.php",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.177/akeeba.backend.log (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.177/akeeba.backend.log",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.177/assets (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "319 bytes",
+            "url": "http://130.208.246.177/assets",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.177/development.log (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.177/development.log",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.177/includes (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.177/includes",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.177/index.php (HTTP 200)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "2477 bytes",
+            "url": "http://130.208.246.177/index.php",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.177/production.log (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.177/production.log",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.177/server-status (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.177/server-status",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.177/spamlog.log (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.177/spamlog.log",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.177/thumbs.db (HTTP 403)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "280 bytes",
+            "url": "http://130.208.246.177/thumbs.db",
+            "check": "directory_discovery"
+          },
+          {
+            "title": "Discovered: http://130.208.246.177/uploads (HTTP 301)",
+            "severity": "INFO",
+            "confidence": "confirmed",
+            "evidence": "320 bytes",
+            "url": "http://130.208.246.177/uploads",
+            "check": "directory_discovery"
+          }
+        ]
+      },
+      "dirb": {
+        "output_file": "/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/dirb_http_130.208.246.177.txt",
+        "findings": []
+      },
+      "findings": [
+        {
+          "title": "Discovered: http://130.208.246.177/.htaccess (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.177/.htaccess",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/.hta (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.177/.hta",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/.htpasswd (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.177/.htpasswd",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/Thumbs.db (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.177/Thumbs.db",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/admin.php (HTTP 302)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "0 bytes",
+          "url": "http://130.208.246.177/admin.php",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/akeeba.backend.log (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.177/akeeba.backend.log",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/assets (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "319 bytes",
+          "url": "http://130.208.246.177/assets",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/development.log (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.177/development.log",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/includes (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.177/includes",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/index.php (HTTP 200)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "2477 bytes",
+          "url": "http://130.208.246.177/index.php",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/production.log (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.177/production.log",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/server-status (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.177/server-status",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/spamlog.log (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.177/spamlog.log",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/thumbs.db (HTTP 403)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "280 bytes",
+          "url": "http://130.208.246.177/thumbs.db",
+          "check": "directory_discovery"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/uploads (HTTP 301)",
+          "severity": "INFO",
+          "confidence": "confirmed",
+          "evidence": "320 bytes",
+          "url": "http://130.208.246.177/uploads",
+          "check": "directory_discovery"
+        }
+      ],
+      "_duration_seconds": 90.68727350234985
+    }
+  },
+  "check_durations": {
+    "service_discovery": 1.132,
+    "dns_info": 0.024,
+    "body_analysis": 0.012,
+    "page_analysis": 0.232,
+    "whatweb": 3.644,
+    "ssl_nmap": 0.0,
+    "ssl_testssl": 0.0,
+    "ssl_certificate": 0.0,
+    "security_headers": 0.014,
+    "csp_analysis": 0.0,
+    "cache_control": 0.01,
+    "cookies": 0.02,
+    "http_methods": 0.044,
+    "https_redirect": 0.0,
+    "info_disclosure": 0.012,
+    "cors": 0.043,
+    "sensitive_files": 1.878,
+    "nikto": 48.409,
+    "directory_discovery": 90.687
+  },
+  "summary": {
+    "total_checks": 19,
+    "web_service_reachable": true,
+    "open_port_count": 1,
+    "findings_by_severity": {
+      "HIGH": [],
+      "MEDIUM": [
+        {
+          "title": "Cookie 'pokecollect_d39bb653aa41' missing Secure flag",
+          "check": "cookies",
+          "url": "http://130.208.246.177",
+          "evidence": "pokecollect_d39bb653aa41=jvr9vgvjjk42u7nipuk5j95a9s; path=/; HttpOnly; SameSite=Lax",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Cookie pokecollect_d39bb653aa41 created without the httponly flag",
+          "check": "nikto",
+          "url": "http://130.208.246.177",
+          "evidence": "nikto report for http://130.208.246.177",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /login.php: /login.php: Admin login page/section found.",
+          "check": "nikto",
+          "url": "http://130.208.246.177",
+          "evidence": "nikto report for http://130.208.246.177",
+          "confidence": "confirmed"
+        }
+      ],
+      "LOW": [
+        {
+          "title": "CSP not implemented",
+          "check": "security_headers",
+          "url": "http://130.208.246.177",
+          "evidence": "Content-Security-Policy absent on http://130.208.246.177",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Permissions policy not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.177",
+          "evidence": "Permissions-Policy absent on http://130.208.246.177",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "COOP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.177",
+          "evidence": "Cross-Origin-Opener-Policy absent on http://130.208.246.177",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "CORP not set",
+          "check": "security_headers",
+          "url": "http://130.208.246.177",
+          "evidence": "Cross-Origin-Resource-Policy absent on http://130.208.246.177",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Server discloses version: Apache/2.4.58 (Ubuntu)",
+          "check": "info_disclosure",
+          "url": "http://130.208.246.177",
+          "evidence": "server: Apache/2.4.58 (Ubuntu)",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.",
+          "check": "nikto",
+          "url": "http://130.208.246.177",
+          "evidence": "nikto report for http://130.208.246.177",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /stats.html: Server leaks inodes via ETags, header found with file /stats.html, fields: 0x9169b 0x65bc463a68629",
+          "check": "nikto",
+          "url": "http://130.208.246.177",
+          "evidence": "nikto report for http://130.208.246.177",
+          "confidence": "confirmed"
+        }
+      ],
+      "INFO": [
+        {
+          "title": "Page title: Home \u00b7 PokeCollect",
+          "check": "body_analysis",
+          "url": "http://130.208.246.177",
+          "evidence": "http://130.208.246.177",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "body_analysis",
+          "url": "http://130.208.246.177",
+          "evidence": "http://130.208.246.177",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php",
+          "check": "body_analysis",
+          "url": "http://130.208.246.177",
+          "evidence": "http://130.208.246.177",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Log in \u00b7 PokeCollect",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/login.php",
+          "evidence": "http://130.208.246.177/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/login.php",
+          "evidence": "http://130.208.246.177/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/login.php",
+          "evidence": "http://130.208.246.177/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: csrf, next, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/login.php",
+          "evidence": "http://130.208.246.177/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/login.php",
+          "evidence": "http://130.208.246.177/login.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Create account \u00b7 PokeCollect",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/register.php",
+          "evidence": "http://130.208.246.177/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/register.php",
+          "evidence": "http://130.208.246.177/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/register.php",
+          "evidence": "http://130.208.246.177/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: csrf, email, password, password2, username, website",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/register.php",
+          "evidence": "http://130.208.246.177/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/register.php",
+          "evidence": "http://130.208.246.177/register.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Log in \u00b7 PokeCollect",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/forum.php",
+          "evidence": "http://130.208.246.177/forum.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/forum.php",
+          "evidence": "http://130.208.246.177/forum.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/forum.php",
+          "evidence": "http://130.208.246.177/forum.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: csrf, next, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/forum.php",
+          "evidence": "http://130.208.246.177/forum.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/forum.php",
+          "evidence": "http://130.208.246.177/forum.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Log in \u00b7 PokeCollect",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/gallery.php",
+          "evidence": "http://130.208.246.177/gallery.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/gallery.php",
+          "evidence": "http://130.208.246.177/gallery.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/gallery.php",
+          "evidence": "http://130.208.246.177/gallery.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: csrf, next, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/gallery.php",
+          "evidence": "http://130.208.246.177/gallery.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/gallery.php",
+          "evidence": "http://130.208.246.177/gallery.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Log in \u00b7 PokeCollect",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/cards.php",
+          "evidence": "http://130.208.246.177/cards.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/cards.php",
+          "evidence": "http://130.208.246.177/cards.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/cards.php",
+          "evidence": "http://130.208.246.177/cards.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: csrf, next, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/cards.php",
+          "evidence": "http://130.208.246.177/cards.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/cards.php",
+          "evidence": "http://130.208.246.177/cards.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Page title: Log in \u00b7 PokeCollect",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/map.php",
+          "evidence": "http://130.208.246.177/map.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Meta viewport: width=device-width, initial-scale=1",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/map.php",
+          "evidence": "http://130.208.246.177/map.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Form: action=(same page) method=POST",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/map.php",
+          "evidence": "http://130.208.246.177/map.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Input fields: csrf, next, password, username",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/map.php",
+          "evidence": "http://130.208.246.177/map.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php",
+          "check": "page_analysis",
+          "url": "http://130.208.246.177/map.php",
+          "evidence": "http://130.208.246.177/map.php",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "WhatWeb http://130.208.246.177 [200 OK]: Apache[2.4.58], Cookies[pokecollect_d39bb653aa41], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[pokecollect_d39bb653aa41], IP[130.208.246.177], Title[Home \u00b7 ",
+          "check": "whatweb",
+          "url": "http://130.208.246.177",
+          "evidence": "http://130.208.246.177",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /config.php (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.177/config.php",
+          "evidence": "http://130.208.246.177/config.php returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /includes/config.php (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.177/includes/config.php",
+          "evidence": "http://130.208.246.177/includes/config.php returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /includes/db.php (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.177/includes/db.php",
+          "evidence": "http://130.208.246.177/includes/db.php returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /includes/database.php (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.177/includes/database.php",
+          "evidence": "http://130.208.246.177/includes/database.php returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /includes/config.inc.php (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.177/includes/config.inc.php",
+          "evidence": "http://130.208.246.177/includes/config.inc.php returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /backup.sql (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.177/backup.sql",
+          "evidence": "http://130.208.246.177/backup.sql returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /dump.sql (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.177/dump.sql",
+          "evidence": "http://130.208.246.177/dump.sql returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /db.sql (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.177/db.sql",
+          "evidence": "http://130.208.246.177/db.sql returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /database.sql (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.177/database.sql",
+          "evidence": "http://130.208.246.177/database.sql returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.htaccess (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.177/.htaccess",
+          "evidence": "http://130.208.246.177/.htaccess returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /.htpasswd (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.177/.htpasswd",
+          "evidence": "http://130.208.246.177/.htpasswd returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /server-status (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.177/server-status",
+          "evidence": "http://130.208.246.177/server-status returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Protected path exists: /uploads/ (HTTP 403)",
+          "check": "sensitive_files",
+          "url": "http://130.208.246.177/uploads/",
+          "evidence": "http://130.208.246.177/uploads/ returned HTTP 403",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'x-frame-options' found, with contents: SAMEORIGIN",
+          "check": "nikto",
+          "url": "http://130.208.246.177",
+          "evidence": "nikto report for http://130.208.246.177",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'referrer-policy' found, with contents: same-origin",
+          "check": "nikto",
+          "url": "http://130.208.246.177",
+          "evidence": "nikto report for http://130.208.246.177",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Nikto: GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff",
+          "check": "nikto",
+          "url": "http://130.208.246.177",
+          "evidence": "nikto report for http://130.208.246.177",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/.htaccess (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/.htaccess",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/.hta (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/.hta",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/.htpasswd (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/.htpasswd",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/Thumbs.db (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/Thumbs.db",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/admin.php (HTTP 302)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/admin.php",
+          "evidence": "0 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/akeeba.backend.log (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/akeeba.backend.log",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/assets (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/assets",
+          "evidence": "319 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/development.log (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/development.log",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/includes (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/includes",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/index.php (HTTP 200)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/index.php",
+          "evidence": "2477 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/production.log (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/production.log",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/server-status (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/server-status",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/spamlog.log (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/spamlog.log",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/thumbs.db (HTTP 403)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/thumbs.db",
+          "evidence": "280 bytes",
+          "confidence": "confirmed"
+        },
+        {
+          "title": "Discovered: http://130.208.246.177/uploads (HTTP 301)",
+          "check": "directory_discovery",
+          "url": "http://130.208.246.177/uploads",
+          "evidence": "320 bytes",
+          "confidence": "confirmed"
+        }
+      ]
+    }
+  }
+}

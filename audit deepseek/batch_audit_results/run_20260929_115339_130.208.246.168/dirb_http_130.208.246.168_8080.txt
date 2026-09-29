@@ -1,0 +1,62 @@
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+OUTPUT_FILE: /mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_115339_130.208.246.168/dirb_http_130.208.246.168_8080.txt
+START_TIME: Tue Sep 29 11:59:22 2026
+URL_BASE: http://130.208.246.168:8080/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+OPTION: Silent Mode
+
+-----------------
+
+GENERATED WORDS: 4612
+
+---- Scanning URL: http://130.208.246.168:8080/ ----
++ http://130.208.246.168:8080/akeeba.backend.log (CODE:403|SIZE:282)
+==> DIRECTORY: http://130.208.246.168:8080/assets/
++ http://130.208.246.168:8080/awstats.conf (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/development.log (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/php.ini (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/production.log (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/server-status (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/spamlog.log (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/thumbs.db (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/Thumbs.db (CODE:403|SIZE:282)
+==> DIRECTORY: http://130.208.246.168:8080/uploads/
+
+---- Entering directory: http://130.208.246.168:8080/assets/ ----
++ http://130.208.246.168:8080/assets/akeeba.backend.log (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/assets/awstats.conf (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/assets/development.log (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/assets/php.ini (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/assets/production.log (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/assets/spamlog.log (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/assets/thumbs.db (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/assets/Thumbs.db (CODE:403|SIZE:282)
+
+---- Entering directory: http://130.208.246.168:8080/uploads/ ----
++ http://130.208.246.168:8080/uploads/admin.cgi (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/admin.php (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/admin.pl (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/akeeba.backend.log (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/AT-admin.cgi (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/awstats.conf (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/cachemgr.cgi (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/development.log (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/index.php (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/info.php (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/php.ini (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/phpinfo.php (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/production.log (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/spamlog.log (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/thumbs.db (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/Thumbs.db (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/xmlrpc.php (CODE:403|SIZE:282)
++ http://130.208.246.168:8080/uploads/xmlrpc_server.php (CODE:403|SIZE:282)
+
+-----------------
+END_TIME: Tue Sep 29 12:01:09 2026
+DOWNLOADED: 13836 - FOUND: 35

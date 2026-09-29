@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html><head><meta charset='utf-8'>
+<title>Audit Report - http://130.208.246.177</title>
+<style>
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;
+max-width:960px;margin:2em auto;padding:0 1em;color:#222;}
+h1{border-bottom:3px solid #333;padding-bottom:8px;}
+h2{margin-top:1.6em;color:#333;}
+.meta{color:#666;font-size:.9em;}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;
+color:#fff;font-weight:600;font-size:.8em;margin-right:8px;}
+.check{border:1px solid #e0e0e0;border-radius:6px;
+padding:10px 14px;margin:10px 0;background:#fafafa;}
+.check code{background:#eef;padding:1px 5px;border-radius:3px;
+font-size:.85em;}
+.none{color:#888;font-style:italic;}
+.conf{color:#888;font-size:.85em;margin-left:6px;}
+.ev{color:#555;font-size:.9em;display:block;margin-left:16px;}
+table.svc{border-collapse:collapse;width:100%;}
+table.svc td,table.svc th{border:1px solid #ddd;padding:6px;
+text-align:left;font-size:.9em;}
+</style></head><body>
+<h1>Security Audit Report</h1>
+<p class='meta'><b>Target:</b> http://130.208.246.177<br>
+<b>Web service reachable:</b> yes<br>
+<b>Open ports:</b> 1<br>
+<b>Scan duration:</b> 2m 26s (146.2s)<br>
+<b>Run folder:</b> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177</code><br>
+<b>Generated:</b> 2026-09-29 11:45:59</p>
+<h2>Executive Summary</h2>
+<table style='border-collapse:collapse'>
+<tr><td><span class='badge' style='background:#d32f2f'>HIGH</span></td><td>0 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#f57c00'>MEDIUM</span></td><td>3 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#fbc02d'>LOW</span></td><td>7 finding(s)</td></tr>
+<tr><td><span class='badge' style='background:#0288d1'>INFO</span></td><td>65 finding(s)</td></tr>
+</table>
+<h2>Confirmed Web Services</h2>
+<table class='svc'>
+<tr><th>URL</th><th>Status</th><th>Server</th><th>Content-Type</th></tr>
+<tr><td><code>http://130.208.246.177</code></td><td>200</td><td>Apache/2.4.58 (Ubuntu)</td><td>text/html; charset=UTF-8</td></tr>
+</table>
+<h2>DNS / Host Resolution</h2>
+<ul>
+<li><b>input:</b> 130.208.246.177</li>
+<li><b>is_ip_literal:</b> True</li>
+<li><b>resolved_ips:</b> [&#x27;130.208.246.177&#x27;]</li>
+</ul>
+<h2>HIGH Findings</h2>
+<p class='none'>None</p>
+<h2>MEDIUM Findings</h2>
+<ul>
+<li>Cookie &#x27;pokecollect_d39bb653aa41&#x27; missing Secure flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>pokecollect_d39bb653aa41=jvr9vgvjjk42u7nipuk5j95a9s; path=/; HttpOnly; SameSite=Lax</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>Nikto: GET /: Cookie pokecollect_d39bb653aa41 created without the httponly flag
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>Nikto: GET /login.php: /login.php: Admin login page/section found.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+</ul>
+<h2>LOW Findings</h2>
+<ul>
+<li>CSP not implemented
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Content-Security-Policy absent on http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>Permissions policy not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Permissions-Policy absent on http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>COOP not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Cross-Origin-Opener-Policy absent on http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>CORP not set
+<span class='conf'>[confirmed]</span>
+<span class='ev'>Cross-Origin-Resource-Policy absent on http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>Server discloses version: Apache/2.4.58 (Ubuntu)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>server: Apache/2.4.58 (Ubuntu)</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>Nikto: DEBUG : DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>Nikto: GET /stats.html: Server leaks inodes via ETags, header found with file /stats.html, fields: 0x9169b 0x65bc463a68629
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+</ul>
+<h2>INFO Findings</h2>
+<ul>
+<li>Page title: Home · PokeCollect
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>Page title: Log in · PokeCollect
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/login.php</span>
+<span class='ev'><code>http://130.208.246.177/login.php</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/login.php</span>
+<span class='ev'><code>http://130.208.246.177/login.php</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/login.php</span>
+<span class='ev'><code>http://130.208.246.177/login.php</code></span>
+</li>
+<li>Input fields: csrf, next, password, username
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/login.php</span>
+<span class='ev'><code>http://130.208.246.177/login.php</code></span>
+</li>
+<li>Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/login.php</span>
+<span class='ev'><code>http://130.208.246.177/login.php</code></span>
+</li>
+<li>Page title: Create account · PokeCollect
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/register.php</span>
+<span class='ev'><code>http://130.208.246.177/register.php</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/register.php</span>
+<span class='ev'><code>http://130.208.246.177/register.php</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/register.php</span>
+<span class='ev'><code>http://130.208.246.177/register.php</code></span>
+</li>
+<li>Input fields: csrf, email, password, password2, username, website
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/register.php</span>
+<span class='ev'><code>http://130.208.246.177/register.php</code></span>
+</li>
+<li>Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/register.php</span>
+<span class='ev'><code>http://130.208.246.177/register.php</code></span>
+</li>
+<li>Page title: Log in · PokeCollect
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/forum.php</span>
+<span class='ev'><code>http://130.208.246.177/forum.php</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/forum.php</span>
+<span class='ev'><code>http://130.208.246.177/forum.php</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/forum.php</span>
+<span class='ev'><code>http://130.208.246.177/forum.php</code></span>
+</li>
+<li>Input fields: csrf, next, password, username
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/forum.php</span>
+<span class='ev'><code>http://130.208.246.177/forum.php</code></span>
+</li>
+<li>Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/forum.php</span>
+<span class='ev'><code>http://130.208.246.177/forum.php</code></span>
+</li>
+<li>Page title: Log in · PokeCollect
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/gallery.php</span>
+<span class='ev'><code>http://130.208.246.177/gallery.php</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/gallery.php</span>
+<span class='ev'><code>http://130.208.246.177/gallery.php</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/gallery.php</span>
+<span class='ev'><code>http://130.208.246.177/gallery.php</code></span>
+</li>
+<li>Input fields: csrf, next, password, username
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/gallery.php</span>
+<span class='ev'><code>http://130.208.246.177/gallery.php</code></span>
+</li>
+<li>Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/gallery.php</span>
+<span class='ev'><code>http://130.208.246.177/gallery.php</code></span>
+</li>
+<li>Page title: Log in · PokeCollect
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/cards.php</span>
+<span class='ev'><code>http://130.208.246.177/cards.php</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/cards.php</span>
+<span class='ev'><code>http://130.208.246.177/cards.php</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/cards.php</span>
+<span class='ev'><code>http://130.208.246.177/cards.php</code></span>
+</li>
+<li>Input fields: csrf, next, password, username
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/cards.php</span>
+<span class='ev'><code>http://130.208.246.177/cards.php</code></span>
+</li>
+<li>Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/cards.php</span>
+<span class='ev'><code>http://130.208.246.177/cards.php</code></span>
+</li>
+<li>Page title: Log in · PokeCollect
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/map.php</span>
+<span class='ev'><code>http://130.208.246.177/map.php</code></span>
+</li>
+<li>Meta viewport: width=device-width, initial-scale=1
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/map.php</span>
+<span class='ev'><code>http://130.208.246.177/map.php</code></span>
+</li>
+<li>Form: action=(same page) method=POST
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/map.php</span>
+<span class='ev'><code>http://130.208.246.177/map.php</code></span>
+</li>
+<li>Input fields: csrf, next, password, username
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/map.php</span>
+<span class='ev'><code>http://130.208.246.177/map.php</code></span>
+</li>
+<li>Interesting links (7): cards.php, forum.php, gallery.php, index.php, login.php, map.php, register.php
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/map.php</span>
+<span class='ev'><code>http://130.208.246.177/map.php</code></span>
+</li>
+<li>WhatWeb http://130.208.246.177 [200 OK]: Apache[2.4.58], Cookies[pokecollect_d39bb653aa41], Country[ICELAND][IS], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.58 (Ubuntu)], HttpOnly[pokecollect_d39bb653aa41], IP[130.208.246.177], Title[Home · 
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>Protected path exists: /config.php (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/config.php returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.177/config.php</code></span>
+</li>
+<li>Protected path exists: /includes/config.php (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/includes/config.php returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.177/includes/config.php</code></span>
+</li>
+<li>Protected path exists: /includes/db.php (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/includes/db.php returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.177/includes/db.php</code></span>
+</li>
+<li>Protected path exists: /includes/database.php (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/includes/database.php returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.177/includes/database.php</code></span>
+</li>
+<li>Protected path exists: /includes/config.inc.php (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/includes/config.inc.php returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.177/includes/config.inc.php</code></span>
+</li>
+<li>Protected path exists: /backup.sql (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/backup.sql returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.177/backup.sql</code></span>
+</li>
+<li>Protected path exists: /dump.sql (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/dump.sql returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.177/dump.sql</code></span>
+</li>
+<li>Protected path exists: /db.sql (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/db.sql returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.177/db.sql</code></span>
+</li>
+<li>Protected path exists: /database.sql (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/database.sql returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.177/database.sql</code></span>
+</li>
+<li>Protected path exists: /.htaccess (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/.htaccess returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.177/.htaccess</code></span>
+</li>
+<li>Protected path exists: /.htpasswd (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/.htpasswd returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.177/.htpasswd</code></span>
+</li>
+<li>Protected path exists: /server-status (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/server-status returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.177/server-status</code></span>
+</li>
+<li>Protected path exists: /uploads/ (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>http://130.208.246.177/uploads/ returned HTTP 403</span>
+<span class='ev'><code>http://130.208.246.177/uploads/</code></span>
+</li>
+<li>Nikto: GET /: Uncommon header &#x27;x-frame-options&#x27; found, with contents: SAMEORIGIN
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>Nikto: GET /: Uncommon header &#x27;referrer-policy&#x27; found, with contents: same-origin
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>Nikto: GET /: Uncommon header &#x27;x-content-type-options&#x27; found, with contents: nosniff
+<span class='conf'>[confirmed]</span>
+<span class='ev'>nikto report for http://130.208.246.177</span>
+<span class='ev'><code>http://130.208.246.177</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/.htaccess (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.177/.htaccess</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/.hta (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.177/.hta</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/.htpasswd (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.177/.htpasswd</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/Thumbs.db (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.177/Thumbs.db</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/admin.php (HTTP 302)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>0 bytes</span>
+<span class='ev'><code>http://130.208.246.177/admin.php</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/akeeba.backend.log (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.177/akeeba.backend.log</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/assets (HTTP 301)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>319 bytes</span>
+<span class='ev'><code>http://130.208.246.177/assets</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/development.log (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.177/development.log</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/includes (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.177/includes</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/index.php (HTTP 200)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>2477 bytes</span>
+<span class='ev'><code>http://130.208.246.177/index.php</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/production.log (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.177/production.log</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/server-status (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.177/server-status</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/spamlog.log (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.177/spamlog.log</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/thumbs.db (HTTP 403)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>280 bytes</span>
+<span class='ev'><code>http://130.208.246.177/thumbs.db</code></span>
+</li>
+<li>Discovered: http://130.208.246.177/uploads (HTTP 301)
+<span class='conf'>[confirmed]</span>
+<span class='ev'>320 bytes</span>
+<span class='ev'><code>http://130.208.246.177/uploads</code></span>
+</li>
+</ul>
+<h2>Check Timings</h2>
+<table class='svc'>
+<tr><th>Check</th><th>Duration</th></tr>
+<tr><td>directory_discovery</td><td>1m 30s</td></tr>
+<tr><td>nikto</td><td>48.41s</td></tr>
+<tr><td>whatweb</td><td>3.64s</td></tr>
+<tr><td>sensitive_files</td><td>1.88s</td></tr>
+<tr><td>service_discovery</td><td>1.13s</td></tr>
+<tr><td>page_analysis</td><td>232ms</td></tr>
+<tr><td>http_methods</td><td>44ms</td></tr>
+<tr><td>cors</td><td>43ms</td></tr>
+<tr><td>dns_info</td><td>24ms</td></tr>
+<tr><td>cookies</td><td>20ms</td></tr>
+<tr><td>security_headers</td><td>14ms</td></tr>
+<tr><td>body_analysis</td><td>12ms</td></tr>
+<tr><td>info_disclosure</td><td>12ms</td></tr>
+<tr><td>cache_control</td><td>10ms</td></tr>
+<tr><td>ssl_nmap</td><td>0ms</td></tr>
+<tr><td>ssl_testssl</td><td>0ms</td></tr>
+<tr><td>ssl_certificate</td><td>0ms</td></tr>
+<tr><td>csp_analysis</td><td>0ms</td></tr>
+<tr><td>https_redirect</td><td>0ms</td></tr>
+</table>
+<h2>Detailed Results</h2>
+<div class='check'><b>service_discovery</b> <span class='conf'>(1.13s)</span><br>
+<i>Summary:</i> 1 HTTP/HTTPS service(s) confirmed, 0 other open port(s)...
+</div>
+<div class='check'><b>dns_info</b> <span class='conf'>(24ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/dns_info.txt</code><br>
+</div>
+<div class='check'><b>body_analysis</b> <span class='conf'>(12ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/body_http_130.208.246.177.txt</code><br>
+</div>
+<div class='check'><b>page_analysis</b> <span class='conf'>(232ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/page_http_130.208.246.177_login.php.txt</code><br>
+</div>
+<div class='check'><b>whatweb</b> <span class='conf'>(3.64s)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/whatweb.txt</code><br>
+</div>
+<div class='check'><b>ssl_nmap</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; skipping SSL enumeration<br>
+</div>
+<div class='check'><b>ssl_testssl</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; skipping testssl<br>
+</div>
+<div class='check'><b>ssl_certificate</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed<br>
+</div>
+<div class='check'><b>security_headers</b> <span class='conf'>(14ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/headers.txt</code><br>
+</div>
+<div class='check'><b>csp_analysis</b> <span class='conf'>(0ms)</span><br>
+</div>
+<div class='check'><b>cache_control</b> <span class='conf'>(10ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/cache_control.txt</code><br>
+</div>
+<div class='check'><b>cookies</b> <span class='conf'>(20ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/cookies.txt</code><br>
+</div>
+<div class='check'><b>http_methods</b> <span class='conf'>(44ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/methods.txt</code><br>
+</div>
+<div class='check'><b>https_redirect</b> <span class='conf'>(0ms)</span><br>
+<i>Error:</i> No HTTPS service confirmed; cannot evaluate redirect<br>
+</div>
+<div class='check'><b>info_disclosure</b> <span class='conf'>(12ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/disclosure.txt</code><br>
+</div>
+<div class='check'><b>cors</b> <span class='conf'>(43ms)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/cors.txt</code><br>
+</div>
+<div class='check'><b>sensitive_files</b> <span class='conf'>(1.88s)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/sensitive_files.txt</code><br>
+</div>
+<div class='check'><b>nikto</b> <span class='conf'>(48.41s)</span><br>
+<i>Output:</i> <code>/mnt/c/Users/nikos/Documents/Obsidian Vault/courses/CSDA/labs/L5/CSDA-Lab5/audit deepseek/batch_audit_results/run_20260929_114333_130.208.246.177/nikto_http_130.208.246.177.txt</code><br>
+<i>Summary:</i> - Nikto v2.1.5 --------------------------------------------------------------------------- + Target IP:          130.208.246.177 + Target Hostname:    130.208.246.177 + Target Port:        80 + Start Time:         2026-09-29 11:43:40 (GMT0) -----------------------------------------------------------...
+</div>
+<div class='check'><b>directory_discovery</b> <span class='conf'>(1m 30s)</span><br>
+</div>
+</body></html>
