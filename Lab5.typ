@@ -36,8 +36,9 @@ We would like to be part of the paper on the security of AI generated websites (
 
 //-----------------------------------------------------------
 #align(center)[= Executive Summary]
-In this report we are presenting the result of using two differnt LLMs to attack vibe coded websites. The LLMs models we used were the free version of Deepseek and Claude sonnet 5 with a pro subscription. The process used was to ask both models first to list the tools needed to do a security audit on a website and then ask them to produce a script that automated running these tools. Here we discovered differences in what type of scripts the LLMs were comfortable delivering without more context where claude refused until it was told it was for a cybersecurity course while DeepSeek happliy gave the requested script. Furthermore a comparison was performed between claude code and the normal chatversion but no big difference was felt as claude code was used to modify the script to be run over all the websites produced to be tested. After the atuomated audit had been performed a process of manual attacking was performed 
-
+In this report we present the results of two different LLMs used to attack vibecoded websites created in our lab. The LLM models we used were the free version of Deepseek and Claude Sonnet 5 with a Pro subscription.
+#linebreak() Our process was to ask both models to first list the tools needed to do a security audit on a website and to then ask them to produce a script that automated running these tools. Doing this, we discovered differences in what the LLMs were comfortable delivering without more context, eg. that Claude refused until being assured it was for a cybersecurity course, while DeepSeek happily gave the requested script.
+#linebreak() Furthermore, we compare the results of Claude Code and the Claude's normal chat version, with no notable differences found. After the automated audits, we tested the security of selected sites manually, focusing on the sites with the most vulnerabilities, according to the scripts' results. We remained unsuccessful in our attempts to gain access.
 
 
 //-----------------------------------------------------------
