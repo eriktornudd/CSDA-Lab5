@@ -143,102 +143,37 @@ During the lab I used `130.208.246.173` for testing and developing the script. W
 While it doesn't now, at the time of being targeted `130.208.246.177` was shown to have several High severity findings as well.
 
 == Claude
-<<<<<<< HEAD
-The following is the summary output of the claude batch script. It shows how many potential vulnerabilites were found for each of the IPs for manual testing I continue
-=======
 The following is the sumary output of the claude batch script. It shows how many potenital vulnerabilites were found at 11:06 29/9/26 for each of the IPs for manual testing I continue and choose to focus on 130.208.246.166 as it has among the most potenital vulnerabilites to explore.
 
->>>>>>> refs/remotes/origin/main
 ```
-{
-  "run_started": "2026-09-29T10:23:15.771003",
-  "targets_total": 15,
-  "hosts": {
-    "130.208.246.180": {
-      "status": "no_site"
-    },
-    "130.208.246.168": {
-      "status": "no_site"
-    },
-    "130.208.246.164": {
-      "status": "no_site"
-    },
-    "130.208.246.175": {
-      "status": "no_site"
-    },
-    "130.208.246.165": {
-      "status": "no_site"
-    },
-    "130.208.246.185": {
-      "status": "no_site"
-    },
-    "130.208.246.213": {
-      "status": "no_site"
-    },
-    "130.208.246.171": {
-      "status": "live",
-      "ports": [
-        80,
-        8080
-      ],
-      "leads_count": 11
-    },
-    "130.208.246.173": {
-      "status": "live",
-      "ports": [
-        80
-      ],
-      "leads_count": 5
-    },
-    "130.208.246.176": {
-      "status": "live",
-      "ports": [
-        80
-      ],
-      "leads_count": 5
-    },
-    "130.208.246.177": {
-      "status": "live",
-      "ports": [
-        80,
-        8000
-      ],
-      "leads_count": 10
-    },
-    "130.208.246.166": {
-      "status": "live",
-      "ports": [
-        443,
-        8080
-      ],
-      "leads_count": 11
-    },
-    "130.208.246.170": {
-      "status": "live",
-      "ports": [
-        80
-      ],
-      "leads_count": 3
-    },
-    "130.208.246.174": {
-      "status": "live",
-      "ports": [
-        80
-      ],
-      "leads_count": 6
-    },
-    "130.208.246.167": {
-      "status": "live",
-      "ports": [
-        80
-      ],
-      "leads_count": 5
-    }
-  },
-  "run_finished": "2026-09-29T10:58:20.138930",
-  "live_count": 8,
-  "no_site_count": 7
-}
+==============================================================================
+CLAUDE BATCH REVIEW SUMMARY
+Started : 2026-09-29 10:23:15
+Finished: 2026-09-29 10:58:20
+Duration: 35m 4.37s
+Targets : 15
+==============================================================================
+
+Target               Status     Leads  Open ports
+------------------------------------------------------------------------------
+130.208.246.164      no_site        -  
+130.208.246.165      no_site        -  
+130.208.246.166      live          11  443,8080
+130.208.246.167      live           5  80
+130.208.246.168      no_site        -  
+130.208.246.170      live           3  80
+130.208.246.171      live          11  80,8080
+130.208.246.173      live           5  80
+130.208.246.174      live           6  80
+130.208.246.175      no_site        -  
+130.208.246.176      live           5  80
+130.208.246.177      live          10  80,8000
+130.208.246.180      no_site        -  
+130.208.246.185      no_site        -  
+130.208.246.213      no_site        -  
+==============================================================================
+Live: 8    No site: 7
+==============================================================================
 ```
 
 I made my focus the site at port 8080 which is named One Piece Nakama. The first thing I did was make an account. I tried naming it admin but that name was taken so I used the username root instead. I tried making a forum post and discoverd that functionality was broken. I then proceeded to go to the command line and to a series of queries where I looked around to see what I could discover. For the most part this lead nowhare, I did find a place where there was an id=1 placed where I tried to see what happened if I put in different values there. Unfortunately it did not lead anywhare. 
