@@ -36,7 +36,7 @@ We would like to be part of the paper on the security of AI generated websites (
 
 //-----------------------------------------------------------
 #align(center)[= Executive Summary]
-In this report we present the results of two different LLMs used to attack vibecoded websites created in our lab. The LLM models we used were the free version of Deepseek and Claude Sonnet 5 with a Pro subscription.
+In this report we present the results of two different LLMs used to attack vibecoded websites created in our lab. The LLM models we used were the free version of DeepSeek and Claude Sonnet 5 with a Pro subscription.
 #linebreak() Our process was to ask both models to first list the tools needed to do a security audit on a website and to then ask them to produce a script that automated running these tools. Doing this, we discovered differences in what the LLMs were comfortable delivering without more context, e.g., that Claude refused until being assured it was for a cybersecurity course, while DeepSeek happily gave the requested script.
 #linebreak() Furthermore, we compared the results of Claude Code and Claude's normal chat version, with no notable differences found. After the automated audits, we tested the security of selected sites manually, focusing on the sites with the most vulnerabilities, according to the scripts' results. We remained unsuccessful in our attempts to gain access.
 
@@ -179,7 +179,7 @@ Live: 8    No site: 7
 ```
 
 == Manual Testing based on Claude results
-I continued to focus on `130.208.246.166` for manual testing as it has among the highest amount of potential vulnerabilities to explore, and the only other IP with and equal an amount of leads is where my own site is. 
+I continued to focus on `130.208.246.166` for manual testing as it has among the highest amount of potential vulnerabilities to explore, and the only other IP with an equal an amount of leads is where my own site is. 
 
 I used Claude again to analyse the results of the scans to help determine the following course of action in the attacks. Interestingly this analysis showed some bugs in the script where the summary overstated the number of leads actually present in the data. This bug is as of the time of writing not addressed in the code. This analysis also helped determine what sites to focus on for further testing. 
 
