@@ -144,7 +144,7 @@ While it doesn't now, at the time of being targeted `130.208.246.177` was shown 
 Despite the scan on `130.208.246.168` finding multiple severe vulnerabilities, I didn't continue manually attacking it, due to it seeming to not be set up fully. For example, the login and registration pages never loaded.
 
 == Batching Results Claude
-The following is the summary output of the Claude batch script. It shows how many potential vulnerabilities were found at 11:06 29/9/26 for each of the IPs.
+The following is the summary output of the Claude batch script. It shows how many potential vulnerabilities were found at 11:58 29/9/26 for each of the IPs.
 
 ```
 ==============================================================================
@@ -180,10 +180,15 @@ Live: 8    No site: 7
 == Manual Testing based on Claude results
 I continued to focus on `130.208.246.166` for manual testing as it has among the most amounts of potential vulnerabilities to explore.
 
-I used Claude again to analyse the results of the scans to help determine the following course of action in the attacks.
+I used Claude again to analyse the results of the scans to help determine the following course of action in the attacks. Interestingly this analysis showed some bugs where the summary overstated the number of leads actually present in the data. This bug is as of the time of writing not addressed in the code. This analysis also helped determine what sites to focus on for further testing.
 
-I made my focus the site at port `8080` ("One Piece Nakama"). The first thing I did was make an account. I tried naming it `admin` but that name was taken so I used the username `root` instead. I tried making a forum post and discovered that functionality was broken. I then proceeded to go to the command line and do a series of queries where I looked around to see what I could discover. For the most part this lead nowhere, I did find a place where there was an `id=1` placed where I tried to see what happened if I put in different values there. Unfortunately it did not lead anywhere.
-(The full list of commands is contained in the appendix)
+I made my focus the site at port `8080` ("One Piece Nakama"). The first thing I did was make an account. I tried naming it `admin` but that name was taken, so I used the username `root` instead. When trying to see if I could send a post to the forum with a XSS in it, for this check I expected either a that it would sanitize my input, not it to get through or simply letting in pass into the site. The response I got was neither. Instead I got a `HTTP/1.0 500 Internal Server ` with ` Content-Length: 0` this means that the server broke when it tried to process the request. To check if this was some form of defense or broken functionality tried to make a forum post with just plain text, this produced the same response. This means that at the moment I could not determine if the site is protected from XSS, as the server return error 500 no matter the input.
+
+After that I made some atempts at SQLi where I found a place where an `id=1` i tried to add in a string here `id='1'` but the result showed it was made into an integer before touching the database making the safe from string based SQL injection at least in this place.
+
+ For the most part this lead nowhere, I did find a place where there was an `id=1` placed where I tried to see what happened if I put in different values there.  Unfortunately it did not go anywhere.
+
+The full list of commands is in the git repo linked in Appendix.
 
 = Results
 
