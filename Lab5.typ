@@ -185,15 +185,13 @@ I used Claude again to analyse the results of the scans to help determine the fo
 
 I made my focus the site at port `8080` ("One Piece Nakama"). The first thing I did was make an account. I tried naming it `admin` but that name was taken, so I used the username `root` instead. I tried sending a post to the forum with XSS in it, for this check I expected it to either sanitize my input stopping it, or simply letting in pass into the site. The response I got was neither. Instead I got a `HTTP/1.0 500 Internal Server` with `Content-Length: 0`. This means that the server broke when it tried to process the request. To check if this was some form of defense or broken functionality I tried to make a forum post with just plain text, this produced the same response. This means that at the moment I could not determine if the site is protected from XSS, as the server return error 500 no matter the input.
 
-After that I made some atempts at SQLi where I found a place where an `id=1` i tried to add in a string here `id=1'`(a trailing '), but the result showed it was made into an integer before touching the database making the safe from string based SQL injection at least in this place.
-
-
+After that I made some attempts at SQLi where I found a place where an `id=1` existed. I tried to add in a string here `id=1'`(a trailing '), but the result showed it was made into an integer before touching the database making it safe from string based SQL injection at least in this place.
 
 The full list of commands is in the git repo linked in Appendix.
 
 = Results
 
-In spite of all our attempts, we did not manage to gain access to any accounts we hadn't previously created, we did not manage to gain access to the hosting machine of any websites, let alone root access, and all attempts to run malicious or unwanted scripts failed, even though some scripts and malicious files managed to be planted.
+In spite of all our attempts, we did not manage to gain access to any accounts we hadn't previously created, we did not manage to gain access to the hosting machine of any websites, let alone root access, and all attempts to run malicious or unwanted scripts failed, even though some scripts and malicious files managed to be planted on the machines hosting the websites.
 
 //-----------------------------------------------------------
 
