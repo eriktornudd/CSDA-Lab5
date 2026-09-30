@@ -59,6 +59,8 @@ Their responses to the first prompt were the exact same, word for word. They spe
 After the second prompt their responses differed, so our prompts did as well.
 While DeepSeek produced a script immediately, Claude's guardrails initially prevented it from doing so.
 
+#pagebreak()
+
 === Using DeepSeek
 
 When presented with the task of generating a security auditing script, DeepSeek produced the python script immediately. It was bare-boned, functional and produced results.
@@ -74,13 +76,12 @@ The final version (v8) featured TCP port scanning, service and banner grabbing, 
 === Using Claude
 
 ==== Chat function
-When presented with the task of generating a security audit script claude was very sceptical at first, not wanting to make a general purpose tool that would fire all the different tools against any website whoms IP was fed into it. After assuring it that the target websites were labb VMs it did not hesitate to create the script, even if it did add a couple of inconvenient details in running the script like having to type in a string confiming I have permission to run the script agains the target. The script in question was running perfectly fine in the sense that it ran all the tools available in the machine simply marking the tools not found. 
+When presented with the task of generating a security audit script claude was very sceptical at first, not wanting to make a general purpose tool that would fire all the different tools against any website whoms IP was fed into it. After assuring it that the target websites were lab  VMs it did not hesitate to create the script, even if it did add a couple of inconvenient details in running the script like having to type in a string confiming I have permission to run the script agains the target. The script in question was running perfectly fine in the sense that it ran all the tools available in the machine simply marking the tools not found. 
 
 This script was mainly tested on my own site I had created for Lab 4 and thus verified against the manual tests I had done on the site on my own.
 
 ==== Claude code
-To test the capabiliies and differences between claude code and the ordinary chat functions coding ability I asked claude code to create a new script testing more different tools while also looping through all the IP adresses of the different lab servers ensuring it hit all the different websites that were created in the course and give us all the potential weaknessess found.
-
+To test the capabiliies and differences between claude code and the ordinary chat functions coding ability I asked claude code to create a new script testing more different tools while also looping through all the IP adresses of the different lab servers ensuring it hit all the different websites that were created in the course and give us all the potential weaknessess found. While the script provided was usefull I can't say I noticed any particularly great differences in the speed or quality when using claude code compared to the normal chat function. This might in part be due to me giving the orignal script for scanning a single website as inspiration for the new script. If I were to do this again I would probably let it create something on it's own to see if more clear differences in quality and scope would materialize.
 
 
 
@@ -94,11 +95,14 @@ The full list of IPs used for this is:
 ```
 
 For the script made with DeepSeek the main IP it was tested on is `130.208.246.173`.
-The script made with Claude was tested using a batching script that looped over all IPs listed above, testing all ports individually.
+The script made with Claude was tested using a batching script that looped over all IPs listed above, testing all ports individually. 
+
+
 
 //-----------------------------------------------------------
+#pagebreak()
 = Results
-
+In this section we are presenting the results from our using the different AI systems.
 == DeepSeek
 
 === Batching Results DeepSeek
@@ -145,6 +149,8 @@ While it doesn't now, at the time of being targeted `130.208.246.177` was shown 
 
 Despite the scan on `130.208.246.168` finding multiple severe vulnerabilities, I didn't continue manually attacking it, due to it seeming to not be set up fully. For example, the login and registration pages never loaded.
 
+#pagebreak()
+
 == Claude
 The following is the summary output of the Claude batch script. It shows how many potential vulnerabilites were found at 11:06 29/9/26 for each of the IPs. I continue and choose to focus on 130.208.246.166 for manual testing as it has among the most potential vulnerabilites to explore.
 
@@ -178,8 +184,13 @@ Target               Status     Leads  Open ports
 Live: 8    No site: 7
 ==============================================================================
 ```
+I used claude again to analyse the results of the scanns to help determine the following course of action in the attacks.
 
-I made my focus the site at port 8080 which is named One Piece Nakama. The first thing I did was make an account. I tried naming it admin but that name was taken so I used the username root instead. I tried making a forum post and discoverd that functionality was broken. I then proceeded to go to the command line and to a series of queries where I looked around to see what I could discover. For the most part this lead nowhare, I did find a place where there was an id=1 placed where I tried to see what happened if I put in different values there. Unfortunately it did not lead anywhare. 
+I made my focus the site at port 8080 which is named One Piece Nakama. The first thing I did was make an account. I tried naming it admin but that name was taken so I used the username root instead. I tried making a forum post and discoverd that functionality was broken. I then proceeded to go to the command line and to a series of queries where I looked around to see what I could discover. For the most part this lead nowhare, I did find a place where there was an id=1 placed where I tried to see what happened if I put in different values there. Unfortunately it did not lead anywhare. For the full list of command tried see Appendix.
+
+The conclusion to the attack was unfortunately that I could not manage to break into the website even though a number of warnings were flagged in the scanning. 
+
+
 
 
 
