@@ -39,10 +39,9 @@ We would like to be part of the paper on the security of AI generated websites (
 Using the free version of Deepseek and a paid version of Claude we 
 ...
 
+#pagebreak()
 //-----------------------------------------------------------
-#align(center)[= What we did]
-
-== Generating Security Audit Scripts
+= Generating Security Audit Scripts
 
 Using the LLMs "DeepSeek" and "Claude" we generated security auditing scripts that would use all the tools we have gotten to know in the course, and more, to attack the websites. The scripts were then run against the websites and the results were recorded.
 
@@ -61,7 +60,7 @@ While DeepSeek produced a script immediately, Claude's guardrails initially prev
 
 #pagebreak()
 
-=== Using DeepSeek
+== Using DeepSeek
 
 When presented with the task of generating a security auditing script, DeepSeek produced the python script immediately. It was bare-boned, functional and produced results.
 
@@ -73,20 +72,20 @@ Doing this, DeepSeek added things like cookie-flag checks, "dangerous HTTP metho
 
 The final version (v8) featured TCP port scanning, service and banner grabbing, DNS resolution, HTML content analysis, and timing metrics for overall execution and individual checks.
 
-=== Using Claude
+== Using Claude
 
-==== Chat function
+=== Chat function
 When presented with the task of generating a security audit script claude was very sceptical at first, not wanting to make a general purpose tool that would fire all the different tools against any website whoms IP was fed into it. After assuring it that the target websites were lab  VMs it did not hesitate to create the script, even if it did add a couple of inconvenient details in running the script like having to type in a string confiming I have permission to run the script agains the target. The script in question was running perfectly fine in the sense that it ran all the tools available in the machine simply marking the tools not found. 
 
 This script was mainly tested on my own site I had created for Lab 4 and thus verified against the manual tests I had done on the site on my own.
 
-==== Claude code
+=== Claude code
 To test the capabiliies and differences between claude code and the ordinary chat functions coding ability I asked claude code to create a new script testing more different tools while also looping through all the IP adresses of the different lab servers ensuring it hit all the different websites that were created in the course and give us all the potential weaknessess found. While the script provided was usefull I can't say I noticed any particularly great differences in the speed or quality when using claude code compared to the normal chat function. This might in part be due to me giving the orignal script for scanning a single website as inspiration for the new script. If I were to do this again I would probably let it create something on it's own to see if more clear differences in quality and scope would materialize.
 
 
+#pagebreak()
 
-
-== Attacking the sites
+= Attacking the sites
 
 The full list of IPs used for this is:
 
@@ -97,15 +96,7 @@ The full list of IPs used for this is:
 For the script made with DeepSeek the main IP it was tested on is `130.208.246.173`.
 The script made with Claude was tested using a batching script that looped over all IPs listed above, testing all ports individually. 
 
-
-
-//-----------------------------------------------------------
-#pagebreak()
-= Results
-In this section we are presenting the results from our using the different AI systems.
-== DeepSeek
-
-=== Batching Results DeepSeek
+== Batching Results DeepSeek
 
 The following is the summarized output of the DeepSeek batch script. It shows how many potential vulnerabilities were found for each of the IPs, which ports those IPs are hosting websites on, and how long it took to run the security audit script on each IP.
 
@@ -138,7 +129,7 @@ Target               Status        Time  High   Med   Low  Info  Open ports
 
 ```
 
-=== Manual Testing based on DeepSeek results
+== Manual Testing based on DeepSeek results
 
 Using the data I got with this security audit script, I targeted 
 `130.208.246.173` ("Rare Minecraft Worlds"), `130.208.246.177:8000` ("Smash & Rally Badminton Club"), and `130.208.246.168` ("MeowsageBoard").
@@ -149,10 +140,8 @@ While it doesn't now, at the time of being targeted `130.208.246.177` was shown 
 
 Despite the scan on `130.208.246.168` finding multiple severe vulnerabilities, I didn't continue manually attacking it, due to it seeming to not be set up fully. For example, the login and registration pages never loaded.
 
-#pagebreak()
-
-== Claude
-The following is the summary output of the Claude batch script. It shows how many potential vulnerabilites were found at 11:06 29/9/26 for each of the IPs. I continue and choose to focus on 130.208.246.166 for manual testing as it has among the most potential vulnerabilites to explore.
+== Batching Results Claude
+The following is the summary output of the Claude batch script. It shows how many potential vulnerabilites were found at 11:06 29/9/26 for each of the IPs.
 
 ```
 ==============================================================================
@@ -184,15 +173,17 @@ Target               Status     Leads  Open ports
 Live: 8    No site: 7
 ==============================================================================
 ```
+
+== Manual Testing based on Claude results
+I continued to focus on 130.208.246.166 for manual testing as it has among the most potential vulnerabilites to explore.
+
 I used claude again to analyse the results of the scanns to help determine the following course of action in the attacks.
 
 I made my focus the site at port 8080 which is named One Piece Nakama. The first thing I did was make an account. I tried naming it admin but that name was taken so I used the username root instead. I tried making a forum post and discoverd that functionality was broken. I then proceeded to go to the command line and to a series of queries where I looked around to see what I could discover. For the most part this lead nowhare, I did find a place where there was an id=1 placed where I tried to see what happened if I put in different values there. Unfortunately it did not lead anywhare. For the full list of command tried see Appendix.
 
-The conclusion to the attack was unfortunately that I could not manage to break into the website even though a number of warnings were flagged in the scanning. 
+= Results
 
-
-
-
+In spite of all our attempts, we did not manage to gain access to any accounts we hadn't previously created, we did not manage to gain access to the hosting machine of any websites, let alone root access, and all attempts to run malicious or unwanted scripts failed, even though some scripts and malicious files managed to be planted.
 
 //-----------------------------------------------------------
 #pagebreak()
