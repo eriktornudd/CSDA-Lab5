@@ -67,16 +67,17 @@ When presented with the task of generating a security auditing script, DeepSeek 
 
 There were no guardrails to circumvent to get the script, nor were there any guardrails encountered during the entire process of working with this DeepSeek model.
 
-Over the course of eight sequential prompts, DeepSeek produced a script that was able to run all the tools it had listed before, and produced readable results for all scanned websites.
-The main workflow for this process was to run the script on select IPs, and feed the output back into DeepSeek, asking it to tailor the script to the given website, and make the output more readable.
-Doing this, DeepSeek added things like cookie-flag checks, "dangerous HTTP methods" checks, sensitive file checks, severity classifications for notable findings (Critical, Medium, Low, Info), advanced CLI flags, HTML reporting, and several safety fixes.
+Over the course of 8 sequential prompts, DeepSeek produced a script that was able to run all the tools it had listed before, and produced readable results for any scanned website.
 
-The final version (v8) featured TCP port scanning, service and banner grabbing, DNS resolution, HTML content analysis, and timing metrics for overall execution and individual checks.
+The main workflow for the script generation process was to run the script on select IPs, and feed the output back into DeepSeek, asking it to tailor the script to the given website, and make the output more readable and detailed.
+Doing this, DeepSeek added things like cookie-flag checks, "dangerous HTTP method" checks, sensitive file checks, severity classifications for notable findings (Critical, Medium, Low, and Info), advanced CLI flags, HTML reporting, and several safety fixes.
+
+The final version "v8" (see Appendix) features TCP port scanning, service and banner grabbing, DNS resolution, HTML content analysis, and timing metrics for overall execution and individual checks.
 
 == Using Claude
 
 === Chat function
-When presented with the task of generating a security audit script claude was very sceptical at first, not wanting to make a general purpose tool that would fire all the different tools against any website whose IP was fed into it. After assuring it that the target websites were lab VMs, it did not hesitate to create the script, even if it did add a couple of inconvenient details in running the script, like having to type in a string confirming I have permission to run the script against the target. The script in question was running perfectly fine, in the sense that it ran all the tools available on the machine, and simply marking the other tools not found. 
+When presented with the task of generating a security audit script Claude was very sceptical at first, not wanting to make a general purpose script that would fire all the different tools against any website whose IP was fed into it. After assuring it that the target websites were lab VMs, it did not hesitate to create the script, even if it did add a couple of inconvenient details in running the script, like having to type in a string confirming I have permission to run the script against the target. The script in question was running perfectly fine, in the sense that it ran all the tools available on the machine, and simply marking the other tools not found. 
 
 This script was mainly tested on my own site I had created for Lab 4 and thus verified against the manual tests I had done on the site on my own.
 
@@ -96,6 +97,8 @@ The full list of IPs used for this is:
 
 For the script made with DeepSeek the main IP it was tested on is `130.208.246.173`.
 The script made with Claude was tested using a batching script that looped over all IPs listed above, testing all ports individually. 
+
+After fully generating the DeepSeek script, we added a batching script to loop over all IPs, similar to the batching script used for testing the Claude script.
 
 == Batching Results DeepSeek
 
