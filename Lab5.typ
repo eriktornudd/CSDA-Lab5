@@ -35,11 +35,10 @@
 We would like to be part of the paper on the security of AI generated websites (and listed as co-authors).
 
 //-----------------------------------------------------------
-#align(center)[= Executive Summary
-Using the free version of Deepseek and a paid version of Claude we 
-...
+#align(center)[= Executive Summary]
+In this report we are presenting the result of using two differnt LLMs to attack vibe coded websites. The LLMs models we used were the free version of Deepseek and Claude sonnet 5 with a pro subscription. The process used was to ask both models first to list the tools needed to do a security audit on a website and then ask them to produce a script that automated running these tools. Here we discovered differences in what type of scripts the LLMs were comfortable delivering without more context where claude refused until it was told it was for a cybersecurity course while DeepSeek happliy gave the requested script. Furthermore a comparison was performed between claude code and the normal chatversion but no big difference was felt as claude code was used to modify the script to be run over all the websites produced to be tested. After the atuomated audit had been performed a process of manual attacking was performed 
 
-]
+
 
 //-----------------------------------------------------------
 = Generating Security Audit Scripts
@@ -81,7 +80,7 @@ When presented with the task of generating a security audit script claude was ve
 This script was mainly tested on my own site I had created for Lab 4 and thus verified against the manual tests I had done on the site on my own.
 
 === Claude code
-To test the capabilities and differences between Claude Code and the ordinary chat function's coding ability I asked Claude Code to create a new script testing more different tools, while also looping through all the IP addresses of the different lab servers ensuring it hit all the different websites that were created in the course, and give us all the potential weaknessess found. While the script provided was useful, I can't say I noticed any particularly great differences in the speed or quality when using Claude Code compared to Claude's normal chat function. This might, in part, be due to me giving it the original script for scanning a single website as inspiration for the new script. If I were to do this again, I would probably let it create something on it's own, to see if more clear differences in quality and scope would materialize.
+To test the capabilities and differences between Claude Code and the ordinary chat function's coding ability I asked Claude Code to create a new script testing more different tools, while also looping through all the IP addresses of the different lab servers ensuring it hit all the different websites that were created in the course, and give us all the potential weaknesses found. While the script provided was useful, I can't say I noticed any particularly great differences in the speed or quality when using Claude Code compared to Claude's normal chat function. This might, in part, be due to me giving it the original script for scanning a single website as inspiration for the new script. If I were to do this again, I would probably let it create something on its own, to see if more clear differences in quality and scope would materialize.
 
 
 #pagebreak()
@@ -188,82 +187,7 @@ I made my focus the site at port `8080` ("One Piece Nakama"). The first thing I 
 In spite of all our attempts, we did not manage to gain access to any accounts we hadn't previously created, we did not manage to gain access to the hosting machine of any websites, let alone root access, and all attempts to run malicious or unwanted scripts failed, even though some scripts and malicious files managed to be planted.
 
 //-----------------------------------------------------------
-#pagebreak()
+
 #align(center)[= Appendix]
 
 For the full scripts and prompt files, visit https://github.com/eriktornudd/CSDA-Lab5.
-
-
-
-== The command history run against 130.208.246.166:8080
-```
-### === 130.208.246.166:8080 — initial recon ===
-curl -s http://130.208.246.166:8080/login.php | grep -iA3 "form action\|input"
-curl -sI http://130.208.246.166:8080/admin
-curl -s  http://130.208.246.166:8080/admin/ | head -50
-curl -s http://130.208.246.166:8080/uploads/
-curl -sI http://130.208.246.166:8080/.git/HEAD
-
-
-### === 130.208.246.166:8080 — registering + logging in as root/adminadmin ===
-curl -c cookies.txt -s http://130.208.246.166:8080/login.php -o login_page.html
-grep -o 'name="csrf_token" value="[^"]*"' login_page.html
-
-curl -b cookies.txt -c cookies.txt -s \
-  --data-urlencode "username=root" \
-  --data-urlencode "password=adminadmin" \
-  --data-urlencode "csrf_token=1511a2d1bb7bb9ff89193987683a916bc1b66752a62c41399e8c95feb669c454" \
-  http://130.208.246.166:8080/login.php -L -o after_login.html
-
-curl -b cookies.txt -s http://130.208.246.166:8080/ -o home_authenticated.html
-grep -iE "logout|dashboard|profile|role|admin" home_authenticated.html
-sed -n '1,150p' home_authenticated.html
-
-
-### === 130.208.246.166:8080 — authenticated profile + admin re-check ===
-curl -b cookies.txt -s http://130.208.246.166:8080/profile.php -o profile.html
-cat profile.html
-
-curl -b cookies.txt -I http://130.208.246.166:8080/admin/
-cat cookies.txt
-
-
-### === 130.208.246.166:8080 — forum + category.php injection probe ===
-curl -b cookies.txt -s http://130.208.246.166:8080/forum.php -o forum.html
-cat forum.html
-
-curl -b cookies.txt -s "http://130.208.246.166:8080/category.php?id=1"   -o cat1.html
-curl -b cookies.txt -s "http://130.208.246.166:8080/category.php?id=999" -o cat999.html
-curl -b cookies.txt -s "http://130.208.246.166:8080/category.php?id=1'"  -o catquote.html
-diff cat1.html cat999.html
-cat catquote.html
-
-
-### === 130.208.246.166:8080 — stored-XSS attempt, which uncovered the 500 bug ===
-TOKEN=$(curl -b cookies.txt -s "http://130.208.246.166:8080/new_thread.php?category_id=1" \
-  | grep -oE 'name="csrf_token"[^>]*value="[^"]*"' | sed 's/.*value="//;s/"$//')
-echo "TOKEN=$TOKEN"
-
-curl -b cookies.txt -s --data-urlencode "category_id=1" --data-urlencode "title=xsstest" \
-  --data-urlencode "body=<b>xsstest123</b>" --data-urlencode "csrf_token=$TOKEN" \
-  "http://130.208.246.166:8080/new_thread.php" -L -o post_result.html
-cat post_result.html
-
-curl -b cookies.txt -s "http://130.208.246.166:8080/new_thread.php?category_id=1" \
-  | grep -oE '<(input|textarea)[^>]*name="[^"]*"'
-
-curl -b cookies.txt -s "http://130.208.246.166:8080/category.php?id=1" | grep -i xsstest
-
-# isolating the empty response — checking headers instead of just the body
-curl -b cookies.txt -s -D - --data-urlencode "category_id=1" --data-urlencode "title=xsstest" \
-  --data-urlencode "body=<b>xsstest123</b>" --data-urlencode "csrf_token=$TOKEN" \
-  "http://130.208.246.166:8080/new_thread.php" -o post_body.html
-cat post_body.html
-# → HTTP/1.0 500 Internal Server Error, Content-Length: 0
-
-# ruling out HTML as the specific trigger
-curl -b cookies.txt -s -D - --data-urlencode "category_id=1" --data-urlencode "title=plaintest" \
-  --data-urlencode "body=just plain text no tags" --data-urlencode "csrf_token=$TOKEN" \
-  "http://130.208.246.166:8080/new_thread.php" -o plain_body.html | head -1
-# → also 500 — confirmed via browser UI too, feature is broken for any submission
-```

@@ -1,0 +1,72 @@
+
+The command history run against 130.208.246.166:8080
+
+### === 130.208.246.166:8080 — initial recon ===
+curl -s http://130.208.246.166:8080/login.php | grep -iA3 "form action\|input"
+curl -sI http://130.208.246.166:8080/admin
+curl -s  http://130.208.246.166:8080/admin/ | head -50
+curl -s http://130.208.246.166:8080/uploads/
+curl -sI http://130.208.246.166:8080/.git/HEAD
+
+
+### === 130.208.246.166:8080 — registering + logging in as root/adminadmin ===
+curl -c cookies.txt -s http://130.208.246.166:8080/login.php -o login_page.html
+grep -o 'name="csrf_token" value="[^"]*"' login_page.html
+
+curl -b cookies.txt -c cookies.txt -s \
+  --data-urlencode "username=root" \
+  --data-urlencode "password=adminadmin" \
+  --data-urlencode "csrf_token=1511a2d1bb7bb9ff89193987683a916bc1b66752a62c41399e8c95feb669c454" \
+  http://130.208.246.166:8080/login.php -L -o after_login.html
+
+curl -b cookies.txt -s http://130.208.246.166:8080/ -o home_authenticated.html
+grep -iE "logout|dashboard|profile|role|admin" home_authenticated.html
+sed -n '1,150p' home_authenticated.html
+
+
+### === 130.208.246.166:8080 — authenticated profile + admin re-check ===
+curl -b cookies.txt -s http://130.208.246.166:8080/profile.php -o profile.html
+cat profile.html
+
+curl -b cookies.txt -I http://130.208.246.166:8080/admin/
+cat cookies.txt
+
+
+### === 130.208.246.166:8080 — forum + category.php injection probe ===
+curl -b cookies.txt -s http://130.208.246.166:8080/forum.php -o forum.html
+cat forum.html
+
+curl -b cookies.txt -s "http://130.208.246.166:8080/category.php?id=1"   -o cat1.html
+curl -b cookies.txt -s "http://130.208.246.166:8080/category.php?id=999" -o cat999.html
+curl -b cookies.txt -s "http://130.208.246.166:8080/category.php?id=1'"  -o catquote.html
+diff cat1.html cat999.html
+cat catquote.html
+
+
+### === 130.208.246.166:8080 — stored-XSS attempt, which uncovered the 500 bug ===
+TOKEN=$(curl -b cookies.txt -s "http://130.208.246.166:8080/new_thread.php?category_id=1" \
+  | grep -oE 'name="csrf_token"[^>]*value="[^"]*"' | sed 's/.*value="//;s/"$//')
+echo "TOKEN=$TOKEN"
+
+curl -b cookies.txt -s --data-urlencode "category_id=1" --data-urlencode "title=xsstest" \
+  --data-urlencode "body=<b>xsstest123</b>" --data-urlencode "csrf_token=$TOKEN" \
+  "http://130.208.246.166:8080/new_thread.php" -L -o post_result.html
+cat post_result.html
+
+curl -b cookies.txt -s "http://130.208.246.166:8080/new_thread.php?category_id=1" \
+  | grep -oE '<(input|textarea)[^>]*name="[^"]*"'
+
+curl -b cookies.txt -s "http://130.208.246.166:8080/category.php?id=1" | grep -i xsstest
+
+# isolating the empty response — checking headers instead of just the body
+curl -b cookies.txt -s -D - --data-urlencode "category_id=1" --data-urlencode "title=xsstest" \
+  --data-urlencode "body=<b>xsstest123</b>" --data-urlencode "csrf_token=$TOKEN" \
+  "http://130.208.246.166:8080/new_thread.php" -o post_body.html
+cat post_body.html
+# → HTTP/1.0 500 Internal Server Error, Content-Length: 0
+
+# ruling out HTML as the specific trigger
+curl -b cookies.txt -s -D - --data-urlencode "category_id=1" --data-urlencode "title=plaintest" \
+  --data-urlencode "body=just plain text no tags" --data-urlencode "csrf_token=$TOKEN" \
+  "http://130.208.246.166:8080/new_thread.php" -o plain_body.html | head -1
+# → also 500 — confirmed via browser UI too, feature is broken for any submission
