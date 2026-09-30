@@ -37,8 +37,8 @@ We would like to be part of the paper on the security of AI generated websites (
 //-----------------------------------------------------------
 #align(center)[= Executive Summary]
 In this report we present the results of two different LLMs used to attack vibecoded websites created in our lab. The LLM models we used were the free version of Deepseek and Claude Sonnet 5 with a Pro subscription.
-#linebreak() Our process was to ask both models to first list the tools needed to do a security audit on a website and to then ask them to produce a script that automated running these tools. Doing this, we discovered differences in what the LLMs were comfortable delivering without more context, eg. that Claude refused until being assured it was for a cybersecurity course, while DeepSeek happily gave the requested script.
-#linebreak() Furthermore, we compare the results of Claude Code and the Claude's normal chat version, with no notable differences found. After the automated audits, we tested the security of selected sites manually, focusing on the sites with the most vulnerabilities, according to the scripts' results. We remained unsuccessful in our attempts to gain access.
+#linebreak() Our process was to ask both models to first list the tools needed to do a security audit on a website and to then ask them to produce a script that automated running these tools. Doing this, we discovered differences in what the LLMs were comfortable delivering without more context, e.g., that Claude refused until being assured it was for a cybersecurity course, while DeepSeek happily gave the requested script.
+#linebreak() Furthermore, we compared the results of Claude Code and Claude's normal chat version, with no notable differences found. After the automated audits, we tested the security of selected sites manually, focusing on the sites with the most vulnerabilities, according to the scripts' results. We remained unsuccessful in our attempts to gain access.
 
 
 //-----------------------------------------------------------
@@ -145,7 +145,7 @@ While it doesn't now, at the time of being targeted `130.208.246.177` was shown 
 Despite the scan on `130.208.246.168` finding multiple severe vulnerabilities, I didn't continue manually attacking it, due to it seeming to not be set up fully. For example, the login and registration pages never loaded.
 
 == Batching Results Claude
-The following is the summary output of the Claude batch script. It shows how many potential vulnerabilities were found at 11:58 29/9/26 for each of the IPs.
+The following is the summary output of the Claude batch script. It shows how many potential vulnerabilities were found at 10:58 29/9/26 for each of the IPs.
 
 ```
 ==============================================================================
@@ -179,11 +179,11 @@ Live: 8    No site: 7
 ```
 
 == Manual Testing based on Claude results
-I continued to focus on `130.208.246.166` for manual testing as it has among the most amounts of potential vulnerabilities to explore.
+I continued to focus on `130.208.246.166` for manual testing as it has among the highest amount of potential vulnerabilities to explore, and the only other IP with and equal an amount of leads is where my own site is. 
 
-I used Claude again to analyse the results of the scans to help determine the following course of action in the attacks. Interestingly this analysis showed some bugs where the summary overstated the number of leads actually present in the data. This bug is as of the time of writing not addressed in the code. This analysis also helped determine what sites to focus on for further testing. I picked .166 over .171 because .171 is the server where my own site is located together meaning I had some done some previous testing in that area.
+I used Claude again to analyse the results of the scans to help determine the following course of action in the attacks. Interestingly this analysis showed some bugs in the script where the summary overstated the number of leads actually present in the data. This bug is as of the time of writing not addressed in the code. This analysis also helped determine what sites to focus on for further testing. 
 
-I made my focus the site at port `8080` ("One Piece Nakama"). The first thing I did was make an account. I tried naming it `admin` but that name was taken, so I used the username `root` instead. I tried sending a post to the forum with XSS in it, for this check I expected it to either sanitize my input stopping it, or simply letting in pass into the site. The response I got was neither. Instead I got a `HTTP/1.0 500 Internal Server` with `Content-Length: 0`. This means that the server broke when it tried to process the request. To check if this was some form of defense or broken functionality I tried to make a forum post with just plain text, this produced the same response. This means that at the moment I could not determine if the site is protected from XSS, as the server return error 500 no matter the input.
+I made my focus the site at port `8080` ("One Piece Nakama"). The first thing I did was make an account. I tried naming it `admin` but that name was taken, so I used the username `root` instead. I tried sending a post to the forum with XSS in it, for this check I expected it to either sanitize my input stopping it, or simply letting it pass into the site. The response I got was neither. Instead I got a `HTTP/1.0 500 Internal Server Error` with `Content-Length: 0`. This means that the server broke when it tried to process the request. To check if this was some form of defense or broken functionality I tried to make a forum post with just plain text. This produced the same response. This means that at the moment I could not determine if the site is protected from XSS, as the server returns a 500 error no matter the input.
 
 After that I made some attempts at SQLi where I found a place where an `id=1` existed. I tried to add in a string here `id=1'`(a trailing '), but the result showed it was made into an integer before touching the database making it safe from string based SQL injection at least in this place.
 
