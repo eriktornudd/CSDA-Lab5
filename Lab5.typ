@@ -1,7 +1,7 @@
 #import "@preview/wordometer:0.1.5": word-count, total-words
 #show: word-count
 
-#let title = "Lab 5, Attack vibecoded websites"
+#let title = "Lab 5: Attacking Vibecoded Websites"
 #let course = "Cyber Security: Defence against the Dark Arts"
 #let author = "Erik Törnudd, Nikola Schuppan-Cruz"
 
@@ -35,11 +35,12 @@
 We would like to be part of the paper on the security of AI generated websites (and listed as co-authors).
 
 //-----------------------------------------------------------
-#align(center)[= Executive Summary]
+#align(center)[= Executive Summary
 Using the free version of Deepseek and a paid version of Claude we 
 ...
 
-#pagebreak()
+]
+
 //-----------------------------------------------------------
 = Generating Security Audit Scripts
 
@@ -75,12 +76,12 @@ The final version (v8) featured TCP port scanning, service and banner grabbing, 
 == Using Claude
 
 === Chat function
-When presented with the task of generating a security audit script claude was very sceptical at first, not wanting to make a general purpose tool that would fire all the different tools against any website whoms IP was fed into it. After assuring it that the target websites were lab  VMs it did not hesitate to create the script, even if it did add a couple of inconvenient details in running the script like having to type in a string confiming I have permission to run the script agains the target. The script in question was running perfectly fine in the sense that it ran all the tools available in the machine simply marking the tools not found. 
+When presented with the task of generating a security audit script claude was very sceptical at first, not wanting to make a general purpose tool that would fire all the different tools against any website whose IP was fed into it. After assuring it that the target websites were lab VMs, it did not hesitate to create the script, even if it did add a couple of inconvenient details in running the script, like having to type in a string confirming I have permission to run the script against the target. The script in question was running perfectly fine, in the sense that it ran all the tools available on the machine, and simply marking the other tools not found. 
 
 This script was mainly tested on my own site I had created for Lab 4 and thus verified against the manual tests I had done on the site on my own.
 
 === Claude code
-To test the capabiliies and differences between claude code and the ordinary chat functions coding ability I asked claude code to create a new script testing more different tools while also looping through all the IP adresses of the different lab servers ensuring it hit all the different websites that were created in the course and give us all the potential weaknessess found. While the script provided was usefull I can't say I noticed any particularly great differences in the speed or quality when using claude code compared to the normal chat function. This might in part be due to me giving the orignal script for scanning a single website as inspiration for the new script. If I were to do this again I would probably let it create something on it's own to see if more clear differences in quality and scope would materialize.
+To test the capabilities and differences between Claude Code and the ordinary chat function's coding ability I asked Claude Code to create a new script testing more different tools, while also looping through all the IP addresses of the different lab servers ensuring it hit all the different websites that were created in the course, and give us all the potential weaknessess found. While the script provided was useful, I can't say I noticed any particularly great differences in the speed or quality when using Claude Code compared to Claude's normal chat function. This might, in part, be due to me giving it the original script for scanning a single website as inspiration for the new script. If I were to do this again, I would probably let it create something on it's own, to see if more clear differences in quality and scope would materialize.
 
 
 #pagebreak()
@@ -141,7 +142,7 @@ While it doesn't now, at the time of being targeted `130.208.246.177` was shown 
 Despite the scan on `130.208.246.168` finding multiple severe vulnerabilities, I didn't continue manually attacking it, due to it seeming to not be set up fully. For example, the login and registration pages never loaded.
 
 == Batching Results Claude
-The following is the summary output of the Claude batch script. It shows how many potential vulnerabilites were found at 11:06 29/9/26 for each of the IPs.
+The following is the summary output of the Claude batch script. It shows how many potential vulnerabilities were found at 11:06 29/9/26 for each of the IPs.
 
 ```
 ==============================================================================
@@ -175,11 +176,12 @@ Live: 8    No site: 7
 ```
 
 == Manual Testing based on Claude results
-I continued to focus on 130.208.246.166 for manual testing as it has among the most potential vulnerabilites to explore.
+I continued to focus on `130.208.246.166` for manual testing as it has among the most amounts of potential vulnerabilities to explore.
 
-I used claude again to analyse the results of the scanns to help determine the following course of action in the attacks.
+I used Claude again to analyse the results of the scans to help determine the following course of action in the attacks.
 
-I made my focus the site at port 8080 which is named One Piece Nakama. The first thing I did was make an account. I tried naming it admin but that name was taken so I used the username root instead. I tried making a forum post and discoverd that functionality was broken. I then proceeded to go to the command line and to a series of queries where I looked around to see what I could discover. For the most part this lead nowhare, I did find a place where there was an id=1 placed where I tried to see what happened if I put in different values there. Unfortunately it did not lead anywhare. For the full list of command tried see Appendix.
+I made my focus the site at port `8080` ("One Piece Nakama"). The first thing I did was make an account. I tried naming it `admin` but that name was taken so I used the username `root` instead. I tried making a forum post and discovered that functionality was broken. I then proceeded to go to the command line and do a series of queries where I looked around to see what I could discover. For the most part this lead nowhere, I did find a place where there was an `id=1` placed where I tried to see what happened if I put in different values there. Unfortunately it did not lead anywhere.
+(The full list of commands is contained in the appendix)
 
 = Results
 
