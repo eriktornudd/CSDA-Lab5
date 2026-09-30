@@ -137,13 +137,16 @@ Target               Status        Time  High   Med   Low  Info  Open ports
 === Manual Testing based on DeepSeek results
 
 Using the data I got with this security audit script, I targeted 
-`130.208.246.173`, `130.208.246.177`, and `130.208.246.168`.
+`130.208.246.173` ("Rare Minecraft Worlds"), `130.208.246.177:8000` ("Smash & Rally Badminton Club"), and `130.208.246.168` ("MeowsageBoard").
 
-During the lab I used `130.208.246.173` for testing and developing the script. While doing this, I also attempted several manual scans and attacks, like Stored Cross-Site Scripting in the form of an html script formated as plain-text, an .html file, and as a .png file. I also attempted SQL Injection on the login form and tried changing cookie-IDs, user-IDs, and more through the URL and the browser's terminal.
+During the lab I used `130.208.246.173` for testing and developing the script. While doing this, I also attempted several manual scans and attacks, like Stored Cross-Site Scripting in the form of an html script formated as plain-text, an .html file, and as a .png file. I also attempted SQL Injection on the login form and tried changing cookie-IDs, user-IDs, and more, through the URL and the browser's terminal.
+
 While it doesn't now, at the time of being targeted `130.208.246.177` was shown to have several High severity findings as well.
 
+Despite the scan on `130.208.246.168` finding multiple severe vulnerabilities, I didn't continue manually attacking it, due to it seeming to not be set up fully. For example, the login and registration pages never loaded.
+
 == Claude
-The following is the sumary output of the claude batch script. It shows how many potenital vulnerabilites were found at 11:06 29/9/26 for each of the IPs for manual testing I continue and choose to focus on 130.208.246.166 as it has among the most potenital vulnerabilites to explore.
+The following is the summary output of the Claude batch script. It shows how many potential vulnerabilites were found at 11:06 29/9/26 for each of the IPs. I continue and choose to focus on 130.208.246.166 for manual testing as it has among the most potential vulnerabilites to explore.
 
 ```
 ==============================================================================
